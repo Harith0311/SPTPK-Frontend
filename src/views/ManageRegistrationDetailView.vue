@@ -3,7 +3,9 @@ import { ref } from "@vue/reactivity";
 import { RouterLink } from "vue-router";
 import SideBar2 from '../components/SideBar2.vue';
 import Header from "../components/Header.vue";
+import CanvasQR from "../components/CanvasQR.vue";
 
+    
 </script>
 
 <template>
@@ -189,6 +191,43 @@ import Header from "../components/Header.vue";
             </div>
         </div>
     </div>
+    <!-- <canvas ref="canvasQR" class="mx-auto"></canvas> -->
+    
+    <!-- User prompt to generate and print QR code -->
+    <div id="overlay" class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50" v-bind:class="{'hidden': !isOpen}">
+        <dialog
+            class="z-10 w-5/6 bg-white absolute h-fit top-20 overflow-auto px-3 pt-4 rounded-xl"
+            v-bind:open="isOpen"
+        >
+            <CanvasQR
+                :key="kanakId"
+                v-bind:kanakId="kanakId"
+                id="qrcode"
+            />
+            <table class="list w-5/6 my-3  mx-auto">
+                <tr>
+                    <th class="border-b-2 border-black py-3">Nama Aktiviti</th>
+                    <th class="border-b-2 border-black py-3">Tahun</th>
+                    <th class="border-b-2 border-black py-3">Kesukaran</th>
+                    <th class="border-b-2 border-black py-3">Tindakan</th>
+                </tr>
+                                    
+                <tr >
+                    <td class="aktiviti py-1">hai</td>
+                    <td class="text-center py-1">hai</td>
+                    <td class="text-center py-1">hai</td>
+                    <td class="text-center py-1">
+                        <button class="bg-blue-200 px-2 p-0.5 text-sm rounded-lg"  >Pilih Aktiviti</button>
+                    </td>
+                </tr>
+            </table>
+            <div class="flex justify-evenly">
+                <button class="bg-red-200 w-1/6 p-1 rounded-lg" @click="printQRcode">Cetak Kod QR</button>
+                <button class="bg-red-200 w-1/6 p-1 rounded-lg" @click="toggleRegister">Selesai</button>
+            </div>
+        </dialog>
+    </div>  
+    <!-- End of prompt -->
     <!-- Footer -->
     <div class="bg-black text-center text-white p-4 py-1">
         <h4>All rights reserved</h4>
@@ -200,6 +239,8 @@ import Header from "../components/Header.vue";
     import { ref } from "@vue/reactivity";
     import { RouterLink } from "vue-router";
     import router from "../router";
+    import QRCode from "qrcode";
+    
 
 export default {
     data() {
@@ -209,12 +250,16 @@ export default {
             kanak: "",
             bapa: "",
             ibu: "",
+            kanakId: "",
+            isOpen: false,
             update: {
                 pendaftaranLulus: true
             }
         }
     },
     mounted() {
+
+        
         console.log(this.registerId);
             //Fetch data in urusPendaftaran
             axios.get('http://localhost:1001/urusPendaftaran/' + this.registerId)
@@ -223,10 +268,10 @@ export default {
                     console.log(this.register);
 
                     //get the id for kanak
-                    const kanakId = this.register.kanak[0].id;
-                    console.log(kanakId);
+                    this.kanakId = this.register.kanak[0].id;
+                    console.log(this.kanakId);
                     //Fetch data in kanak                    
-                    axios.get('http://localhost:1001/kanak/' + kanakId)
+                    axios.get('http://localhost:1001/kanak/' + this.kanakId)
                     .then(response => {
                     this.kanak = response.data;
                     console.log(this.kanak);
@@ -256,6 +301,11 @@ export default {
                 .catch(error => {
                     console.error('Error fetching registration data:', error);
                 });
+
+        
+            
+        
+
         
     },
 
@@ -274,12 +324,56 @@ export default {
         approveRegistration(){
             axios.put('http://localhost:1001/urusPendaftaran/' + this.registerId, this.update)
             .then(response => {
-                alert('Berjaya didaftarkan!')
+                alert('Berjaya didaftarkan!');
+                this.toggleRegister();
             })
             .catch(error => {
                 console.error('Error updating registration status', error);
             })
-        }
+        },
+
+        toggleRegister() {
+            this.isOpen = !this.isOpen;
+        },
+
+        printQRcode() {
+                // Get the SVG element
+                const qrcodeElement = document.getElementById('qrcode');
+
+                // Generate a new SVG string with updated XML namespaces
+                const svgXml = new XMLSerializer().serializeToString(qrcodeElement);
+                const modifiedSvgXml = svgXml
+                    .replace('xmlns="http://www.w3.org/2000/svg"', '')
+                    .replace('xmlns:serif="http://www.serif.com/"', '');
+
+                // Create a new window for printing
+                const printWindow = window.open('', '_blank');
+
+                // Open a new document in the print window
+                printWindow.document.open();
+
+                // Add the modified SVG to the print document
+                printWindow.document.write(`
+                    <html>
+                        <head>
+                            <style>
+                                @page { size: auto; }
+                            </style>
+                        </head>
+                        <body>
+                            <h1>Kod QR Kanak-Kanak</h1>
+                            ${modifiedSvgXml}
+                            
+                        </body>
+                    </html>
+                `);
+
+                // Close the print document
+                printWindow.document.close();
+
+                // Print the document
+                printWindow.print();
+            }
     }
 
 }

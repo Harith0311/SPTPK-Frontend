@@ -24,19 +24,28 @@ import Header from "../components/Header.vue";
             <!-- Div Content -->
 
     
-        <div class="bg-white h-auto w-full my-6 mx-2 p-4 rounded-2xl drop-shadow-2xl">
+        <div class="bg-white h-[448px] w-full my-6 mx-2 p-4 rounded-2xl drop-shadow-2xl">
             <h1 class="text-xl font-bold p-2">Senarai Permohonan Pendaftaran</h1>
             <div class="border-solid border-b-2 border-black">
                     <!-- Horizontal Line -->
             </div>
-
-            <div v-for="daftarKanak in RegistrationList" v-bind:key="daftarKanak.id">
+            <div v-if="RegistrationList.length > 0">
+                <div v-for="daftarKanak in RegistrationList" v-bind:key="daftarKanak.id">
+                    <div class="flex justify-between">
+                        <h2 class="text-base font-medium p-2">{{ daftarKanak.kanak[0].namaKanak }}</h2>
+                        <RouterLink :to="'/manageRegisterDetail/' + daftarKanak.id"><button class="bg-blue-300 hover:bg-blue-200 rounded-2xl drop-shadow-xl p-1 px-4 m-2 text-sm">Urus Pendaftaran</button></RouterLink>
+                    </div>
+                    <div class="border-solid border-b-2 border-zinc-300">
+                            <!-- Horizontal Line -->
+                    </div>
+                </div>
+            </div>
+            <div v-else>
                 <div class="flex justify-between">
-                    <h2 class="text-base font-medium p-2">{{ daftarKanak.kanak[0].namaKanak }}</h2>
-                    <RouterLink :to="'/manageRegisterDetail/' + daftarKanak.id"><button class="bg-blue-300 hover:bg-blue-200 rounded-2xl drop-shadow-xl p-1 px-4 m-2 text-sm">Urus Pendaftaran</button></RouterLink>
+                    <h2 class="text-base text-center font-medium p-2">Tiada Permohonan Pendaftaran</h2>
                 </div>
                 <div class="border-solid border-b-2 border-zinc-300">
-                        <!-- Horizontal Line -->
+                    <!-- Horizontal Line -->
                 </div>
             </div>
             <!-- <div class="flex justify-between">
@@ -61,15 +70,15 @@ import Header from "../components/Header.vue";
                     <!-- Horizontal Line -->
             <!-- </div> -->
 
-            <h1 class="text-xl font-bold mt-6 p-2">Senarai Permohonan Diluluskan</h1>
+            <!-- <h1 class="text-xl font-bold mt-6 p-2">Senarai Permohonan Diluluskan</h1>
             <ul v-for="daftarKanak in RegistrationList" v-bind:key="daftarKanak.id">
                 <li class="p-2">{{ (RegistrationList.indexOf(daftarKanak) + 1) + ". " + daftarKanak.kanak[0].namaKanak }}</li>
-            </ul>
+            </ul> -->
         </div>
     </div>
     </div>
     <!-- Footer -->
-    <div class="bg-black text-center text-white p-4">
+    <div class="bg-black text-center text-white p-1">
         <h4>All rights reserved</h4>
     </div>
 
