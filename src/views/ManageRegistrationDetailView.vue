@@ -191,7 +191,7 @@ import CanvasQR from "../components/CanvasQR.vue";
             </div>
         </div>
     </div>
-    <!-- <canvas ref="canvasQR" class="mx-auto"></canvas> -->
+    <!-- <svg ref="CanvasQR" v-bind:kanakId="kanakId" :key="kanakId" class="mx-auto"></svg> -->
     
     <!-- User prompt to generate and print QR code -->
     <div id="overlay" class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50" v-bind:class="{'hidden': !isOpen}">
@@ -199,11 +199,12 @@ import CanvasQR from "../components/CanvasQR.vue";
             class="z-10 w-5/6 bg-white absolute h-fit top-20 overflow-auto px-3 pt-4 rounded-xl"
             v-bind:open="isOpen"
         >
-            <CanvasQR
+                <canvasQR
                 :key="kanakId"
                 v-bind:kanakId="kanakId"
                 id="qrcode"
-            />
+                ref="canvasQR"
+                />
             <table class="list w-5/6 my-3  mx-auto">
                 <tr>
                     <th class="border-b-2 border-black py-3">Nama Aktiviti</th>
@@ -240,6 +241,8 @@ import CanvasQR from "../components/CanvasQR.vue";
     import { RouterLink } from "vue-router";
     import router from "../router";
     import QRCode from "qrcode";
+    import html2canvas from 'html2canvas';
+
     
 
 export default {
@@ -252,6 +255,7 @@ export default {
             ibu: "",
             kanakId: "",
             isOpen: false,
+            svgCode: '', 
             update: {
                 pendaftaranLulus: true
             }
@@ -302,6 +306,18 @@ export default {
                     console.error('Error fetching registration data:', error);
                 });
 
+                QRCode.toString(
+                    this.kanakId,
+                    { type: 'svg', width: 350, height: 350 },
+                    (error, svgCode) => {
+                        if (error) {
+                            console.error(error);
+                        } else {
+                            this.svgCode = svgCode; // Store the SVG code in the component's data property
+                        }
+                    }
+                );
+
         
             
         
@@ -336,15 +352,9 @@ export default {
             this.isOpen = !this.isOpen;
         },
 
-        printQRcode() {
-                // Get the SVG element
-                const qrcodeElement = document.getElementById('qrcode');
-
-                // Generate a new SVG string with updated XML namespaces
-                const svgXml = new XMLSerializer().serializeToString(qrcodeElement);
-                const modifiedSvgXml = svgXml
-                    .replace('xmlns="http://www.w3.org/2000/svg"', '')
-                    .replace('xmlns:serif="http://www.serif.com/"', '');
+            printQRcode() {
+                // Get the canvas element
+                const canvas = document.getElementById('qrcode');
 
                 // Create a new window for printing
                 const printWindow = window.open('', '_blank');
@@ -352,19 +362,18 @@ export default {
                 // Open a new document in the print window
                 printWindow.document.open();
 
-                // Add the modified SVG to the print document
+                // Add the canvas to the print document
                 printWindow.document.write(`
                     <html>
-                        <head>
-                            <style>
-                                @page { size: auto; }
-                            </style>
-                        </head>
-                        <body>
-                            <h1>Kod QR Kanak-Kanak</h1>
-                            ${modifiedSvgXml}
-                            
-                        </body>
+                    <head>
+                        <style>
+                        @page { size: auto; }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>Kod QR Kanak-Kanak</h1>
+                        <img src="${canvas.toDataURL('image/png')}" />
+                    </body>
                     </html>
                 `);
 
@@ -374,6 +383,14 @@ export default {
                 // Print the document
                 printWindow.print();
             }
+
+
+
+            
+
+        
+
+
     }
 
 }
