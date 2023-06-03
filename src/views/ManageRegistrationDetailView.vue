@@ -196,35 +196,23 @@ import CanvasQR from "../components/CanvasQR.vue";
     <!-- User prompt to generate and print QR code -->
     <div id="overlay" class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50" v-bind:class="{'hidden': !isOpen}">
         <dialog
-            class="z-10 w-5/6 bg-white absolute h-fit top-20 overflow-auto px-3 pt-4 rounded-xl"
+            class="z-10 w-5/6 bg-white absolute h-fit top-16 overflow-auto px-3 pt-4 rounded-xl"
             v-bind:open="isOpen"
         >
+            <div class="bg-green-300 rounded-lg m-4 p-2">
+                <h2 class="font-bold text-xl text-center pt-3">Permohonan Berjaya!</h2>
+                <p class="font-medium text-sm text-center p-2">Sila cetak kod QR di bawah bagi urusan kehadiran kanak-kanak.</p>
+            </div>
                 <canvasQR
                 :key="kanakId"
                 v-bind:kanakId="kanakId"
                 id="qrcode"
                 ref="canvasQR"
                 />
-            <table class="list w-5/6 my-3  mx-auto">
-                <tr>
-                    <th class="border-b-2 border-black py-3">Nama Aktiviti</th>
-                    <th class="border-b-2 border-black py-3">Tahun</th>
-                    <th class="border-b-2 border-black py-3">Kesukaran</th>
-                    <th class="border-b-2 border-black py-3">Tindakan</th>
-                </tr>
-                                    
-                <tr >
-                    <td class="aktiviti py-1">hai</td>
-                    <td class="text-center py-1">hai</td>
-                    <td class="text-center py-1">hai</td>
-                    <td class="text-center py-1">
-                        <button class="bg-blue-200 px-2 p-0.5 text-sm rounded-lg"  >Pilih Aktiviti</button>
-                    </td>
-                </tr>
-            </table>
-            <div class="flex justify-evenly">
-                <button class="bg-red-200 w-1/6 p-1 rounded-lg" @click="printQRcode">Cetak Kod QR</button>
-                <button class="bg-red-200 w-1/6 p-1 rounded-lg" @click="toggleRegister">Selesai</button>
+            <h2 class="font-medium text-lg text-center mb-5 p-2">{{kanak.namaKanak}}</h2>
+            <div class="flex justify-center">
+                <button class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg" @click="printQRcode">Cetak Kod QR</button>
+                <button class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg" @click="pushToList">Selesai</button>
             </div>
         </dialog>
     </div>  
@@ -357,39 +345,94 @@ export default {
                 const canvas = document.getElementById('qrcode');
 
                 // Create a new window for printing
-                const printWindow = window.open('', '_blank');
-
+                const printWindow = window.open('', '_blank','width=800,height=600,top=100,left=100,location=no');
+                
                 // Open a new document in the print window
                 printWindow.document.open();
 
                 // Add the canvas to the print document
                 printWindow.document.write(`
                     <html>
-                    <head>
-                        <style>
-                        @page { size: auto; }
-                        </style>
-                    </head>
-                    <body>
-                        <h1>Kod QR Kanak-Kanak</h1>
-                        <img src="${canvas.toDataURL('image/png')}" />
-                    </body>
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Kod QR Kanak-Kanak</title>
+                            <style>
+                                * {
+                                    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                                }
+
+                                h1{
+                                    text-align: center;
+                                    margin-top: 10px;
+                                    font-size: medium;
+                                }
+
+                                h3{
+                                    padding-top: 20px;
+                                    text-align: center;
+                                    margin-top: 10px;
+                                    font-size: small;
+                                }
+
+                                p{
+                                    text-align: center;
+                                    font-weight: 500;
+                                    font-size: small;
+                                }
+
+                                .satu{
+                                    border: 4px solid black;
+                                    width: 350px;
+                                    padding: 15px;
+                                    
+                                }
+
+                                .satu img{
+                                    display: block;
+                                    width: 40px;
+                                    height: auto;
+                                    margin-top: 10px;
+                                    margin-right: auto;
+                                    margin-left: auto;
+                                    
+                                }
+
+                                .cover{
+                                    display: flex;
+                                    justify-content: center;
+                                    margin: 50px;
+                                }
+
+                            </style>
+                        </head>
+                        <body>
+                            <div class="cover">
+                                <div class="satu">
+                                    <img src="../assets/permata-logo.png" alt="">
+                                    <h1>Kod QR Kehadiran</h1>
+                                    <h3>Harith bin Ismail</h3>
+                                    <img src="${canvas.toDataURL('image/png')}" alt="" style="width: 250px; height: auto;">
+                                    <p>Taska Permata Keluarga Taman Desa Permai</p>
+                                </div>
+                            </div>
+
+                        </body>
                     </html>
                 `);
 
+                // <img src="${canvas.toDataURL('image/png')}" />
                 // Close the print document
                 printWindow.document.close();
 
                 // Print the document
                 printWindow.print();
+            },
+
+            pushToList(){
+                router.push('/manageRegister');
             }
-
-
-
-            
-
-        
-
 
     }
 
