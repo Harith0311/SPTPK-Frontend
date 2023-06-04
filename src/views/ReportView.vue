@@ -59,7 +59,7 @@ import Header from "../components/Header.vue";
                         <td class="text-center p-2">Lelaki</td>
                         <td class="text-center p-2">Melayu</td>
                     </tr>
-                    <tr class="border-solid border-b-2 border-gray-300 ">
+                    <!-- <tr class="border-solid border-b-2 border-gray-300 ">
                         <td class="text-center p-2">2</td>
                         <td class="p-2">Muhammad Lorem bin Ipsum</td>
                         <td class="text-center p-2">1</td>
@@ -138,7 +138,7 @@ import Header from "../components/Header.vue";
                         <td class="text-center p-2">210531110661</td>
                         <td class="text-center p-2">Lelaki</td>
                         <td class="text-center p-2">Melayu</td>
-                    </tr>
+                    </tr> -->
                 </table>
                 <div class="flex justify-center">
                     <div class="bg-black rounded-full h-auto w-6 m-4">
@@ -162,3 +162,34 @@ import Header from "../components/Header.vue";
         <h4>All rights reserved.</h4>
     </div>
 </template>
+
+<script>
+
+import axios from 'axios';
+
+export default {
+    data() {
+        return {
+            ChildList: [],
+        }
+    },
+
+    mounted() {
+        this.fetchChildData();
+    },
+    methods: {
+        fetchChildData(){
+            axios.get('http://localhost:1001/kanak')
+                .then(response => {
+                this.ChildList = response.data;
+                console.log(this.ChildList);
+                })
+                .catch(error => {
+                console.error('Error fetching child data:', error);
+            });
+        }
+    }
+}
+
+
+</script>
