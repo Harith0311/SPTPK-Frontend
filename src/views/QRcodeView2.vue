@@ -168,15 +168,16 @@ import QRcodeScanner from "../components/QRcodeScanner.vue";
             </div>
         </div>
     </div>
+
     <!-- User prompt to notify attendance recorder successfully -->
     <div
         id="overlay"
         class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50"
-        v-bind:class="{ 'hidden': !isOpen }"
+        v-bind:class="{ 'hidden': !isSuccess }"
     >
         <dialog
             class="z-10 w-5/6 bg-white absolute h-fit top-16 overflow-auto px-3 pt-4 rounded-xl"
-            v-bind:open="isOpen"
+            v-bind:open="isSuccess"
         >
             <div class="bg-green-300 rounded-lg m-4 p-2">
                 <h2 class="font-bold text-xl text-center pt-3">Hadir!</h2>
@@ -191,12 +192,75 @@ import QRcodeScanner from "../components/QRcodeScanner.vue";
                     class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg"
                     @click="pushToList"
                 >
-                    Selesai
+                    Tutup
                 </button>
             </div>
         </dialog>
     </div>
     <!-- End of prompt -->
+
+    <!-- User prompt to notify child cannot attend due to high temp  -->
+    <div
+        id="overlay"
+        class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50"
+        v-bind:class="{ 'hidden': !isHigh }"
+    >
+        <dialog
+            class="z-10 w-5/6 bg-white absolute h-fit top-16 overflow-auto px-3 pt-4 rounded-xl"
+            v-bind:open="isHigh"
+        >
+            <div class="bg-red-300 rounded-lg m-4 p-2">
+                <h2 class="font-bold text-xl text-center pt-3">Suhu Kanak Kanak Tinggi!</h2>
+                <p class="font-medium text-sm text-center p-2">
+                    Sila tekan butang selesai untuk merekod kehadiran kanak
+                    kanak seterusnya.
+                </p>
+            </div>
+
+            <div class="flex justify-center">
+                <button
+                    class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg"
+                    @click="pushToList"
+                >
+                    Tutup   
+                </button>
+            </div>
+        </dialog>
+    </div>
+    <!-- End of prompt -->
+
+    <!-- User prompt to notify child already submit the attendance  -->
+    <div
+        id="overlay"
+        class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50"
+        v-bind:class="{ 'hidden': !isSubmit }"
+    >
+        <dialog
+            class="z-10 w-5/6 bg-white absolute h-fit top-16 overflow-auto px-3 pt-4 rounded-xl"
+            v-bind:open="isSubmit"
+        >
+            <div class="bg-orange-300 rounded-lg m-4 p-2">
+                <h2 class="font-bold text-xl text-center pt-3">Kehadiran Kanak-Kanak telah Direkod untuk Hari ini!</h2>
+                <p class="font-medium text-sm text-center p-2">
+                    Sila tekan butang selesai untuk merekod kehadiran kanak
+                    kanak seterusnya.
+                </p>
+            </div>
+
+            <div class="flex justify-center">
+                <button
+                    class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg"
+                    @click="pushToList"
+                >
+                    Tutup
+                </button>
+            </div>
+        </dialog>
+    </div>
+    <!-- End of prompt -->
+
+
+
     <!-- Footer -->
     <div class="bg-black text-center text-white p-1">
         <h4>All rights reserved</h4>
@@ -216,7 +280,9 @@ export default {
             attend: true,
             temp: "",
             kanak: "",
-            isOpen: false,
+            isSuccess: false,
+            isHigh: false,
+            isSubmit: false,
             decodedText: ""
         };
     },
@@ -261,14 +327,29 @@ export default {
 
             console.log(kehadiran);
 
-            axios.post('http://localhost:1001/kehadiran', kehadiran)
-                .then(response => {
-                    console.log(response.data);
-                    this.toggleSuccess();
-                })
-                .catch(error => {
-                    console.error('Error record attendance', error);
-                })
+            if(suhuNormal === "Tinggi"){
+                // If child temperature is high, attendance not recorded
+                this.toggleHighTemp();
+            }else if(suhuNormal === "Normal"){
+                // If child temperature is normal, attendance recorded
+                axios.post('http://localhost:1001/kehadiran', kehadiran)
+                    .then(response => {
+                        console.log(response.data);
+                        this.toggleSuccess();
+                    })
+                    .catch(error => {
+                        console.error('Error recording attendance', error);
+                        if (error.response && error.response.status === 400 && error.response.data.error === "Attendance already submitted for today") {
+                        // Display dialog box for attendance already submitted error
+                        this.toggleAttendanceSubmitted();
+
+                        } else {
+                        // Handle other errors accordingly
+                        console.error('Error record attendance', error);
+                        }
+                    });
+            }
+
         },
 
         handleButtonClick(buttonValue) {
@@ -278,11 +359,19 @@ export default {
         },
 
         toggleSuccess() {
-            this.isOpen = !this.isOpen;
+            this.isSuccess = !this.isSuccess;
+        },
+
+        toggleHighTemp() {
+            this.isHigh = !this.isHigh;
+        },
+
+        toggleAttendanceSubmitted() {
+            this.isSubmit = !this.isSubmit;
         },
 
         pushToList() {
-            router.push('/QRcode2');     
+            window.location.reload();    
         }
     },
 };
