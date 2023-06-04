@@ -172,7 +172,7 @@ import QRcodeScanner from "../components/QRcodeScanner.vue";
     <div
         id="overlay"
         class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50"
-        v-bind:class="{ hidden: !isOpen }"
+        v-bind:class="{ 'hidden': !isOpen }"
     >
         <dialog
             class="z-10 w-5/6 bg-white absolute h-fit top-16 overflow-auto px-3 pt-4 rounded-xl"
@@ -216,6 +216,7 @@ export default {
             attend: true,
             temp: "",
             kanak: "",
+            isOpen: false,
             decodedText: ""
         };
     },
@@ -254,13 +255,16 @@ export default {
 
             const kehadiran = {
                 kanakId: this.decodedText,
-                hadir,
-                suhuNormal 
+                hadir: this.attend,
+                suhuNormal: this.temp
             };
 
-            axios.post('http://localhost:1001/kehadiran/', kehadiran)
+            console.log(kehadiran);
+
+            axios.post('http://localhost:1001/kehadiran', kehadiran)
                 .then(response => {
                     console.log(response.data);
+                    this.toggleSuccess();
                 })
                 .catch(error => {
                     console.error('Error record attendance', error);
@@ -278,8 +282,8 @@ export default {
         },
 
         pushToList() {
-            router.push("/QRcode2");
-        },
+            router.push('/QRcode2');     
+        }
     },
 };
 </script>
