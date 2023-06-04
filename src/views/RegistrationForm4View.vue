@@ -34,7 +34,7 @@ const checkAgreement = () => {
         console.log(response.data);
         const registrationId = response.data.id; // Retrieve the ID from the response
         console.log('New registration ID:', registrationId);
-
+        
         // Add registration id into the child, dad, and mom data
         daftarKanak.pendaftaranId = registrationId;
         daftarBapa.pendaftaranId = registrationId;

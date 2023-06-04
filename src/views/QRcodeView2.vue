@@ -1,8 +1,7 @@
 <script setup>
 import SideBar2 from "../components/SideBar2.vue";
 import Header from "../components/Header.vue";
-import QRcodeScanner from '../components/QRcodeScanner.vue';
-
+import QRcodeScanner from "../components/QRcodeScanner.vue";
 </script>
 
 <template>
@@ -55,13 +54,12 @@ import QRcodeScanner from '../components/QRcodeScanner.vue';
                 <h2 class="text-lg font-bold p-2 pl-4 pb-6">Imbas Kod QR</h2>
 
                 <div class="flex justify-center border-2 border-black">
-                    
                     <div class="flex justify-center">
-                    <QRcodeScanner
-                        v-bind:qrbox="300"
-                        v-bind:fps="10"
-                        @scan-success="scanQRCode"
-                    />
+                        <QRcodeScanner
+                            v-bind:qrbox="300"
+                            v-bind:fps="10"
+                            @scan-success="scanQRCode"
+                        />
                     </div>
                 </div>
 
@@ -78,49 +76,127 @@ import QRcodeScanner from '../components/QRcodeScanner.vue';
                             </td>
                             <td class="text-base font-semibold w-4">:</td>
                             <td class="text-base font-semibold w-40">
-                                Harith bin Ismail
+                                <!-- {{kanak.namaKanak}} -->
+                                <p v-text="kanak.namaKanak"></p>
                             </td>
                         </tr>
                         <tr class="pl-4 p-4">
                             <td class="text-base font-semibold pl-2">Umur</td>
                             <td class="text-base font-semibold">:</td>
-                            <td class="text-base font-semibold">2 Tahun</td>
+                            <td class="text-base font-semibold"><p v-text="kanak.umur"></p></td>
                         </tr>
                         <tr class="pl-4 p-4">
                             <td class="text-base font-semibold pl-2">
                                 Jantina
                             </td>
                             <td class="text-base font-semibold w-2">:</td>
-                            <td class="text-base font-semibold">Lelaki</td>
+                            <td class="text-base font-semibold">{{kanak.jantina}}</td>
                         </tr>
-                        <tr class="pl-4 p-4">
-                            <td class="text-base font-semibold pl-2">ID</td>
-                            <td class="text-base font-semibold w-2">:</td>
-                            <td class="text-base font-semibold">0001</td>
-                        </tr>
+                        
                     </table>
                 </div>
-                <h2 class="text-lg font-bold px-4">Status suhu</h2>
+                <h2 class="text-lg font-bold px-4 mb-6">Status suhu</h2>
+
+                <!-- Try button -->
                 <div class="flex justify-between">
-                    <div
-                        class="bg-green-400 w-2/5 p-4 rounded-xl text-center font-semibold m-4 drop-shadow-xl cursor-pointer"
-                    >
-                        <button>Normal</button>
+                    <div class="block py-2">
+                        <input
+                            id="Normal"
+                            v-model="temp"
+                            value="Normal"
+                            name="temp"
+                            type="radio"
+                            class="hidden"
+                        />
+                        <label
+                            for="temp"
+                            class="bg-green-400 w-2/5 px-8 p-4 rounded-xl text-center font-semibold m-4 drop-shadow-xl"
+                            :class="{
+                                'bg-green-400': temp === 'Normal',
+                                'w-2/5': true,
+                                'p-4': true,
+                                'rounded-xl': true,
+                                'text-center': true,
+                                'font-semibold': true,
+                                'm-4': true,
+                                'drop-shadow-xl': true,
+                                ring: temp === 'Normal',
+                                'ring-green-500': temp === 'Normal',
+                                'ring-offset-2': temp === 'Normal',
+                            }"
+                            @click="handleButtonClick('Normal')"
+                        >
+                            Normal
+                        </label>
                     </div>
-                    <div
-                        class="bg-red-400 w-2/5 p-4 rounded-xl text-center font-semibold m-4 drop-shadow-xl cursor-pointer"
-                    >
-                        <button>Tinggi</button>
+                    <div class="block py-2">
+                        <input
+                            id="Tinggi"
+                            v-model="temp"
+                            value="Tinggi"
+                            name="decision"
+                            type="radio"
+                            class="hidden"
+                        />
+                        <label
+                            for="Tinggi"
+                            class="bg-red-400 w-2/5 px-8 p-4 rounded-xl text-center font-semibold m-4 drop-shadow-xl"
+                            :class="{
+                                'bg-red-400': temp === 'Tinggi',
+                                'w-2/5': true,
+                                'p-4': true,
+                                'rounded-xl': true,
+                                'text-center': true,
+                                'font-semibold': true,
+                                'm-4': true,
+                                'drop-shadow-xl': true,
+                                ring: temp === 'Tinggi',
+                                'ring-red-500': temp === 'Tinggi',
+                                'ring-offset-2': temp === 'Tinggi',
+                            }"
+                            @click="handleButtonClick('Tinggi')"
+                        >
+                            Tinggi
+                        </label>
                     </div>
                 </div>
                 <div
-                    class="bg-blue-400 w-5/6 pb-5 mx-auto p-4 rounded-xl text-center font-semibold m-4 drop-shadow-xl cursor-pointer"
+                    class="bg-blue-400 w-5/6 pb-5 mx-auto p-4 rounded-xl mt-10 text-center font-semibold m-4 drop-shadow-xl cursor-pointer"
                 >
-                    <button>Semak</button>
+                    <button @click="recordAttendance">Semak</button>
                 </div>
             </div>
         </div>
     </div>
+    <!-- User prompt to notify attendance recorder successfully -->
+    <div
+        id="overlay"
+        class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50"
+        v-bind:class="{ hidden: !isOpen }"
+    >
+        <dialog
+            class="z-10 w-5/6 bg-white absolute h-fit top-16 overflow-auto px-3 pt-4 rounded-xl"
+            v-bind:open="isOpen"
+        >
+            <div class="bg-green-300 rounded-lg m-4 p-2">
+                <h2 class="font-bold text-xl text-center pt-3">Hadir!</h2>
+                <p class="font-medium text-sm text-center p-2">
+                    Sila tekan butang selesai untuk merekod kehadiran kanak
+                    kanak seterusnya.
+                </p>
+            </div>
+
+            <div class="flex justify-center">
+                <button
+                    class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg"
+                    @click="pushToList"
+                >
+                    Selesai
+                </button>
+            </div>
+        </dialog>
+    </div>
+    <!-- End of prompt -->
     <!-- Footer -->
     <div class="bg-black text-center text-white p-1">
         <h4>All rights reserved</h4>
@@ -128,20 +204,82 @@ import QRcodeScanner from '../components/QRcodeScanner.vue';
 </template>
 
 <script>
+import axios from "axios";
+import router from "../router";
 // import QRCodeScanner from "../components/QRCodeScanner.vue";
 
 export default {
     data() {
         return {
-            qrCodeScanner: null
+            qrCodeScanner: null,
+            kanakId: "",
+            attend: true,
+            temp: "",
+            kanak: "",
+            decodedText: ""
         };
     },
+
+    mounted() {},
 
     methods: {
         scanQRCode(decodedText) {
             console.log(decodedText);
-        }
-        
+            this.decodedText = decodedText;
+            
+
+            // console.log(kehadiran);
+            //Fetch data in urusPendaftaran
+            axios
+                .get("http://localhost:1001/kanak/" + this.decodedText)
+                .then((response) => {
+                    this.kanak = response.data;
+                    console.log(this.kanak);
+                    // console.log(this.kanak.namaKanak);
+                })
+                .catch((error) => {
+                    console.error("Error fetching child data:", error);
+                });
+
+            
+
+            // this.toggleSuccess();
+        },
+
+        recordAttendance(){
+
+            // this.kanakId = decodedText;
+            const hadir = this.attend;
+            const suhuNormal = this.temp;
+
+            const kehadiran = {
+                kanakId: this.decodedText,
+                hadir,
+                suhuNormal 
+            };
+
+            axios.post('http://localhost:1001/kehadiran/', kehadiran)
+                .then(response => {
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    console.error('Error record attendance', error);
+                })
+        },
+
+        handleButtonClick(buttonValue) {
+            this.temp = buttonValue; // Set the selected value
+
+            // Additional logic or actions to perform when the button is clicked
+        },
+
+        toggleSuccess() {
+            this.isOpen = !this.isOpen;
+        },
+
+        pushToList() {
+            router.push("/QRcode2");
+        },
     },
 };
 </script>

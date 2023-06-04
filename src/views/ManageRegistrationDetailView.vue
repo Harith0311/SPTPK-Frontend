@@ -260,7 +260,7 @@ export default {
                     console.log(this.register);
 
                     //get the id for kanak
-                    this.kanakId = this.register.kanak[0].id;
+                    this.kanakId = this.register.kanak.id;
                     console.log(this.kanakId);
                     //Fetch data in kanak                    
                     axios.get('http://localhost:1001/kanak/' + this.kanakId)
@@ -270,7 +270,7 @@ export default {
                     })
 
                     //get the id for bapa
-                    const bapaId = this.register.bapa[0].id;
+                    const bapaId = this.register.bapa.id;
                     console.log(bapaId);
                     //Fetch data in bapa                    
                     axios.get('http://localhost:1001/bapa/' + bapaId)
@@ -280,7 +280,7 @@ export default {
                     })
 
                     //get the id for ibu
-                    const ibuId = this.register.ibu[0].id;
+                    const ibuId = this.register.ibu.id;
                     console.log(ibuId);
                     //Fetch data in bapa                    
                     axios.get('http://localhost:1001/ibu/' + ibuId)
