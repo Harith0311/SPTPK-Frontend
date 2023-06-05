@@ -40,12 +40,15 @@ import Header from "../components/Header.vue";
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                           
-                            <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
-                                <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
-                                <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
-                            </tr>
-
+                           <tbody v-if="AktivitiHariIniList.length > 0">
+                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                                   <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
+                                   <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
+                               </tr>
+                           </tbody>
+                           <tbody v-else>
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                           </tbody>
                             <tr>
                                 <td class="py-1 w-4/5 text-center " colspan="2">
                                     <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity()">
