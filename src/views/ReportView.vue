@@ -25,7 +25,10 @@ import Header from "../components/Header.vue";
             
         <!-- <h1 class="text-center font-bold text-2xl mt-5">Report Under Construction!!</h1>
         <img class="mx-auto w-auto h-5/6" src="../assets/construction.png" alt=""> -->
-        <div class="flex justify-between mx-6">
+        <div>
+            <RouterView/>
+        </div>
+        <!-- <div class="flex justify-between mx-6">
             <div class="flex bg-green-200 hover:bg-green-300 p-8 w-2/5 mt-10 m-4 rounded-2xl justify-center cursor-pointer drop-shadow-2xl">
                 <i class="fa-solid fa-child text-5xl py-2"></i>
                 <h1 class="text-center p-5 font-bold ml-1">Kanak-Kanak</h1>
@@ -47,98 +50,18 @@ import Header from "../components/Header.vue";
                         <th class="w-auto">Bil.</th>
                         <th>Nama</th>
                         <th>Umur</th>
-                        <th>No. Mykid</th>
+                        <th>Sijil Lahir</th>
                         <th>Jantina</th>
                         <th>Bangsa</th>
                     </tr>
-                    <tr class="border-solid border-b-2 border-gray-300 ">
-                        <td class="text-center p-2">1</td>
-                        <td class="p-2">Muhammad Lorem bin Ipsum</td>
-                        <td class="text-center p-2">1</td>
-                        <td class="text-center p-2">210531110661</td>
-                        <td class="text-center p-2">Lelaki</td>
-                        <td class="text-center p-2">Melayu</td>
+                    <tr v-for="(child, index) in ChildList" v-bind:key="child.id" class="border-solid border-b-2 border-gray-300 ">
+                        <td class="text-center p-2">{{ index + 1 }}</td>
+                        <td class="p-2">{{child.namaKanak}}</td>
+                        <td class="text-center p-2">{{child.umur}}</td>
+                        <td class="text-center p-2">{{child.sijilLahir}}</td>
+                        <td class="text-center p-2">{{child.jantina}}</td>
+                        <td class="text-center p-2">{{child.bangsa}}</td>
                     </tr>
-                    <!-- <tr class="border-solid border-b-2 border-gray-300 ">
-                        <td class="text-center p-2">2</td>
-                        <td class="p-2">Muhammad Lorem bin Ipsum</td>
-                        <td class="text-center p-2">1</td>
-                        <td class="text-center p-2">210531110661</td>
-                        <td class="text-center p-2">Lelaki</td>
-                        <td class="text-center p-2">Melayu</td>
-                    </tr>
-                    <tr class="border-solid border-b-2 border-gray-300 ">
-                        <td class="text-center p-2">3</td>
-                        <td class="p-2">Muhammad Lorem bin Ipsum</td>
-                        <td class="text-center p-2">1</td>
-                        <td class="text-center p-2">210531110661</td>
-                        <td class="text-center p-2">Lelaki</td>
-                        <td class="text-center p-2">Melayu</td>
-                    </tr>
-                    <tr class="border-solid border-b-2 border-gray-300 ">
-                        <td class="text-center p-2">4</td>
-                        <td class="p-2">Muhammad Lorem bin Ipsum</td>
-                        <td class="text-center p-2">1</td>
-                        <td class="text-center p-2">210531110661</td>
-                        <td class="text-center p-2">Lelaki</td>
-                        <td class="text-center p-2">Melayu</td>
-                    </tr>
-                    <tr class="border-solid border-b-2 border-gray-300 ">
-                        <td class="text-center p-2">5</td>
-                        <td class="p-2">Muhammad Lorem bin Ipsum</td>
-                        <td class="text-center p-2">1</td>
-                        <td class="text-center p-2">210531110661</td>
-                        <td class="text-center p-2">Lelaki</td>
-                        <td class="text-center p-2">Melayu</td>
-                    </tr>
-                    <tr class="border-solid border-b-2 border-gray-300 ">
-                        <td class="text-center p-2">6</td>
-                        <td class="p-2">Muhammad Lorem bin Ipsum</td>
-                        <td class="text-center p-2">1</td>
-                        <td class="text-center p-2">210531110661</td>
-                        <td class="text-center p-2">Lelaki</td>
-                        <td class="text-center p-2">Melayu</td>
-                    </tr>
-                    <tr class="border-solid border-b-2 border-gray-300 ">
-                        <td class="text-center p-2">7</td>
-                        <td class="p-2">Muhammad Lorem bin Ipsum</td>
-                        <td class="text-center p-2">1</td>
-                        <td class="text-center p-2">210531110661</td>
-                        <td class="text-center p-2">Lelaki</td>
-                        <td class="text-center p-2">Melayu</td>
-                    </tr>
-                    <tr class="border-solid border-b-2 border-gray-300 ">
-                        <td class="text-center p-2">8</td>
-                        <td class="p-2">Muhammad Lorem bin Ipsum</td>
-                        <td class="text-center p-2">1</td>
-                        <td class="text-center p-2">210531110661</td>
-                        <td class="text-center p-2">Lelaki</td>
-                        <td class="text-center p-2">Melayu</td>
-                    </tr>
-                    <tr class="border-solid border-b-2 border-gray-300 ">
-                        <td class="text-center p-2">9</td>
-                        <td class="p-2">Muhammad Lorem bin Ipsum</td>
-                        <td class="text-center p-2">1</td>
-                        <td class="text-center p-2">210531110661</td>
-                        <td class="text-center p-2">Lelaki</td>
-                        <td class="text-center p-2">Melayu</td>
-                    </tr>
-                    <tr class="border-solid border-b-2 border-gray-300 ">
-                        <td class="text-center p-2">10</td>
-                        <td class="p-2">Muhammad Lorem bin Ipsum</td>
-                        <td class="text-center p-2">1</td>
-                        <td class="text-center p-2">210531110661</td>
-                        <td class="text-center p-2">Lelaki</td>
-                        <td class="text-center p-2">Melayu</td>
-                    </tr>
-                    <tr class="border-solid border-b-2 border-gray-300 ">
-                        <td class="text-center p-2">11</td>
-                        <td class="p-2">Muhammad Lorem bin Ipsum</td>
-                        <td class="text-center p-2">1</td>
-                        <td class="text-center p-2">210531110661</td>
-                        <td class="text-center p-2">Lelaki</td>
-                        <td class="text-center p-2">Melayu</td>
-                    </tr> -->
                 </table>
                 <div class="flex justify-center">
                     <div class="bg-black rounded-full h-auto w-6 m-4">
@@ -153,7 +76,9 @@ import Header from "../components/Header.vue";
                 </div>
             </div>
 
-        </div>
+        </div> -->
+
+
     </div>
 
         </div>

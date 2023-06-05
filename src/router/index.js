@@ -114,6 +114,27 @@ const router = createRouter({
             path: "/report",
             name: "report",
             component: () => import("../views/ReportView.vue"),
+            children: [
+                {
+                    path: "",
+                    // name: "base",
+                    component: () =>
+                        import("../views/ReportBaseView.vue"),
+                },
+                {
+                    path: "attendance",
+                    // name: "attendance",
+                    component: () =>
+                        import("../views/ReportAttendanceView.vue"),
+                },
+                {
+                    path: "activity",
+                    // name: "activity",
+                    component: () =>
+                        import("../views/ReportActivityView.vue"),
+                }
+                
+            ]
         },
     ],
     // linkActiveClass is for router-link classname in that particular router
