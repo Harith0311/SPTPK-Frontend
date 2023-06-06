@@ -27,39 +27,36 @@
                 <h2 class="text-xl font-bold px-14 p-5">Laporan Kehadiran Kanak-Kanak</h2>
                 <div class="relative overflow-y-auto overflow-hidden  h-[380px]">
                     <table class="m-8 w-5/6 mx-auto">
-                        <tr class="border-solid border-b-2 border-black">
-                            <th class="w-auto">Bil.</th>
-                            <th>Nama</th>
-                            <th>Umur</th>
-                            <th>Jantina</th>
-                            <th>Kehadiran</th>
-                        </tr>
-                        <tr v-for="(child, index) in ChildList" v-bind:key="child.id" class="border-solid border-b-2 border-[#fcdebb] ">
-                            <td class="text-center p-2">{{ index + 1 }}</td>
-                            <td class="p-2">{{child.namaKanak}}</td>
-                            <td class="text-center p-2">{{child.umur}}</td>                      
-                            <td class="text-center p-2">{{child.jantina}}</td>
-                            <td class="flex text-center justify-center p-2">
-                                <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
-                                <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
-                                <div class="w-3 h-3 rounded-full bg-red-600 mx-3 my-2"></div> 
-                                <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
-                                <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
-                            </td>
-                        </tr>
+                        <thead class="sticky top-0 z-10 ">
+                            <tr class="border-solid border-b-2 border-black">
+                                <th class="w-auto bg-orange-200">Bil.</th>
+                                <th class="bg-orange-200 ">Nama</th>
+                                <th class="bg-orange-200 ">Umur</th>
+                                <th class="bg-orange-200 ">Jantina</th>
+                                <th class="bg-orange-200 ">Kehadiran</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(child, index) in ChildList" v-bind:key="child.id" class="border-solid border-b-2 border-[#fcdebb] ">
+                                <td class="text-center p-2">{{ index + 1 }}</td>
+                                <td class="p-2">{{child.namaKanak}}</td>
+                                <td class="text-center p-2">{{child.umur}}</td>                      
+                                <td class="text-center p-2">{{child.jantina}}</td>
+                                <td class="flex text-center justify-center p-2">
+                                    <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
+                                    <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
+                                    <div class="w-3 h-3 rounded-full bg-red-600 mx-3 my-2"></div> 
+                                    <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
+                                    <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
-                <!-- <div class="flex justify-center">
-                    <div class="bg-black rounded-full h-auto w-6 m-4">
-                        <h1 class="text-white text-center">1</h1>
-                    </div>
-                    <div class=" rounded-full h-auto w-6 m-4">
-                        <h1>2</h1>
-                    </div>
-                    <div class=" rounded-full h-auto w-6 m-4">
-                        <h1>3</h1>
-                    </div>
-                </div> -->
+                
+            </div>
+            <div class="bg-orange-300 hover:bg-orange-400 cursor-pointer p-4 h-[60px] w-full mx-auto mb-10 drop-shadow-lg rounded-2xl text-center font-bold text-lg">
+                Cetak Laporan Kehadiran
             </div>
 
         </div>
@@ -73,11 +70,14 @@ export default {
     data() {
         return {
             ChildList: [],
+            AttendanceList: [],
+            data: null
         }
     },
 
     mounted() {
         this.fetchChildData();
+        this.fetchChildAttendance();
     },
     methods: {
         fetchChildData(){
@@ -89,7 +89,31 @@ export default {
                 .catch(error => {
                 console.error('Error fetching child data:', error);
             });
+        },
+
+        fetchChildAttendance(){
+            axios.get('http://localhost:1001/kehadiran') 
+                .then(response => {
+                this.data = response.data;
+                this.extractDayOfWeek();
+                console.log(this.data);
+                })
+                .catch(error => {
+                console.error('Error fetching data:', error);
+                });
+        },
+
+        extractDayOfWeek() {
+            if (this.data && this.data.length > 0) {
+                this.data.forEach(item => {
+                    const dateObj = new Date(item.diciptaPada);
+                    const options = { weekday: 'long' };
+                    const dayOfWeek = dateObj.toLocaleString('en-US', options);
+                    console.log("Day of the week:", dayOfWeek);
+                });
+            }
         }
+
     }
 }
 

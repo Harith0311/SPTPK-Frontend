@@ -30,7 +30,7 @@
                         <thead class="sticky top-0 z-10 ">
                             <tr class="border-solid border-b-2 border-black ">
                                 <th class="w-auto bg-green-200">Bil.</th>
-                                <th class="bg-green-200">Nama</th>
+                                <th class="bg-green-200 ">Nama</th>
                                 <th class="bg-green-200">Umur</th>
                                 <th class="bg-green-200">Sijil Lahir</th>
                                 <th class="bg-green-200">Jantina</th>

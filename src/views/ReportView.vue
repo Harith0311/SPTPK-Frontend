@@ -82,10 +82,7 @@ import Header from "../components/Header.vue";
     </div>
 
         </div>
-    <!-- Footer -->
-    <div class="bg-black text-center text-white p-2">
-        <h4>All rights reserved.</h4>
-    </div>
+    
 </template>
 
 <script>

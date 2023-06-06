@@ -163,6 +163,9 @@
                     </div>
                 </div> -->
             </div>
+            <div class="bg-blue-400 hover:bg-blue-500 cursor-pointer p-4 h-[60px] w-full mx-auto mb-10 drop-shadow-lg rounded-2xl text-center font-bold text-lg">
+                Cetak Laporan Aktiviti
+            </div>
 
         </div>
 </template>
