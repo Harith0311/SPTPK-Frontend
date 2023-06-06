@@ -27,22 +27,26 @@
                 <h2 class="text-xl font-bold px-14 p-5">Maklumat Kanak-Kanak</h2>
                 <div class=" relative overflow-y-auto overflow-hidden  h-[380px]">
                     <table class="m-8 w-5/6 mx-auto relative overflow-y-auto h-[380px] scrollbar-hide">
-                        <tr class="border-solid border-b-2 border-black">
-                            <th class="w-auto">Bil.</th>
-                            <th>Nama</th>
-                            <th>Umur</th>
-                            <th>Sijil Lahir</th>
-                            <th>Jantina</th>
-                            <th>Bangsa</th>
-                        </tr>
-                        <tr v-for="(child, index) in ChildList" v-bind:key="child.id" class="border-solid border-b-2 border-[#c7fcda]">
-                            <td class="text-center p-2">{{ index + 1 }}</td>
-                            <td class="p-2">{{child.namaKanak}}</td>
-                            <td class="text-center p-2">{{child.umur}}</td>
-                            <td class="text-center p-2">{{child.sijilLahir}}</td>
-                            <td class="text-center p-2">{{child.jantina}}</td>
-                            <td class="text-center p-2">{{child.bangsa}}</td>
-                        </tr>
+                        <thead class="sticky top-0 z-10 ">
+                            <tr class="border-solid border-b-2 border-black ">
+                                <th class="w-auto bg-green-200">Bil.</th>
+                                <th class="bg-green-200">Nama</th>
+                                <th class="bg-green-200">Umur</th>
+                                <th class="bg-green-200">Sijil Lahir</th>
+                                <th class="bg-green-200">Jantina</th>
+                                <th class="bg-green-200">Bangsa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(child, index) in ChildList" v-bind:key="child.id" class="border-solid border-b-2 border-[#c7fcda]">
+                                <td class="text-center p-2">{{ index + 1 }}</td>
+                                <td class="p-2">{{child.namaKanak}}</td>
+                                <td class="text-center p-2">{{child.umur}}</td>
+                                <td class="text-center p-2">{{child.sijilLahir}}</td>
+                                <td class="text-center p-2">{{child.jantina}}</td>
+                                <td class="text-center p-2">{{child.bangsa}}</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
 
@@ -59,7 +63,7 @@
                     </div>
                 </div> -->
             </div>
-            <div class="bg-green-200 hover:bg-green-300 cursor-pointer p-4 h-[60px] w-full mx-auto mb-10 drop-shadow-lg rounded-2xl text-center font-bold text-lg">
+            <div class="bg-green-300 hover:bg-green-400 cursor-pointer p-4 h-[60px] w-full mx-auto mb-10 drop-shadow-lg rounded-2xl text-center font-bold text-lg">
                 Cetak Laporan Kanak Kanak
             </div>
 
