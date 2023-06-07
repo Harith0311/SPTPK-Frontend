@@ -51,7 +51,7 @@ import Header from "../components/Header.vue";
                            </tbody>
                             <tr>
                                 <td class="py-1 w-4/5 text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity()">
+                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Melur')">
                                         <i class="fa-regular fa-square-plus py-1 px-3"></i>
                                         Tambah Aktiviti</button>
                                 </td>
@@ -319,12 +319,11 @@ import Header from "../components/Header.vue";
 export default {
   data() {
     return {
-      AktivitiList: [],
-      AktivitiHariIniList: [],
-      isOpen: false,
-      activityId: '',
-      selectedActivity: null
-
+        AktivitiList: [],
+        AktivitiHariIniList: [],
+        isOpen: false,
+        activityId: '',
+        selectedActivity: null 
     };
   },
   mounted() {
@@ -358,14 +357,22 @@ export default {
         });
     },
 
-    toggleActivity(){
+    toggleActivity(kelas){
         this.isOpen = !this.isOpen;
+        
+        if (kelas == "Melur"){
+            this.uploadMelur();
+        }else if(kelas == "Orkid"){
+
+        }else if(kelas == "Rose"){
+            
+        }
     },
 
     uploadTodayActivity(activity) {
         const activityId = activity;
        
-        const todayActivity =
+        const todayActivity = 
         {
             aktivitiId: activityId,
         }
@@ -383,6 +390,63 @@ export default {
                 console.error('Error upload aktiviti data:', error);
             });
     },
+
+    uploadMelur(activity){
+        const kelas = "Melur";
+        const activityId = activity;
+       
+        const todayActivity = 
+        {
+            aktivitiId: activityId,
+            kelas: kelas
+        }
+
+        axios.post('http://localhost:1001/aktivitiHariIni/melur', todayActivity)
+            .then(response => {
+                console.log(response.data);
+                
+                alert('Aktiviti berjaya ditambah!')
+                this.fetchAktivitiHariIni();
+                this.toggleActivity();
+                router.push('/activity')
+            })
+            .catch(error => {
+                console.error('Error upload aktiviti data:', error);
+            });
+    },
+
+    uploadOrkid(){
+
+    },
+
+    uploadRose(){
+
+    },
+
+    uploadRaya(){
+
+    },
+
+    uploadDaisy(){
+
+    },
+
+    uploadMatahari(){
+
+    },
+
+    uploadDahlia(){
+
+    },
+
+    uploadLily(){
+
+    },
+
+    uploadTulip(){
+
+    },
+
 
     async deleteTodayActivity(activity) {
         this.selectedActivity = activity;

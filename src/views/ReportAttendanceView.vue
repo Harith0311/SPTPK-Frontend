@@ -27,7 +27,7 @@
                 <h2 class="text-xl font-bold px-14 p-5">Laporan Kehadiran Kanak-Kanak</h2>
 
                 <div class="flex justify-end mx-28 ">
-                    <input class="p-2 rounded-lg drop-shadow-md" type="date" :value="getDefaultDate">
+                    <input class="p-2 rounded-lg drop-shadow-md" type="date" v-model="selectedDate" @change="fetchChildAttendance" >
                 </div>
 
                 <div class="relative overflow-y-auto overflow-hidden  h-[380px]">
@@ -47,19 +47,25 @@
                                 <td class="p-2">{{child.namaKanak}}</td>
                                 <td class="text-center p-2">{{child.umur}}</td>                      
                                 <td class="text-center p-2">{{child.jantina}}</td>
-                                <div v-for="attendance in AttendanceList" v-bind:key="attendance.kanakId">
-                                    <div v-if="attendance.hadir === true && attendance.kanakId === child.id">
-                                        <td class="flex text-center justify-center p-2">
-                                            <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
-                                        </td>
-                                    </div>
-                                    <div v-else>
-                                        <td class="flex text-center justify-center p-2">
-                                            <div class="w-3 h-3 rounded-full bg-red-600 mx-3 my-2"></div> 
-                                        </td>
-                                    </div>
-                                </div>
-                                    
+                                <template v-if="AttendanceList.length > 0">
+                                    <template v-for="attendance in AttendanceList" v-bind:key="attendance.kanakId">
+                                        <div v-if="attendance.hadir === true && attendance.kanakId === child.id">
+                                            <td class="flex text-center justify-center p-2">
+                                                <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
+                                            </td>
+                                        </div>
+                                        <div v-else>
+                                            <td class="flex text-center justify-center p-2">
+                                                <div class="w-3 h-3 rounded-full bg-red-600 mx-3 my-2"></div> 
+                                            </td>
+                                        </div>
+                                    </template>
+                                </template>
+                                <div v-else>
+                                            <td class="flex text-center justify-center p-2">
+                                                <div class="w-3 h-3 rounded-full bg-red-600 mx-3 my-2"></div> 
+                                            </td>
+                                        </div>
                             </tr>
                         </tbody>
                     </table>
@@ -83,7 +89,8 @@ export default {
             ChildList: [],
             AttendanceList: [],
             data: null,
-            dayOfWeek: ''
+            dayOfWeek: '',
+            selectedDate: this.getTodayDate()
         }
     },
 
@@ -113,8 +120,27 @@ export default {
             });
         },
 
+        getTodayDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            let month = today.getMonth() + 1; // Adding 1 to adjust for zero-based index
+            let day = today.getDate();
+
+            // Pad month and day with leading zero if needed
+            if (month < 10) {
+                month = `0${month}`;
+            }
+            if (day < 10) {
+                day = `0${day}`;
+            }
+
+            return `${year}-${month}-${day}`;
+        },
+
         fetchChildAttendance(){
-            axios.get('http://localhost:1001/kehadiran') 
+            const date = this.selectedDate;
+
+            axios.get(`http://localhost:1001/kehadiran?date=${date}`) 
                 .then(response => {
                 this.AttendanceList = response.data;
                 this.extractDayOfWeek();

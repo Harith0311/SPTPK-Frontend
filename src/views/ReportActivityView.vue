@@ -1,4 +1,4 @@
-<script>
+<script setup>
     import { RouterLink } from "vue-router";
 </script>
 
@@ -26,20 +26,20 @@
                 <h2 class="text-xl font-bold px-14 p-5">Laporan Aktiviti Kanak-Kanak</h2>
                 <div class="flex justify-between mr-12">
                     <div class="ml-20">
-                        <select class="rounded-md" name="tarikh" id="tarikh">
+                        <select class="rounded-md p-1 px-3" name="tarikh" id="tarikh">
                             <option value="">Pilih Tarikh</option>
                             <option value="">Harini</option>
                             <option value="">Semalam</option>
                         </select>
                     </div>
                     <div class="flex">
-                        <div class="bg-green-200 rounded-md mx-2 px-4">
+                        <div class="bg-green-200 rounded-md mx-2 p-1 px-4">
                             Mudah
                         </div>
-                        <div class="bg-orange-200 rounded-md mx-2 px-4">
+                        <div class="bg-orange-200 rounded-md mx-2 p-1 px-4">
                             Biasa
                         </div>
-                        <div class="bg-red-200 rounded-md mx-2 px-4">
+                        <div class="bg-red-200 rounded-md mx-2 p-1 px-4">
                             Sukar
                         </div> 
                     </div>
@@ -50,6 +50,9 @@
                         <img src="../assets/melur.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
                     </div>
                     <div class="flex flex-col justify-evenly py-3 bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
+                        <template v-for="activity in AktivitList" v-bind:key="activity.id">
+
+                        </template>
                         <div class="flex justify-center">
                             <div class="bg-green-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
                                 Berlari
@@ -169,3 +172,35 @@
 
         </div>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+    data() {
+        return {
+            AktivitiHariIniList: [],
+
+        }
+    },
+
+    mounted() {
+        this.fetchAktivitiHariIni();
+    },
+
+    methods: {
+        fetchAktivitiHariIni() {
+            axios.get('http://localhost:1001/aktivitiHariIni')
+                .then(response => {
+                this.AktivitiHariIniList = response.data;
+                
+                console.log("disini error");
+                console.log(this.AktivitiHariIniList);
+                })
+                .catch(error => {
+                console.error('Error fetching aktiviti data:', error);
+                });
+        },
+    }
+}
+</script>
