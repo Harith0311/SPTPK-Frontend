@@ -30,6 +30,9 @@ import Header from "../components/Header.vue";
 
             <h3 class="text-lg font-bold mt-5 ml-2 p-3">Aktiviti Hari Ini</h3>
             <div class=" mb-10">
+                <div>
+                    <button class="bg-purple-300">Tambah Aktiviti</button>
+                </div>
                 <div class="aktiviti flex justify-between">
                     <!-- Aktiviti 1 Tahun -->
                     <!-- <RouterView name="tahun1"/> -->
@@ -65,22 +68,28 @@ import Header from "../components/Header.vue";
                         <h3 class="text-center text-lg font-semibold text-orange-500">BUNGA ORKID</h3>
                         
                         <table class="my-2 mx-auto ">
-                            <tr>
+                            <tr >
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                            <tr>
-                                <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">Aktiviti 1</td>
-                                <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i class="fa-solid fa-trash hover:text-red-500 "></i></td>
-                            </tr>
+                           <tbody v-if="AktivitiHariIniList.length > 0">
+                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                                   <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
+                                   <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
+                               </tr>
+                           </tbody>
+                           <tbody v-else>
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                           </tbody>
                             <tr>
                                 <td class="py-1 w-4/5 text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg">
+                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Orkid')">
                                         <i class="fa-regular fa-square-plus py-1 px-3"></i>
                                         Tambah Aktiviti</button>
                                 </td>
                                 
                             </tr>
+                            
                         </table>
                     </div>
                 </div>
@@ -89,49 +98,56 @@ import Header from "../components/Header.vue";
                     <div class="bg-white h-auto w-3/5 my-2 mx-2 p-3 rounded-2xl drop-shadow-2xl">
                         <h3 class="text-center text-lg font-semibold text-orange-500">BUNGA ROSE</h3>
                         <table class="my-2 mx-auto ">
-                            <tr>
+                            <tr >
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                            <tr>
-                                <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">Aktiviti 1</td>
-                                <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i class="fa-solid fa-trash hover:text-red-500 "></i></td>
-                            </tr>
+                           <tbody v-if="AktivitiHariIniList.length > 0">
+                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                                   <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
+                                   <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
+                               </tr>
+                           </tbody>
+                           <tbody v-else>
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                           </tbody>
                             <tr>
                                 <td class="py-1 w-4/5 text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg">
+                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Rose')">
                                         <i class="fa-regular fa-square-plus py-1 px-3"></i>
                                         Tambah Aktiviti</button>
                                 </td>
                                 
                             </tr>
+                            
                         </table>
                     </div>
                     <!-- Aktiviti 4 Tahun -->
                     <div class="bg-white h-auto w-3/5 my-2 mx-2 p-3 rounded-2xl drop-shadow-2xl">
                         <h3 class="text-center text-lg font-semibold text-orange-500">BUNGA RAYA</h3>
                         <table class="my-2 mx-auto ">
-                            <tr>
+                            <tr >
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
+                           <tbody v-if="AktivitiHariIniList.length > 0">
+                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                                   <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
+                                   <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
+                               </tr>
+                           </tbody>
+                           <tbody v-else>
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                           </tbody>
                             <tr>
-                                <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">Aktiviti 1</td>
-                                <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i class="fa-solid fa-trash hover:text-red-500 "></i></td>
-                            </tr>
-                            <tr>
-                                <td class="py-1 w-4/5
-                                
-                                
-                                
-                                
-                                text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg">
+                                <td class="py-1 w-4/5 text-center " colspan="2">
+                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Raya')">
                                         <i class="fa-regular fa-square-plus py-1 px-3"></i>
                                         Tambah Aktiviti</button>
                                 </td>
                                 
                             </tr>
+                            
                         </table>
                     </div>
                 </div>
@@ -141,49 +157,56 @@ import Header from "../components/Header.vue";
                     <div class="bg-white h-auto w-3/5 my-2 mx-2 p-3 rounded-2xl drop-shadow-2xl">
                         <h3 class="text-center text-lg font-semibold text-orange-500">BUNGA DAISY</h3>
                         <table class="my-2 mx-auto ">
-                            <tr>
+                            <tr >
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                            <tr>
-                                <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">Aktiviti 1</td>
-                                <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i class="fa-solid fa-trash hover:text-red-500 "></i></td>
-                            </tr>
+                           <tbody v-if="AktivitiHariIniList.length > 0">
+                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                                   <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
+                                   <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
+                               </tr>
+                           </tbody>
+                           <tbody v-else>
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                           </tbody>
                             <tr>
                                 <td class="py-1 w-4/5 text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg">
+                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Daisy')">
                                         <i class="fa-regular fa-square-plus py-1 px-3"></i>
                                         Tambah Aktiviti</button>
                                 </td>
                                 
                             </tr>
+                            
                         </table>
                     </div>
                     <!-- Aktiviti 4 Tahun -->
                     <div class="bg-white h-auto w-3/5 my-2 mx-2 p-3 rounded-2xl drop-shadow-2xl">
                         <h3 class="text-center text-lg font-semibold text-orange-500">BUNGA MATAHARI</h3>
                         <table class="my-2 mx-auto ">
-                            <tr>
+                            <tr >
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
+                           <tbody v-if="AktivitiHariIniList.length > 0">
+                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                                   <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
+                                   <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
+                               </tr>
+                           </tbody>
+                           <tbody v-else>
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                           </tbody>
                             <tr>
-                                <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">Aktiviti 1</td>
-                                <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i class="fa-solid fa-trash hover:text-red-500 "></i></td>
-                            </tr>
-                            <tr>
-                                <td class="py-1 w-4/5
-                                
-                                
-                                
-                                
-                                text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg">
+                                <td class="py-1 w-4/5 text-center " colspan="2">
+                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Matahari')">
                                         <i class="fa-regular fa-square-plus py-1 px-3"></i>
                                         Tambah Aktiviti</button>
                                 </td>
                                 
                             </tr>
+                            
                         </table>
                     </div>
                 </div>
@@ -194,49 +217,56 @@ import Header from "../components/Header.vue";
                     <div class="bg-white h-auto w-3/5 my-2 mx-2 p-3 rounded-2xl drop-shadow-2xl">
                         <h3 class="text-center text-lg font-semibold text-orange-500">BUNGA DAHLIA</h3>
                         <table class="my-2 mx-auto ">
-                            <tr>
+                            <tr >
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                            <tr>
-                                <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">Aktiviti 1</td>
-                                <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i class="fa-solid fa-trash hover:text-red-500 "></i></td>
-                            </tr>
+                           <tbody v-if="AktivitiHariIniList.length > 0">
+                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                                   <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
+                                   <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
+                               </tr>
+                           </tbody>
+                           <tbody v-else>
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                           </tbody>
                             <tr>
                                 <td class="py-1 w-4/5 text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg">
+                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Dahlia')">
                                         <i class="fa-regular fa-square-plus py-1 px-3"></i>
                                         Tambah Aktiviti</button>
                                 </td>
                                 
                             </tr>
+                            
                         </table>
                     </div>
                     <!-- Aktiviti 4 Tahun -->
                     <div class="bg-white h-auto w-3/5 my-2 mx-2 p-3 rounded-2xl drop-shadow-2xl">
                         <h3 class="text-center text-lg font-semibold text-orange-500">BUNGA LILY</h3>
                         <table class="my-2 mx-auto ">
-                            <tr>
+                            <tr >
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
+                           <tbody v-if="AktivitiHariIniList.length > 0">
+                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                                   <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
+                                   <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
+                               </tr>
+                           </tbody>
+                           <tbody v-else>
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                           </tbody>
                             <tr>
-                                <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">Aktiviti 1</td>
-                                <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i class="fa-solid fa-trash hover:text-red-500 "></i></td>
-                            </tr>
-                            <tr>
-                                <td class="py-1 w-4/5
-                                
-                                
-                                
-                                
-                                text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg">
+                                <td class="py-1 w-4/5 text-center " colspan="2">
+                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Lily')">
                                         <i class="fa-regular fa-square-plus py-1 px-3"></i>
                                         Tambah Aktiviti</button>
                                 </td>
                                 
                             </tr>
+                            
                         </table>
                     </div>
                 </div>
@@ -247,22 +277,28 @@ import Header from "../components/Header.vue";
                     <div class="bg-white h-auto w-3/5 my-2 mx-2 p-3 rounded-2xl drop-shadow-2xl">
                         <h3 class="text-center text-lg font-semibold text-orange-500">BUNGA TULIP</h3>
                         <table class="my-2 mx-auto ">
-                            <tr>
+                            <tr >
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                            <tr>
-                                <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">Aktiviti 1</td>
-                                <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i class="fa-solid fa-trash hover:text-red-500 "></i></td>
-                            </tr>
+                           <tbody v-if="AktivitiHariIniList.length > 0">
+                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                                   <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
+                                   <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
+                               </tr>
+                           </tbody>
+                           <tbody v-else>
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                           </tbody>
                             <tr>
                                 <td class="py-1 w-4/5 text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg">
+                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Tulip')">
                                         <i class="fa-regular fa-square-plus py-1 px-3"></i>
                                         Tambah Aktiviti</button>
                                 </td>
                                 
                             </tr>
+                            
                         </table>
                     </div>
                     
@@ -285,6 +321,7 @@ import Header from "../components/Header.vue";
                                 <th class="border-b-2 border-black py-3">Nama Aktiviti</th>
                                 <th class="border-b-2 border-black py-3">Tahun</th>
                                 <th class="border-b-2 border-black py-3">Kesukaran</th>
+                                <th class="border-b-2 border-black py-3">Kelas</th>
                                 <th class="border-b-2 border-black py-3">Tindakan</th>
                             </tr>
                                     
@@ -292,6 +329,21 @@ import Header from "../components/Header.vue";
                                 <td class="aktiviti py-1">{{ activity.namaAktiviti }}</td>
                                 <td class="text-center py-1">{{ activity.tahun }}</td>
                                 <td class="text-center py-1">{{ activity.kesukaran }}</td>
+                                <td class="text-center py-1">
+                                    <select 
+                                    v-model="kelasKanak"
+                                    name="kelas" 
+                                    id="kelas">
+                                        <option value="Melur">Melur</option>
+                                        <option value="Orkid">Orkid</option>
+                                        <option value="Raya">Raya</option>
+                                        <option value="Daisy">Daisy</option>
+                                        <option value="Matahari">Matahari</option>
+                                        <option value="Dahlia">Dahlia</option>
+                                        <option value="Lily">Lily</option>
+                                        <option value="Tulip">Tulip</option>
+                                    </select>
+                                </td>
                                 <td class="text-center py-1">
                                     <button class="bg-blue-200 px-2 p-0.5 text-sm rounded-lg" @click="uploadTodayActivity(activity.id)" >Pilih Aktiviti</button>
                                 </td>
@@ -323,6 +375,7 @@ export default {
         AktivitiHariIniList: [],
         isOpen: false,
         activityId: '',
+        kelasKanak: '',
         selectedActivity: null 
     };
   },
@@ -371,10 +424,12 @@ export default {
 
     uploadTodayActivity(activity) {
         const activityId = activity;
+        const kelas = this.kelasKanak;
        
         const todayActivity = 
         {
             aktivitiId: activityId,
+            kelas: kelas
         }
 
         axios.post('http://localhost:1001/aktivitiHariIni', todayActivity)
@@ -401,7 +456,7 @@ export default {
             kelas: kelas
         }
 
-        axios.post('http://localhost:1001/aktivitiHariIni/melur', todayActivity)
+        axios.post('http://localhost:1001/aktivitiHariIni/', todayActivity)
             .then(response => {
                 console.log(response.data);
                 
@@ -416,7 +471,27 @@ export default {
     },
 
     uploadOrkid(){
+        const kelas = "Orkid";
+        const activityId = activity;
+       
+        const todayActivity = 
+        {
+            aktivitiId: activityId,
+            kelas: kelas
+        }
 
+        axios.post('http://localhost:1001/aktivitiHariIni/', todayActivity)
+            .then(response => {
+                console.log(response.data);
+                
+                alert('Aktiviti berjaya ditambah!')
+                this.fetchAktivitiHariIni();
+                this.toggleActivity();
+                router.push('/activity')
+            })
+            .catch(error => {
+                console.error('Error upload aktiviti data:', error);
+            });
     },
 
     uploadRose(){
