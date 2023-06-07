@@ -25,6 +25,11 @@
         <div class="Kotak px-10">
             <div class="bg-orange-200 w-full mx-auto mt-5 mb-10 rounded-2xl pb-10">
                 <h2 class="text-xl font-bold px-14 p-5">Laporan Kehadiran Kanak-Kanak</h2>
+
+                <div class="flex justify-end mx-28 ">
+                    <input class="p-2 rounded-lg drop-shadow-md" type="date" :value="getDefaultDate">
+                </div>
+
                 <div class="relative overflow-y-auto overflow-hidden  h-[380px]">
                     <table class="m-8 w-5/6 mx-auto">
                         <thead class="sticky top-0 z-10 ">
@@ -42,13 +47,19 @@
                                 <td class="p-2">{{child.namaKanak}}</td>
                                 <td class="text-center p-2">{{child.umur}}</td>                      
                                 <td class="text-center p-2">{{child.jantina}}</td>
-                                <td class="flex text-center justify-center p-2">
-                                    <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
-                                    <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
-                                    <div class="w-3 h-3 rounded-full bg-red-600 mx-3 my-2"></div> 
-                                    <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
-                                    <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
-                                </td>
+                                <div v-for="attendance in AttendanceList" v-bind:key="attendance.kanakId">
+                                    <div v-if="attendance.hadir === true && attendance.kanakId === child.id">
+                                        <td class="flex text-center justify-center p-2">
+                                            <div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2"></div> 
+                                        </td>
+                                    </div>
+                                    <div v-else>
+                                        <td class="flex text-center justify-center p-2">
+                                            <div class="w-3 h-3 rounded-full bg-red-600 mx-3 my-2"></div> 
+                                        </td>
+                                    </div>
+                                </div>
+                                    
                             </tr>
                         </tbody>
                     </table>
@@ -71,8 +82,19 @@ export default {
         return {
             ChildList: [],
             AttendanceList: [],
-            data: null
+            data: null,
+            dayOfWeek: ''
         }
+    },
+
+    computed: {
+        getDefaultDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        },
     },
 
     mounted() {
@@ -94,7 +116,7 @@ export default {
         fetchChildAttendance(){
             axios.get('http://localhost:1001/kehadiran') 
                 .then(response => {
-                this.data = response.data;
+                this.AttendanceList = response.data;
                 this.extractDayOfWeek();
                 console.log(this.data);
                 })
@@ -108,8 +130,8 @@ export default {
                 this.data.forEach(item => {
                     const dateObj = new Date(item.diciptaPada);
                     const options = { weekday: 'long' };
-                    const dayOfWeek = dateObj.toLocaleString('en-US', options);
-                    console.log("Day of the week:", dayOfWeek);
+                    this.dayOfWeek = dateObj.toLocaleString('en-US', options);
+                    console.log("Day of the week:", this.dayOfWeek);
                 });
             }
         }
