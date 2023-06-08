@@ -31,7 +31,8 @@ import Header from "../components/Header.vue";
             <h3 class="text-lg font-bold mt-5 ml-2 p-3">Aktiviti Hari Ini</h3>
             <div class=" mb-10">
                 <div>
-                    <button class="bg-purple-300">Tambah Aktiviti</button>
+                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Melur')"
+                    >Tambah Aktiviti</button>
                 </div>
                 <div class="aktiviti flex justify-between">
                     <!-- Aktiviti 1 Tahun -->
@@ -333,7 +334,8 @@ import Header from "../components/Header.vue";
                                     <select 
                                     v-model="kelasKanak"
                                     name="kelas" 
-                                    id="kelas">
+                                    id="kelas" >
+                                        <option selected disabled>Sila Pilih Kelas</option>
                                         <option value="Melur">Melur</option>
                                         <option value="Orkid">Orkid</option>
                                         <option value="Raya">Raya</option>
@@ -410,26 +412,18 @@ export default {
         });
     },
 
-    toggleActivity(kelas){
+    toggleActivity(){
         this.isOpen = !this.isOpen;
-        
-        if (kelas == "Melur"){
-            this.uploadMelur();
-        }else if(kelas == "Orkid"){
-
-        }else if(kelas == "Rose"){
-            
-        }
     },
 
     uploadTodayActivity(activity) {
         const activityId = activity;
-        const kelas = this.kelasKanak;
+        const kelasKanak = this.kelasKanak;
        
         const todayActivity = 
         {
             aktivitiId: activityId,
-            kelas: kelas
+            kelas: kelasKanak
         }
 
         axios.post('http://localhost:1001/aktivitiHariIni', todayActivity)

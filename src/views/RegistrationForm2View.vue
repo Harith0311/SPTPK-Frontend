@@ -44,19 +44,30 @@
                 
                 <div class="flex justify-between px-8">
                     <h3 class="p-2 my-2">Bangsa / Keturunan</h3>
-                    <input 
+                    <select 
+                    class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
+                    name="bangsa" 
+                    id="bangsa"
+                    v-model="race">
+                        <option disabled selected>Pilih bangsa/keturunan</option>
+                        <option value="Melayu">Melayu</option>
+                        <option value="Cina">Cina</option>
+                        <option value="India">India</option>
+                        <option value="Lain-lain">Lain-lain</option>
+                    </select>
+                    <!-- <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
                         type="text"   
                         placeholder="Pilih bangsa/keturunan"
                         v-model="race"
-                    />
+                    /> -->
                 </div>
 
                 <div class="flex justify-between px-8">
                     <h3 class="p-2 my-2">Tarikh Lahir</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
-                        type="text"   
+                        type="date"   
                         placeholder="Masukkan tarikh lahir"
                         v-model="DOB"
                     />
@@ -72,7 +83,7 @@
                     />
                 </div>
                 
-                <div class="flex justify-between px-8">
+                <!-- <div class="flex justify-between px-8">
                     <h3 class="p-2 my-2">Umur</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -80,17 +91,20 @@
                         placeholder="Masukkan umur kanak-kanak"
                         v-model="age"
                     />
-                </div>
+                </div> -->
 
                 <div class="flex justify-between px-8">
                     <h3 class="p-2 my-2">Jantina</h3>
-                    <input 
-                        class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
-                        type="text"   
-                        placeholder="Pilih jantina kanak-kanak"
-                        v-model="gender"
-                    />
-                </div>
+                    <select 
+                    class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
+                    v-model="gender"  
+                    name="jantina" 
+                    id="jantina">
+                        <option disabled selected>Pilih jantina kanak-kanak</option>
+                        <option value="Lelaki">Lelaki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                </div> 
             
                 <div class="flex justify-between px-8">
                     <h3 class="p-2 my-2">Alamat Rumah</h3>
@@ -171,7 +185,7 @@ export default {
             race: '',
             DOB: '',    //Date of Birth
             POB: '',    //Place of Birth
-            age: '',
+            // age: '',
             gender: '',
             childAddress: '',
             gName: '',  //g = guardian
@@ -193,7 +207,7 @@ export default {
             const bangsa = this.race;
             const tarikhLahir = this.DOB;
             const tempatLahir = this.POB;
-            const umur = this.age;
+            // const umur = this.age;
             const jantina = this.gender;
             const alamatKanak = this.childAddress;
             const namaPenjaga = this.gName;
@@ -208,7 +222,7 @@ export default {
                 bangsa,
                 tarikhLahir,
                 tempatLahir,
-                umur,
+                // umur,
                 jantina,
                 alamatKanak,
                 namaPenjaga,

@@ -53,12 +53,17 @@
 
                 <div class="flex justify-between px-8">
                     <h3 class="p-2 my-2">Status</h3>
-                    <input 
-                        class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
-                        type="text"   
-                        placeholder="Pilih status perkahwinan"
-                        v-model="dadStatus"
-                    />
+                    <select 
+                    class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm"
+                    v-model="dadStatus"
+                    name="dadStatus"
+                    id="dadStatus">
+                        <option disabled selected>Pilih status perkahwinan</option>
+                        <option value="Berkahwin">Berkahwin</option>
+                        <option value="Berkahwin">Bujang</option>
+                        <option value="Bercerai">Bercerai</option>
+                    </select>
+                    
                 </div>
 
                 <div class="flex justify-between px-8">
@@ -115,7 +120,7 @@
 
                 <div class="flex justify-between px-8">
                     <h3 class="p-2 my-2">No. Kad Pengenalan</h3>
-                    <input 
+                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
                         type="text"   
                         placeholder="Masukkan nombor kad pengenalan"
@@ -125,12 +130,17 @@
 
                 <div class="flex justify-between px-8">
                     <h3 class="p-2 my-2">Status</h3>
-                    <input 
-                        class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
-                        type="text"   
-                        placeholder="Pilih status perkahwinan"
-                        v-model="momStatus"
-                    />
+                    <select 
+                    class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm"
+                    v-model="momStatus"
+                    name="momStatus"
+                    id="momStatus">
+                        <option disabled selected>Pilih status perkahwinan</option>
+                        <option value="Berkahwin">Berkahwin</option>
+                        <option value="Berkahwin">Bujang</option>
+                        <option value="Bercerai">Bercerai</option>
+                        
+                    </select>
                 </div>
                 
                 <div class="flex justify-between px-8">
