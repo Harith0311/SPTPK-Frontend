@@ -53,14 +53,14 @@ import Header from "../components/Header.vue";
                            <tbody v-else>
                                 <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
-                            <tr>
+                            <!-- <tr>
                                 <td class="py-1 w-4/5 text-center " colspan="2">
                                     <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Melur')">
                                         <i class="fa-regular fa-square-plus py-1 px-3"></i>
                                         Tambah Aktiviti</button>
                                 </td>
                                 
-                            </tr>
+                            </tr> -->
                             
                         </table>
                     </div>
@@ -82,14 +82,7 @@ import Header from "../components/Header.vue";
                            <tbody v-else>
                                 <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
-                            <tr>
-                                <td class="py-1 w-4/5 text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Orkid')">
-                                        <i class="fa-regular fa-square-plus py-1 px-3"></i>
-                                        Tambah Aktiviti</button>
-                                </td>
-                                
-                            </tr>
+                            
                             
                         </table>
                     </div>
@@ -112,14 +105,7 @@ import Header from "../components/Header.vue";
                            <tbody v-else>
                                 <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
-                            <tr>
-                                <td class="py-1 w-4/5 text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Rose')">
-                                        <i class="fa-regular fa-square-plus py-1 px-3"></i>
-                                        Tambah Aktiviti</button>
-                                </td>
-                                
-                            </tr>
+                            
                             
                         </table>
                     </div>
@@ -140,14 +126,7 @@ import Header from "../components/Header.vue";
                            <tbody v-else>
                                 <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
-                            <tr>
-                                <td class="py-1 w-4/5 text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Raya')">
-                                        <i class="fa-regular fa-square-plus py-1 px-3"></i>
-                                        Tambah Aktiviti</button>
-                                </td>
-                                
-                            </tr>
+                            
                             
                         </table>
                     </div>
@@ -171,14 +150,7 @@ import Header from "../components/Header.vue";
                            <tbody v-else>
                                 <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
-                            <tr>
-                                <td class="py-1 w-4/5 text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Daisy')">
-                                        <i class="fa-regular fa-square-plus py-1 px-3"></i>
-                                        Tambah Aktiviti</button>
-                                </td>
-                                
-                            </tr>
+                           
                             
                         </table>
                     </div>
@@ -199,14 +171,7 @@ import Header from "../components/Header.vue";
                            <tbody v-else>
                                 <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
-                            <tr>
-                                <td class="py-1 w-4/5 text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Matahari')">
-                                        <i class="fa-regular fa-square-plus py-1 px-3"></i>
-                                        Tambah Aktiviti</button>
-                                </td>
-                                
-                            </tr>
+                            
                             
                         </table>
                     </div>
@@ -231,14 +196,7 @@ import Header from "../components/Header.vue";
                            <tbody v-else>
                                 <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
-                            <tr>
-                                <td class="py-1 w-4/5 text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Dahlia')">
-                                        <i class="fa-regular fa-square-plus py-1 px-3"></i>
-                                        Tambah Aktiviti</button>
-                                </td>
-                                
-                            </tr>
+                            
                             
                         </table>
                     </div>
@@ -259,14 +217,7 @@ import Header from "../components/Header.vue";
                            <tbody v-else>
                                 <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
-                            <tr>
-                                <td class="py-1 w-4/5 text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Lily')">
-                                        <i class="fa-regular fa-square-plus py-1 px-3"></i>
-                                        Tambah Aktiviti</button>
-                                </td>
-                                
-                            </tr>
+                            
                             
                         </table>
                     </div>
@@ -291,14 +242,7 @@ import Header from "../components/Header.vue";
                            <tbody v-else>
                                 <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
-                            <tr>
-                                <td class="py-1 w-4/5 text-center " colspan="2">
-                                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Tulip')">
-                                        <i class="fa-regular fa-square-plus py-1 px-3"></i>
-                                        Tambah Aktiviti</button>
-                                </td>
-                                
-                            </tr>
+                            
                             
                         </table>
                     </div>
@@ -375,6 +319,15 @@ export default {
     return {
         AktivitiList: [],
         AktivitiHariIniList: [],
+        // AktivitMelurList: [],
+        // AktivitOrkidList: [],
+        // AktivitRoseList: [],
+        // AktivitRayaList: [],
+        // AktivitDaisyList: [],
+        // AktivitMatahariList: [],
+        // AktivitDahliaList: [],
+        // AktivitLilyList: [],
+        // AktivitTulipList: [],
         isOpen: false,
         activityId: '',
         kelasKanak: '',
@@ -440,81 +393,81 @@ export default {
             });
     },
 
-    uploadMelur(activity){
-        const kelas = "Melur";
-        const activityId = activity;
+    // uploadMelur(activity){
+    //     const kelas = "Melur";
+    //     const activityId = activity;
        
-        const todayActivity = 
-        {
-            aktivitiId: activityId,
-            kelas: kelas
-        }
+    //     const todayActivity = 
+    //     {
+    //         aktivitiId: activityId,
+    //         kelas: kelas
+    //     }
 
-        axios.post('http://localhost:1001/aktivitiHariIni/', todayActivity)
-            .then(response => {
-                console.log(response.data);
+    //     axios.post('http://localhost:1001/aktivitiHariIni/', todayActivity)
+    //         .then(response => {
+    //             console.log(response.data);
                 
-                alert('Aktiviti berjaya ditambah!')
-                this.fetchAktivitiHariIni();
-                this.toggleActivity();
-                router.push('/activity')
-            })
-            .catch(error => {
-                console.error('Error upload aktiviti data:', error);
-            });
-    },
+    //             alert('Aktiviti berjaya ditambah!')
+    //             this.fetchAktivitiHariIni();
+    //             this.toggleActivity();
+    //             router.push('/activity')
+    //         })
+    //         .catch(error => {
+    //             console.error('Error upload aktiviti data:', error);
+    //         });
+    // },
 
-    uploadOrkid(){
-        const kelas = "Orkid";
-        const activityId = activity;
+    // uploadOrkid(){
+    //     const kelas = "Orkid";
+    //     const activityId = activity;
        
-        const todayActivity = 
-        {
-            aktivitiId: activityId,
-            kelas: kelas
-        }
+    //     const todayActivity = 
+    //     {
+    //         aktivitiId: activityId,
+    //         kelas: kelas
+    //     }
 
-        axios.post('http://localhost:1001/aktivitiHariIni/', todayActivity)
-            .then(response => {
-                console.log(response.data);
+    //     axios.post('http://localhost:1001/aktivitiHariIni/', todayActivity)
+    //         .then(response => {
+    //             console.log(response.data);
                 
-                alert('Aktiviti berjaya ditambah!')
-                this.fetchAktivitiHariIni();
-                this.toggleActivity();
-                router.push('/activity')
-            })
-            .catch(error => {
-                console.error('Error upload aktiviti data:', error);
-            });
-    },
+    //             alert('Aktiviti berjaya ditambah!')
+    //             this.fetchAktivitiHariIni();
+    //             this.toggleActivity();
+    //             router.push('/activity')
+    //         })
+    //         .catch(error => {
+    //             console.error('Error upload aktiviti data:', error);
+    //         });
+    //     },
 
-    uploadRose(){
+    // uploadRose(){
 
-    },
+    // },
 
-    uploadRaya(){
+    // uploadRaya(){
 
-    },
+    // },
 
-    uploadDaisy(){
+    // uploadDaisy(){
 
-    },
+    // },
 
-    uploadMatahari(){
+    // uploadMatahari(){
 
-    },
+    // },
 
-    uploadDahlia(){
+    // uploadDahlia(){
 
-    },
+    // },
 
-    uploadLily(){
+    // uploadLily(){
 
-    },
+    // },
 
-    uploadTulip(){
+    // uploadTulip(){
 
-    },
+    // },
 
 
     async deleteTodayActivity(activity) {
