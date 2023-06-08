@@ -13,18 +13,6 @@ import Header from "../components/Header.vue";
         <!-- Content -->
         <!-- Header -->
         <div class="Content w-4/5 m-auto">
-            <!-- <div class="header flex justify-between"> 
-                <div class="flex">
-                    <img src="../assets/permata-logo.png" alt="permata" class="h-14 w-auto m-4 ">
-                    <div class=" h-14 my-4 w-28 font-semibold text-red-600 text-sm py-2">
-                        Taska Permata Keluarga
-                    </div>
-                </div>
-                <div class="flex my-auto mr-4">
-                    <img class="w-10 h-10 rounded-full mx-3 border-solid border-2 border-black" src="../assets/hacker.png" alt="">
-                    <div class="info-name p-2 font-bold">Muhammad Messi</div>
-                </div>
-            </div>-->
             <Header/>
             <div class="border-solid border-b-2 border-black">
                     <!-- Horizontal Line -->
@@ -41,14 +29,14 @@ import Header from "../components/Header.vue";
                 <div class="relative  w-2/5 mr-12">
                     <h2 class="font-extrabold">Jumlah Kanak-Kanak</h2>
                     <div class="chart-box-main flex justify-end h-auto w-full py-6 mt-4 p-4 rounded-2xl bg-white drop-shadow-2xl">
-                        <h3 class="text-4xl font-bold mr-2 text-green-600">42</h3>
+                        <h3 class="text-4xl font-bold mr-2 text-green-600">{{ ChildList.length }}</h3>
                         <i class="fa-solid fa-user text-4xl mx-5"></i>
                     </div>
                 </div>
                 <div class="relative  w-2/5 mr-12">
                     <h2 class="font-extrabold">Jumlah Staf Taska</h2>
                     <div class="chart-box-main flex justify-end h-auto w-full py-6 mt-4 p-4 rounded-2xl bg-white drop-shadow-2xl">
-                        <h3 class="text-4xl font-bold mr-2 text-green-600">12</h3>
+                        <h3 class="text-4xl font-bold mr-2 text-green-600">{{ StaffList.length }}</h3>
                         <i class="fa-solid fa-user text-4xl mx-5"></i>
                     </div>
                 </div>
@@ -56,11 +44,11 @@ import Header from "../components/Header.vue";
                     <h2 class="font-extrabold">Jantina Kanak-Kanak</h2>
                     <div class="chart-box-main flex justify-around h-auto w-full py-6 mt-4 p-4 rounded-2xl bg-white drop-shadow-2xl">
                         <div class="flex">
-                            <h3 class="text-4xl font-bold  text-blue-500">22</h3>
+                            <h3 class="text-4xl font-bold  text-blue-500">{{ MaleList.length }}</h3>
                             <i class="fa-solid fa-mars text-4xl mx-5"></i> 
                         </div>
                         <div class="flex">
-                            <h3 class="text-4xl font-bold  text-pink-500">26</h3>
+                            <h3 class="text-4xl font-bold  text-pink-500">{{FemaleList.length}}</h3>
                             <i class="fa-solid fa-venus text-4xl mx-5"></i>
                         </div>
                     </div>
@@ -89,8 +77,80 @@ import Header from "../components/Header.vue";
 
         
     </div>
-    <!-- Footer -->
-    <div class="bg-black text-center text-white p-4">
-        <h4>All rights reserved</h4>
-    </div>
+    
 </template>
+
+<script>
+    import axios from 'axios';
+
+    export default {
+        data() {
+            return {
+                ChildList: [],
+                MaleList: [],
+                FemaleList: [],
+                StaffList: []
+            }
+        },
+
+        mounted() {
+            this.fetchChildList();
+            this.fetchMaleList();
+            this.fetchFemaleList();
+            this.fetchStaffList();
+        },
+
+        methods: {
+
+            fetchChildList() {
+                axios.get('http://localhost:1001/urusPendaftaran/lulus')
+                    .then(response => {
+                        this.ChildList = response.data;
+                        
+                    })
+                    .catch(error => {
+                        console.error('Error fetching registration data:', error);
+                    });
+
+            },
+
+            fetchMaleList() {
+                axios.get('http://localhost:1001/urusPendaftaran/lelaki')
+                    .then(response => {
+                        this.MaleList = response.data;
+                        
+                    })
+                    .catch(error => {
+                        console.error('Error fetching registration data:', error);
+                    });
+
+            },
+
+            fetchFemaleList() {
+                axios.get('http://localhost:1001/urusPendaftaran/perempuan')
+                    .then(response => {
+                        this.FemaleList = response.data;
+                        
+                    })
+                    .catch(error => {
+                        console.error('Error fetching registration data:', error);
+                    });
+
+            },
+
+            fetchStaffList() {
+                axios.get('http://localhost:1001/pengguna/staf')
+                    .then(response => {
+                        this.StaffList = response.data;
+                        
+                    })
+                    .catch(error => {
+                        console.error('Error fetching registration data:', error);
+                    });
+
+            }
+        }
+    }
+
+
+</script>

@@ -18,15 +18,21 @@ import LightBlueButton from '../components/LightBlueButton.vue';
                 <img src="../assets/permata-logo.png" alt="" class="max-md:hidden h-auto w-16">
                 <img src="../assets/ypk-logo.png" alt="" class="max-md:hidden h-auto w-20">
             </div>
-                <ul class="bg-blue-400 opacity-100 rounded-md p-2 px-20 drop-shadow-lg hover:scale-[1.02] transform transition duration-300 ease-in-out m-5 text-center font-semibold ">
-                    <button><RouterLink to="/register">Daftar Masuk</RouterLink></button>
-                </ul>
-                <ul class="bg-blue-400 opacity-100 rounded-md p-2 px-20 drop-shadow-lg hover:scale-[1.02] transform transition duration-300 ease-in-out m-5 text-center font-semibold">
-                    <button><RouterLink to="/login">Log Masuk</RouterLink></button>
-                </ul>
-                <ul class="bg-blue-300 opacity-100 rounded-md p-2 px-20 drop-shadow-lg hover:scale-[1.02] transform transition duration-300 ease-in-out m-5 text-center font-semibold">
-                    <button><RouterLink to="/registrationForm1">Pendaftaran Baharu</RouterLink></button>
-                </ul>       
+                <RouterLink to="/register">
+                    <ul class="bg-blue-400 opacity-100 rounded-md p-2 px-20 drop-shadow-lg hover:scale-[1.02] transform transition duration-300 ease-in-out m-5 text-center font-semibold ">
+                        <button>Daftar Masuk</button>
+                    </ul>
+                </RouterLink>
+                <RouterLink to="/login">
+                    <ul class="bg-blue-400 opacity-100 rounded-md p-2 px-20 drop-shadow-lg hover:scale-[1.02] transform transition duration-300 ease-in-out m-5 text-center font-semibold">
+                        <button>Log Masuk</button>
+                    </ul>
+                </RouterLink>
+                <RouterLink to="/registrationForm1">
+                    <ul class="bg-blue-300 opacity-100 rounded-md p-2 px-20 drop-shadow-lg hover:scale-[1.02] transform transition duration-300 ease-in-out m-5 text-center font-semibold">
+                        <button>Pendaftaran Baharu</button>
+                    </ul>   
+                </RouterLink>    
                       
         </div>
         
