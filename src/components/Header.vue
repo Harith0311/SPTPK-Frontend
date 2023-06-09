@@ -17,3 +17,43 @@
          </div>
     </div>
 </template>
+
+<script>
+
+    import axios from 'axios';
+
+    export default {
+        data() {
+            return {
+                currentUser: '',
+                userId: '',
+            }
+        },
+        
+        mounted() {
+            this.fetchCurrentUser();
+        },
+
+        methods: {
+
+            fetchCurrentUser() {
+                this.userId = sessionStorage.getItem('id');
+                console.log(this.userId);
+
+                axios.get('http://localhost:1001/pengguna/' + this.userId)
+                    .then(response => {
+                        this.currentUser = response.data;
+                        console.log(this.currentUser);
+                        
+                    })
+                    .catch(error => {
+                        console.error('Error fetching registration data:', error);
+                    });
+
+            }
+        }
+    }
+
+
+
+</script>

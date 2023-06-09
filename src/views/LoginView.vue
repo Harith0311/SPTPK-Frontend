@@ -72,16 +72,7 @@ export default {
     },
 
     methods: {
-        // fetchUserInfo() {
-        //     axios.get('http://localhost:1001/pengguna')
-        //         .then(response => {
-        //             this.UserData = response.data;
-        //             console.log(this.UserData);
-        //         })
-        //         .catch(error => {
-        //             console.error('Error fetching user data: ', error);
-        //         });
-        // },
+        
 
         async login() {
             try {
