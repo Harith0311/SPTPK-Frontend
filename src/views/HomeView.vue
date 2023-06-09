@@ -40,6 +40,7 @@ import Header from "../components/Header.vue";
                         <i class="fa-solid fa-user text-4xl mx-5"></i>
                     </div>
                 </div>
+                <!-- hehehe -->
                 <div class="relative  w-2/5 mr-12">
                     <h2 class="font-extrabold">Jantina Kanak-Kanak</h2>
                     <div class="chart-box-main flex justify-around h-auto w-full py-6 mt-4 p-4 rounded-2xl bg-white drop-shadow-2xl">
