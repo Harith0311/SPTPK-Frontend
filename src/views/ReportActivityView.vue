@@ -45,16 +45,22 @@
                     </div>
                 </div>
                 <!-- Kelas -->
-                <div class="flex justify-between">
+                <div class="group flex justify-between">
                     <!-- Logo Kelas -->
-                    <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 z-0 rounded-md">
-                        <img src="../assets/melur.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                    <div class="group flex">
+                        <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 z-0 rounded-md">
+                            <img src="../assets/melur.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                        </div>
+                        <!-- Tooltip test -->
+                        <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
+                                Melur
+                        </div>
                     </div>
                     <!-- Senarai Aktiviti -->
                     <div class="flex flex-col justify-evenly py-3 bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
-                        <template v-for="activity in AktivitList" v-bind:key="activity.id">
+                        <!-- <template v-for="activity in AktivitList" v-bind:key="activity.id">
 
-                        </template>
+                        </template> -->
                         <div class="flex justify-center">
                             <div class="bg-green-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
                                 Berlari
@@ -78,10 +84,16 @@
                     </div>
                 </div>
                 <!-- Kelas -->
-                <div class="flex justify-between">
+                <div class="group flex justify-between">
                     <!-- Logo Kelas -->
-                    <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                        <img src="../assets/orkid.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                    <div class="group flex">
+                        <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
+                            <img src="../assets/orkid.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                        </div>
+                        <!-- Tooltip test -->
+                        <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
+                                Orkid
+                        </div>
                     </div>
                     <!-- Senarai Aktiviti -->
                     <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
@@ -89,68 +101,147 @@
                     </div>
                 </div>
                 <!-- Kelas -->
-                <div class="flex justify-between">
+                <div class="group flex justify-between">
                     <!-- Logo Kelas -->
-                    <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                        <img src="../assets/rose.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                    <div class="group flex">
+                        <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
+                            <img src="../assets/rose.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                        </div>
+                        <!-- Tooltip test -->
+                        <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
+                            Rose
+                        </div>
                     </div>
                     <!-- Senarai Aktiviti -->
                     <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
 
                     </div>
                 </div>
-                <!-- Kelas -->
-                <div class="flex justify-between">
+                <!-- Kelas Raya -->
+                <div class="group flex justify-between">
                     <!-- Logo Kelas -->
-                    <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                        <img src="../assets/raya.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                    <div class="group flex">
+                        <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
+                            <img src="../assets/raya.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                        </div>
+                        <!-- Tooltip test -->
+                        <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
+                            Raya
+                        </div>
                     </div>
                     <!-- Senarai Aktiviti -->
                     <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
 
                     </div>
                 </div>
-                <!-- Kelas -->
-                <div class="flex justify-between">
-                    <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                        <img src="../assets/daisy.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                <!-- Kelas Daisy -->
+                <div class="group flex justify-between">
+                    <!-- Logo Kelas -->
+                    <div class="group flex">
+                        <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
+                            <img src="../assets/daisy.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                        </div>
+                        <!-- Tooltip test -->
+                        <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
+                                Daisy
+                        </div>
                     </div>
+                    <!-- Senarai Aktiviti -->
                     <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
 
                     </div>
                 </div>
-                <!-- Kelas -->
-                <div class="flex justify-between">
-                    <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                        <img src="../assets/matahari.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                <!-- Kelas Matahari -->
+                <div class="group flex justify-between">
+                    <!-- Logo Kelas -->
+                    <div class="group flex">
+                        <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
+                            <img src="../assets/matahari.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                        </div>
+                        <!-- Tooltip test -->
+                        <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
+                            Matahari
+                        </div>
                     </div>
+                    <!-- Senarai Aktiviti -->
                     <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
 
                     </div>
                 </div>
-                <!-- Kelas -->
-                <div class="flex justify-between">
-                    <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                        <img src="../assets/dahlia.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                <!-- Kelas Dahlia-->
+                <div class="group flex justify-between">
+                    <!-- Logo Kelas -->
+                    <div class="group flex">
+                        <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
+                            <img src="../assets/dahlia.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                        </div>
+                        <!-- Tooltip test -->
+                        <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
+                            Dahlia
+                        </div>
                     </div>
+                    <!-- Senarai Aktiviti -->
                     <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
 
                     </div>
                 </div>
-                <!-- Kelas -->
-                <div class="flex justify-between">
-                    <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                        <img src="../assets/lily.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                <!-- Kelas Lily -->
+                <div class="group flex justify-between">
+                    <!-- Logo Kelas -->
+                    <div class="group flex">
+                        <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
+                            <img src="../assets/lily.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                        </div>
+                        <!-- Tooltip test -->
+                        <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
+                                Lily
+                        </div>
                     </div>
-                    <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
-
+                    <!-- Senarai Aktiviti -->
+                    <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
+                        <template v-if="AktivitiLily2.length > 0 && AktivitiLily2.length < 6">
+                            <div class="flex justify-center">
+                                <div  v-for="activity in AktivitiLily2" v-bind:key="activity.id" class="bg-green-200 rounded-md m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                            </div>
+                        </template>
                     </div>
                 </div>
-                <!-- Kelas -->
-                <div class="flex justify-between">
-                    <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                        <img src="../assets/tulip.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+
+                <!-- <div class="flex justify-center">
+                            <div class="bg-green-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
+                                Berlari
+                            </div>
+                            <div class="bg-orange-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
+                                Panjat
+                            </div>
+                            <div class="bg-red-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
+                                Lompat
+                            </div>
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="bg-green-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
+                                Berlari
+                            </div>
+                            <div class="bg-orange-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
+                                Panjat
+                            </div>
+                            
+                        </div> -->
+                <!-- Kelas Tulip-->
+                <div class="group flex justify-between">
+                    <!-- Logo Kelas -->
+                    <div class="group flex">
+                        <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
+                            <img src="../assets/tulip.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                        </div>
+                        <!-- Tooltip test -->
+                        <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
+                                Tulip
+                        </div>
                     </div>
+                    <!-- Senarai Aktiviti -->
                     <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
 
                     </div>
@@ -188,12 +279,17 @@ export default {
     data() {
         return {
             AktivitiHariIniList: [],
+            AktivitiLily1: [],
+            AktivitiLily2: [],
+            AktivitiLily3: [],
+            
 
         }
     },
 
     mounted() {
         this.fetchAktivitiHariIni();
+        this.fetchAktivitiLily();
     },
 
     methods: {
@@ -209,6 +305,25 @@ export default {
                 console.error('Error fetching aktiviti data:', error);
                 });
         },
+
+        fetchAktivitiLily(){
+            axios.get('http://localhost:1001/aktivitiHariIni')
+                .then(response => {
+                this.AktivitiLily1 = response.data.filter(item => item.kelas === "Lily" && item.aktiviti.kesukaran === "Mudah");
+                this.AktivitiLily2 = response.data.filter(item => item.kelas === "Lily" && item.aktiviti.kesukaran === "Biasa");
+                this.AktivitiLily3 = response.data.filter(item => item.kelas === "Lily" && item.aktiviti.kesukaran === "Sukar");
+
+                console.log(this.AktivitiLily1);
+                console.log(this.AktivitiLily2);
+                console.log(this.AktivitiLily3);
+                
+                console.log("disini error");
+                console.log(this.AktivitiHariIniList);
+                })
+                .catch(error => {
+                console.error('Error fetching aktiviti data:', error);
+                });
+        }
     }
 }
 </script>

@@ -30,9 +30,9 @@ import Header from "../components/Header.vue";
 
             <h3 class="text-lg font-bold mt-5 ml-2 p-3">Aktiviti Hari Ini</h3>
             <div class=" mb-10">
-                <div>
-                    <button class=" bg-zinc-300 rounded-md py-1 px-6 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Melur')"
-                    >Tambah Aktiviti</button>
+                <div class="flex justify-center mb-5">
+                    <button class=" bg-blue-400 rounded-md py-2 px-44 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Melur')"
+                    >Tambah Aktiviti Hari Ini</button>
                 </div>
                 <div class="aktiviti flex justify-between">
                     <!-- Aktiviti 1 Tahun -->
@@ -51,7 +51,7 @@ import Header from "../components/Header.vue";
                                </tr>
                            </tbody>
                            <tbody v-else>
-                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center text-zinc-400 font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
                             <!-- <tr>
                                 <td class="py-1 w-4/5 text-center " colspan="2">
@@ -80,7 +80,7 @@ import Header from "../components/Header.vue";
                                </tr>
                            </tbody>
                            <tbody v-else>
-                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center text-zinc-400 font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
                             
                             
@@ -103,7 +103,7 @@ import Header from "../components/Header.vue";
                                </tr>
                            </tbody>
                            <tbody v-else>
-                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center text-zinc-400 font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
                             
                             
@@ -124,7 +124,7 @@ import Header from "../components/Header.vue";
                                </tr>
                            </tbody>
                            <tbody v-else>
-                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center text-zinc-400 font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
                             
                             
@@ -148,7 +148,7 @@ import Header from "../components/Header.vue";
                                </tr>
                            </tbody>
                            <tbody v-else>
-                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center text-zinc-400 font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
                            
                             
@@ -169,7 +169,7 @@ import Header from "../components/Header.vue";
                                </tr>
                            </tbody>
                            <tbody v-else>
-                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center text-zinc-400 font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
                             
                             
@@ -194,7 +194,7 @@ import Header from "../components/Header.vue";
                                </tr>
                            </tbody>
                            <tbody v-else>
-                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center text-zinc-400 font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
                             
                             
@@ -215,7 +215,7 @@ import Header from "../components/Header.vue";
                                </tr>
                            </tbody>
                            <tbody v-else>
-                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center text-zinc-400 font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
                             
                             
@@ -240,7 +240,7 @@ import Header from "../components/Header.vue";
                                </tr>
                            </tbody>
                            <tbody v-else>
-                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center font-medium ">Tiada Aktiviti Hari Ini</td>                     
+                                <td colspan="2" class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-center text-zinc-400 font-medium ">Tiada Aktiviti Hari Ini</td>                     
                            </tbody>
                             
                             
@@ -303,10 +303,7 @@ import Header from "../components/Header.vue";
                 <!-- End of prompt -->
 
     </div>
-    <!-- Footer -->
-    <div class="bg-black text-center text-white p-4">
-        <h4>All rights reserved</h4>
-    </div>
+         
     
 </template>
 
@@ -336,7 +333,7 @@ export default {
   },
   mounted() {
     this.fetchAktivitiData();
-    // this.fetchAktivitiHariIni();
+    this.fetchAktivitiHariIni();
     this.fetchAktivitiMelur();
     this.fetchAktivitiOrkid();
     this.fetchAktivitiRose();
@@ -374,9 +371,14 @@ export default {
     },
 
     fetchAktivitiMelur() {
+        const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
+
       axios.get('http://localhost:1001/aktivitiHariIni')
         .then(response => {
-          this.AktivitiMelurList = response.data.filter(item => item.kelas === "Melur");
+          this.AktivitiMelurList = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Melur" && itemDate === today;
+                });
           console.log(this.AktivitiMelurList);
           console.log("disini error");
           console.log(this.AktivitiHariIniList);
@@ -387,9 +389,14 @@ export default {
     },
 
     fetchAktivitiOrkid() {
+        const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
+
       axios.get('http://localhost:1001/aktivitiHariIni')
         .then(response => {
-          this.AktivitiOrkidList = response.data.filter(item => item.kelas === "Orkid");
+          this.AktivitiOrkidList = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Orkid" && itemDate === today;
+                });
           console.log(this.AktivitiOrkidList);
           console.log("disini error");
           console.log(this.AktivitiHariIniList);
@@ -400,9 +407,14 @@ export default {
     },
 
     fetchAktivitiRose() {
+        const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
+
       axios.get('http://localhost:1001/aktivitiHariIni')
         .then(response => {
-          this.AktivitiRoseList = response.data.filter(item => item.kelas === "Rose");
+          this.AktivitiRoseList = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Rose" && itemDate === today;
+                });
           console.log(this.AktivitiRoseList);
           console.log("disini error");
           console.log(this.AktivitiHariIniList);
@@ -413,9 +425,14 @@ export default {
     },
 
     fetchAktivitiRaya() {
+        const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
+
       axios.get('http://localhost:1001/aktivitiHariIni')
         .then(response => {
-          this.AktivitiRayaList = response.data.filter(item => item.kelas === "Raya");
+          this.AktivitiRayaList = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Raya" && itemDate === today;
+                });
           console.log(this.AktivitiRayaList);
           console.log("disini error");
           console.log(this.AktivitiHariIniList);
@@ -426,9 +443,14 @@ export default {
     },
 
     fetchAktivitiDaisy() {
+        const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
+
       axios.get('http://localhost:1001/aktivitiHariIni')
         .then(response => {
-          this.AktivitiDaisyList = response.data.filter(item => item.kelas === "Daisy");
+          this.AktivitiDaisyList = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Daisy" && itemDate === today;
+                });
           console.log(this.AktivitiDaisyList);
           console.log("disini error");
           console.log(this.AktivitiHariIniList);
@@ -439,9 +461,14 @@ export default {
     },
 
     fetchAktivitiMatahari() {
+        const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format 
+
       axios.get('http://localhost:1001/aktivitiHariIni')
         .then(response => {
-          this.AktivitiMatahariList = response.data.filter(item => item.kelas === "Matahari");
+          this.AktivitiMatahariList = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Matahari" && itemDate === today;
+                });
           console.log(this.AktivitiMatahariList);
           console.log("disini error");
           console.log(this.AktivitiHariIniList);
@@ -452,9 +479,14 @@ export default {
     },
 
     fetchAktivitiDahlia() {
+        const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
+
       axios.get('http://localhost:1001/aktivitiHariIni')
         .then(response => {
-          this.AktivitiDahliaList = response.data.filter(item => item.kelas === "Dahlia");
+          this.AktivitiDahliaList = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Dahlia" && itemDate === today;
+                });
           console.log(this.AktivitiDahliaList);
           console.log("disini error");
           console.log(this.AktivitiHariIniList);
@@ -466,25 +498,35 @@ export default {
 
 
     fetchAktivitiLily() {
-      axios.get('http://localhost:1001/aktivitiHariIni')
-        .then(response => {
-          this.AktivitiLilyList = response.data.filter(item => item.kelas === "Lily");
-          console.log(this.AktivitiLilyList);
-          console.log("disini error");
-          console.log(this.AktivitiHariIniList);
-        })
-        .catch(error => {
-          console.error('Error fetching aktiviti data:', error);
-        });
+        const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
+
+        axios.get('http://localhost:1001/aktivitiHariIni')
+            .then(response => {
+            this.AktivitiLilyList = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Lily" && itemDate === today;
+                });
+            console.log(this.AktivitiLilyList);
+            console.log("disini error");
+            console.log(this.AktivitiHariIniList);
+            })
+            .catch(error => {
+            console.error('Error fetching aktiviti data:', error);
+            });
     },
 
     fetchAktivitiTulip() {
-      axios.get('http://localhost:1001/aktivitiHariIni')
-        .then(response => {
-          this.AktivitiTulipList = response.data.filter(item => item.kelas === "Tulip");
-          console.log(this.AktivitiTulipList);
-          console.log("disini error");
-          console.log(this.AktivitiHariIniList);
+        const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
+
+        axios.get('http://localhost:1001/aktivitiHariIni')
+            .then(response => {
+            this.AktivitiTulipList = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Tulip" && itemDate === today;
+                });
+            console.log(this.AktivitiTulipList);
+            console.log("disini error");
+            console.log(this.AktivitiHariIniList);
         })
         .catch(error => {
           console.error('Error fetching aktiviti data:', error);
@@ -498,111 +540,55 @@ export default {
     uploadTodayActivity(activity) {
         const activityId = activity;
         const kelasKanak = this.kelasKanak;
-       
-        const todayActivity = 
-        {
-            aktivitiId: activityId,
-            kelas: kelasKanak
-        }
 
-        axios.post('http://localhost:1001/aktivitiHariIni', todayActivity)
+        const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
+       
+        axios.get('http://localhost:1001/aktivitiHariIni/')
             .then(response => {
-                console.log(response.data);
-                
-                alert('Aktiviti berjaya ditambah!')
-                this.fetchAktivitiHariIni();
-                this.fetchAktivitiMelur();
-                this.fetchAktivitiOrkid();
-                this.fetchAktivitiRose();
-                this.fetchAktivitiRaya();
-                this.fetchAktivitiDaisy();
-                this.fetchAktivitiMatahari();
-                this.fetchAktivitiDahlia();
-                this.fetchAktivitiLily();
-                this.fetchAktivitiTulip();
+            const existingActivities = response.data.filter(item => {
+                const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                return item.kelas === kelasKanak && itemDate === today;
+                });
+            console.log("Existing activity" + existingActivities.length);
+            if (existingActivities.length >= 4) {
+                alert('You have already uploaded the maximum number of activities for this kelas');
                 this.toggleActivity();
                 router.push('/activity')
-            })
-            .catch(error => {
-                console.error('Error upload aktiviti data:', error);
-            });
+                return;
+            }
+            else{
+                const todayActivity = 
+                {
+                    aktivitiId: activityId,
+                    kelas: kelasKanak
+                }
+
+                axios.post('http://localhost:1001/aktivitiHariIni', todayActivity)
+                    .then(response => {
+                        console.log(response.data);
+                        
+                        alert('Aktiviti berjaya ditambah!')
+                        this.fetchAktivitiHariIni();
+                        this.fetchAktivitiMelur();
+                        this.fetchAktivitiOrkid();
+                        this.fetchAktivitiRose();
+                        this.fetchAktivitiRaya();
+                        this.fetchAktivitiDaisy();
+                        this.fetchAktivitiMatahari();
+                        this.fetchAktivitiDahlia();
+                        this.fetchAktivitiLily();
+                        this.fetchAktivitiTulip();
+                        this.toggleActivity();
+                        router.push('/activity')
+                    })
+                    .catch(error => {
+                        console.error('Error upload aktiviti data:', error);
+                    });
+            }
+        });
+
+        
     },
-
-    // uploadMelur(activity){
-    //     const kelas = "Melur";
-    //     const activityId = activity;
-       
-    //     const todayActivity = 
-    //     {
-    //         aktivitiId: activityId,
-    //         kelas: kelas
-    //     }
-
-    //     axios.post('http://localhost:1001/aktivitiHariIni/', todayActivity)
-    //         .then(response => {
-    //             console.log(response.data);
-                
-    //             alert('Aktiviti berjaya ditambah!')
-    //             this.fetchAktivitiHariIni();
-    //             this.toggleActivity();
-    //             router.push('/activity')
-    //         })
-    //         .catch(error => {
-    //             console.error('Error upload aktiviti data:', error);
-    //         });
-    // },
-
-    // uploadOrkid(){
-    //     const kelas = "Orkid";
-    //     const activityId = activity;
-       
-    //     const todayActivity = 
-    //     {
-    //         aktivitiId: activityId,
-    //         kelas: kelas
-    //     }
-
-    //     axios.post('http://localhost:1001/aktivitiHariIni/', todayActivity)
-    //         .then(response => {
-    //             console.log(response.data);
-                
-    //             alert('Aktiviti berjaya ditambah!')
-    //             this.fetchAktivitiHariIni();
-    //             this.toggleActivity();
-    //             router.push('/activity')
-    //         })
-    //         .catch(error => {
-    //             console.error('Error upload aktiviti data:', error);
-    //         });
-    //     },
-
-    // uploadRose(){
-
-    // },
-
-    // uploadRaya(){
-
-    // },
-
-    // uploadDaisy(){
-
-    // },
-
-    // uploadMatahari(){
-
-    // },
-
-    // uploadDahlia(){
-
-    // },
-
-    // uploadLily(){
-
-    // },
-
-    // uploadTulip(){
-
-    // },
 
 
     async deleteTodayActivity(activity) {
@@ -613,6 +599,17 @@ export default {
             this.AktivitiHariIniList = this.AktivitiHariIniList.filter(
                 (activity) => activity.id !== this.selectedActivity
             );
+            this.fetchAktivitiHariIni();
+            this.fetchAktivitiMelur();
+            this.fetchAktivitiOrkid();
+            this.fetchAktivitiRose();
+            this.fetchAktivitiRaya();
+            this.fetchAktivitiDaisy();
+            this.fetchAktivitiMatahari();
+            this.fetchAktivitiDahlia();
+            this.fetchAktivitiLily();
+            this.fetchAktivitiTulip();
+        
         })
         .catch(error=> console.log(error))
         
