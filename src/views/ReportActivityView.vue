@@ -26,20 +26,16 @@
                 <h2 class="text-xl font-bold px-14 p-5">Laporan Aktiviti Kanak-Kanak</h2>
                 <div class="flex justify-between mr-12">
                     <div class="ml-20">
-                        <select class="rounded-md p-1 px-3" name="tarikh" id="tarikh">
-                            <option value="">Pilih Tarikh</option>
-                            <option value="">Harini</option>
-                            <option value="">Semalam</option>
-                        </select>
+                        <input class="p-2 rounded-lg drop-shadow-md" type="date" v-model="selectedDate" @change="fetchAll" >
                     </div>
                     <div class="flex">
-                        <div class="bg-green-200 rounded-md mx-2 p-1 px-4">
+                        <div class="bg-green-200 rounded-md mx-2 p-2 px-4">
                             Mudah
                         </div>
-                        <div class="bg-orange-200 rounded-md mx-2 p-1 px-4">
+                        <div class="bg-orange-200 rounded-md mx-2 p-2 px-4">
                             Biasa
                         </div>
-                        <div class="bg-red-200 rounded-md mx-2 p-1 px-4">
+                        <div class="bg-red-200 rounded-md mx-2 p-2 px-4">
                             Sukar
                         </div> 
                     </div>
@@ -327,7 +323,7 @@
                         </template>
                         <template v-else>
                             <div class="flex justify-center py-1">
-                                <div class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div class="bg-gray-50 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                     Tiada Aktiviti Pada Hari Ini
                                 </div>
                             </div>
@@ -414,7 +410,7 @@ export default {
             AktivitiTulip1: [],
             AktivitiTulip2: [],
             AktivitiTulip3: [],
-            
+            selectedDate: this.getTodayDate()
 
         }
     },
@@ -444,12 +440,33 @@ export default {
                 });
         },
 
+        fetchAll() {
+            this.fetchAktivitiMelur();
+            this.fetchAktivitiOrkid();
+            this.fetchAktivitiRose();
+            this.fetchAktivitiRaya();
+            this.fetchAktivitiDaisy();
+            this.fetchAktivitiMatahari();
+            this.fetchAktivitiDahlia();
+            this.fetchAktivitiLily();
+            this.fetchAktivitiTulip();
+        },
+
         fetchAktivitiMelur(){
             axios.get('http://localhost:1001/aktivitiHariIni')
                 .then(response => {
-                this.AktivitiMelur1 = response.data.filter(item => item.kelas === "Melur" && item.aktiviti.kesukaran === "Mudah");
-                this.AktivitiMelur2 = response.data.filter(item => item.kelas === "Melur" && item.aktiviti.kesukaran === "Biasa");
-                this.AktivitiMelur3 = response.data.filter(item => item.kelas === "Melur" && item.aktiviti.kesukaran === "Sukar");
+                this.AktivitiMelur1 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Melur" && item.aktiviti.kesukaran === "Mudah" && itemDate === this.selectedDate;
+                });
+                this.AktivitiMelur2 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Melur" && item.aktiviti.kesukaran === "Biasa" && itemDate === this.selectedDate;
+                });
+                this.AktivitiMelur3 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Melur" && item.aktiviti.kesukaran === "Sukar" && itemDate === this.selectedDate;
+                });
 
                 })
                 .catch(error => {
@@ -460,9 +477,18 @@ export default {
         fetchAktivitiOrkid(){
             axios.get('http://localhost:1001/aktivitiHariIni')
                 .then(response => {
-                this.AktivitiOrkid1 = response.data.filter(item => item.kelas === "Orkid" && item.aktiviti.kesukaran === "Mudah");
-                this.AktivitiOrkid2 = response.data.filter(item => item.kelas === "Orkid" && item.aktiviti.kesukaran === "Biasa");
-                this.AktivitiOrkid3 = response.data.filter(item => item.kelas === "Orkid" && item.aktiviti.kesukaran === "Sukar");
+                this.AktivitiOrkid1 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Orkid" && item.aktiviti.kesukaran === "Mudah" && itemDate === this.selectedDate;
+                });
+                this.AktivitiOrkid2 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Orkid" && item.aktiviti.kesukaran === "Biasa" && itemDate === this.selectedDate;
+                });
+                this.AktivitiOrkid3 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Orkid" && item.aktiviti.kesukaran === "Sukar" && itemDate === this.selectedDate;
+                });
 
                 })
                 .catch(error => {
@@ -473,9 +499,18 @@ export default {
         fetchAktivitiRose(){
             axios.get('http://localhost:1001/aktivitiHariIni')
                 .then(response => {
-                this.AktivitiRose1 = response.data.filter(item => item.kelas === "Rose" && item.aktiviti.kesukaran === "Mudah");
-                this.AktivitiRose2 = response.data.filter(item => item.kelas === "Rose" && item.aktiviti.kesukaran === "Biasa");
-                this.AktivitiRose3 = response.data.filter(item => item.kelas === "Rose" && item.aktiviti.kesukaran === "Sukar");
+                this.AktivitiRose1 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Rose" && item.aktiviti.kesukaran === "Mudah" && itemDate === this.selectedDate;
+                });
+                this.AktivitiRose2 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Rose" && item.aktiviti.kesukaran === "Biasa" && itemDate === this.selectedDate;
+                });
+                this.AktivitiRose3 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Rose" && item.aktiviti.kesukaran === "Sukar" && itemDate === this.selectedDate;
+                });
 
                 })
                 .catch(error => {
@@ -486,9 +521,18 @@ export default {
         fetchAktivitiRaya(){
             axios.get('http://localhost:1001/aktivitiHariIni')
                 .then(response => {
-                this.AktivitiRaya1 = response.data.filter(item => item.kelas === "Raya" && item.aktiviti.kesukaran === "Mudah");
-                this.AktivitiRaya2 = response.data.filter(item => item.kelas === "Raya" && item.aktiviti.kesukaran === "Biasa");
-                this.AktivitiRaya3 = response.data.filter(item => item.kelas === "Raya" && item.aktiviti.kesukaran === "Sukar");
+                this.AktivitiRaya1 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Raya" && item.aktiviti.kesukaran === "Mudah" && itemDate === this.selectedDate;
+                });
+                this.AktivitiRaya2 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Raya" && item.aktiviti.kesukaran === "Biasa" && itemDate === this.selectedDate;
+                });
+                this.AktivitiRaya3 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Raya" && item.aktiviti.kesukaran === "Sukar" && itemDate === this.selectedDate;
+                });
 
                 })
                 .catch(error => {
@@ -499,9 +543,18 @@ export default {
         fetchAktivitiDaisy(){
             axios.get('http://localhost:1001/aktivitiHariIni')
                 .then(response => {
-                this.AktivitiDaisy1 = response.data.filter(item => item.kelas === "Daisy" && item.aktiviti.kesukaran === "Mudah");
-                this.AktivitiDaisy2 = response.data.filter(item => item.kelas === "Daisy" && item.aktiviti.kesukaran === "Biasa");
-                this.AktivitiDaisy3 = response.data.filter(item => item.kelas === "Daisy" && item.aktiviti.kesukaran === "Sukar");
+                this.AktivitiDaisy1 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Daisy" && item.aktiviti.kesukaran === "Mudah" && itemDate === this.selectedDate;
+                });
+                this.AktivitiDaisy2 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Daisy" && item.aktiviti.kesukaran === "Biasa" && itemDate === this.selectedDate;
+                });
+                this.AktivitiDaisy3 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Daisy" && item.aktiviti.kesukaran === "Sukar" && itemDate === this.selectedDate;
+                });
 
                 })
                 .catch(error => {
@@ -512,9 +565,18 @@ export default {
         fetchAktivitiMatahari(){
             axios.get('http://localhost:1001/aktivitiHariIni')
                 .then(response => {
-                this.AktivitiMatahari1 = response.data.filter(item => item.kelas === "Matahari" && item.aktiviti.kesukaran === "Mudah");
-                this.AktivitiMatahari2 = response.data.filter(item => item.kelas === "Matahari" && item.aktiviti.kesukaran === "Biasa");
-                this.AktivitiMatahari3 = response.data.filter(item => item.kelas === "Matahari" && item.aktiviti.kesukaran === "Sukar");
+                this.AktivitiMatahari1 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Matahari" && item.aktiviti.kesukaran === "Mudah" && itemDate === this.selectedDate;
+                });
+                this.AktivitiMatahari2 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Matahari" && item.aktiviti.kesukaran === "Biasa" && itemDate === this.selectedDate;
+                });
+                this.AktivitiMatahari3 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Matahari" && item.aktiviti.kesukaran === "Sukar" && itemDate === this.selectedDate;
+                });
 
                 })
                 .catch(error => {
@@ -526,9 +588,18 @@ export default {
         fetchAktivitiDahlia(){
             axios.get('http://localhost:1001/aktivitiHariIni')
                 .then(response => {
-                this.AktivitiDahlia1 = response.data.filter(item => item.kelas === "Dahlia" && item.aktiviti.kesukaran === "Mudah");
-                this.AktivitiDahlia2 = response.data.filter(item => item.kelas === "Dahlia" && item.aktiviti.kesukaran === "Biasa");
-                this.AktivitiDahlia3 = response.data.filter(item => item.kelas === "Dahlia" && item.aktiviti.kesukaran === "Sukar");
+                this.AktivitiDahlia1 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Dahlia" && item.aktiviti.kesukaran === "Mudah" && itemDate === this.selectedDate;
+                });
+                this.AktivitiDahlia2 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Dahlia" && item.aktiviti.kesukaran === "Biasa" && itemDate === this.selectedDate;
+                });
+                this.AktivitiDahlia3 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Dahlia" && item.aktiviti.kesukaran === "Sukar" && itemDate === this.selectedDate;
+                });
 
                 })
                 .catch(error => {
@@ -539,9 +610,18 @@ export default {
         fetchAktivitiLily(){
             axios.get('http://localhost:1001/aktivitiHariIni')
                 .then(response => {
-                this.AktivitiLily1 = response.data.filter(item => item.kelas === "Lily" && item.aktiviti.kesukaran === "Mudah");
-                this.AktivitiLily2 = response.data.filter(item => item.kelas === "Lily" && item.aktiviti.kesukaran === "Biasa");
-                this.AktivitiLily3 = response.data.filter(item => item.kelas === "Lily" && item.aktiviti.kesukaran === "Sukar");
+                this.AktivitiLily1 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Lily" && item.aktiviti.kesukaran === "Mudah" && itemDate === this.selectedDate;
+                });
+                this.AktivitiLily2 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Lily" && item.aktiviti.kesukaran === "Biasa" && itemDate === this.selectedDate;
+                });
+                this.AktivitiLily3 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Lily" && item.aktiviti.kesukaran === "Sukar" && itemDate === this.selectedDate;
+                });
                 })
                 .catch(error => {
                 console.error('Error fetching data Lily:', error);
@@ -551,13 +631,39 @@ export default {
         fetchAktivitiTulip(){
             axios.get('http://localhost:1001/aktivitiHariIni')
                 .then(response => {
-                this.AktivitiTulip1 = response.data.filter(item => item.kelas === "Tulip" && item.aktiviti.kesukaran === "Mudah");
-                this.AktivitiTulip2 = response.data.filter(item => item.kelas === "Tulip" && item.aktiviti.kesukaran === "Biasa");
-                this.AktivitiTulip3 = response.data.filter(item => item.kelas === "Tulip" && item.aktiviti.kesukaran === "Sukar");
+                this.AktivitiTulip1 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Tulip" && item.aktiviti.kesukaran === "Mudah" && itemDate === this.selectedDate;
+                });
+                this.AktivitiTulip2 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Tulip" && item.aktiviti.kesukaran === "Biasa" && itemDate === this.selectedDate;
+                });
+                this.AktivitiTulip3 = response.data.filter(item => {
+                    const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                    return item.kelas === "Tulip" && item.aktiviti.kesukaran === "Sukar" && itemDate === this.selectedDate;
+                });
                 })
                 .catch(error => {
                 console.error('Error fetching data Tulip:', error);
                 });
+        },
+
+        getTodayDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            let month = today.getMonth() + 1; // Adding 1 to adjust for zero-based index
+            let day = today.getDate();
+
+            // Pad month and day with leading zero if needed
+            if (month < 10) {
+                month = `0${month}`;
+            }
+            if (day < 10) {
+                day = `0${day}`;
+            }
+
+            return `${year}-${month}-${day}`;
         }
     }
 }

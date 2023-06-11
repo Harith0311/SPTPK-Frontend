@@ -303,15 +303,20 @@ import Header from "../components/Header.vue";
                 <!-- End of prompt -->
 
     </div>
-         
+    <ToastMessage ref="toast" />
     
 </template>
 
 <script>
     import axios from 'axios';
     import {AktivitiList} from "../stores/index";
+    import ToastMessage from "../components/ToastMessage.vue";
+
 
 export default {
+    components: {
+        ToastMessage
+    },
   data() {
     return {
         AktivitiList: [],
@@ -599,6 +604,12 @@ export default {
             this.AktivitiHariIniList = this.AktivitiHariIniList.filter(
                 (activity) => activity.id !== this.selectedActivity
             );
+
+            const message = "Aktiviti Telah Dipadam";
+            const status = "Berjaya";
+            this.$refs.toast.toast(message, status, "success")
+
+
             this.fetchAktivitiHariIni();
             this.fetchAktivitiMelur();
             this.fetchAktivitiOrkid();
