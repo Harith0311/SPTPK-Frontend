@@ -44,7 +44,7 @@
                         </div> 
                     </div>
                 </div>
-                <!-- Kelas -->
+                <!-- Kelas Melur -->
                 <div class="group flex justify-between">
                     <!-- Logo Kelas -->
                     <div class="group flex">
@@ -58,32 +58,29 @@
                     </div>
                     <!-- Senarai Aktiviti -->
                     <div class="flex flex-col justify-evenly py-3 bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
-                        <!-- <template v-for="activity in AktivitList" v-bind:key="activity.id">
-
-                        </template> -->
-                        <div class="flex justify-center">
-                            <div class="bg-green-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
-                                Berlari
+                        <template v-if="AktivitiMelur1.length > 0 || AktivitiMelur2.length > 0 || AktivitiMelur3.length > 0 ">
+                            <div class="flex justify-center py-1">
+                                <div  v-for="activity in AktivitiMelur1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiMelur2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiMelur3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
                             </div>
-                            <div class="bg-orange-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
-                                Panjat
+                        </template>
+                        <template v-else>
+                            <div class="flex justify-center py-1">
+                                <div class="bg-gray-50 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                    Tiada Aktiviti Pada Hari Ini
+                                </div>
                             </div>
-                            <div class="bg-red-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
-                                Lompat
-                            </div>
-                        </div>
-                        <div class="flex justify-center">
-                            <div class="bg-green-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
-                                Berlari
-                            </div>
-                            <div class="bg-orange-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
-                                Panjat
-                            </div>
-                            
-                        </div>
+                        </template>
                     </div>
                 </div>
-                <!-- Kelas -->
+                <!-- Kelas Orkid -->
                 <div class="group flex justify-between">
                     <!-- Logo Kelas -->
                     <div class="group flex">
@@ -96,8 +93,27 @@
                         </div>
                     </div>
                     <!-- Senarai Aktiviti -->
-                    <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
-
+                    <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
+                        <template v-if="AktivitiOrkid1.length > 0 || AktivitiOrkid2.length > 0 || AktivitiOrkid3.length > 0 ">
+                            <div class="flex justify-center py-1">
+                                <div  v-for="activity in AktivitiOrkid1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiOrkid2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiOrkid3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="flex justify-center py-1">
+                                <div class="bg-gray-50 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                    Tiada Aktiviti Pada Hari Ini
+                                </div>
+                            </div>
+                        </template>
                     </div>
                 </div>
                 <!-- Kelas -->
@@ -113,8 +129,27 @@
                         </div>
                     </div>
                     <!-- Senarai Aktiviti -->
-                    <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
-
+                    <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
+                        <template v-if="AktivitiRose1.length > 0 || AktivitiRose2.length > 0 || AktivitiRose3.length > 0 ">
+                            <div class="flex justify-center py-1">
+                                <div  v-for="activity in AktivitiRose1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiRose2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiRose3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="flex justify-center py-1">
+                                <div class="bg-gray-50 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                    Tiada Aktiviti Pada Hari Ini
+                                </div>
+                            </div>
+                        </template>
                     </div>
                 </div>
                 <!-- Kelas Raya -->
@@ -130,8 +165,27 @@
                         </div>
                     </div>
                     <!-- Senarai Aktiviti -->
-                    <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
-
+                    <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
+                        <template v-if="AktivitiRaya1.length > 0 || AktivitiRaya2.length > 0 || AktivitiRaya3.length > 0 ">
+                            <div class="flex justify-center py-1">
+                                <div  v-for="activity in AktivitiRaya1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiRaya2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiRaya3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="flex justify-center py-1">
+                                <div class="bg-gray-50 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                    Tiada Aktiviti Pada Hari Ini
+                                </div>
+                            </div>
+                        </template>
                     </div>
                 </div>
                 <!-- Kelas Daisy -->
@@ -147,8 +201,27 @@
                         </div>
                     </div>
                     <!-- Senarai Aktiviti -->
-                    <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
-
+                    <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
+                        <template v-if="AktivitiDaisy1.length > 0 || AktivitiDaisy2.length > 0 || AktivitiDaisy3.length > 0 ">
+                            <div class="flex justify-center py-1">
+                                <div  v-for="activity in AktivitiDaisy1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiDaisy2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiDaisy3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="flex justify-center py-1">
+                                <div class="bg-gray-50 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                    Tiada Aktiviti Pada Hari Ini
+                                </div>
+                            </div>
+                        </template>
                     </div>
                 </div>
                 <!-- Kelas Matahari -->
@@ -164,10 +237,30 @@
                         </div>
                     </div>
                     <!-- Senarai Aktiviti -->
-                    <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
-
+                    <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
+                        <template v-if="AktivitiMatahari1.length > 0 || AktivitiMatahari2.length > 0 || AktivitiMatahari3.length > 0 ">
+                            <div class="flex justify-center py-1">
+                                <div  v-for="activity in AktivitiMatahari1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiMatahari2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiMatahari3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="flex justify-center py-1">
+                                <div class="bg-gray-50 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                    Tiada Aktiviti Pada Hari Ini
+                                </div>
+                            </div>
+                        </template>
                     </div>
                 </div>
+
                 <!-- Kelas Dahlia-->
                 <div class="group flex justify-between">
                     <!-- Logo Kelas -->
@@ -181,10 +274,30 @@
                         </div>
                     </div>
                     <!-- Senarai Aktiviti -->
-                    <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
-
+                    <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
+                        <template v-if="AktivitiDahlia1.length > 0 || AktivitiDahlia2.length > 0 || AktivitiDahlia3.length > 0 ">
+                            <div class="flex justify-center py-1">
+                                <div  v-for="activity in AktivitiDahlia1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiDahlia2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiDahlia3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="flex justify-center py-1">
+                                <div class="bg-gray-50 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                    Tiada Aktiviti Pada Hari Ini
+                                </div>
+                            </div>
+                        </template>
                     </div>
                 </div>
+
                 <!-- Kelas Lily -->
                 <div class="group flex justify-between">
                     <!-- Logo Kelas -->
@@ -199,36 +312,29 @@
                     </div>
                     <!-- Senarai Aktiviti -->
                     <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
-                        <template v-if="AktivitiLily2.length > 0 && AktivitiLily2.length < 6">
-                            <div class="flex justify-center">
-                                <div  v-for="activity in AktivitiLily2" v-bind:key="activity.id" class="bg-green-200 rounded-md m-1 mx-4 py-0.5 px-14 z-50 ">
+                        <template v-if="AktivitiLily1.length > 0 || AktivitiLily2.length > 0 || AktivitiLily3.length > 0 ">
+                            <div class="flex justify-center py-1">
+                                <div  v-for="activity in AktivitiLily1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiLily2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiLily3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="flex justify-center py-1">
+                                <div class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                    Tiada Aktiviti Pada Hari Ini
                                 </div>
                             </div>
                         </template>
                     </div>
                 </div>
 
-                <!-- <div class="flex justify-center">
-                            <div class="bg-green-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
-                                Berlari
-                            </div>
-                            <div class="bg-orange-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
-                                Panjat
-                            </div>
-                            <div class="bg-red-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
-                                Lompat
-                            </div>
-                        </div>
-                        <div class="flex justify-center">
-                            <div class="bg-green-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
-                                Berlari
-                            </div>
-                            <div class="bg-orange-200 rounded-md m-1 mx-4 py-0.5 px-14 ">
-                                Panjat
-                            </div>
-                            
-                        </div> -->
                 <!-- Kelas Tulip-->
                 <div class="group flex justify-between">
                     <!-- Logo Kelas -->
@@ -242,28 +348,30 @@
                         </div>
                     </div>
                     <!-- Senarai Aktiviti -->
-                    <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
-
+                    <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
+                        <template v-if="AktivitiTulip1.length > 0 || AktivitiTulip2.length > 0 || AktivitiTulip3.length > 0 ">
+                            <div class="flex justify-center py-1">
+                                <div  v-for="activity in AktivitiTulip1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiTulip2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                                <div  v-for="activity in AktivitiTulip3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                {{activity.aktiviti.namaAktiviti}}
+                                </div>
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="flex justify-center py-1">
+                                <div class="bg-gray-50 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                    Tiada Aktiviti Pada Hari Ini
+                                </div>
+                            </div>
+                        </template>
                     </div>
                 </div>
 
-
-
-
-
-
-                <!-- Pagination -->
-                <!-- <div class="flex justify-center">
-                    <div class="bg-black rounded-full h-auto w-6 m-4">
-                        <h1 class="text-white text-center">1</h1>
-                    </div>
-                    <div class=" rounded-full h-auto w-6 m-4">
-                        <h1>2</h1>
-                    </div>
-                    <div class=" rounded-full h-auto w-6 m-4">
-                        <h1>3</h1>
-                    </div>
-                </div> -->
             </div>
             <div class="bg-blue-400 hover:bg-blue-500 cursor-pointer p-4 h-[60px] w-full mx-auto mb-10 drop-shadow-lg rounded-2xl text-center font-bold text-lg">
                 Cetak Laporan Aktiviti
@@ -279,9 +387,33 @@ export default {
     data() {
         return {
             AktivitiHariIniList: [],
+            AktivitiMelur1: [],
+            AktivitiMelur2: [],
+            AktivitiMelur3: [],
+            AktivitiOrkid1: [],
+            AktivitiOrkid2: [],
+            AktivitiOrkid3: [],
+            AktivitiRose1: [],
+            AktivitiRose2: [],
+            AktivitiRose3: [],
+            AktivitiRaya1: [],
+            AktivitiRaya2: [],
+            AktivitiRaya3: [],
+            AktivitiDaisy1: [],
+            AktivitiDaisy2: [],
+            AktivitiDaisy3: [],
+            AktivitiMatahari1: [],
+            AktivitiMatahari2: [],
+            AktivitiMatahari3: [],
+            AktivitiDahlia1: [],
+            AktivitiDahlia2: [],
+            AktivitiDahlia3: [],
             AktivitiLily1: [],
             AktivitiLily2: [],
             AktivitiLily3: [],
+            AktivitiTulip1: [],
+            AktivitiTulip2: [],
+            AktivitiTulip3: [],
             
 
         }
@@ -289,7 +421,15 @@ export default {
 
     mounted() {
         this.fetchAktivitiHariIni();
+        this.fetchAktivitiMelur();
+        this.fetchAktivitiOrkid();
+        this.fetchAktivitiRose();
+        this.fetchAktivitiRaya();
+        this.fetchAktivitiDaisy();
+        this.fetchAktivitiMatahari();
+        this.fetchAktivitiDahlia();
         this.fetchAktivitiLily();
+        this.fetchAktivitiTulip();
     },
 
     methods: {
@@ -298,11 +438,101 @@ export default {
                 .then(response => {
                 this.AktivitiHariIniList = response.data;
                 
-                console.log("disini error");
-                console.log(this.AktivitiHariIniList);
                 })
                 .catch(error => {
                 console.error('Error fetching aktiviti data:', error);
+                });
+        },
+
+        fetchAktivitiMelur(){
+            axios.get('http://localhost:1001/aktivitiHariIni')
+                .then(response => {
+                this.AktivitiMelur1 = response.data.filter(item => item.kelas === "Melur" && item.aktiviti.kesukaran === "Mudah");
+                this.AktivitiMelur2 = response.data.filter(item => item.kelas === "Melur" && item.aktiviti.kesukaran === "Biasa");
+                this.AktivitiMelur3 = response.data.filter(item => item.kelas === "Melur" && item.aktiviti.kesukaran === "Sukar");
+
+                })
+                .catch(error => {
+                console.error('Error fetching data Melur:', error);
+                });
+        },
+
+        fetchAktivitiOrkid(){
+            axios.get('http://localhost:1001/aktivitiHariIni')
+                .then(response => {
+                this.AktivitiOrkid1 = response.data.filter(item => item.kelas === "Orkid" && item.aktiviti.kesukaran === "Mudah");
+                this.AktivitiOrkid2 = response.data.filter(item => item.kelas === "Orkid" && item.aktiviti.kesukaran === "Biasa");
+                this.AktivitiOrkid3 = response.data.filter(item => item.kelas === "Orkid" && item.aktiviti.kesukaran === "Sukar");
+
+                })
+                .catch(error => {
+                console.error('Error fetching data Orkid:', error);
+                });
+        },
+
+        fetchAktivitiRose(){
+            axios.get('http://localhost:1001/aktivitiHariIni')
+                .then(response => {
+                this.AktivitiRose1 = response.data.filter(item => item.kelas === "Rose" && item.aktiviti.kesukaran === "Mudah");
+                this.AktivitiRose2 = response.data.filter(item => item.kelas === "Rose" && item.aktiviti.kesukaran === "Biasa");
+                this.AktivitiRose3 = response.data.filter(item => item.kelas === "Rose" && item.aktiviti.kesukaran === "Sukar");
+
+                })
+                .catch(error => {
+                console.error('Error fetching data Rose:', error);
+                });
+        },
+
+        fetchAktivitiRaya(){
+            axios.get('http://localhost:1001/aktivitiHariIni')
+                .then(response => {
+                this.AktivitiRaya1 = response.data.filter(item => item.kelas === "Raya" && item.aktiviti.kesukaran === "Mudah");
+                this.AktivitiRaya2 = response.data.filter(item => item.kelas === "Raya" && item.aktiviti.kesukaran === "Biasa");
+                this.AktivitiRaya3 = response.data.filter(item => item.kelas === "Raya" && item.aktiviti.kesukaran === "Sukar");
+
+                })
+                .catch(error => {
+                console.error('Error fetching data Raya:', error);
+                });
+        },
+
+        fetchAktivitiDaisy(){
+            axios.get('http://localhost:1001/aktivitiHariIni')
+                .then(response => {
+                this.AktivitiDaisy1 = response.data.filter(item => item.kelas === "Daisy" && item.aktiviti.kesukaran === "Mudah");
+                this.AktivitiDaisy2 = response.data.filter(item => item.kelas === "Daisy" && item.aktiviti.kesukaran === "Biasa");
+                this.AktivitiDaisy3 = response.data.filter(item => item.kelas === "Daisy" && item.aktiviti.kesukaran === "Sukar");
+
+                })
+                .catch(error => {
+                console.error('Error fetching data Daisy:', error);
+                });
+        },
+
+        fetchAktivitiMatahari(){
+            axios.get('http://localhost:1001/aktivitiHariIni')
+                .then(response => {
+                this.AktivitiMatahari1 = response.data.filter(item => item.kelas === "Matahari" && item.aktiviti.kesukaran === "Mudah");
+                this.AktivitiMatahari2 = response.data.filter(item => item.kelas === "Matahari" && item.aktiviti.kesukaran === "Biasa");
+                this.AktivitiMatahari3 = response.data.filter(item => item.kelas === "Matahari" && item.aktiviti.kesukaran === "Sukar");
+
+                })
+                .catch(error => {
+                console.error('Error fetching data Matahari:', error);
+                });
+        },
+
+
+        fetchAktivitiDahlia(){
+            axios.get('http://localhost:1001/aktivitiHariIni')
+                .then(response => {
+                this.AktivitiDahlia1 = response.data.filter(item => item.kelas === "Dahlia" && item.aktiviti.kesukaran === "Mudah");
+                this.AktivitiDahlia2 = response.data.filter(item => item.kelas === "Dahlia" && item.aktiviti.kesukaran === "Biasa");
+                this.AktivitiDahlia3 = response.data.filter(item => item.kelas === "Dahlia" && item.aktiviti.kesukaran === "Sukar");
+
+                })
+                .catch(error => {
+                console.error('Error fetching data Dahlia:', error);
                 });
         },
 
@@ -312,16 +542,21 @@ export default {
                 this.AktivitiLily1 = response.data.filter(item => item.kelas === "Lily" && item.aktiviti.kesukaran === "Mudah");
                 this.AktivitiLily2 = response.data.filter(item => item.kelas === "Lily" && item.aktiviti.kesukaran === "Biasa");
                 this.AktivitiLily3 = response.data.filter(item => item.kelas === "Lily" && item.aktiviti.kesukaran === "Sukar");
-
-                console.log(this.AktivitiLily1);
-                console.log(this.AktivitiLily2);
-                console.log(this.AktivitiLily3);
-                
-                console.log("disini error");
-                console.log(this.AktivitiHariIniList);
                 })
                 .catch(error => {
-                console.error('Error fetching aktiviti data:', error);
+                console.error('Error fetching data Lily:', error);
+                });
+        },
+
+        fetchAktivitiTulip(){
+            axios.get('http://localhost:1001/aktivitiHariIni')
+                .then(response => {
+                this.AktivitiTulip1 = response.data.filter(item => item.kelas === "Tulip" && item.aktiviti.kesukaran === "Mudah");
+                this.AktivitiTulip2 = response.data.filter(item => item.kelas === "Tulip" && item.aktiviti.kesukaran === "Biasa");
+                this.AktivitiTulip3 = response.data.filter(item => item.kelas === "Tulip" && item.aktiviti.kesukaran === "Sukar");
+                })
+                .catch(error => {
+                console.error('Error fetching data Tulip:', error);
                 });
         }
     }
