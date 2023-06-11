@@ -46,9 +46,11 @@
                 </div>
                 <!-- Kelas -->
                 <div class="flex justify-between">
+                    <!-- Logo Kelas -->
                     <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 z-0 rounded-md">
                         <img src="../assets/melur.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
                     </div>
+                    <!-- Senarai Aktiviti -->
                     <div class="flex flex-col justify-evenly py-3 bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
                         <template v-for="activity in AktivitList" v-bind:key="activity.id">
 
@@ -77,27 +79,33 @@
                 </div>
                 <!-- Kelas -->
                 <div class="flex justify-between">
+                    <!-- Logo Kelas -->
                     <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
                         <img src="../assets/orkid.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
                     </div>
+                    <!-- Senarai Aktiviti -->
                     <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
 
                     </div>
                 </div>
                 <!-- Kelas -->
                 <div class="flex justify-between">
+                    <!-- Logo Kelas -->
                     <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
                         <img src="../assets/rose.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
                     </div>
+                    <!-- Senarai Aktiviti -->
                     <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
 
                     </div>
                 </div>
                 <!-- Kelas -->
                 <div class="flex justify-between">
+                    <!-- Logo Kelas -->
                     <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
                         <img src="../assets/raya.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
                     </div>
+                    <!-- Senarai Aktiviti -->
                     <div class="bg-blue-700 w-4/5 opacity-30 h-20 m-4 mr-12 rounded-md">
 
                     </div>

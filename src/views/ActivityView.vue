@@ -44,8 +44,8 @@ import Header from "../components/Header.vue";
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                           <tbody v-if="AktivitiHariIniList.length > 0">
-                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                           <tbody v-if="AktivitiMelurList.length > 0">
+                               <tr  v-for="activity in AktivitiMelurList" v-bind:key="activity.id">
                                    <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
                                    <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
                                </tr>
@@ -73,8 +73,8 @@ import Header from "../components/Header.vue";
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                           <tbody v-if="AktivitiHariIniList.length > 0">
-                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                           <tbody v-if="AktivitiOrkidList.length > 0">
+                               <tr  v-for="activity in AktivitiOrkidList" v-bind:key="activity.id">
                                    <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
                                    <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
                                </tr>
@@ -96,8 +96,8 @@ import Header from "../components/Header.vue";
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                           <tbody v-if="AktivitiHariIniList.length > 0">
-                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                           <tbody v-if="AktivitiRoseList.length > 0">
+                               <tr  v-for="activity in AktivitiRoseList" v-bind:key="activity.id">
                                    <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
                                    <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
                                </tr>
@@ -117,8 +117,8 @@ import Header from "../components/Header.vue";
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                           <tbody v-if="AktivitiHariIniList.length > 0">
-                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                           <tbody v-if="AktivitiRayaList.length > 0">
+                               <tr  v-for="activity in AktivitiRayaList" v-bind:key="activity.id">
                                    <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
                                    <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
                                </tr>
@@ -141,8 +141,8 @@ import Header from "../components/Header.vue";
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                           <tbody v-if="AktivitiHariIniList.length > 0">
-                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                           <tbody v-if="AktivitiDaisyList.length > 0">
+                               <tr  v-for="activity in AktivitiDaisyList" v-bind:key="activity.id">
                                    <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
                                    <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
                                </tr>
@@ -162,8 +162,8 @@ import Header from "../components/Header.vue";
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                           <tbody v-if="AktivitiHariIniList.length > 0">
-                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                           <tbody v-if="AktivitiMatahariList.length > 0">
+                               <tr  v-for="activity in AktivitiMatahariList" v-bind:key="activity.id">
                                    <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
                                    <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
                                </tr>
@@ -187,8 +187,8 @@ import Header from "../components/Header.vue";
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                           <tbody v-if="AktivitiHariIniList.length > 0">
-                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                           <tbody v-if="AktivitiDahliaList.length > 0">
+                               <tr  v-for="activity in AktivitiDahliaList" v-bind:key="activity.id">
                                    <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
                                    <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
                                </tr>
@@ -208,8 +208,8 @@ import Header from "../components/Header.vue";
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                           <tbody v-if="AktivitiHariIniList.length > 0">
-                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                           <tbody v-if="AktivitiLilyList.length > 0">
+                               <tr  v-for="activity in AktivitiLilyList" v-bind:key="activity.id">
                                    <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
                                    <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
                                </tr>
@@ -233,8 +233,8 @@ import Header from "../components/Header.vue";
                                 <th class="py-1 w-4/5 border-solid border-b-2 border-black text-left">Nama Aktiviti</th>
                                 <th class="py-1 w-2/4 border-solid border-b-2 border-black">Tindakan</th>
                             </tr>
-                           <tbody v-if="AktivitiHariIniList.length > 0">
-                               <tr  v-for="activity in AktivitiHariIniList" v-bind:key="activity.id">
+                           <tbody v-if="AktivitiTulipList.length > 0">
+                               <tr  v-for="activity in AktivitiTulipList" v-bind:key="activity.id">
                                    <td class="py-1 w-4/5 border-solid border-b-2 border-slate-200 text-left">{{activity.aktiviti.namaAktiviti}}</td>
                                    <td class="py-1 w-2/4 border-solid border-b-2 border-slate-200 text-center"><i @click="deleteTodayActivity(activity.id)" class="fa-solid fa-trash hover:text-red-500"></i></td>
                                </tr>
@@ -319,15 +319,15 @@ export default {
     return {
         AktivitiList: [],
         AktivitiHariIniList: [],
-        // AktivitMelurList: [],
-        // AktivitOrkidList: [],
-        // AktivitRoseList: [],
-        // AktivitRayaList: [],
-        // AktivitDaisyList: [],
-        // AktivitMatahariList: [],
-        // AktivitDahliaList: [],
-        // AktivitLilyList: [],
-        // AktivitTulipList: [],
+        AktivitiMelurList: [],
+        AktivitiOrkidList: [],
+        AktivitiRoseList: [],
+        AktivitiRayaList: [],
+        AktivitiDaisyList: [],
+        AktivitiMatahariList: [],
+        AktivitiDahliaList: [],
+        AktivitiLilyList: [],
+        AktivitiTulipList: [],
         isOpen: false,
         activityId: '',
         kelasKanak: '',
@@ -336,8 +336,16 @@ export default {
   },
   mounted() {
     this.fetchAktivitiData();
-    this.fetchAktivitiHariIni();
-    
+    // this.fetchAktivitiHariIni();
+    this.fetchAktivitiMelur();
+    this.fetchAktivitiOrkid();
+    this.fetchAktivitiRose();
+    this.fetchAktivitiRaya();
+    this.fetchAktivitiDaisy();
+    this.fetchAktivitiMatahari();
+    this.fetchAktivitiDahlia();
+    this.fetchAktivitiLily();
+    this.fetchAktivitiTulip();
   },
   methods: {
     fetchAktivitiData() {
@@ -357,6 +365,124 @@ export default {
         .then(response => {
           this.AktivitiHariIniList = response.data;
           
+          console.log("disini error");
+          console.log(this.AktivitiHariIniList);
+        })
+        .catch(error => {
+          console.error('Error fetching aktiviti data:', error);
+        });
+    },
+
+    fetchAktivitiMelur() {
+      axios.get('http://localhost:1001/aktivitiHariIni')
+        .then(response => {
+          this.AktivitiMelurList = response.data.filter(item => item.kelas === "Melur");
+          console.log(this.AktivitiMelurList);
+          console.log("disini error");
+          console.log(this.AktivitiHariIniList);
+        })
+        .catch(error => {
+          console.error('Error fetching aktiviti data:', error);
+        });
+    },
+
+    fetchAktivitiOrkid() {
+      axios.get('http://localhost:1001/aktivitiHariIni')
+        .then(response => {
+          this.AktivitiOrkidList = response.data.filter(item => item.kelas === "Orkid");
+          console.log(this.AktivitiOrkidList);
+          console.log("disini error");
+          console.log(this.AktivitiHariIniList);
+        })
+        .catch(error => {
+          console.error('Error fetching aktiviti data:', error);
+        });
+    },
+
+    fetchAktivitiRose() {
+      axios.get('http://localhost:1001/aktivitiHariIni')
+        .then(response => {
+          this.AktivitiRoseList = response.data.filter(item => item.kelas === "Rose");
+          console.log(this.AktivitiRoseList);
+          console.log("disini error");
+          console.log(this.AktivitiHariIniList);
+        })
+        .catch(error => {
+          console.error('Error fetching aktiviti data:', error);
+        });
+    },
+
+    fetchAktivitiRaya() {
+      axios.get('http://localhost:1001/aktivitiHariIni')
+        .then(response => {
+          this.AktivitiRayaList = response.data.filter(item => item.kelas === "Raya");
+          console.log(this.AktivitiRayaList);
+          console.log("disini error");
+          console.log(this.AktivitiHariIniList);
+        })
+        .catch(error => {
+          console.error('Error fetching aktiviti data:', error);
+        });
+    },
+
+    fetchAktivitiDaisy() {
+      axios.get('http://localhost:1001/aktivitiHariIni')
+        .then(response => {
+          this.AktivitiDaisyList = response.data.filter(item => item.kelas === "Daisy");
+          console.log(this.AktivitiDaisyList);
+          console.log("disini error");
+          console.log(this.AktivitiHariIniList);
+        })
+        .catch(error => {
+          console.error('Error fetching aktiviti data:', error);
+        });
+    },
+
+    fetchAktivitiMatahari() {
+      axios.get('http://localhost:1001/aktivitiHariIni')
+        .then(response => {
+          this.AktivitiMatahariList = response.data.filter(item => item.kelas === "Matahari");
+          console.log(this.AktivitiMatahariList);
+          console.log("disini error");
+          console.log(this.AktivitiHariIniList);
+        })
+        .catch(error => {
+          console.error('Error fetching aktiviti data:', error);
+        });
+    },
+
+    fetchAktivitiDahlia() {
+      axios.get('http://localhost:1001/aktivitiHariIni')
+        .then(response => {
+          this.AktivitiDahliaList = response.data.filter(item => item.kelas === "Dahlia");
+          console.log(this.AktivitiDahliaList);
+          console.log("disini error");
+          console.log(this.AktivitiHariIniList);
+        })
+        .catch(error => {
+          console.error('Error fetching aktiviti data:', error);
+        });
+    },
+
+
+    fetchAktivitiLily() {
+      axios.get('http://localhost:1001/aktivitiHariIni')
+        .then(response => {
+          this.AktivitiLilyList = response.data.filter(item => item.kelas === "Lily");
+          console.log(this.AktivitiLilyList);
+          console.log("disini error");
+          console.log(this.AktivitiHariIniList);
+        })
+        .catch(error => {
+          console.error('Error fetching aktiviti data:', error);
+        });
+    },
+
+    fetchAktivitiTulip() {
+      axios.get('http://localhost:1001/aktivitiHariIni')
+        .then(response => {
+          this.AktivitiTulipList = response.data.filter(item => item.kelas === "Tulip");
+          console.log(this.AktivitiTulipList);
           console.log("disini error");
           console.log(this.AktivitiHariIniList);
         })
@@ -385,6 +511,15 @@ export default {
                 
                 alert('Aktiviti berjaya ditambah!')
                 this.fetchAktivitiHariIni();
+                this.fetchAktivitiMelur();
+                this.fetchAktivitiOrkid();
+                this.fetchAktivitiRose();
+                this.fetchAktivitiRaya();
+                this.fetchAktivitiDaisy();
+                this.fetchAktivitiMatahari();
+                this.fetchAktivitiDahlia();
+                this.fetchAktivitiLily();
+                this.fetchAktivitiTulip();
                 this.toggleActivity();
                 router.push('/activity')
             })

@@ -13,7 +13,7 @@
          </div>
          <div class="flex my-auto mr-4">
              <img class="w-10 h-10 rounded-full mx-3 border-solid border-2 border-black" src="../assets/hacker.png" alt="">
-             <div class="info-name p-2 font-bold max-md:hidden">Muhammad Messi</div>
+             <div class="info-name p-2 font-bold max-md:hidden">{{currentUser.nama}}</div>
          </div>
     </div>
 </template>
@@ -37,12 +37,13 @@
         methods: {
 
             fetchCurrentUser() {
-                this.userId = sessionStorage.getItem('id');
+                this.userId = JSON.parse(sessionStorage.getItem('id'));
                 console.log(this.userId);
 
                 axios.get('http://localhost:1001/pengguna/' + this.userId)
                     .then(response => {
                         this.currentUser = response.data;
+                        console.log(response.data);
                         console.log(this.currentUser);
                         
                     })
