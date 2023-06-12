@@ -328,9 +328,16 @@ export default {
         },
 
         approveRegistration(){
-            axios.put('http://localhost:1001/urusPendaftaran/' + this.registerId, this.update)
+            this.generateCode();
+            console.log(this.randomCode);
+
+            const update = {
+                pendaftaranLulus: true,
+                kodPengesahan: this.randomCode
+            }
+
+            axios.put('http://localhost:1001/urusPendaftaran/' + this.registerId, update)
             .then(response => {
-                alert('Berjaya didaftarkan!');
                 this.toggleRegister();
             })
             .catch(error => {

@@ -284,19 +284,6 @@ export default {
             const momJSON = JSON.stringify(mom);
             localStorage.setItem('DataIbu', momJSON);  
             
-
-            // axios.post('http://localhost:1001/ibu', mom)
-            // .then(response => {
-            //     console.log(response.data);
-            //     sessionStorage.setItem("idIbu", JSON.stringify(response.data));
-            //     // alert('berjaya')
-            //     // router.push('/registrationForm4');
-            // })
-            // .catch(error => {
-            //     console.error('Error register child info:', error);
-            //     alert("Sijil lahir dah ada");
-
-            // });
         },
 
         uploadAllInfo(){

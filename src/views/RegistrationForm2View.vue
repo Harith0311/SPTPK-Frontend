@@ -236,20 +236,7 @@ export default {
             localStorage.setItem('DataKanak', childJSON);
             alert('berjaya')
             router.push('/registrationForm3');
-            // console.log(child);
-
-            // axios.post('http://localhost:1001/kanak', child)
-            // .then(response => {
-            //     console.log(response.data);
-            //     sessionStorage.setItem("idKanak", JSON.stringify(response.data));
-            //     alert('berjaya')
-            //     router.push('/registrationForm3');
-            // })
-            // .catch(error => {
-            //     console.error('Error register child info:', error);
-            //     alert("Sijil lahir dah ada");
-
-            // });
+            
         }
     }
 }

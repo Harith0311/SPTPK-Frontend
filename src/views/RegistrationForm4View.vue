@@ -5,7 +5,6 @@ import axios from 'axios';
 
 import LogoHeader from '../components/LogoHeader.vue';
 import BlueButton from '../components/BlueButton.vue';
-import SideInput from '../components/SideInput.vue';
 import LightBlueButton from '../components/LightBlueButton.vue';
 
 const decision = ref(null);
@@ -75,6 +74,7 @@ const checkAgreement = () => {
           });
 
         localStorage.clear();
+        router.push('/')
       })
       .catch(error => {
         console.error('Error child registration', error);
