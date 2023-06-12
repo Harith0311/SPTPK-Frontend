@@ -72,7 +72,7 @@
 
 <script>
     import axios from 'axios';
-    import {successAddActivity} from "../stores/index";
+    import {successAddActivity, successUpdateActivity} from "../stores/index";
     import ToastMessage from "../components/ToastMessage.vue";
 
 export default {
@@ -87,14 +87,29 @@ export default {
   mounted() {
     
     this.fetchAktivitiData();
-    console.log(successAddActivity.value);
+    
     if (successAddActivity.value === "created"){
         const message = `Aktiviti berjaya ditambah!`;
         const status = "Berjaya";
         this.$refs.toast.toast(message, status, "success");
 
         successAddActivity.value = "";
-    };
+    } 
+    else if (successUpdateActivity.value === "updated"){
+        const message = `Aktiviti berjaya dikemaskini!`;
+        const status = "Berjaya";
+        this.$refs.toast.toast(message, status, "success");
+
+        successUpdateActivity.value = "";
+    }
+
+    // if (successUpdateActivity.value === "updated"){
+    //     const message = `Aktiviti berjaya dikemaskini!`;
+    //     const status = "Berjaya";
+    //     this.$refs.toast.toast(message, status, "success");
+
+    //     successUpdateActivity.value = "";
+    // };
     
   },
   methods: {

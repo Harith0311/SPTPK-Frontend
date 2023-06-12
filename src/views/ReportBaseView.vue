@@ -50,18 +50,7 @@
                     </table>
                 </div>
 
-                <!-- Pagination -->
-                <!-- <div class="flex justify-center">
-                    <div class="bg-black rounded-full h-auto w-6 m-4">
-                        <h1 class="text-white text-center">1</h1>
-                    </div>
-                    <div class=" rounded-full h-auto w-6 m-4">
-                        <h1>2</h1>
-                    </div>
-                    <div class=" rounded-full h-auto w-6 m-4">
-                        <h1>3</h1>
-                    </div>
-                </div> -->
+            
             </div>
             <div class="bg-green-300 hover:bg-green-400 cursor-pointer p-4 h-[60px] w-full mx-auto mb-10 drop-shadow-lg rounded-2xl text-center font-bold text-lg">
                 Cetak Laporan Kanak Kanak
@@ -94,6 +83,10 @@ export default {
                 .catch(error => {
                 console.error('Error fetching child data:', error);
             });
+        },
+
+        printReport(){
+            
         }
     }
 }

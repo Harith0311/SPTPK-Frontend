@@ -44,6 +44,7 @@
 <script>
 import router from '../router';
 import axios from 'axios';
+import { successUpdateActivity } from '../stores';
 
 export default {
     data() {
@@ -75,7 +76,8 @@ export default {
             axios.put('http://localhost:1001/aktiviti/'+this.activityId, this.activity)
             .then(response => {
                 const updateActivity = response.data;
-                alert('Aktiviti berjaya dikemaskini')
+
+                successUpdateActivity.value = "updated"
                 router.push('/activity');
             })
             .catch(error => {
