@@ -13,7 +13,7 @@ import LightBlueButton from '../components/LightBlueButton.vue';
         <div class="landing text-2xl text-center text-black hover:text-red-600 duration-700 ">
             <h1 class="pt-28 max-md:pt-10 font-bold">SISTEM PENGURUSAN TASKA PERMATA KELUARGA</h1>
         </div>
-        <div class="p-4 px-16 mx-auto mt-5 max-w-2xl block bg-blue-300 bg-opacity-70 h-auto rounded-lg justify-center ">
+        <div class="p-4 px-16 mx-auto mt-5 max-w-2xl block bg-blue-100 bg-opacity-70 h-auto drop-shadow-2xl rounded-lg justify-center ">
             <div class="flex justify-center gap-12 opacity-100">
                 <img src="../assets/permata-logo.png" alt="" class="max-md:hidden h-auto w-16">
                 <img src="../assets/ypk-logo.png" alt="" class="max-md:hidden h-auto w-20">

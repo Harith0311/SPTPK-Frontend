@@ -14,10 +14,10 @@
                     </tr>
             
                     <tr v-for="activity in AktivitiList" v-bind:key="activity.id">
-                        <td class="aktiviti py-1">{{ activity.namaAktiviti }}</td>
-                        <td class="text-center py-1">{{ activity.tahun }}</td>
-                        <td class="text-center py-1">{{ activity.kesukaran }}</td>
-                        <td class="text-center py-1">
+                        <td class="aktiviti py-1 border-b-2 border-gray-100">{{ activity.namaAktiviti }}</td>
+                        <td class="text-center py-1 border-b-2 border-gray-100">{{ activity.tahun }}</td>
+                        <td class="text-center py-1 border-b-2 border-gray-100">{{ activity.kesukaran }}</td>
+                        <td class="text-center py-1 border-b-2 border-gray-100">
                           <RouterLink v-bind:to="`/activity/update/`+activity.id">
                             <i class="fa-solid fa-pen-to-square hover:text-blue-500 px-2" ></i>
                           </RouterLink>
@@ -67,10 +67,13 @@
                     <RouterLink to="/activity/add"><BlueButton>Tambah Aktiviti</BlueButton></RouterLink>
                 </div>
     </div>
+    <ToastMessage ref="toast" />
 </template>
 
 <script>
     import axios from 'axios';
+    import {successAddActivity} from "../stores/index";
+    import ToastMessage from "../components/ToastMessage.vue";
 
 export default {
   data() {
@@ -82,7 +85,16 @@ export default {
     };
   },
   mounted() {
+    
     this.fetchAktivitiData();
+    console.log(successAddActivity.value);
+    if (successAddActivity.value === "created"){
+        const message = `Aktiviti berjaya ditambah!`;
+        const status = "Berjaya";
+        this.$refs.toast.toast(message, status, "success");
+
+        successAddActivity.value = "";
+    };
     
   },
   methods: {
@@ -120,6 +132,6 @@ export default {
             // this.isOpen = !this.isOpen; // Toggle the isOpen property
             console.log(activity)
     }
-  }
+  },
 };
 </script>

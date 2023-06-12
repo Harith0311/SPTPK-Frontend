@@ -22,7 +22,7 @@
             </div>
         </div>
     
-     </transition>]
+     </transition>
     </template>
  </template>
  
@@ -93,7 +93,7 @@
                  this.isVisible = true
                  setTimeout(()=>{
                      this.isVisible = false
-                 }, 2000)
+                 }, 3000)
              }
          }
  

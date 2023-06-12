@@ -244,8 +244,10 @@ export default {
             kanakId: "",
             isOpen: false,
             svgCode: '', 
+            randomCode: '',
             update: {
-                pendaftaranLulus: true
+                pendaftaranLulus: true,
+                kodPengesahan: this.randomCode
             }
         }
     },
@@ -334,6 +336,12 @@ export default {
             .catch(error => {
                 console.error('Error updating registration status', error);
             })
+        },
+
+        generateCode() {
+            // Generate the random code here
+            const code = Math.floor(10000 + Math.random() * 90000);
+            this.randomCode = code.toString();
         },
 
         toggleRegister() {

@@ -28,7 +28,7 @@ import Header from "../components/Header.vue";
                 <RouterView/>
             </div>
 
-            <h3 class="text-lg font-bold mt-5 ml-2 p-3">Aktiviti Hari Ini</h3>
+            <h3 class="text-lg font-bold mt-10 ml-2 p-3">Aktiviti Hari Ini</h3>
             <div class=" mb-10">
                 <div class="flex justify-center mb-5">
                     <button class=" bg-blue-400 rounded-md py-2 px-44 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Melur')"
@@ -309,7 +309,7 @@ import Header from "../components/Header.vue";
 
 <script>
     import axios from 'axios';
-    import {AktivitiList} from "../stores/index";
+    import {AktivitiList, successAddActivity} from "../stores/index";
     import ToastMessage from "../components/ToastMessage.vue";
 
 
@@ -317,6 +317,7 @@ export default {
     components: {
         ToastMessage
     },
+    
   data() {
     return {
         AktivitiList: [],
@@ -337,6 +338,14 @@ export default {
     };
   },
   mounted() {
+
+      console.log(successAddActivity.value);
+    if (successAddActivity.value === "created"){
+        const message = `Aktiviti berjaya ditambah!`;
+        const status = "Berjaya";
+        this.$refs.toast.toast(message, status, "success");
+    };
+
     this.fetchAktivitiData();
     this.fetchAktivitiHariIni();
     this.fetchAktivitiMelur();
@@ -348,6 +357,8 @@ export default {
     this.fetchAktivitiDahlia();
     this.fetchAktivitiLily();
     this.fetchAktivitiTulip();
+
+    
   },
   methods: {
     fetchAktivitiData() {
@@ -367,8 +378,7 @@ export default {
         .then(response => {
           this.AktivitiHariIniList = response.data;
           
-          console.log("disini error");
-          console.log(this.AktivitiHariIniList);
+          
         })
         .catch(error => {
           console.error('Error fetching aktiviti data:', error);
@@ -384,9 +394,7 @@ export default {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
                     return item.kelas === "Melur" && itemDate === today;
                 });
-          console.log(this.AktivitiMelurList);
-          console.log("disini error");
-          console.log(this.AktivitiHariIniList);
+         
         })
         .catch(error => {
           console.error('Error fetching aktiviti data:', error);
@@ -402,9 +410,7 @@ export default {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
                     return item.kelas === "Orkid" && itemDate === today;
                 });
-          console.log(this.AktivitiOrkidList);
-          console.log("disini error");
-          console.log(this.AktivitiHariIniList);
+          
         })
         .catch(error => {
           console.error('Error fetching aktiviti data:', error);
@@ -420,9 +426,7 @@ export default {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
                     return item.kelas === "Rose" && itemDate === today;
                 });
-          console.log(this.AktivitiRoseList);
-          console.log("disini error");
-          console.log(this.AktivitiHariIniList);
+          
         })
         .catch(error => {
           console.error('Error fetching aktiviti data:', error);
@@ -438,9 +442,7 @@ export default {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
                     return item.kelas === "Raya" && itemDate === today;
                 });
-          console.log(this.AktivitiRayaList);
-          console.log("disini error");
-          console.log(this.AktivitiHariIniList);
+          
         })
         .catch(error => {
           console.error('Error fetching aktiviti data:', error);
@@ -456,9 +458,7 @@ export default {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
                     return item.kelas === "Daisy" && itemDate === today;
                 });
-          console.log(this.AktivitiDaisyList);
-          console.log("disini error");
-          console.log(this.AktivitiHariIniList);
+         
         })
         .catch(error => {
           console.error('Error fetching aktiviti data:', error);
@@ -474,9 +474,7 @@ export default {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
                     return item.kelas === "Matahari" && itemDate === today;
                 });
-          console.log(this.AktivitiMatahariList);
-          console.log("disini error");
-          console.log(this.AktivitiHariIniList);
+          
         })
         .catch(error => {
           console.error('Error fetching aktiviti data:', error);
@@ -492,9 +490,7 @@ export default {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
                     return item.kelas === "Dahlia" && itemDate === today;
                 });
-          console.log(this.AktivitiDahliaList);
-          console.log("disini error");
-          console.log(this.AktivitiHariIniList);
+          
         })
         .catch(error => {
           console.error('Error fetching aktiviti data:', error);
@@ -511,9 +507,7 @@ export default {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
                     return item.kelas === "Lily" && itemDate === today;
                 });
-            console.log(this.AktivitiLilyList);
-            console.log("disini error");
-            console.log(this.AktivitiHariIniList);
+            
             })
             .catch(error => {
             console.error('Error fetching aktiviti data:', error);
@@ -529,9 +523,7 @@ export default {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
                     return item.kelas === "Tulip" && itemDate === today;
                 });
-            console.log(this.AktivitiTulipList);
-            console.log("disini error");
-            console.log(this.AktivitiHariIniList);
+            
         })
         .catch(error => {
           console.error('Error fetching aktiviti data:', error);
@@ -556,7 +548,10 @@ export default {
                 });
             console.log("Existing activity" + existingActivities.length);
             if (existingActivities.length >= 4) {
-                alert('You have already uploaded the maximum number of activities for this kelas');
+                const message = `Kelas Bunga ${this.kelasKanak} tidak boleh melebihi 4 aktiviti `;
+                const status = "Gagal";
+                this.$refs.toast.toast(message, status, "error")
+                
                 this.toggleActivity();
                 router.push('/activity')
                 return;
@@ -570,9 +565,11 @@ export default {
 
                 axios.post('http://localhost:1001/aktivitiHariIni', todayActivity)
                     .then(response => {
-                        console.log(response.data);
+                        const message = `Aktiviti berjaya ditambah!`;
+                        const status = "Berjaya";
+                        this.$refs.toast.toast(message, status, "success")
                         
-                        alert('Aktiviti berjaya ditambah!')
+                    
                         this.fetchAktivitiHariIni();
                         this.fetchAktivitiMelur();
                         this.fetchAktivitiOrkid();

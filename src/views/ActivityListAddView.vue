@@ -60,14 +60,19 @@ import { RouterLink } from "vue-router";
             </div>
         </form>
     </div>
+    <ToastMessage ref="toast" />
 </template>
 
 <script>
 import axios from 'axios';
 import router from '../router';
-import {AktivitiList} from "../stores/index";
+import {AktivitiList, successAddActivity} from "../stores/index";
+import ToastMessage from "../components/ToastMessage.vue";
 
 export default {
+    components: {
+        ToastMessage
+    },
     data() {
         return {
             AktivitiList: [],
@@ -96,12 +101,16 @@ export default {
 
             axios.post('http://localhost:1001/aktiviti', aktiviti)
             .then(response => {
-                console.log(response.data);
-                // this.fetchAktivitiData();
-                // alert('Aktiviti berjaya ditambah!');
-                // router.replace('/activity');
-                // location.reload();
+            
+                
+                
                 AktivitiList.value = [...AktivitiList.value, response.data];
+                
+                successAddActivity.value = "created";
+                console.log(successAddActivity.value);
+                // const message = `Aktiviti berjaya ditambah!`;
+                // const status = "Berjaya";
+                // this.$refs.toast.toast(message, status, "success");
                 router.push('/activity');
                 
             })
@@ -114,8 +123,7 @@ export default {
         fetchAktivitiData() {
             axios.get('http://localhost:1001/aktiviti')
                 .then(response => {
-                this.AktivitiList = response.data;
-                console.log(this.AktivitiList);
+                    AktivitiList.value = [...AktivitiList.value, response.data];
                 })
                 .catch(error => {
                 console.error('Error fetching aktiviti data:', error);
