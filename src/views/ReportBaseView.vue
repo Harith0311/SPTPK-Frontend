@@ -151,7 +151,7 @@ export default {
                 </style>
                 </head>
                 <body>
-                <h2>Laporan Kanak Kanak</h2>
+                <h2>Laporan Maklumat Kanak Kanak</h2>
                 <p>TASKA PERMATA KELUARGA TAMAN DESA PERMAI</p>
                 <table>
                     <thead>

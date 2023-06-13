@@ -369,7 +369,7 @@
                 </div>
 
             </div>
-            <div class="bg-blue-400 hover:bg-blue-500 cursor-pointer p-4 h-[60px] w-full mx-auto mb-10 drop-shadow-lg rounded-2xl text-center font-bold text-lg">
+            <div @click="printReport" class="bg-blue-400 hover:bg-blue-500 cursor-pointer p-4 h-[60px] w-full mx-auto mb-10 drop-shadow-lg rounded-2xl text-center font-bold text-lg">
                 Cetak Laporan Aktiviti
             </div>
 
@@ -647,6 +647,103 @@ export default {
                 .catch(error => {
                 console.error('Error fetching data Tulip:', error);
                 });
+        },
+
+        printReport(){
+            // Create a new window for printing
+            const printWindow = window.open('', '_blank','width=800,height=600,top=100,left=100,location=no');
+                
+            // Open a new document in the print window
+            printWindow.document.open();
+
+            let AllActivity = this.AktivitiHariIniList;
+            const date = this.selectedDate;
+
+            AllActivity = AllActivity.filter(item => {
+                const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
+                return itemDate === date;
+            });
+
+
+            const tableRows = AllActivity.map((activity, index) => {
+
+                return `
+                    <tr>
+                        <td style="text-align: center;">${activity.kelas}</td>
+                        <td >${activity.aktiviti.namaAktiviti}</td>
+                        <td style="text-align: center;">${activity.aktiviti.kesukaran}</td>              
+                    </tr>
+                `;
+                
+            }).join('');
+
+            const htmlTemplate =`
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Document</title>
+                    <style>
+                        * {
+                            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                        }
+
+                        table{
+                            margin-left: auto;
+                            margin-right: auto;
+                            width: 80vw;
+                            
+                            border-collapse: collapse;
+                        }
+
+                        table, td, th{
+                            border: 2px solid black;
+                            padding: 5px;
+                        }
+
+                        h2{
+                            text-align: center;
+                            margin-top: 40px;
+                            margin-bottom: -5px;
+                        }
+
+                        p{
+                            font-size: 15px;
+                            font-weight: 600;
+                            text-align: center;
+                            margin-bottom: 30px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h2>Laporan Aktiviti Kanak Kanak</h2>
+                    <p>TASKA PERMATA KELUARGA TAMAN DESA PERMAI</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    
+                                    <th style="width: 10px;">Kelas</th>
+                                    <th style="width: 400px;">Aktiviti</th>
+                                    <th style="width: 100px;">Kesukaran</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${tableRows}
+                            </tbody>
+                        </table>
+                        <p>Tarikh Aktiviti dilakukan: ${this.selectedDate}</p>
+                </body>
+            `;
+
+            // Write the HTML template to the print window document
+            printWindow.document.write(htmlTemplate);
+
+            // Close the print document
+            printWindow.document.close();
+
+            // Print the document
+            printWindow.print();
+
         },
 
         getTodayDate() {
