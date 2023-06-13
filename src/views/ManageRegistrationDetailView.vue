@@ -201,7 +201,7 @@ import CanvasQR from "../components/CanvasQR.vue";
     class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50" 
     v-bind:class="{'hidden': !isSuccess}">
         <dialog
-            class="z-10 w-5/6 bg-white absolute h-fit top-16 overflow-auto px-3 pt-4 rounded-xl"
+            class="z-10 w-5/6 bg-white absolute h-fit top-3 overflow-auto px-3 pt-4 rounded-xl"
             v-bind:open="isSuccess"
         >
             <div class="bg-green-300 rounded-lg m-4 p-2">
@@ -215,6 +215,9 @@ import CanvasQR from "../components/CanvasQR.vue";
                 ref="canvasQR"
                 />
             <h2 class="font-medium text-lg text-center mb-5 p-2">{{kanak.namaKanak}}</h2>
+            <div class="flex justify-center">
+                <h2 class="font-medium text-base text-center mx-8 mb-5 p-1 bg-green-300 rounded-3xl w-1/4">Kod Pengesahan: {{randomCode}}</h2>
+            </div>
             <div class="flex justify-center">
                 <button class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg" @click="printQRcode">Cetak Kod QR</button>
                 <button class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg" @click="pushToList">Selesai</button>

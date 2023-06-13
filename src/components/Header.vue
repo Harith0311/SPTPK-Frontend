@@ -12,7 +12,13 @@
              </div>
          </div>
          <div class="flex my-auto mr-4">
-             <img class="w-10 h-10 rounded-full mx-3  border-solid border-2 border-black" src="../assets/hacker.png" alt="">
+            <template v-if="currentUser.peranan === 'Staf Taska'">
+                <img class="w-10 h-10 rounded-full mx-3  border-solid border-2 border-black" src="../assets/staff.png" alt="">
+            </template>
+            <template v-else>
+                <img class="w-10 h-10 rounded-full mx-3  border-solid border-2 border-black" src="../assets/parent.png" alt="">
+            </template>
+             
              <div>
                 <div class="info-name px-2 font-bold max-md:hidden">{{currentUser.nama}}</div>
                 <p class="info-name text-sm text-blue-900 px-2 font-normal max-md:hidden">{{ currentUser.peranan }}</p>
