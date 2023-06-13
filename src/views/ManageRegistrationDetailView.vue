@@ -179,7 +179,9 @@ import CanvasQR from "../components/CanvasQR.vue";
 
                 <!-- Button -->
                 <div class="flex justify-center my-4">
-                    <button class="bg-blue-200 py-2 px-6 m-4 mx-6 rounded-xl drop-shadow-xl font-semibold hover:bg-blue-100">
+                    <button 
+                    class="bg-blue-200 py-2 px-6 m-4 mx-6 rounded-xl drop-shadow-xl font-semibold hover:bg-blue-100"
+                    @click="toggleReject">
                         Tolak Permohonan
                     </button>
                     <button 
@@ -194,10 +196,13 @@ import CanvasQR from "../components/CanvasQR.vue";
     <!-- <svg ref="CanvasQR" v-bind:kanakId="kanakId" :key="kanakId" class="mx-auto"></svg> -->
     
     <!-- User prompt to generate and print QR code -->
-    <div id="overlay" class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50" v-bind:class="{'hidden': !isOpen}">
+    <div 
+    id="overlay" 
+    class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50" 
+    v-bind:class="{'hidden': !isSuccess}">
         <dialog
             class="z-10 w-5/6 bg-white absolute h-fit top-16 overflow-auto px-3 pt-4 rounded-xl"
-            v-bind:open="isOpen"
+            v-bind:open="isSuccess"
         >
             <div class="bg-green-300 rounded-lg m-4 p-2">
                 <h2 class="font-bold text-xl text-center pt-3">Permohonan Berjaya!</h2>
@@ -214,6 +219,30 @@ import CanvasQR from "../components/CanvasQR.vue";
                 <button class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg" @click="printQRcode">Cetak Kod QR</button>
                 <button class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg" @click="pushToList">Selesai</button>
             </div>
+            <button @click="toggleSuccess" class="bg-red-300 ml-2 p-1 px-10 rounded-md">Batal</button>
+        </dialog>
+    </div>  
+    <!-- End of prompt -->
+
+    <!-- User prompt to confirm reject registration -->
+    <div 
+    id="overlay" 
+    class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50" 
+    v-bind:class="{'hidden': !isReject}">
+        <dialog
+            class="z-10 w-2/6 bg-white absolute h-fit top-56 overflow-auto px-3 pt-4 rounded-xl"
+            v-bind:open="isReject"
+        >
+            <div class="bg-red-300 rounded-lg m-4 p-2">
+                <h2 class="font-bold text-xl text-center  ">Tolak Permohonan?</h2>
+                
+            </div>
+                
+            <p class="font-medium text-sm text-center p-6 ">Anda pasti untuk menolak permohonan pendaftaran {{ kanak.namaKanak }} ?</p>
+            <div class="flex justify-center">
+                <button class="bg-blue-200 w-2/6 p-1 mx-8 rounded-lg" @click="toggleReject">Batal</button>
+                <button class="bg-blue-200 w-2/6 p-1 mx-8 rounded-lg" @click="rejectRegistration">Sahkan</button>
+            </div>
         </dialog>
     </div>  
     <!-- End of prompt -->
@@ -221,6 +250,7 @@ import CanvasQR from "../components/CanvasQR.vue";
     <div class="bg-black text-center text-white p-4 py-1">
         <h4>All rights reserved</h4>
     </div>
+    <ToastMessage ref="toast" />
 </template>
 
 <script>
@@ -229,6 +259,8 @@ import CanvasQR from "../components/CanvasQR.vue";
     import { RouterLink } from "vue-router";
     import router from "../router";
     import QRCode from "qrcode";
+    import { rejectRegister } from '../stores'
+    import ToastMessage from "../components/ToastMessage.vue";
     import html2canvas from 'html2canvas';
 
     
@@ -242,7 +274,8 @@ export default {
             bapa: "",
             ibu: "",
             kanakId: "",
-            isOpen: false,
+            isSuccess: false,
+            isReject: false,
             svgCode: '', 
             randomCode: '',
             update: {
@@ -338,10 +371,24 @@ export default {
 
             axios.put('http://localhost:1001/urusPendaftaran/' + this.registerId, update)
             .then(response => {
-                this.toggleRegister();
+                this.toggleSuccess();
             })
             .catch(error => {
                 console.error('Error updating registration status', error);
+            })
+        },
+
+        async rejectRegistration(){
+
+            axios.delete('http://localhost:1001/urusPendaftaran/' + this.registerId)
+            .then(response => {
+                // const message = `Rekod Pendaftaran Telah Dipadam!`;
+                // const status = "Info";
+                // this.$refs.toast.toast(message, status, "info");
+
+                rejectRegister.value = "rejected";
+
+                router.push('/manageRegister');
             })
         },
 
@@ -351,8 +398,12 @@ export default {
             this.randomCode = code.toString();
         },
 
-        toggleRegister() {
-            this.isOpen = !this.isOpen;
+        toggleSuccess() {
+            this.isSuccess = !this.isSuccess;
+        },
+
+        toggleReject() {
+            this.isReject = !this.isReject;
         },
 
             printQRcode() {

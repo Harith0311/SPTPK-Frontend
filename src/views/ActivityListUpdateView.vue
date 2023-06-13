@@ -77,7 +77,7 @@ export default {
             .then(response => {
                 const updateActivity = response.data;
 
-                successUpdateActivity.value = "updated"
+                successUpdateActivity.value = "updated";
                 router.push('/activity');
             })
             .catch(error => {

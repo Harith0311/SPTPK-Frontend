@@ -81,18 +81,18 @@
                 type="text"
             />
     
-            <h5 class="pengesahan text-right font-medium text-xs">* Dapatkan kod pengesahan melalui emel yang dihantar oleh pihak TASKA</h5>
-            <TopLabel textLabel="Gambar Profil"/>
+            <h5 class="pengesahan text-right font-medium text-xs mb-10">* Dapatkan kod pengesahan melalui emel yang dihantar oleh pihak TASKA</h5>
+            <!-- <TopLabel textLabel="Gambar Profil"/> -->
             <!-- <input type="file" class="file:block file:bg-orang file:rounded-full file:w-10 file:h-10 file:cursor-pointer "> -->
             
     
-            <div class="upload m-4">
+            <!-- <div class="upload m-4">
                 <img src="../assets/hacker.png" width = 100 height = 100>
                 <div class="round">
                     <input type="file">
                     <img src="../assets/camera.png" width = 150 height = 150>
                 </div>
-            </div>
+            </div> -->
             <BlueButton>Daftar Masuk</BlueButton>
         </form>
     </div>

@@ -58,11 +58,13 @@ import Header from "../components/Header.vue";
     <div class="bg-black text-center text-white p-1">
         <h4>All rights reserved</h4>
     </div>
-
+    <ToastMessage ref="toast" />
 </template>
 
 <script>
     import axios from 'axios';
+    import { rejectRegister } from '../stores';
+    import ToastMessage from "../components/ToastMessage.vue";
 
     export default {
         data() {
@@ -74,6 +76,14 @@ import Header from "../components/Header.vue";
 
         mounted() {
             this.fetchRegistrationList();
+
+            if (rejectRegister.value === "rejected"){
+                const message = `Rekod Pendaftaran Telah Dipadam!`;
+                const status = "Info";
+                this.$refs.toast.toast(message, status, "info");
+
+                rejectRegister.value = "";
+            } 
         },
 
         methods: {

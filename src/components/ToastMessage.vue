@@ -10,7 +10,8 @@
                 <!-- Add appropriate icon based on the status -->
                 <i v-if="type === 'success'" class="fa-solid fa-circle-check text-3xl Z text-black"></i>
                 <i v-else-if="type === 'error'" class="fa-solid fa-circle-xmark text-3xl text-red-500"></i>
-                <i v-else class="fa-solid fa-circle-check text-3xl"></i>
+                <i v-else class="fa-sharp fa-solid fa-circle-info text-3xl "></i>
+                
               </span>
               <div class="ml-2">
                 <!-- Display the status text -->
@@ -77,7 +78,7 @@
                      {
                          'bg-[#69d67b]': this.type==='success',
                          'bg-[#ffd0cb]': this.type === 'error',
-                         'bg-green-400 ': this.type === 'info' 
+                         'bg-[#fceec7] ': this.type === 'info' 
                      },
                  ]
              }
