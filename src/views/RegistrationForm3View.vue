@@ -8,7 +8,7 @@
 </script>
 
 <template>
-    <div class="registration bg-slate-400 h-full font-bold pb-4 ">
+    <div class="registration w-screen bg-slate-400 h-full font-bold pb-4 ">
         <LogoHeader></LogoHeader>
         <div class="container m-4 pb-7 mx-auto max-w-5xl bg-blue-100 w-auto drop-shadow-2xl rounded-2xl ">
             <form v-on:submit.prevent="uploadAllInfo" >

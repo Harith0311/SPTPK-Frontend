@@ -8,7 +8,7 @@
 </script>
 <template>
     
-    <div class="register p-5 bg-blue-50 min-h-screen w-100 max-h-full font-bold text-center" v-on:submit.prevent="register">
+    <div class="register p-5 bg-blue-50 w-screen min-h-screen w-100 max-h-full font-bold text-center" v-on:submit.prevent="register">
         <LogoHeader></LogoHeader>
         <form v-on:submit.prevent="createNewUser" class="container px-12 m-4 p-8 mx-auto drop-shadow-2xl max-w-3xl bg-blue-100 w-auto rounded-2xl">
             <div class="flex justify-start">

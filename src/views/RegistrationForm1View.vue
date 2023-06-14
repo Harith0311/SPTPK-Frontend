@@ -6,7 +6,7 @@
 </script>
 
 <template>
-    <div class="registration bg-slate-400 h-full pb-12 font-bold ">
+    <div class="registration bg-slate-400 w-screen h-screen pb-12 font-bold ">
         <LogoHeader></LogoHeader>
         <div class="container m-4 pb-7 mx-auto max-w-5xl bg-blue-100 w-auto drop-shadow-2xl rounded-2xl">
             <div >

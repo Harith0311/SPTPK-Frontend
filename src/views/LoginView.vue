@@ -7,7 +7,7 @@ import LogoHeader from "../components/LogoHeader.vue";
 
 <template>
     <div
-        class="login p-5 bg-blue-50 min-h-screen w-100 max-h-full font-bold text-center"
+        class="login p-5 bg-blue-50 w-screen min-h-screen w-100 max-h-full font-bold text-center"
     >
         <LogoHeader></LogoHeader>
         <form

@@ -215,8 +215,17 @@ import CanvasQR from "../components/CanvasQR.vue";
                 ref="canvasQR"
                 />
             <h2 class="font-medium text-lg text-center mb-5 p-2">{{kanak.namaKanak}}</h2>
+
+            <a v-bind:href="`https://api.whatsapp.com/send/?phone=${kanak.telefonPenjaga}&text=${text}&type=phone_number&app_absent=0`">
+                <div class="flex justify-center">
+                    <h2 class="font-medium text-base text-center mx-8 mb-5 p-1 bg-green-300 hover:bg-green-400 rounded-3xl w-1/4">Kod Pengesahan: {{randomCode}}</h2>
+                </div>
+            </a>
             <div class="flex justify-center">
-                <h2 class="font-medium text-base text-center mx-8 mb-5 p-1 bg-green-300 rounded-3xl w-1/4">Kod Pengesahan: {{randomCode}}</h2>
+                <div class="flex justify-between  bg-gray-200 p-2 w-3/5  rounded-lg mb-5">
+                    <p class="text-sm p-2 text-justify mx-3 mr-10 ">Sila tekan butang di atas untuk menghantar maklumat kod pengesahan kepada penjaga kanak kanak melalui platform whatsapp</p>
+                    <img class="h-auto w-10 m-2 mx-4" src="../assets/whatsapp.png" alt="">
+                </div>
             </div>
             <div class="flex justify-center">
                 <button class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg" @click="printQRcode">Cetak Kod QR</button>
@@ -281,6 +290,7 @@ export default {
             isReject: false,
             svgCode: '', 
             randomCode: '',
+            text: '',
             update: {
                 pendaftaranLulus: true,
                 kodPengesahan: this.randomCode
@@ -399,6 +409,9 @@ export default {
             // Generate the random code here
             const code = Math.floor(10000 + Math.random() * 90000);
             this.randomCode = code.toString();
+
+            this.text=`Hai,Saya wakil daripada Taska Permata Keluarga Taman Desa Permai ingin memaklumkan pendaftaran anak Tuan/Puan telah diterima. Sehubungan dengan itu, Tuan/Puan dikehendaki untuk menggunakan kod pengesahan yang diberikan ini untuk mendaftar akaun pada Sistem Pengurusan Taska Permata Keluarga. Kod pengesahan anda adalah ${this.randomCode}. Terima Kasih`
+            
         },
 
         toggleSuccess() {
@@ -479,7 +492,7 @@ export default {
                         <body>
                             <div class="cover">
                                 <div class="satu">
-                                    <img src="../assets/permata-logo.png" alt="">
+                                    <img src="/permata-logo.png" alt="">
                                     <h1>Kod QR Kehadiran</h1>
                                     <h3>Harith bin Ismail</h3>
                                     <img src="${canvas.toDataURL('image/png')}" alt="" style="width: 250px; height: auto;">

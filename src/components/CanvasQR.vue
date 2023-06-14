@@ -22,7 +22,7 @@ export default {
         QRCode.toCanvas(
             this.$refs.canvasQR,
             this.kanakId,
-            { width: 350, height: 350 },
+            { width: 200, height: 200 },
             function (error) {
                 if (error) console.error(error);
             }

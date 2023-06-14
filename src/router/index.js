@@ -60,6 +60,12 @@ const router = createRouter({
         },
 
         {
+            path: "/homePageParent",
+            name: "homePageParent",
+            component: () => import("../views/ParentHomeView.vue"),
+        },
+
+        {
             path: "/manageRegister",
             name: "manageRegister",
             component: () => import("../views/ManageRegistrationView.vue"),
@@ -110,6 +116,7 @@ const router = createRouter({
                 },
             ],
         },
+
         {
             path: "/report",
             name: "report",
@@ -132,6 +139,33 @@ const router = createRouter({
                     // name: "activity",
                     component: () =>
                         import("../views/ReportActivityView.vue"),
+                }
+                
+            ]
+        },
+
+        {
+            path: "/reportParent",
+            name: "reportParent",
+            component: () => import("../views/ParentReportView.vue"),
+            children: [
+                {
+                    path: "",
+                    // name: "base",
+                    component: () =>
+                        import("../views/ParentReportBaseView.vue"),
+                },
+                {
+                    path: "attendance",
+                    // name: "attendance",
+                    component: () =>
+                        import("../views/ParentReportAttendanceView.vue"),
+                },
+                {
+                    path: "activity",
+                    // name: "activity",
+                    component: () =>
+                        import("../views/ParentReportActivityView.vue"),
                 }
                 
             ]
