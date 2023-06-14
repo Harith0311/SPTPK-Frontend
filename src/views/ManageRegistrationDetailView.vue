@@ -216,7 +216,7 @@ import CanvasQR from "../components/CanvasQR.vue";
                 />
             <h2 class="font-medium text-lg text-center mb-5 p-2">{{kanak.namaKanak}}</h2>
 
-            <a v-bind:href="`https://api.whatsapp.com/send/?phone=${kanak.telefonPenjaga}&text=${text}&type=phone_number&app_absent=0`">
+            <a target="_blank" v-bind:href="`https://api.whatsapp.com/send/?phone=${kanak.telefonPenjaga}&text=${text}&type=phone_number&app_absent=0`">
                 <div class="flex justify-center">
                     <h2 class="font-medium text-base text-center mx-8 mb-5 p-1 bg-green-300 hover:bg-green-400 rounded-3xl w-1/4">Kod Pengesahan: {{randomCode}}</h2>
                 </div>
