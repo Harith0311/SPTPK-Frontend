@@ -40,7 +40,7 @@ import TopLabel from "../components/TopLabel.vue";
 
             <RouterLink to="/OTPInput">
                 <BlueButton>Hantar PIN</BlueButton>
-            </RouterLink>
+            </RouterLink> 
         </form>
     </div>
 </template>

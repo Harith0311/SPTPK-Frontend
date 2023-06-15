@@ -18,6 +18,7 @@ import LightBlueButton from '../components/LightBlueButton.vue';
                 <img src="../assets/permata-logo.png" alt="" class="max-md:hidden h-auto w-16">
                 <img src="../assets/ypk-logo.png" alt="" class="max-md:hidden h-auto w-20">
             </div>
+            
                 <RouterLink to="/register">
                     <ul class="bg-blue-400 opacity-100 rounded-md p-2 px-20 drop-shadow-lg hover:scale-[1.02] transform transition duration-300 ease-in-out m-5 text-center font-semibold ">
                         <button>Daftar Masuk</button>

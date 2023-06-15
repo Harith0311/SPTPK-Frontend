@@ -19,6 +19,7 @@ import LogoHeader from "../components/LogoHeader.vue";
                     <button class="bg-blue-100 p-2 px-5 text-base font-bold hover:text-zinc-600"><i class="fa-solid fa-caret-left px-2 "></i>Kembali</button>
                 </RouterLink>
             </div>
+            
             <h1 class="h1 text-2xl">SELAMAT DATANG!</h1>
 
             <h5 class="h5 font-normal mb-8">

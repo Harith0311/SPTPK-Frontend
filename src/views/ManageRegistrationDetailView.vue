@@ -231,6 +231,7 @@ import CanvasQR from "../components/CanvasQR.vue";
                 <button class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg" @click="printQRcode">Cetak Kod QR</button>
                 <button class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg" @click="pushToList">Selesai</button>
             </div>
+            
             <button @click="toggleSuccess" class="bg-red-300 ml-2 p-1 px-10 rounded-md">Batal</button>
         </dialog>
     </div>  

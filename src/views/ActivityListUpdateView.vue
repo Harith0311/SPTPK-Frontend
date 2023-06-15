@@ -27,6 +27,7 @@
                 </tr>
                
             </table>
+            
             <div class="w-1/3 mx-auto">
                 <BlueButton>Kemaskini Aktiviti</BlueButton>
             </div>
