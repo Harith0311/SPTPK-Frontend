@@ -41,7 +41,7 @@
                             <tr v-for="(child, index) in ChildList" v-bind:key="child.id" class="border-solid border-b-2 border-[#c7fcda]">
                                 <td class="text-center p-2">{{ index + 1 }}</td>
                                 <td class="p-2">{{child.namaKanak}}</td>
-                                <td class="text-center p-2">{{child.umur}}</td>
+                                <td class="text-center p-2">{{ child.ageYears }} tahun {{ child.ageMonths }} bulan</td>
                                 <td class="text-center p-2">{{child.sijilLahir}}</td>
                                 <td class="text-center p-2">{{child.jantina}}</td>
                                 <td class="text-center p-2">{{child.bangsa}}</td>
@@ -69,6 +69,8 @@ export default {
     data() {
         return {
             ChildList: [],
+            birthDate: [],
+            age: [],
         }
     },
 
@@ -80,11 +82,45 @@ export default {
             axios.get('http://localhost:1001/kanak')
                 .then(response => {
                 this.ChildList = response.data;
+                this.calculateAge();
+                
+                // this.birthDate = this.ChildList[0].tarikhLahir;
+                // console.log(this.birthDate);
                 console.log(this.ChildList);
                 })
                 .catch(error => {
                 console.error('Error fetching child data:', error);
             });
+
+            
+            
+        },
+
+        calculateAge() {
+            if (this.ChildList.length > 0) {
+                const today = new Date();
+                this.ChildList.forEach((child) => {
+                    const birthDate = new Date(child.tarikhLahir);
+                    const yearDiff = today.getFullYear() - birthDate.getFullYear();
+                    const monthDiff = today.getMonth() - birthDate.getMonth();
+                    const dayDiff = today.getDate() - birthDate.getDate();
+
+                    let ageYears = yearDiff;
+                    let ageMonths = monthDiff;
+
+                    if (dayDiff < 0) {
+                    ageMonths -= 1;
+                    }
+
+                    if (ageMonths < 0) {
+                    ageYears -= 1;
+                    ageMonths += 12;
+                    }
+
+                    child.ageYears = ageYears;
+                    child.ageMonths = ageMonths;
+                });
+            }
         },
 
         printReport(){

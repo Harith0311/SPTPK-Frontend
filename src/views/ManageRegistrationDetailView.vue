@@ -66,7 +66,7 @@ import CanvasQR from "../components/CanvasQR.vue";
                         </div>
                         <div class=" flex my-1">
                             <i class="fa-solid fa-calendar p-1"></i>
-                            <h3 class="ml-4">{{kanak.umur}}</h3>
+                            <h3 class="ml-4">{{ kanak.ageYears }} tahun {{ kanak.ageMonths }} bulan</h3>
                         </div>
                         <div class=" flex my-1">
                             <i class="fa-solid fa-venus-mars p-1"></i>
@@ -315,6 +315,7 @@ export default {
                     axios.get('http://localhost:1001/kanak/' + this.kanakId)
                     .then(response => {
                     this.kanak = response.data;
+                    this.calculateAge();
                     console.log(this.kanak);
                     })
 
@@ -372,6 +373,34 @@ export default {
             const year = date.getFullYear();
     
             return `${day}/${month}/${year}`;
+        },
+
+        calculateAge() {
+            const today = new Date();
+
+  if (this.kanak && typeof this.kanak === 'object') {
+    const birthDate = new Date(this.kanak.tarikhLahir);
+    const yearDiff = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    const dayDiff = today.getDate() - birthDate.getDate();
+
+    let ageYears = yearDiff;
+    let ageMonths = monthDiff;
+
+    if (dayDiff < 0) {
+      ageMonths -= 1;
+    }
+
+    if (ageMonths < 0) {
+      ageYears -= 1;
+      ageMonths += 12;
+    }
+
+    this.kanak.ageYears = ageYears;
+    this.kanak.ageMonths = ageMonths;
+  }
+           
+   
         },
 
         approveRegistration(){

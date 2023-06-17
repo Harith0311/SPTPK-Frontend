@@ -15,7 +15,7 @@
                 <i class="fa-regular fa-calendar-check text-5xl text-black py-2"></i>
                 <h1 class="text-center text-black p-5 font-bold ml-1">Kehadiran</h1>
             </RouterLink>
-            
+
             <!-- Button Report Aktiviti -->
             <RouterLink to="/reportParent/activity" class="flex  bg-blue-300 hover:bg-blue-400 p-8 w-2/5 mt-10 m-4 rounded-2xl justify-center cursor-pointer drop-shadow-2xl">
                 <i class="fa-solid fa-rocket text-5xl py-2"></i>
