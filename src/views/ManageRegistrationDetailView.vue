@@ -574,13 +574,22 @@ export default {
                 }
 
                 console.log(this.kelasKanak);
-
+                // Update kelas dalam jadual UrusPendaftaran
                 axios.put('http://localhost:1001/urusPendaftaran/' + this.registerId, update)
-                .then(response => {
-                    router.push('/manageRegister');
-                })
-                .catch(error => {
-                    console.error('Error updating registration status', error);
+                    .then(response => {
+                        // Update kelas kanak kanak dalam jadual DaftarKanak
+                        axios.put('http://localhost:1001/kanak/' + this.kanakId, update)
+                            .then(response => {
+                                router.push('/manageRegister');
+                            })
+                            .catch(error => {
+                                console.error('Error updating registration status', error);
+                            })
+                        // Kembali kepada senarai pendaftaran
+                        router.push('/manageRegister');
+                    })
+                    .catch(error => {
+                        console.error('Error updating registration status', error);
                 })
                 
             }

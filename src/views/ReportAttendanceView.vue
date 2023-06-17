@@ -37,6 +37,7 @@
                                 <th class="w-auto bg-orange-200">Bil.</th>
                                 <th class="bg-orange-200 ">Nama</th>
                                 <th class="bg-orange-200 ">Umur</th>
+                                <th class="bg-orange-200 ">Kelas</th>
                                 <th class="bg-orange-200 ">Jantina</th>
                                 <th class="bg-orange-200 ">Kehadiran</th>
                             </tr>
@@ -45,7 +46,8 @@
                             <tr v-for="(child, index) in ChildList" v-bind:key="child.id" class="border-solid border-b-2 border-[#fcdebb] ">
                                 <td class="text-center p-2">{{ index + 1 }}</td>
                                 <td class="p-2">{{child.namaKanak}}</td>
-                                <td class="text-center p-2">{{child.umur}}</td>                      
+                                <td class="text-center p-2">{{ child.ageYears }} tahun {{ child.ageMonths }} bulan</td> 
+                                <td class="text-center p-2">{{child.kelas}}</td>                    
                                 <td class="text-center p-2">{{child.jantina}}</td>
                                 <template v-if="AttendanceList.length > 0">
                                     <template v-for="attendance in AttendanceList" v-bind:key="attendance.kanakId">
@@ -113,11 +115,40 @@ export default {
             axios.get('http://localhost:1001/kanak')
                 .then(response => {
                 this.ChildList = response.data;
+                this.calculateAge();
+
                 console.log(this.ChildList);
                 })
                 .catch(error => {
                 console.error('Error fetching child data:', error);
             });
+        },
+
+        calculateAge() {
+            if (this.ChildList.length > 0) {
+                const today = new Date();
+                this.ChildList.forEach((child) => {
+                    const birthDate = new Date(child.tarikhLahir);
+                    const yearDiff = today.getFullYear() - birthDate.getFullYear();
+                    const monthDiff = today.getMonth() - birthDate.getMonth();
+                    const dayDiff = today.getDate() - birthDate.getDate();
+
+                    let ageYears = yearDiff;
+                    let ageMonths = monthDiff;
+
+                    if (dayDiff < 0) {
+                    ageMonths -= 1;
+                    }
+
+                    if (ageMonths < 0) {
+                    ageYears -= 1;
+                    ageMonths += 12;
+                    }
+
+                    child.ageYears = ageYears;
+                    child.ageMonths = ageMonths;
+                });
+            }
         },
 
         getTodayDate() {
@@ -181,7 +212,8 @@ export default {
                 <tr>
                 <td class="text-center p-2">${index + 1}</td>
                 <td class="p-2">${child.namaKanak}</td>
-                <td class="text-center p-2">${child.umur}</td>
+                <td class="text-center p-2">${ child.ageYears } tahun ${ child.ageMonths } bulan</td>
+                <td class="text-center p-2">${child.kelas}</td>
                 <td class="text-center p-2">${child.jantina}</td>
                 ${attendanceCell}
                 </tr>
@@ -235,6 +267,7 @@ export default {
                         <th class="w-auto bg-orange-200">Bil.</th>
                         <th class="bg-orange-200">Nama</th>
                         <th class="bg-orange-200">Umur</th>
+                        <th class="bg-orange-200">Kelas</th>
                         <th class="bg-orange-200">Jantina</th>
                         <th class="bg-orange-200">Kehadiran</th>
                     </tr>

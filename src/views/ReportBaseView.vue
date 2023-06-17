@@ -32,6 +32,7 @@
                                 <th class="w-auto bg-green-200">Bil.</th>
                                 <th class="">Nama</th>
                                 <th class="bg-green-200">Umur</th>
+                                <th class="bg-green-200">Kelas</th>
                                 <th class="bg-green-200">Sijil Lahir</th>
                                 <th class="bg-green-200">Jantina</th>
                                 <th class="bg-green-200">Bangsa</th>
@@ -42,6 +43,7 @@
                                 <td class="text-center p-2">{{ index + 1 }}</td>
                                 <td class="p-2">{{child.namaKanak}}</td>
                                 <td class="text-center p-2">{{ child.ageYears }} tahun {{ child.ageMonths }} bulan</td>
+                                <td class="text-center p-2">{{child.kelas}}</td>
                                 <td class="text-center p-2">{{child.sijilLahir}}</td>
                                 <td class="text-center p-2">{{child.jantina}}</td>
                                 <td class="text-center p-2">{{child.bangsa}}</td>
@@ -140,7 +142,8 @@ export default {
                 <tr>
                 <td style="text-align: center;">${index + 1}</td>
                 <td>${child.namaKanak}</td>
-                <td style="text-align: center;">${child.umur}</td>
+                <td class="text-center p-2">${ child.ageYears } tahun ${ child.ageMonths } bulan</td>
+                <td style="text-align: center;">${child.kelas}</td>
                 <td style="text-align: center;">${child.sijilLahir}</td>
                 <td style="text-align: center;">${child.jantina}</td>
                 <td style="text-align: center;">${child.bangsa}</td>
@@ -194,7 +197,8 @@ export default {
                     <tr>
                         <th style="width: 20px;">Bil.</th>
                         <th>Nama</th>
-                        <th style="width: 70px;">Umur</th>
+                        <th style="width: 120px;">Umur</th>
+                        <th style="width: 100px;">Kelas</th>
                         <th style="width: 140px;">Sijil Lahir</th>
                         <th style="width: 100px;">Jantina</th>
                         <th style="width: 100px;">Bangsa</th>
