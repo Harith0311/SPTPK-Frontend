@@ -573,12 +573,17 @@ export default {
                     kelas: this.kelasKanak
                 }
 
+                const updateKanak = {
+                    kelas: this.kelasKanak,
+                    kodPengesahan: this.randomCode,
+                }
+
                 console.log(this.kelasKanak);
                 // Update kelas dalam jadual UrusPendaftaran
                 axios.put('http://localhost:1001/urusPendaftaran/' + this.registerId, update)
                     .then(response => {
                         // Update kelas kanak kanak dalam jadual DaftarKanak
-                        axios.put('http://localhost:1001/kanak/' + this.kanakId, update)
+                        axios.put('http://localhost:1001/kanak/' + this.kanakId, updateKanak)
                             .then(response => {
                                 router.push('/manageRegister');
                             })

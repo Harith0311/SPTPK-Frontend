@@ -38,7 +38,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(child, index) in ChildList" v-bind:key="child.id" class="border-solid border-b-2 border-[#c7fcda]">
+                            <tr class="border-solid border-b-2 border-[#c7fcda]">
                                 <td class="text-center p-2">{{ index + 1 }}</td>
                                 <td class="p-2">{{child.namaKanak}}</td>
                                 <td class="text-center p-2">{{child.umur}}</td>
@@ -68,24 +68,55 @@ import html2pdf from 'html2pdf.js';
 export default {
     data() {
         return {
-            ChildList: [],
+            child: '',
+            userId: '',
+            code: '',
+            kanakId: '',
+            kanak: '',
         }
     },
 
     mounted() {
+        this.fetchCurrentUser();
         this.fetchChildData();
+        
     },
     methods: {
         fetchChildData(){
-            axios.get('http://localhost:1001/kanak')
+            
+            axios.get('http://localhost:1001/urusPendaftaran')
                 .then(response => {
-                this.ChildList = response.data;
-                console.log(this.ChildList);
+                this.child = response.data.filter(item => {
+                    return item.kodPengesahan === this.code ;
+                });
+                console.log(this.child);
                 })
                 .catch(error => {
                 console.error('Error fetching child data:', error);
             });
+
+            this.kanakId = this.child.kanak.id;
+            console.log(this.kanakId);
         },
+
+        fetchCurrentUser() {
+                this.userId = JSON.parse(sessionStorage.getItem('id'));
+                console.log(this.userId);
+
+                axios.get('http://localhost:1001/pengguna/' + this.userId)
+                    .then(response => {
+                        this.currentUser = response.data;
+                        this.code = response.data.kodPengesahan;
+                        console.log(this.code);
+                        console.log(response.data);
+                        console.log(this.currentUser);
+                        
+                    })
+                    .catch(error => {
+                        console.error('Error fetching registration data:', error);
+                    });
+
+            },
 
         printReport(){
 
