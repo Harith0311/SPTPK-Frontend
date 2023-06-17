@@ -216,6 +216,27 @@ import CanvasQR from "../components/CanvasQR.vue";
                 />
             <h2 class="font-medium text-lg text-center mb-5 p-2">{{kanak.namaKanak}}</h2>
 
+            <div class="flex justify-center">
+                <h2 class="my-2 mr-4">Kelas: </h2>
+                <div>
+                    <select 
+                        v-model="kelasKanak"
+                        name="kelas" 
+                        id="kelas" 
+                        class="bg-gray-200 rounded-md my-2">
+                            <option selected disabled>Sila Pilih Kelas</option>
+                            <option value="Orkid">Orkid</option>
+                            <option value="Raya">Raya</option>
+                            <option value="Daisy">Daisy</option>
+                            <option value="Matahari">Matahari</option>
+                            <option value="Dahlia">Dahlia</option>
+                            <option value="Lily">Lily</option>
+                            <option value="Tulip">Tulip</option>
+                            <option value="Melur">Melur</option>
+                    </select>  
+                </div>
+            </div>
+
             <a target="_blank" v-bind:href="`https://api.whatsapp.com/send/?phone=${kanak.telefonPenjaga}&text=${text}&type=phone_number&app_absent=0`">
                 <div class="flex justify-center">
                     <h2 class="font-medium text-base text-center mx-8 mb-5 p-1 bg-green-300 hover:bg-green-400 rounded-3xl w-1/4">Kod Pengesahan: {{randomCode}}</h2>
@@ -292,9 +313,11 @@ export default {
             svgCode: '', 
             randomCode: '',
             text: '',
+            kelasKanak:'',
             update: {
                 pendaftaranLulus: true,
-                kodPengesahan: this.randomCode
+                kodPengesahan: this.randomCode,
+                kelas: this.kelasKanak
             }
         }
     },
@@ -378,28 +401,28 @@ export default {
         calculateAge() {
             const today = new Date();
 
-  if (this.kanak && typeof this.kanak === 'object') {
-    const birthDate = new Date(this.kanak.tarikhLahir);
-    const yearDiff = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    const dayDiff = today.getDate() - birthDate.getDate();
+            if (this.kanak && typeof this.kanak === 'object') {
+                const birthDate = new Date(this.kanak.tarikhLahir);
+                const yearDiff = today.getFullYear() - birthDate.getFullYear();
+                const monthDiff = today.getMonth() - birthDate.getMonth();
+                const dayDiff = today.getDate() - birthDate.getDate();
 
-    let ageYears = yearDiff;
-    let ageMonths = monthDiff;
+                let ageYears = yearDiff;
+                let ageMonths = monthDiff;
 
-    if (dayDiff < 0) {
-      ageMonths -= 1;
-    }
+                if (dayDiff < 0) {
+                ageMonths -= 1;
+                }
 
-    if (ageMonths < 0) {
-      ageYears -= 1;
-      ageMonths += 12;
-    }
+                if (ageMonths < 0) {
+                ageYears -= 1;
+                ageMonths += 12;
+                }
 
-    this.kanak.ageYears = ageYears;
-    this.kanak.ageMonths = ageMonths;
-  }
-           
+                this.kanak.ageYears = ageYears;
+                this.kanak.ageMonths = ageMonths;
+            }
+                    
    
         },
 
@@ -409,8 +432,11 @@ export default {
 
             const update = {
                 pendaftaranLulus: true,
-                kodPengesahan: this.randomCode
+                kodPengesahan: this.randomCode,
+                kelas: this.kelasKanak
             }
+
+            console.log(this.kelasKanak);
 
             axios.put('http://localhost:1001/urusPendaftaran/' + this.registerId, update)
             .then(response => {
@@ -543,7 +569,20 @@ export default {
             },
 
             pushToList(){
-                router.push('/manageRegister');
+                const update = {
+                    kelas: this.kelasKanak
+                }
+
+                console.log(this.kelasKanak);
+
+                axios.put('http://localhost:1001/urusPendaftaran/' + this.registerId, update)
+                .then(response => {
+                    router.push('/manageRegister');
+                })
+                .catch(error => {
+                    console.error('Error updating registration status', error);
+                })
+                
             }
 
     }
