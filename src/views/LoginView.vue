@@ -65,6 +65,7 @@ export default {
             UserData: [],
             emel: '',
             kataLaluan: '',
+            peranan:'',
         };
     },
 
@@ -94,7 +95,7 @@ export default {
                     
                     router.push("/homePage");
                 } else if (responseUser.data.peranan === "Ibubapa") {
-                    router.push("/");
+                    router.push("/homePageParent");
                 } 
             } catch (error) {
                 console.error(error);

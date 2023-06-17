@@ -1,12 +1,12 @@
 <script setup>
 import { RouterLink } from "vue-router";
-import SideBar2 from '../components/SideBar2.vue';
+import SideBarParent from "../components/SideBarParent.vue";
 import Header from "../components/Header.vue";
 </script>
 
 <template>
     <div class="flex bg-blue-100 w-full justify-between p-8">
-        <SideBar2 />
+        <SideBarParent />
 
         <!-- Content -->
         <!-- Header -->
@@ -31,28 +31,29 @@ import Header from "../components/Header.vue";
 <script>
 import axios from 'axios';
 
+
 export default {
     data() {
         return {
             ChildList: [],
-        }
+        };
     },
-
     mounted() {
         this.fetchChildData();
     },
     methods: {
-        fetchChildData(){
-            axios.get('http://localhost:1001/kanak')
+        fetchChildData() {
+            axios.get("http://localhost:1001/kanak")
                 .then(response => {
                 this.ChildList = response.data;
                 console.log(this.ChildList);
-                })
+            })
                 .catch(error => {
-                console.error('Error fetching child data:', error);
+                console.error("Error fetching child data:", error);
             });
         }
-    }
+    },
+    
 }
 
 

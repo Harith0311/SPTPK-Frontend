@@ -1,14 +1,14 @@
 <script setup>
 import { ref } from "@vue/reactivity";
 import { RouterLink } from "vue-router";
-import SideBar2 from '../components/SideBar2.vue';
+import SideBarParent from '../components/SideBarParent.vue';
 import Header from "../components/Header.vue";
 
 </script>
 
 <template>
     <div class="flex bg-blue-100 w-screen justify-between p-8">
-        <SideBar2 />
+        <SideBarParent />
 
         <!-- Content -->
         <!-- Header -->
@@ -58,20 +58,34 @@ import Header from "../components/Header.vue";
 
             <!-- Second Row -->
             <div class="flex mt-12 justify-between pr-12">
-                <div class="transction w-5/12  ">
-                    <h2 class="font-extrabold">Statistik Kehadiran</h2>
-                    <div class="box-trans-sub mt-3 rounded-2xl drop-shadow-2xl bg-white p-4">
-                        <img class="h-56 w-auto" src="../assets/kehadiran.png" alt="">
-                    </div>
-                </div>
-                <div class="stocks w-5/12   ">
-                    <h2 class="font-extrabold">Statistik Umur Kanak-Kanak</h2>
-                    <div class="stocks-main mt-3 rounded-2xl drop-shadow-2xl bg-white p-4 ">
-                        <img class="h-56 w-auto" src="../assets/umur.png" alt="">
-                    </div>
+                <!-- Content -->
+                <div class="bg-white w-full p-4 rounded-2xl drop-shadow-2xl">
+                    <h2 class="font-bold mb-5">Profil Saya</h2>
+                    <div class="flex justify-between">
+                        <div class="py-2 ml-5">
+                            <div class="bg-blue-200 w-[120px] h-auto p-4 rounded-md drop-shadow-xl ">
+                                <img class="h-auto w-24" src="../assets/staff.png" alt="">   
+                            </div>
+                            <!-- <div class="absolute bg-white w-4 h-4 z-10 rounded-full drop-shadow-xl top-[62px] left-[115px]">
+                                <div class="absolute bg-green-400 w-4 h-4 z-40 rounded-full drop-shadow-xl top-[62px] left-[115px]"></div>
+                            </div> -->
+                        </div>
+                        <div class="bg-blue-50 w-5/6 rounded-lg drop-shadow-xl p-4">
+                            <h3 class="font-bold text-xl">{{ currentUser.nama }}</h3>
+                            <div class="flex">
+                                <h3 class="text-sm text-gray-500 p-2 "><i class="fa-solid fa-circle-user"></i> {{currentUser.peranan}}</h3>
+                                <h3 class="text-sm text-gray-500 p-2 px-4"><i class="fa-solid fa-envelope"></i> {{currentUser.emel}}</h3>
+                                <h3 class="text-sm text-gray-500 p-2 px-4"><i class="fa-solid fa-id-card"></i> {{currentUser.noKP}}</h3>
+                            </div>
+                            <button @click="togglePassword" class="bg-blue-200 hover:bg-blue-300 p-1 px-4 my-2 rounded-md drop-shadow-lg">Tukar Kata Laluan</button>
+                            
+                            
+                        </div>
+                    </div>       
                 </div>
             </div>
-            <!-- End of Second Row -->
+
+           
 
         </div>
         </div>
@@ -90,7 +104,19 @@ import Header from "../components/Header.vue";
                 ChildList: [],
                 MaleList: [],
                 FemaleList: [],
-                StaffList: []
+                StaffList: [],
+                isPassword: '',
+                currentUser: '',
+                userId: '',
+                oldPass: '',
+                newPass: '',
+                confirmNewPass: '',
+
+                errorOldPass: '',
+                errorNewPass: '',
+                oldPassBlank: '',
+                newPassBlank: '',
+                confirmPassBlank: '',
             }
         },
 
@@ -99,6 +125,7 @@ import Header from "../components/Header.vue";
             this.fetchMaleList();
             this.fetchFemaleList();
             this.fetchStaffList();
+            this.fetchCurrentUser();
         },
 
         methods: {
@@ -149,7 +176,24 @@ import Header from "../components/Header.vue";
                         console.error('Error fetching registration data:', error);
                     });
 
-            }
+            },
+
+            fetchCurrentUser() {
+                this.userId = JSON.parse(sessionStorage.getItem('id'));
+                console.log(this.userId);
+
+                axios.get('http://localhost:1001/pengguna/' + this.userId)
+                    .then(response => {
+                        this.currentUser = response.data;
+                        console.log(response.data);
+                        console.log(this.currentUser);
+                        
+                    })
+                    .catch(error => {
+                        console.error('Error fetching registration data:', error);
+                    });
+
+            },
         }
     }
 

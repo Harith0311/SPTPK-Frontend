@@ -81,12 +81,8 @@ import Header from "../components/Header.vue";
                             
                             
                         </div>
-                    </div>
-                    
-                    
-
+                    </div>       
                 </div>
-
             </div>
 
             <!-- User prompt to confirm reject registration -->
