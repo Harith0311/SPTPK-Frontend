@@ -29,7 +29,7 @@
                     <table class="m-8 w-5/6 mx-auto relative overflow-y-auto h-[380px] scrollbar-hide" id="childTable">
                         <thead class="sticky top-0 z-10 ">
                             <tr class="border-solid border-b-2 border-black ">
-                                <th class="w-auto bg-green-200">Bil.</th>
+
                                 <th class="">Nama</th>
                                 <th class="bg-green-200">Umur</th>
                                 <th class="bg-green-200">Sijil Lahir</th>
@@ -38,13 +38,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="border-solid border-b-2 border-[#c7fcda]">
-                                <td class="text-center p-2">{{ index + 1 }}</td>
-                                <td class="p-2">{{child.namaKanak}}</td>
-                                <td class="text-center p-2">{{child.umur}}</td>
-                                <td class="text-center p-2">{{child.sijilLahir}}</td>
-                                <td class="text-center p-2">{{child.jantina}}</td>
-                                <td class="text-center p-2">{{child.bangsa}}</td>
+                            <tr v-for="item in child" :key="item.id" class="border-solid border-b-2 border-[#c7fcda]">
+                                <td class="p-2">{{ item.namaKanak }}</td>
+                                <td class="text-center p-2">{{ item.umur }}</td>
+                                <td class="text-center p-2">{{ item.sijilLahir }}</td>
+                                <td class="text-center p-2">{{ item.jantina }}</td>
+                                <td class="text-center p-2">{{ item.bangsa }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -78,26 +77,24 @@ export default {
 
     mounted() {
         this.fetchCurrentUser();
-        this.fetchChildData();
+        // this.fetchChildData();
         
     },
     methods: {
-        fetchChildData(){
+        // fetchChildData(){
+        //     this.fetchCurrentUser();
             
-            axios.get('http://localhost:1001/urusPendaftaran')
-                .then(response => {
-                this.child = response.data.filter(item => {
-                    return item.kodPengesahan === this.code ;
-                });
-                console.log(this.child);
-                })
-                .catch(error => {
-                console.error('Error fetching child data:', error);
-            });
-
-            this.kanakId = this.child.kanak.id;
-            console.log(this.kanakId);
-        },
+        //     console.log(this.code);
+        //     axios.get('http://localhost:1001/kanak')
+        //         .then(response => {
+        //         this.child = response.data.filter(item => item.kodPengesahan === this.code);
+        //         console.log(this.child);
+        //         })
+        //         .catch(error => {
+        //         console.error('Error fetching child data:', error);
+        //     });
+            
+        // },
 
         fetchCurrentUser() {
                 this.userId = JSON.parse(sessionStorage.getItem('id'));
@@ -110,111 +107,122 @@ export default {
                         console.log(this.code);
                         console.log(response.data);
                         console.log(this.currentUser);
+
+                        axios.get('http://localhost:1001/kanak')
+                            .then(response => {
+                            this.child = response.data.filter(item => item.kodPengesahan === this.code);
+                            console.log(this.child);
+                            })
+                            .catch(error => {
+                            console.error('Error fetching child data:', error);
+                        });
                         
                     })
                     .catch(error => {
                         console.error('Error fetching registration data:', error);
                     });
+                    
+                    
 
             },
 
-        printReport(){
+        // printReport(){
 
-            // Create a new window for printing
-            const printWindow = window.open('', '_blank', 'width=800,height=600,top=100,left=100,location=no');
+        //     // Create a new window for printing
+        //     const printWindow = window.open('', '_blank', 'width=800,height=600,top=100,left=100,location=no');
 
-            // Open a new document in the print window
-            printWindow.document.open();
+        //     // Open a new document in the print window
+        //     printWindow.document.open();
 
-            // Extract the data from the Vue.js component
-            const ChildList = this.ChildList;
+        //     // Extract the data from the Vue.js component
+        //     const ChildList = this.ChildList;
 
-            // Generate the table rows using the data
-            const tableRows = ChildList.map((child, index) => {
-            return `
-                <tr>
-                <td style="text-align: center;">${index + 1}</td>
-                <td>${child.namaKanak}</td>
-                <td style="text-align: center;">${child.umur}</td>
-                <td style="text-align: center;">${child.sijilLahir}</td>
-                <td style="text-align: center;">${child.jantina}</td>
-                <td style="text-align: center;">${child.bangsa}</td>
-                </tr>
-            `;
-            }).join('');
+        //     // Generate the table rows using the data
+        //     const tableRows = ChildList.map((child, index) => {
+        //     return `
+        //         <tr>
+        //         <td style="text-align: center;">${index + 1}</td>
+        //         <td>${child.namaKanak}</td>
+        //         <td style="text-align: center;">${child.umur}</td>
+        //         <td style="text-align: center;">${child.sijilLahir}</td>
+        //         <td style="text-align: center;">${child.jantina}</td>
+        //         <td style="text-align: center;">${child.bangsa}</td>
+        //         </tr>
+        //     `;
+        //     }).join('');
 
-            // Generate the complete HTML template with the dynamic data
-            const htmlTemplate = `
-            <html>
-                <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Document</title>
-                <style>
-                    * {
-                    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-                    }
+        //     // Generate the complete HTML template with the dynamic data
+        //     const htmlTemplate = `
+        //     <html>
+        //         <head>
+        //         <meta charset="UTF-8">
+        //         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        //         <title>Document</title>
+        //         <style>
+        //             * {
+        //             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        //             }
 
-                    table {
-                    margin-left: auto;
-                    margin-right: auto;
-                    width: 80vw;
-                    border-collapse: collapse;
-                    }
+        //             table {
+        //             margin-left: auto;
+        //             margin-right: auto;
+        //             width: 80vw;
+        //             border-collapse: collapse;
+        //             }
 
-                    table, td, th {
-                    border: 2px solid black;
-                    padding: 5px;
-                    }
+        //             table, td, th {
+        //             border: 2px solid black;
+        //             padding: 5px;
+        //             }
 
-                    h2 {
-                    text-align: center;
-                    margin-top: 40px;
-                    margin-bottom: -5px;
-                    }
+        //             h2 {
+        //             text-align: center;
+        //             margin-top: 40px;
+        //             margin-bottom: -5px;
+        //             }
 
-                    p {
-                    font-size: 15px;
-                    font-weight: 600;
-                    text-align: center;
-                    margin-bottom: 30px;
-                    }
-                </style>
-                </head>
-                <body>
-                <h2>Laporan Maklumat Kanak Kanak</h2>
-                <p>TASKA PERMATA KELUARGA TAMAN DESA PERMAI</p>
-                <table>
-                    <thead>
-                    <tr>
-                        <th style="width: 20px;">Bil.</th>
-                        <th>Nama</th>
-                        <th style="width: 70px;">Umur</th>
-                        <th style="width: 140px;">Sijil Lahir</th>
-                        <th style="width: 100px;">Jantina</th>
-                        <th style="width: 100px;">Bangsa</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    ${tableRows}
-                    </tbody>
-                </table>
-                </body>
-            </html>
-            `;
+        //             p {
+        //             font-size: 15px;
+        //             font-weight: 600;
+        //             text-align: center;
+        //             margin-bottom: 30px;
+        //             }
+        //         </style>
+        //         </head>
+        //         <body>
+        //         <h2>Laporan Maklumat Kanak Kanak</h2>
+        //         <p>TASKA PERMATA KELUARGA TAMAN DESA PERMAI</p>
+        //         <table>
+        //             <thead>
+        //             <tr>
+        //                 <th style="width: 20px;">Bil.</th>
+        //                 <th>Nama</th>
+        //                 <th style="width: 70px;">Umur</th>
+        //                 <th style="width: 140px;">Sijil Lahir</th>
+        //                 <th style="width: 100px;">Jantina</th>
+        //                 <th style="width: 100px;">Bangsa</th>
+        //             </tr>
+        //             </thead>
+        //             <tbody>
+        //             ${tableRows}
+        //             </tbody>
+        //         </table>
+        //         </body>
+        //     </html>
+        //     `;
 
-            // Write the HTML template to the print window document
-            printWindow.document.write(htmlTemplate);
+        //     // Write the HTML template to the print window document
+        //     printWindow.document.write(htmlTemplate);
 
-            // Close the document after writing
-            printWindow.document.close();
+        //     // Close the document after writing
+        //     printWindow.document.close();
 
-            printWindow.print();
+        //     printWindow.print();
 
-            printWindow.document.querySelector('body').style.margin = '0';
-            printWindow.document.querySelector('table').style.width = '100%';
-            printWindow.document.querySelector('table').style.borderCollapse = 'collapse';
-        }
+        //     printWindow.document.querySelector('body').style.margin = '0';
+        //     printWindow.document.querySelector('table').style.width = '100%';
+        //     printWindow.document.querySelector('table').style.borderCollapse = 'collapse';
+        // }
     }
 }
 
