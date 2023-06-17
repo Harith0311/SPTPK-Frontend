@@ -55,8 +55,11 @@
                     </div>
                     <li>
                         <router-link to="/login">
-                            <div class="p-4 m-1 cursor-pointer ">
+                            <div class="group p-4 m-1 cursor-pointer ">
                                 <i class="fa-solid fa-right-from-bracket p-1 mt-0.5 text-red-500"></i>
+                                <div class=" group-hover:visible invisible w-28 bg-white text-sm text-red-500 text-center drop-shadow-lg rounded-md -mt-6 ml-16 p-1  absolute z-10 ">
+                                    Log Keluar
+                                </div>
                             </div>
 
                         </router-link>

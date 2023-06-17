@@ -102,14 +102,74 @@
                     <!-- Horizontal Line -->
                     </div>
                     <li>
-                        <router-link to="/login">
-                            <div class="p-4 m-1 cursor-pointer ">
+                        <!-- <router-link to="/login"> -->
+                            <div @click="toggleLogout" class="group p-4 m-1 cursor-pointer ">
                                 <i class="fa-solid fa-right-from-bracket p-1 mt-0.5 text-red-500"></i>
+                                <div class=" group-hover:visible invisible w-28 bg-white text-sm text-red-500 text-center drop-shadow-lg rounded-md -mt-6 ml-16 p-1  absolute z-10 ">
+                                    Log Keluar
+                                </div>
                             </div>
 
-                        </router-link>
+                        <!-- </router-link> -->
                     </li>
                 </ul>
             </div>
         </div>
+
+        <!-- User prompt to confirm reject registration -->
+        <div 
+            id="overlay" 
+            class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50" 
+            v-bind:class="{'hidden': !isLogout}">
+                <dialog
+                    class="z-10 w-2/6 bg-blue-50 absolute h-fit top-48 overflow-auto px-3 pt-4 rounded-xl"
+                    v-bind:open="isLogout"
+                >
+                    <!-- Header Title -->
+                    <div class="bg-orange-300 rounded-lg m-4 mt-2 p-2">
+                        <h2 class="font-bold text-xl text-center  ">Log Keluar</h2>
+                    </div>
+
+                    <!-- Content -->
+                    
+                        <p class="text-center py-4">Anda pasti ingin log keluar daripada sistem?</p>
+
+                        <!-- Button -->
+                        <div class="flex justify-center mt-4">
+                            <button class="bg-blue-200 w-2/6 p-1 mx-8 rounded-lg" @click="toggleLogout">Batal</button>
+                            <button class="bg-orange-300 w-2/6 p-1 mx-8 rounded-lg" @click="logOut">Sahkan</button>
+                        </div>
+                    
+                </dialog>
+            </div>  
+            <!-- End of prompt -->
 </template>
+
+<script>
+import router from "../router";
+
+export default {
+    data() {
+        return {
+            isLogout:''
+        };
+    },
+
+    mounted() {
+
+    },
+
+    methods: {
+
+        logOut() {
+            sessionStorage.removeItem('id');
+            router.push('/login');
+        },
+
+        toggleLogout() {
+            this.isLogout = !this.isLogout;
+        },
+    }
+}
+
+</script>
