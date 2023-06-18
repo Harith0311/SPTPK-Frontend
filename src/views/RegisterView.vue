@@ -125,53 +125,60 @@
                 const sahKataLaluan = this.confirmPassword
                 const kodPengesahan = this.code;
 
+                // Dapatkan list pendaftaran yang telah diluluskan
                 axios.get('http://localhost:1001/urusPendaftaran/lulus')
                 .then(response => {
                     console.log(response.data);
                     this.child = response.data.filter(item => item.kodPengesahan === this.code);
                             
                     console.log(this.child);
+
+                    // Check jika kod pengesahan tiada dalam sistem
                     if (this.child.length < 1)
                     {
                         alert('kod pengesahan tidak sah')
                     }
+                    // Check jika kod pengesahan wujud
                     else if(this.child.length > 0)
                     {
                         alert('kod pengesahan sah')
+
+                        const pengguna = 
+                        {
+                            peranan,
+                            nama,
+                            emel,
+                            noKP,
+                            kataLaluan,
+                            kodPengesahan
+                        }
+
+                        // Check kata laluan
+                        if (kataLaluan !== sahKataLaluan) {
+                            console.error('Password and confirm password do not match');
+                            alert('Kata laluan tidak sepadan!');
+                            // You can display an error message or perform any desired action
+                        } else {
+                            // Password is valid, proceed with the API call
+                            axios.post('http://localhost:1001/pengguna', pengguna)
+                            .then(response => {
+                                console.log(response.data);
+                                alert('Selamat datang!');
+                                router.push('/login');
+                            })
+                            .catch(error => { 
+                                console.error('Error create new user: ', error);
+                                alert('Pendaftaran tidak berjaya!');
+                            })
+                        }
                     }
-                    })
-                    .catch(error => {
-                    // alert('kod pengesahan tidak sah')
-                    console.error('Error fetching child data:', error);
+                })
+                .catch(error => {
+                // alert('kod pengesahan tidak sah')
+                console.error('Error fetching child data:', error);
                 });
                 
-                const pengguna = 
-                {
-                    peranan,
-                    nama,
-                    emel,
-                    noKP,
-                    kataLaluan,
-                    kodPengesahan
-                }
-
-                if (kataLaluan !== sahKataLaluan) {
-                    console.error('Password and confirm password do not match');
-                    alert('Kata laluan tidak sepadan!');
-                    // You can display an error message or perform any desired action
-                } else {
-                    // Password is valid, proceed with the API call
-                    axios.post('http://localhost:1001/pengguna', pengguna)
-                    .then(response => {
-                        console.log(response.data);
-                        alert('Selamat datang!');
-                        router.push('/login');
-                    })
-                    .catch(error => { 
-                        console.error('Error create new user: ', error);
-                        alert('Pendaftaran tidak berjaya!');
-                    })
-                }
+                
                 
             }
 
