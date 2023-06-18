@@ -8,79 +8,104 @@ import BlueButton from '../components/BlueButton.vue';
 import LightBlueButton from '../components/LightBlueButton.vue';
 
 const decision = ref(null);
+const errorAgreement = ref('');
 
 const router = useRouter();
 
 const checkAgreement = () => {
   const persetujuan = decision.value;
   
-  if (persetujuan === 'disagree') {
-    alert("Pilih setuju untuk Hantar Permohonan!");
-  } else if (persetujuan === 'agree') {
-    const daftarKanak = JSON.parse(localStorage.getItem('DataKanak'));
-    const daftarBapa = JSON.parse(localStorage.getItem('DataBapa'));
-    const daftarIbu = JSON.parse(localStorage.getItem('DataIbu'));
+  
+  if (decision.value)
+  {
+    if (persetujuan === 'disagree') 
+    {
+      errorAgreement.value = ''
+      alert("Pilih setuju untuk Hantar Permohonan!");
+    } 
+    else if (persetujuan === 'agree') 
+    {
+      const daftarKanak = JSON.parse(localStorage.getItem('DataKanak'));
+      const daftarBapa = JSON.parse(localStorage.getItem('DataBapa'));
+      const daftarIbu = JSON.parse(localStorage.getItem('DataIbu'));
+  
+      const pendaftaranLulus = false;
+      
+      const daftarBaru = 
+      {
+        pendaftaranLulus,
+      }
+  
+      // Create new registration
+      axios.post('http://localhost:1001/urusPendaftaran', daftarBaru)
+        .then(response => { 
+          console.log(response.data);
+          const registrationId = response.data.id; // Retrieve the ID from the response
+          console.log('New registration ID:', registrationId);
+          
+          // Add registration id into the child, dad, and mom data
+          daftarKanak.pendaftaranId = registrationId;
+          daftarBapa.pendaftaranId = registrationId;
+          daftarIbu.pendaftaranId = registrationId;
+  
+          // Insert the child data into registration record
+          axios.post('http://localhost:1001/kanak', daftarKanak)
+            .then(response => 
+            {
+              console.log(response.data);
+              sessionStorage.setItem("idKanak", JSON.stringify(response.data));
+              
+            })
+            .catch(error => 
+            {
+              console.error('Error register child info:', error);
+              alert("Sijil lahir dah ada");
+            });
+  
+          // Insert the dad data into registration record
+          axios.post('http://localhost:1001/bapa', daftarBapa)
+            .then(response => 
+            {
+              console.log(response.data);
+            })
+            .catch(error => 
+            {
+              console.error('Error register child info:', error);
+              alert("Sijil lahir dah ada");
+            });
+  
+          // Insert the mom data into registration record
+          axios.post('http://localhost:1001/ibu', daftarIbu)
+            .then(response => 
+            {
+              console.log(response.data);
+            })
+            .catch(error => {
+              console.error('Error register child info:', error);
+              alert("Sijil lahir dah ada");
+            });
+  
+          localStorage.clear();
+          router.push('/')
+        })
+        .catch(error => {
+          console.error('Error child registration', error);
+        });
 
-    const pendaftaranLulus = false;
-    
-    const daftarBaru = {
-      pendaftaranLulus,
     }
-
-    // Create new registration
-    axios.post('http://localhost:1001/urusPendaftaran', daftarBaru)
-      .then(response => { 
-        console.log(response.data);
-        const registrationId = response.data.id; // Retrieve the ID from the response
-        console.log('New registration ID:', registrationId);
-        
-        // Add registration id into the child, dad, and mom data
-        daftarKanak.pendaftaranId = registrationId;
-        daftarBapa.pendaftaranId = registrationId;
-        daftarIbu.pendaftaranId = registrationId;
-
-        // Insert the child data into registration record
-        axios.post('http://localhost:1001/kanak', daftarKanak)
-          .then(response => {
-            console.log(response.data);
-            sessionStorage.setItem("idKanak", JSON.stringify(response.data));
-            
-          })
-          .catch(error => {
-            console.error('Error register child info:', error);
-            alert("Sijil lahir dah ada");
-          });
-
-        // Insert the dad data into registration record
-        axios.post('http://localhost:1001/bapa', daftarBapa)
-          .then(response => {
-            console.log(response.data);
-            
-          })
-          .catch(error => {
-            console.error('Error register child info:', error);
-            alert("Sijil lahir dah ada");
-          });
-
-        // Insert the mom data into registration record
-        axios.post('http://localhost:1001/ibu', daftarIbu)
-          .then(response => {
-            console.log(response.data);
-            
-          })
-          .catch(error => {
-            console.error('Error register child info:', error);
-            alert("Sijil lahir dah ada");
-          });
-
-        localStorage.clear();
-        router.push('/')
-      })
-      .catch(error => {
-        console.error('Error child registration', error);
-      });
-  } else {
-    alert("Sila pilih  ");
+  } 
+  else 
+  {
+    console.log(decision.value);
+    if (decision.value === null)
+    {
+      errorAgreement.value = '*Sila pilih yang berkenaan'
+    }
+    else
+    {
+      errorAgreement.value = ''
+    }
+    
   }
 }
 
@@ -121,6 +146,9 @@ const cancel = () => {
         </form>
         
         <div class="bg-blue-100  mx-auto py-2 px-36">
+          <div class="flex justify-center">
+            <label class="text-red-600 font-medium text-sm  " for="errorAgreement" id="errorAgreement">{{errorAgreement}}</label>
+          </div>
           <BlueButton class="my-2" @click="checkAgreement">Hantar Permohonan</BlueButton>
           <LightBlueButton class="my-2" @click="cancel">Batal Permohonan</LightBlueButton>
         </div>

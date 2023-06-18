@@ -21,7 +21,7 @@
                 <h3 class="p-6 px-8 text-xl">BAHAGIAN B: MAKLUMAT IBU BAPA</h3>
                 <p class="p-2 px-8 pb-4 text-base font-medium">Masukkan maklumat bapa kanak-kanak dalam ruangan yang disediakan.</p>
                 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Nama Penuh</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -30,8 +30,9 @@
                         v-model="dadName"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorDadName" id="errorDadName">{{errorDadName}}</label>
 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Emel</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -40,8 +41,9 @@
                         v-model="dadEmail"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorDadEmail" id="errorDadEmail">{{errorDadEmail}}</label>
 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">No. Kad Pengenalan</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -50,8 +52,10 @@
                         v-model="dadIC"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorDadIC" id="errorDadIC">{{errorDadIC}}</label>
 
-                <div class="flex justify-between px-8">
+
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Status</h3>
                     <select 
                     class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm"
@@ -65,8 +69,9 @@
                     </select>
                     
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorDadStatus" id="errorDadStatus">{{errorDadStatus}}</label>
 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Pekerjaan</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -75,8 +80,9 @@
                         v-model="dadWork"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorDadWork" id="errorDadWork">{{errorDadWork}}</label>
                 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Pendapatan</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -85,8 +91,9 @@
                         v-model="dadSalary"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorDadSalary" id="errorDadSalary">{{errorDadSalary}}</label>
                 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">No. Telefon Pejabat</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -95,10 +102,12 @@
                         v-model="dadPhone"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorDadPhone" id="errorDadPhone">{{errorDadPhone}}</label>
 
+                <!-- Maklumat ibu -->
                 <p class="p-2 pt-12 px-8 pb-4 text-base font-medium">Masukkan maklumat ibu kanak-kanak dalam ruangan yang disediakan.</p>
                 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Nama Penuh</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -107,8 +116,9 @@
                         v-model="momName"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorMomName" id="errorMomName">{{errorMomName}}</label>
 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Emel</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -117,8 +127,9 @@
                         v-model="momEmail"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorMomEmail" id="errorMomEmail">{{errorMomEmail}}</label>
 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">No. Kad Pengenalan</h3>
                      <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -127,8 +138,9 @@
                         v-model="momIC"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorMomIC" id="errorMomIC">{{errorMomIC}}</label>
 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Status</h3>
                     <select 
                     class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm"
@@ -142,8 +154,9 @@
                         
                     </select>
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorMomStatus" id="errorMomStatus">{{errorMomStatus}}</label>
                 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Pekerjaan</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -152,8 +165,9 @@
                         v-model="momWork"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorMomWork" id="errorMomWork">{{errorMomWork}}</label>
 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Pendapatan</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -162,8 +176,9 @@
                         v-model="momSalary"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorMomSalary" id="errorMomSalary">{{errorMomSalary}}</label>
 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">No. Telefon Pejabat</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -172,6 +187,8 @@
                         v-model="momPhone"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorMomPhone" id="errorMomPhone">{{errorMomPhone}}</label>
+
                 
                 <div class="bg-blue-100  mx-auto py-8 px-36">
                     <BlueButton>Seterusnya</BlueButton>
@@ -207,6 +224,24 @@ export default {
             momWork: '',    
             momSalary: '',
             momPhone: '',
+
+            // error
+            errorDadName: '',
+            errorDadEmail: '',
+            errorDadIC: '',
+            errorDadStatus: '',
+            errorDadWork: '',
+            errorDadSalary:'',
+            errorDadPhone: '',
+
+            errorMomName: '',
+            errorMomEmail: '',
+            errorMomIC: '',
+            errorMomStatus: '',
+            errorMomWork: '',
+            errorMomSalary:'',
+            errorMomPhone: '',
+
         };
 
     },
@@ -227,36 +262,93 @@ export default {
             const pendapatan = this.dadSalary;
             const telefonPejabat = this.dadPhone;
             
-
-            const dad =
+            if (this.dadName && this.dadEmail && this.dadIC && this.dadStatus && this.dadWork && this.dadSalary && this.dadPhone)
             {
-                nama,
-                emel,
-                noKP,
-                status,
-                pekerjaan,
-                pendapatan,
-                telefonPejabat,
-                pendaftaranId: ""
+                const dad =
+                {
+                    nama,
+                    emel,
+                    noKP,
+                    status,
+                    pekerjaan,
+                    pendapatan,
+                    telefonPejabat,
+                    pendaftaranId: ""
+                }
+
+                const dadJSON = JSON.stringify(dad);
+                localStorage.setItem('DataBapa', dadJSON);
             }
+            else
+            {
+                if (this.dadName === '')
+                {
+                    this.errorDadName = '*Sila masukkan nama penuh bapa'
+                }
+                else
+                {
+                    this.errorDadName = ''
+                }
 
-            const dadJSON = JSON.stringify(dad);
-            localStorage.setItem('DataBapa', dadJSON);
+                if (this.dadEmail === '')
+                {
+                    this.errorDadEmail = '*Sila masukkan alamat emel bapa'
+                }
+                else
+                {
+                    this.errorDadEmail = ''
+                }
+
+                if (this.dadIC === '')
+                {
+                    this.errorDadIC = '*Sila masukkan nombor kad pengenalan bapa'
+                }
+                else
+                {
+                    this.errorDadIC = ''
+                }
+
+                if (this.dadStatus === '')
+                {
+                    this.errorDadStatus = '*Sila masukkan status bapa'
+                }
+                else
+                {
+                    this.errorDadStatus = ''
+                }
+
+                if (this.dadWork === '')
+                {
+                    this.errorDadWork = '*Sila masukkan pekerjaan bapa'
+                }
+                else
+                {
+                    this.errorDadWork = ''
+                }
+
+                if (this.dadSalary === '')
+                {
+                    this.errorDadSalary = '*Sila masukkan jumlah pendapatan bapa'
+                }
+                else
+                {
+                    this.errorDadSalary = ''
+                }
+
+                if (this.dadPhone === '')
+                {
+                    this.errorDadPhone = '*Sila masukkan nombor telefon bapa'
+                }
+                else
+                {
+                    this.errorDadPhone = ''
+                }
+            }
+            
+
+            
 
 
-            // console.log(dad);
-
-            // axios.post('http://localhost:1001/bapa', dad)
-            // .then(response => {
-            //     console.log(response.data);
-            //     sessionStorage.setItem("idBapa", JSON.stringify(response.data));
-            //     // alert('berjaya')
-            // })
-            // .catch(error => {
-            //     console.error('Error register child info:', error);
-            //     alert("Sijil lahir dah ada");
-
-            // });
         },
 
         uploadMomInfo() {
@@ -268,29 +360,96 @@ export default {
             const pendapatan = this.momSalary;
             const telefonPejabat = this.momPhone;
             
-
-            const mom =
+            if (this.momName && this.momEmail && this.momIC && this.momStatus && this.momWork && this.momSalary && this.momPhone)
             {
-                nama,
-                emel,
-                noKP,
-                status,
-                pekerjaan,
-                pendapatan,
-                telefonPejabat,
-                pendaftaranId: ""
-            }
+                const mom =
+                {
+                    nama,
+                    emel,
+                    noKP,
+                    status,
+                    pekerjaan,
+                    pendapatan,
+                    telefonPejabat,
+                    pendaftaranId: ""
+                }
 
-            const momJSON = JSON.stringify(mom);
-            localStorage.setItem('DataIbu', momJSON);  
-            
+                const momJSON = JSON.stringify(mom);
+                localStorage.setItem('DataIbu', momJSON);
+                router.push('/registrationForm4');
+            }
+            else
+            {
+                if (this.momName === '')
+                {
+                    this.errorMomName = '*Sila masukkan nama penuh ibu'
+                }
+                else
+                {
+                    this.errorMomName = ''
+                }
+
+                if (this.momEmail === '')
+                {
+                    this.errorMomEmail = '*Sila masukkan alamat emel ibu'
+                }
+                else
+                {
+                    this.errorMomEmail = ''
+                }
+
+                if (this.momIC === '')
+                {
+                    this.errorMomIC = '*Sila masukkan nombor kad pengenalan ibu'
+                }
+                else
+                {
+                    this.errorMomIC = ''
+                }
+
+                if (this.momStatus === '')
+                {
+                    this.errorMomStatus = '*Sila masukkan status ibu'
+                }
+                else
+                {
+                    this.errorMomStatus = ''
+                }
+
+                if (this.momWork === '')
+                {
+                    this.errorMomWork = '*Sila masukkan pekerjaan ibu'
+                }
+                else
+                {
+                    this.errorMomWork = ''
+                }
+
+                if (this.momSalary === '')
+                {
+                    this.errorMomSalary = '*Sila masukkan jumlah pendapatan ibu'
+                }
+                else
+                {
+                    this.errorMomSalary = ''
+                }
+
+                if (this.momPhone === '')
+                {
+                    this.errorMomPhone = '*Sila masukkan nombor telefon ibu'
+                }
+                else
+                {
+                    this.errorMomPhone = ''
+                }
+            }
         },
 
         uploadAllInfo(){
             this.uploadDadInfo();
             this.uploadMomInfo();
-            alert("Berjaya daftar!")
-            router.push('/registrationForm4');
+            
+            
         },
     }
 }

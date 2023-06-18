@@ -22,7 +22,7 @@
                     <div class="flex justify-between bg-white w-5/12 p-3 rounded-xl drop-shadow-lg">
                         <h1 class="text-lg p-2">Jumlah kanak-kanak </h1>
                         <div class="flex justify-end">
-                            <h1 class="text-3xl text-yellow-500 px-4">30</h1>
+                            <h1 class="text-3xl text-yellow-500 px-4">{{ChildList.length}}</h1>
                             <i class="fa-solid fa-child text-4xl px-4"></i>
                         </div>
                     </div>
@@ -34,8 +34,14 @@
                     <div class="flex justify-between bg-white w-5/12 p-3 rounded-xl drop-shadow-lg">
                             <h1 class="text-lg p-2">Jantina kanak-kanak</h1>
                             <div class="flex justify-end">
-                                <h1 class="text-3xl text-yellow-500 px-4">30</h1>
-                                <i class="fa-solid fa-child text-4xl px-4"></i>
+                                <div class="flex">
+                                    <h1 class="text-3xl text-blue-500 px-2 py-1">{{MaleList.length}}  </h1>
+                                    <i class="fa-solid fa-mars text-2xl mx-3 py-2"></i>
+                                </div>
+                                <div class="flex">
+                                    <h1 class="text-3xl text-pink-500 px-2 py-1">{{ FemaleList.length }}</h1>
+                                    <i class="fa-solid fa-venus text-2xl mx-3 py-2"></i>
+                                </div>
                             </div>
                         </div>
                 </div>
@@ -43,7 +49,7 @@
                     <div class="flex justify-between bg-white w-5/12 p-3 rounded-xl drop-shadow-lg">
                             <h1 class="text-lg p-2">Jumlah Staf</h1>
                             <div class="flex justify-end">
-                                <h1 class="text-3xl text-yellow-500 px-4">30</h1>
+                                <h1 class="text-3xl text-yellow-500 px-4">{{ StaffList.length }}</h1>
                                 <i class="fa-solid fa-child text-4xl px-4"></i>
                             </div>
                         </div>
@@ -65,7 +71,6 @@
 
 <script>
     import axios from 'axios';
-    import ToastMessage from "../components/ToastMessage.vue";
 
     export default {
         data() {

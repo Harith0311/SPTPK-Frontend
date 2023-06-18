@@ -22,17 +22,18 @@
                 <p class="p-2 px-8 pb-4 text-base font-medium">Masukkan maklumat kanak-kanak dalam ruangan yang disediakan.</p>
                 
                 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Nama Penuh</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
                         type="text"   
                         placeholder="Masukkan nama penuh kanak-kanak"
                         v-model="childName"
-                    />
+                    />  
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorName" id="errorName">{{errorName}}</label>
 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">No. Sijil Lahir</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -41,8 +42,9 @@
                         v-model="birthCert"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorCert" id="errorCert">{{errorCert}}</label>
                 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Bangsa / Keturunan</h3>
                     <select 
                     class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -62,8 +64,9 @@
                         v-model="race"
                     /> -->
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorRace" id="errorRace">{{errorRace}}</label>
 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Tarikh Lahir</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -72,8 +75,9 @@
                         v-model="DOB"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorBirth" id="errorBirth">{{errorBirth}}</label>
 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Tempat Lahir</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -82,18 +86,9 @@
                         v-model="POB"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorPlace" id="errorPlace">{{errorPlace}}</label>
                 
-                <!-- <div class="flex justify-between px-8">
-                    <h3 class="p-2 my-2">Umur</h3>
-                    <input 
-                        class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
-                        type="text"   
-                        placeholder="Masukkan umur kanak-kanak"
-                        v-model="age"
-                    />
-                </div> -->
-
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Jantina</h3>
                     <select 
                     class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -105,8 +100,9 @@
                         <option value="Perempuan">Perempuan</option>
                     </select>
                 </div> 
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorGender" id="errorGender">{{errorGender}}</label>
             
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Alamat Rumah</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -115,10 +111,11 @@
                         v-model="childAddress"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorAddress" id="errorAddress">{{errorAddress}}</label>
 
                 <p class="p-2 pt-12 px-8 pb-4 text-base font-medium">Masukkan maklumat orang yang boleh dihubungi jika berlaku kecemasan.</p>
                 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Nama Penuh</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -127,8 +124,9 @@
                         v-model="gName"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorGName" id="errorGName">{{errorGName}}</label>
                 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">No. Telefon</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -137,8 +135,9 @@
                         v-model="gPhone"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorGPhone" id="errorGPhone">{{errorGPhone}}</label>
 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Hubungan</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -147,8 +146,9 @@
                         v-model="gRelation"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorGRelation" id="errorGRelation">{{errorGRelation}}</label>
                 
-                <div class="flex justify-between px-8">
+                <div class="flex justify-between px-8 -mb-3">
                     <h3 class="p-2 my-2">Alamat</h3>
                     <input 
                         class="my-2 outline-blue-100 p-2 pl-4 w-3/4 rounded-lg drop-shadow-xl font-normal text-sm" 
@@ -157,6 +157,7 @@
                         v-model="gAddress"
                     />
                 </div>
+                <label class="text-red-600 font-medium text-xs pl-[280px] " for="errorGAddress" id="errorGAddress">{{errorGAddress}}</label>
                 
                 
                 
@@ -192,6 +193,20 @@ export default {
             gPhone: '',
             gRelation: '',
             gAddress: '',
+
+            // Error
+            errorName: '',
+            errorCert: '',
+            errorRace: '',
+            errorBirth:'',
+            errorPlace:'',
+            errorGender:'',
+            errorAddress:'',
+
+            errorGName: '',
+            errorGPhone: '',
+            errorGRelation: '',
+            errorGAddress: '',
         };
 
     },
@@ -207,35 +222,144 @@ export default {
             const bangsa = this.race;
             const tarikhLahir = this.DOB;
             const tempatLahir = this.POB;
-            // const umur = this.age;
             const jantina = this.gender;
             const alamatKanak = this.childAddress;
+
             const namaPenjaga = this.gName;
             const telefonPenjaga = this.gPhone;
             const hubunganPenjaga = this.gRelation;
             const alamatPenjaga = this.gAddress;
 
-            const child =
+            if (this.childName && this.birthCert && this.race && this.DOB && this.POB && this.gender && this.childAddress && this.gName && this.gPhone && this.gRelation && this.gAddress)
             {
-                namaKanak,
-                sijilLahir,
-                bangsa,
-                tarikhLahir,
-                tempatLahir,
-                // umur,
-                jantina,
-                alamatKanak,
-                namaPenjaga,
-                telefonPenjaga,
-                hubunganPenjaga,
-                alamatPenjaga,
-                pendaftaranId: ""
+                const child =
+                {
+                    namaKanak,
+                    sijilLahir,
+                    bangsa,
+                    tarikhLahir,
+                    tempatLahir,
+                    jantina,
+                    alamatKanak,
+                    namaPenjaga,
+                    telefonPenjaga,
+                    hubunganPenjaga,
+                    alamatPenjaga,
+                    pendaftaranId: ""
+                }
+
+                const childJSON = JSON.stringify(child);
+                localStorage.setItem('DataKanak', childJSON);
+                alert('berjaya')
+                router.push('/registrationForm3');
+            }
+            else{
+                if (this.childName === '')
+                {
+                    this.errorName='*Sila masukkan nama kanak-kanak'
+                }
+                else
+                {
+                    this.errorName = ''
+                }
+                
+                if (this.birthCert === '')
+                {
+                    this.errorCert='*Sila masukkan sijil lahir kanak-kanak'
+                }
+                else
+                {
+                    this.errorCert = ''
+                }
+
+                if (this.race === '')
+                {
+                    this.errorRace='*Sila pilih bangsa'
+                }
+                else
+                {
+                    this.errorRace = ''
+                }
+
+                if (this.DOB === '')
+                {
+                    this.errorBirth='*Sila masukkan tarikh lahir'
+                }
+                else
+                {
+                    this.errorBirth = ''
+                }
+
+                if (this.POB === '')
+                {
+                    this.errorPlace='*Sila masukkan tempat lahir'
+                }
+                else
+                {
+                    this.errorPlace = ''
+                }
+
+                if (this.gender === '')
+                {
+                    this.errorGender='*Sila pilih jantina'
+                }
+                else
+                {
+                    this.errorGender = ''
+                }
+
+                if (this.childAddress === '')
+                {
+                    this.errorAddress='*Sila masukkan alamat kanak-kanak'
+                }
+                else
+                {
+                    this.errorAddress = ''
+                }
+
+                // Penjaga
+                if (this.gName === '')
+                {
+                    this.errorGName='*Sila masukkan nama penjaga'
+                }
+                else
+                {
+                    this.errorGName = ''
+                }
+
+                if (this.gPhone === '')
+                {
+                    this.errorGPhone='*Sila masukkan nombor telefon penjaga'
+                }
+                else
+                {
+                    this.errorGPhone = ''
+                }
+
+                if (this.gRelation === '')
+                {
+                    this.errorGRelation='*Sila masukkan hubungan penjaga dengan kanak-kanak'
+                }
+                else
+                {
+                    this.errorGRelation = ''
+                }
+
+                if (this.gAddress === '')
+                {
+                    this.errorGAddress='*Sila masukkan alamat penjaga '
+                }
+                else
+                {
+                    this.errorGAddress = ''
+                }
+
+
             }
 
-            const childJSON = JSON.stringify(child);
-            localStorage.setItem('DataKanak', childJSON);
-            alert('berjaya')
-            router.push('/registrationForm3');
+            
+
+            
             
         }
     }
