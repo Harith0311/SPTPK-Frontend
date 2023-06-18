@@ -69,9 +69,6 @@
                 type="password"
             />
 
-            <!-- <p v-if="confirmPassword !== ''" :class="{'text-green-500': isPasswordMatch, 'text-right text-red-500': !isPasswordMatch}">
-                {{ isPasswordMatch ? 'Password Match' : 'Password Mismatch' }}
-            </p> -->
             
             <TopLabel textLabel="Kod Pengesahan"/>
             <input 
@@ -81,18 +78,8 @@
                 type="text"
             />
     
-            <h5 class="pengesahan text-right font-medium text-xs mb-10">* Dapatkan kod pengesahan melalui emel yang dihantar oleh pihak TASKA</h5>
-            <!-- <TopLabel textLabel="Gambar Profil"/> -->
-            <!-- <input type="file" class="file:block file:bg-orang file:rounded-full file:w-10 file:h-10 file:cursor-pointer "> -->
+            <h5 class="pengesahan text-right font-medium text-xs mb-10">* Dapatkan kod pengesahan melalui mesej Whatsapp yang dihantar oleh pihak TASKA</h5>
             
-    
-            <!-- <div class="upload m-4">
-                <img src="../assets/hacker.png" width = 100 height = 100>
-                <div class="round">
-                    <input type="file">
-                    <img src="../assets/camera.png" width = 150 height = 150>
-                </div>
-            </div> -->
             <BlueButton>Daftar Masuk</BlueButton>
         </form>
     </div>
@@ -119,6 +106,7 @@
                 password: '',
                 confirmPassword: '',
                 code: '',
+                child: '',
 
             }
         },
@@ -137,7 +125,25 @@
                 const sahKataLaluan = this.confirmPassword
                 const kodPengesahan = this.code;
 
-
+                axios.get('http://localhost:1001/urusPendaftaran/lulus')
+                .then(response => {
+                    console.log(response.data);
+                    this.child = response.data.filter(item => item.kodPengesahan === this.code);
+                            
+                    console.log(this.child);
+                    if (this.child.length < 1)
+                    {
+                        alert('kod pengesahan tidak sah')
+                    }
+                    else if(this.child.length > 0)
+                    {
+                        alert('kod pengesahan sah')
+                    }
+                    })
+                    .catch(error => {
+                    // alert('kod pengesahan tidak sah')
+                    console.error('Error fetching child data:', error);
+                });
                 
                 const pengguna = 
                 {
@@ -166,10 +172,7 @@
                         alert('Pendaftaran tidak berjaya!');
                     })
                 }
-                    
                 
-
-               
             }
 
         }
