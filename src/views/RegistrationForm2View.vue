@@ -172,11 +172,14 @@
             </div>
         </div>
     </div>
+    <ToastMessage ref="toast" />
 </template>
 
 <script>
 import axios from 'axios';
 import router from "../router";
+import ToastMessage from "../components/ToastMessage.vue";
+import { successChild } from '../stores';
 
 export default {
     data() {
@@ -250,10 +253,15 @@ export default {
 
                 const childJSON = JSON.stringify(child);
                 localStorage.setItem('DataKanak', childJSON);
-                alert('berjaya')
+                successChild.value = "success";
+                
                 router.push('/registrationForm3');
             }
             else{
+                const message = `Sila isi semua maklumat `;
+                const status = "Peringatan";
+                this.$refs.toast.toast(message, status, "error");
+
                 if (this.childName === '')
                 {
                     this.errorName='*Sila masukkan nama kanak-kanak'

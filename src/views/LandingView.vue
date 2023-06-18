@@ -39,8 +39,39 @@ import LightBlueButton from '../components/LightBlueButton.vue';
         
     </div>
    
-    
+    <ToastMessage ref="toast" />
 </template>
+
+<script>
+import router from "../router";
+import { cancelRegister, errorAgree, successParent } from '../stores';
+import ToastMessage from "../components/ToastMessage.vue";
+
+
+export default {
+    data() {
+        return {
+            
+        };
+    },
+
+    mounted() {
+    if (cancelRegister.value === "cancel")
+        {
+          const message = `Permohonan pendaftaran telah dibatalkan!`;
+          const status = "Peringatan";
+          this.$refs.toast.toast(message, status, "info");      
+        }
+
+        cancelRegister.value = "";
+
+          
+    },
+
+    methods: { 
+    }
+}
+</script>
 
 <style>
 .backk{

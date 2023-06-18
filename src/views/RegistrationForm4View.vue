@@ -6,6 +6,7 @@ import axios from 'axios';
 import LogoHeader from '../components/LogoHeader.vue';
 import BlueButton from '../components/BlueButton.vue';
 import LightBlueButton from '../components/LightBlueButton.vue';
+import ToastMessage from "../components/ToastMessage.vue";
 
 const decision = ref(null);
 const errorAgreement = ref('');
@@ -21,7 +22,11 @@ const checkAgreement = () => {
     if (persetujuan === 'disagree') 
     {
       errorAgreement.value = ''
-      alert("Pilih setuju untuk Hantar Permohonan!");
+      errorAgree.value = 'error';
+      // const message = `Pilih setuju untuk Hantar Permohonan!`;
+      // const status = "Peringatan";
+      // this.$refs.toast.toast(message, status, "error");
+      // alert("");
     } 
     else if (persetujuan === 'agree') 
     {
@@ -110,14 +115,15 @@ const checkAgreement = () => {
 }
 
 const cancel = () => {
-    alert('Permohonan akan dibatalkan')
+    
+    cancelRegister.value = 'cancel';
     localStorage.clear();
     router.push('/');
 }
 </script>
 
 <template>
-  <div class="registration w-screen bg-slate-400 h-screen font-bold pb-4 ">
+  <div class="registration w-full bg-slate-400 h-full font-bold pb-4 ">
     <LogoHeader></LogoHeader>
     <div class="container m-4 pb-7 mx-auto max-w-5xl bg-blue-100 w-auto drop-shadow-2xl rounded-2xl ">
       <div>
@@ -149,8 +155,8 @@ const cancel = () => {
           <div class="flex justify-center">
             <label class="text-red-600 font-medium text-sm  " for="errorAgreement" id="errorAgreement">{{errorAgreement}}</label>
           </div>
-          <BlueButton class="my-2" @click="checkAgreement">Hantar Permohonan</BlueButton>
-          <LightBlueButton class="my-2" @click="cancel">Batal Permohonan</LightBlueButton>
+          <BlueButton class="my-2" @click="checkAgreement(); checkToast()">Hantar Permohonan</BlueButton>
+          <LightBlueButton class="my-2" @click="toggleCancel">Batal Permohonan</LightBlueButton>
         </div>
       </div>
       <div class="flex justify-start">
@@ -160,4 +166,87 @@ const cancel = () => {
       </div>
     </div>
   </div>
+  <!-- User prompt to confirm reject registration -->
+  <div 
+            id="overlay" 
+            class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50" 
+            v-bind:class="{'hidden': !isCancel}">
+                <dialog
+                    class="z-10 w-2/6 bg-blue-50 absolute h-fit top-48 overflow-auto px-3 pt-4 rounded-xl"
+                    v-bind:open="isCancel"
+                >
+                    <!-- Header Title -->
+                    <div class="bg-orange-300 rounded-lg m-4 mt-2 p-2">
+                        <h2 class="font-bold text-xl text-center  ">Batalkan Permohonan</h2>
+                    </div>
+
+                    <!-- Content -->
+                    
+                        <p class="text-center py-4">Anda pasti ingin membatalkan permohonan pendaftaran?</p>
+
+                        <!-- Button -->
+                        <div class="flex justify-center mt-4">
+                            <button class="bg-blue-200 w-2/6 p-1 mx-8 rounded-lg" @click="toggleCancel">Batal</button>
+                            <button class="bg-orange-300 w-2/6 p-1 mx-8 rounded-lg" @click="cancel">Sahkan</button>
+                        </div>
+                    
+                </dialog>
+            </div>  
+            <!-- End of prompt -->
+  <ToastMessage ref="toast" />
 </template>
+
+<script>
+import router from "../router";
+import { cancelRegister, errorAgree, successParent } from '../stores';
+
+
+export default {
+    data() {
+        return {
+            isCancel: '',
+        };
+    },
+
+    mounted() {
+      if (successParent.value === "success"){
+                const message = `Maklumat ibu bapa berjaya disimpan!`;
+                const status = "Berjaya";
+                this.$refs.toast.toast(message, status, "success");
+
+                successParent.value = "";
+          }
+
+          
+    },
+
+    methods: {
+      checkToast() {
+        if (errorAgree.value === "error")
+        {
+          const message = `Pilih setuju untuk Hantar Permohonan!`;
+          const status = "Peringatan";
+          this.$refs.toast.toast(message, status, "error");      
+        }
+
+        errorAgree.value = "";
+
+        if (cancelRegister.value === "cancel")
+        {
+          const message = `Permohonan pendaftaran telah dibatalkan!`;
+          const status = "Peringatan";
+          this.$refs.toast.toast(message, status, "error");      
+        }
+
+        cancelRegister.value = "";
+      },
+
+      toggleCancel() {
+            this.isCancel = !this.isCancel;
+      },
+
+        
+    }
+}
+</script>
+
