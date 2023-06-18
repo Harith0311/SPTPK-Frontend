@@ -11,10 +11,10 @@ import TopLabel from "../components/TopLabel.vue";
         <LogoHeader></LogoHeader>
         <form
             class="container px-12 m-4 p-8 mx-auto max-w-3xl bg-blue-100 w-auto drop-shadow-2xl rounded-2xl"
-            v-on:submit.prevent="login"
+            v-on:submit.prevent="updatePassword"
         >
             <div class="flex justify-start">
-                <RouterLink to="/OTPInput">
+                <RouterLink to="/forgotPassword">
                     <button class="bg-blue-100 p-2 px-5 text-base font-bold hover:text-zinc-600"><i class="fa-solid fa-caret-left px-2 "></i>Kembali</button>
                 </RouterLink>
             </div>
@@ -32,21 +32,67 @@ import TopLabel from "../components/TopLabel.vue";
             <input
                 class="inputTop w-full outline-blue-100 p-3 px-6 my-2 mb-10 drop-shadow-lg rounded-lg placeholder:font-normal"
                 placeholder="Masukkan kata laluan baharu"
-                v-model="emel"
-                type="email"
+                v-model="pass"
+                type="password"
             />
 
             <TopLabel textLabel="Sahkan kata laluan" />
             <input
                 class="inputTop w-full outline-blue-100 p-3 px-6 my-2 mb-10 drop-shadow-lg rounded-lg placeholder:font-normal"
                 placeholder="Sahkan kata laluan baharu"
-                v-model="emel"
-                type="email"
+                v-model="confirmPass"
+                type="password"
             />
 
-            <RouterLink to="/login">
+            
                 <BlueButton>Hantar PIN</BlueButton>
-            </RouterLink>
+            
         </form>
     </div>
 </template>
+
+<script>
+import router from "../router";
+import axios from 'axios';
+
+export default {
+    data() {
+        return {
+            pass:'',
+            confirmPass: '',
+            userId:'',
+
+        };
+    },
+
+    mounted() {
+
+    },
+
+    methods: {
+
+        updatePassword() {
+
+            this.userId = localStorage.getItem('userId');
+            console.log(this.userId);
+            if (this.pass === this.confirmPass)
+            {
+                const update = {
+                    password: this.confirmPass
+                }
+
+                axios.put('http://localhost:1001/pengguna/' + this.userId, update)
+                .then(response => {
+                    localStorage.clear();
+                    alert('password updated')
+                    router.push('/login');
+                })
+                .catch(error => {
+                    console.error('Error update password:', error);
+                });
+            }
+        }
+        
+    }
+}
+</script>

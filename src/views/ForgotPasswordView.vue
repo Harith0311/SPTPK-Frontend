@@ -11,7 +11,7 @@ import TopLabel from "../components/TopLabel.vue";
         <LogoHeader></LogoHeader>
         <form
             class="container px-12 m-4 p-8 mx-auto max-w-3xl bg-blue-100 w-auto drop-shadow-2xl rounded-2xl"
-            v-on:submit.prevent="login"
+            v-on:submit.prevent="validateInfo"
         >
             <div class="flex justify-start">
                 <RouterLink to="/login">
@@ -24,17 +24,16 @@ import TopLabel from "../components/TopLabel.vue";
 
             </div>
 
-            <h5 class="h5 font-normal text-zinc-600 px-10 mb-8">
-                Masukkan e-mel anda yang digunakan untuk mendaftar akaun, 
-                kami akan menghantar 
-                nombor PIN kepada anda untuk menetapkan semula kata laluan.
+            <h5 class="h5 font-normal text-zinc-600 px-32 mb-8">
+                Masukkan e-mel dan nombor kad pengenalan yang digunakan ketika mendaftar akaun
+                
             </h5>
 
             <TopLabel textLabel="Emel*" />
             <input
                 class="inputTop w-full outline-blue-100 p-3 px-6 my-2 mb-10 drop-shadow-lg rounded-lg placeholder:font-normal"
                 placeholder="Masukkan alamat emel"
-                v-model="emel"
+                v-model="email"
                 type="email"
             />
 
@@ -42,24 +41,28 @@ import TopLabel from "../components/TopLabel.vue";
             <input
                 class="inputTop w-full outline-blue-100 p-3 px-6 my-2 mb-10 drop-shadow-lg rounded-lg placeholder:font-normal"
                 placeholder="Masukkan nombor kad pengenalan"
-                v-model="emel"
-                type="email"
+                v-model="IC"
+                type="text"
             />
 
-            <RouterLink to="/OTPInput">
+            
                 <BlueButton>Sahkan</BlueButton>
-            </RouterLink> 
+        
         </form>
     </div>
 </template>
 
 <script>
 import router from "../router";
+import axios from 'axios';
 
 export default {
     data() {
         return {
-            isLogout:''
+            email: '',
+            IC: '',
+            user:'',
+            userId:'',
         };
     },
 
@@ -69,14 +72,23 @@ export default {
 
     methods: {
 
-        logOut() {
-            sessionStorage.removeItem('id');
-            router.push('/login');
+        validateInfo() {
+            axios.get('http://localhost:1001/pengguna')
+                .then(response => {
+                    this.user = response.data.filter(item => item.emel === this.email && item.noKP === this.IC);
+                    this.userId = this.user[0].id;
+                    console.log(this.userId);
+                    localStorage.setItem('userId', this.userId);
+                    router.push('/resetPassword')
+                    console.log(this.user);
+                    })
+                    .catch(error => {
+                        alert('Account does not exist')
+                    console.error('Account does not exist', error);
+                });             
         },
 
-        toggleLogout() {
-            this.isLogout = !this.isLogout;
-        },
+       
     }
 }
 
