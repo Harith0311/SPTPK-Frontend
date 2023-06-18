@@ -38,9 +38,46 @@ import TopLabel from "../components/TopLabel.vue";
                 type="email"
             />
 
+            <TopLabel textLabel="Nombor Kad Pengenalan*" />
+            <input
+                class="inputTop w-full outline-blue-100 p-3 px-6 my-2 mb-10 drop-shadow-lg rounded-lg placeholder:font-normal"
+                placeholder="Masukkan nombor kad pengenalan"
+                v-model="emel"
+                type="email"
+            />
+
             <RouterLink to="/OTPInput">
-                <BlueButton>Hantar PIN</BlueButton>
+                <BlueButton>Sahkan</BlueButton>
             </RouterLink> 
         </form>
     </div>
 </template>
+
+<script>
+import router from "../router";
+
+export default {
+    data() {
+        return {
+            isLogout:''
+        };
+    },
+
+    mounted() {
+
+    },
+
+    methods: {
+
+        logOut() {
+            sessionStorage.removeItem('id');
+            router.push('/login');
+        },
+
+        toggleLogout() {
+            this.isLogout = !this.isLogout;
+        },
+    }
+}
+
+</script>

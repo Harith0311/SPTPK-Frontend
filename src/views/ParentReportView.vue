@@ -5,7 +5,7 @@ import Header from "../components/Header.vue";
 </script>
 
 <template>
-    <div class="flex bg-blue-100 w-full justify-between p-8">
+    <div class="flex bg-blue-100 w-full h-full justify-between p-8">
         <SideBarParent />
 
         <!-- Content -->

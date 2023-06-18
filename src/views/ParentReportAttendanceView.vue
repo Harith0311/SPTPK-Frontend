@@ -30,11 +30,11 @@
                     <input class="p-2 rounded-lg drop-shadow-md" type="date" v-model="selectedDate" @change="fetchChildAttendance" >
                 </div>
 
-                <div class="relative overflow-y-auto overflow-hidden  h-[380px]">
+                <div class="relative overflow-y-auto overflow-hidden  h-[140px]">
                     <table class="m-8 w-5/6 mx-auto">
                         <thead class="sticky top-0 z-10 ">
                             <tr class="border-solid border-b-2 border-black">
-                                <th class="w-auto bg-orange-200">Bil.</th>
+                                
                                 <th class="bg-orange-200 ">Nama</th>
                                 <th class="bg-orange-200 ">Umur</th>
                                 <th class="bg-orange-200 ">Jantina</th>
@@ -42,10 +42,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(child, index) in ChildList" v-bind:key="child.id" class="border-solid border-b-2 border-[#fcdebb] ">
-                                <td class="text-center p-2">{{ index + 1 }}</td>
+                            <tr v-for="child in ChildList" v-bind:key="child.id" class="border-solid border-b-2 border-[#fcdebb] ">
+                                
                                 <td class="p-2">{{child.namaKanak}}</td>
-                                <td class="text-center p-2">{{child.umur}}</td>                      
+                                <td class="text-center p-2">{{ child.ageYears }} tahun {{ child.ageMonths }} bulan</td>                      
                                 <td class="text-center p-2">{{child.jantina}}</td>
                                 <template v-if="AttendanceList.length > 0">
                                     <template v-for="attendance in AttendanceList" v-bind:key="attendance.kanakId">
@@ -72,9 +72,9 @@
                 </div>
                 
             </div>
-            <div @click="printReport" class="bg-orange-300 hover:bg-orange-400 cursor-pointer p-4 h-[60px] w-full mx-auto mb-10 drop-shadow-lg rounded-2xl text-center font-bold text-lg">
+            <!-- <div @click="printReport" class="bg-orange-300 hover:bg-orange-400 cursor-pointer p-4 h-[60px] w-full mx-auto mb-10 drop-shadow-lg rounded-2xl text-center font-bold text-lg">
                 Cetak Laporan Kehadiran
-            </div>
+            </div> -->
 
         </div>
 </template>
@@ -88,6 +88,11 @@ export default {
         return {
             ChildList: [],
             AttendanceList: [],
+            child:'',
+            kehadiran:'',
+            userId: '',
+            kanakId: '',
+            kehadiranId:'',
             data: null,
             dayOfWeek: '',
             selectedDate: this.getTodayDate()
@@ -105,21 +110,79 @@ export default {
     },
 
     mounted() {
+        // this.fetchCurrentUser();
         this.fetchChildData();
+        console.log(this.kanakId);
         this.fetchChildAttendance();
+        console.log(this.selectedDate);
+        
     },
     methods: {
         fetchChildData(){
+            this.userId = JSON.parse(sessionStorage.getItem('id'));
+                console.log(this.userId);
+
+                axios.get('http://localhost:1001/pengguna/' + this.userId)
+                    .then(response => {
+                        this.currentUser = response.data;
+                        this.code = response.data.kodPengesahan;
+                        console.log(this.code);
+                        console.log(response.data);
+                        console.log(this.currentUser);
+
+                        axios.get('http://localhost:1001/kanak')
+                            .then(response => {
+                            this.child = response.data.filter(item => item.kodPengesahan === this.code);
+                            this.kanakId = this.child[0].id;
+                            console.log(this.kanakId);
+                            
+                            this.fetchChildAttendance();
+                            console.log(this.child);
+                            })
+                            .catch(error => {
+                            console.error('Error fetching child data:', error);
+                        });
+
             axios.get('http://localhost:1001/kanak')
                 .then(response => {
-                this.ChildList = response.data;
+                this.ChildList = response.data.filter(item => item.id === this.kanakId);
+                this.calculateAge();
                 console.log(this.ChildList);
                 })
                 .catch(error => {
                 console.error('Error fetching child data:', error);
             });
+            })
         },
 
+        calculateAge() {
+            if (this.ChildList.length > 0) {
+                const today = new Date();
+                this.ChildList.forEach((child) => {
+                    const birthDate = new Date(child.tarikhLahir);
+                    const yearDiff = today.getFullYear() - birthDate.getFullYear();
+                    const monthDiff = today.getMonth() - birthDate.getMonth();
+                    const dayDiff = today.getDate() - birthDate.getDate();
+
+                    let ageYears = yearDiff;
+                    let ageMonths = monthDiff;
+
+                    if (dayDiff < 0) {
+                    ageMonths -= 1;
+                    }
+
+                    if (ageMonths < 0) {
+                    ageYears -= 1;
+                    ageMonths += 12;
+                    }
+
+                    child.ageYears = ageYears;
+                    child.ageMonths = ageMonths;
+                });
+            }
+        },
+
+        
         getTodayDate() {
             const today = new Date();
             const year = today.getFullYear();
@@ -139,130 +202,131 @@ export default {
 
         fetchChildAttendance(){
             const date = this.selectedDate;
+            console.log(date);
 
             axios.get(`http://localhost:1001/kehadiran?date=${date}`) 
                 .then(response => {
-                this.AttendanceList = response.data;
+                this.AttendanceList = response.data.filter(item => item.kanakId === this.kanakId );
                 this.extractDayOfWeek();
-                console.log(this.data);
+                console.log(this.AttendanceList);
                 })
                 .catch(error => {
                 console.error('Error fetching data:', error);
                 });
         },
 
-        printReport(){
-            // Create a new window for printing
-            const printWindow = window.open('', '_blank', 'width=800,height=600,top=100,left=100,location=no');
+        // printReport(){
+        //     // Create a new window for printing
+        //     const printWindow = window.open('', '_blank', 'width=800,height=600,top=100,left=100,location=no');
 
-            // Open a new document in the print window
-            printWindow.document.open();
+        //     // Open a new document in the print window
+        //     printWindow.document.open();
 
-            // Extract the data from the Vue.js component
-            const ChildList = this.ChildList;
-            const AttendanceList = this.AttendanceList;
+        //     // Extract the data from the Vue.js component
+        //     const ChildList = this.ChildList;
+        //     const AttendanceList = this.AttendanceList;
 
-            // Generate the table rows using the data
-            const tableRows = ChildList.map((child, index) => {
-            let attendanceCell = '';
+        //     // Generate the table rows using the data
+        //     const tableRows = ChildList.map((child, index) => {
+        //     let attendanceCell = '';
 
-            if (AttendanceList.length > 0) {
-                const attendance = AttendanceList.find(a => a.kanakId === child.id);
-                if (attendance && attendance.hadir) {
-                attendanceCell = `<td class="flex text-center justify-center p-2"><div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2">Hadir</div></td>`;
-                } else {
-                attendanceCell = `<td class="flex text-center justify-center p-2"><div class="w-3 h-3 rounded-full bg-red-600 mx-3 my-2">Tidak Hadir</div></td>`;
-                }
-            } else {
-                attendanceCell = `<td class="flex text-center justify-center p-2"><div class="w-3 h-3 rounded-full bg-red-600 mx-3 my-2">Tidak Hadir</div></td>`;
-            }
+        //     if (AttendanceList.length > 0) {
+        //         const attendance = AttendanceList.find(a => a.kanakId === child.id);
+        //         if (attendance && attendance.hadir) {
+        //         attendanceCell = `<td class="flex text-center justify-center p-2"><div class="w-3 h-3 rounded-full bg-green-600 mx-3 my-2">Hadir</div></td>`;
+        //         } else {
+        //         attendanceCell = `<td class="flex text-center justify-center p-2"><div class="w-3 h-3 rounded-full bg-red-600 mx-3 my-2">Tidak Hadir</div></td>`;
+        //         }
+        //     } else {
+        //         attendanceCell = `<td class="flex text-center justify-center p-2"><div class="w-3 h-3 rounded-full bg-red-600 mx-3 my-2">Tidak Hadir</div></td>`;
+        //     }
 
-            return `
-                <tr>
-                <td class="text-center p-2">${index + 1}</td>
-                <td class="p-2">${child.namaKanak}</td>
-                <td class="text-center p-2">${child.umur}</td>
-                <td class="text-center p-2">${child.jantina}</td>
-                ${attendanceCell}
-                </tr>
-            `;
-            }).join('');
+        //     return `
+        //         <tr>
+        //         <td class="text-center p-2">${index + 1}</td>
+        //         <td class="p-2">${child.namaKanak}</td>
+        //         <td class="text-center p-2">${child.umur}</td>
+        //         <td class="text-center p-2">${child.jantina}</td>
+        //         ${attendanceCell}
+        //         </tr>
+        //     `;
+        //     }).join('');
 
-            // Generate the complete HTML template with the dynamic data
-            const htmlTemplate = `
-            <html>
-                <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Document</title>
-                <style>
-                    * {
-                    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-                    }
+        //     // Generate the complete HTML template with the dynamic data
+        //     const htmlTemplate = `
+        //     <html>
+        //         <head>
+        //         <meta charset="UTF-8">
+        //         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        //         <title>Document</title>
+        //         <style>
+        //             * {
+        //             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        //             }
 
-                    table {
-                    margin-left: auto;
-                    margin-right: auto;
-                    width: 80vw;
-                    border-collapse: collapse;
-                    }
+        //             table {
+        //             margin-left: auto;
+        //             margin-right: auto;
+        //             width: 80vw;
+        //             border-collapse: collapse;
+        //             }
 
-                    table, td, th {
-                    border: 2px solid black;
-                    padding: 5px;
-                    }
+        //             table, td, th {
+        //             border: 2px solid black;
+        //             padding: 5px;
+        //             }
 
-                    h2 {
-                    text-align: center;
-                    margin-top: 40px;
-                    margin-bottom: -5px;
-                    }
+        //             h2 {
+        //             text-align: center;
+        //             margin-top: 40px;
+        //             margin-bottom: -5px;
+        //             }
 
-                    p {
-                    font-size: 15px;
-                    font-weight: 600;
-                    text-align: center;
-                    margin-bottom: 30px;
-                    }
-                </style>
-                </head>
-                <body>
-                <h2>Laporan Kehadiran Kanak Kanak</h2>
-                <p>TASKA PERMATA KELUARGA TAMAN DESA PERMAI</p>
-                <table>
-                    <thead>
-                    <tr>
-                        <th class="w-auto bg-orange-200">Bil.</th>
-                        <th class="bg-orange-200">Nama</th>
-                        <th class="bg-orange-200">Umur</th>
-                        <th class="bg-orange-200">Jantina</th>
-                        <th class="bg-orange-200">Kehadiran</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    ${tableRows}
-                    </tbody>
-                </table>
-                <p>Tarikh Kehadiran: ${this.selectedDate}</p>
+        //             p {
+        //             font-size: 15px;
+        //             font-weight: 600;
+        //             text-align: center;
+        //             margin-bottom: 30px;
+        //             }
+        //         </style>
+        //         </head>
+        //         <body>
+        //         <h2>Laporan Kehadiran Kanak Kanak</h2>
+        //         <p>TASKA PERMATA KELUARGA TAMAN DESA PERMAI</p>
+        //         <table>
+        //             <thead>
+        //             <tr>
+        //                 <th class="w-auto bg-orange-200">Bil.</th>
+        //                 <th class="bg-orange-200">Nama</th>
+        //                 <th class="bg-orange-200">Umur</th>
+        //                 <th class="bg-orange-200">Jantina</th>
+        //                 <th class="bg-orange-200">Kehadiran</th>
+        //             </tr>
+        //             </thead>
+        //             <tbody>
+        //             ${tableRows}
+        //             </tbody>
+        //         </table>
+        //         <p>Tarikh Kehadiran: ${this.selectedDate}</p>
                 
                 
-                </body>
-            </html>
-            `;
+        //         </body>
+        //     </html>
+        //     `;
 
-            // Write the HTML template to the print window document
-            printWindow.document.write(htmlTemplate);
+        //     // Write the HTML template to the print window document
+        //     printWindow.document.write(htmlTemplate);
 
-            // Close the document after writing
-            printWindow.document.close();
+        //     // Close the document after writing
+        //     printWindow.document.close();
 
-            printWindow.print();
+        //     printWindow.print();
 
-            printWindow.document.querySelector('body').style.margin = '0';
-            printWindow.document.querySelector('table').style.width = '100%';
-            printWindow.document.querySelector('table').style.borderCollapse = 'collapse';
+        //     printWindow.document.querySelector('body').style.margin = '0';
+        //     printWindow.document.querySelector('table').style.width = '100%';
+        //     printWindow.document.querySelector('table').style.borderCollapse = 'collapse';
 
-        },
+        // },
 
         extractDayOfWeek() {
             if (this.data && this.data.length > 0) {
