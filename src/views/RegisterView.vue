@@ -8,7 +8,7 @@
 </script>
 <template>
     
-    <div class="register p-5 bg-blue-50 w-screen min-h-screen w-100 max-h-full font-bold text-center" v-on:submit.prevent="register">
+    <div class="register p-5 bg-blue-50 w-screen min-h-screen w-100 max-h-full font-bold " v-on:submit.prevent="register">
         <LogoHeader></LogoHeader>
         <form v-on:submit.prevent="createNewUser" class="container px-12 m-4 p-8 mx-auto drop-shadow-2xl max-w-3xl bg-blue-100 w-auto rounded-2xl">
             <div class="flex justify-start">
@@ -16,67 +16,76 @@
                     <button class="bg-blue-100 p-2 px-5 text-base font-bold hover:text-zinc-600"><i class="fa-solid fa-caret-left px-2 "></i>Kembali</button>
                 </RouterLink>
             </div>
-            <h1 class="h1 text-2xl">DAFTAR SEKARANG!</h1>
-            <h5 class="h5 font-normal mb-8">Masukkan maklumat pengguna dalam ruangan yang disediakan</h5>
+            <h1 class="h1 text-2xl text-center">DAFTAR SEKARANG!</h1>
+            <h5 class="h5 font-normal mb-8 text-center">Masukkan maklumat pengguna dalam ruangan yang disediakan</h5>
             <!-- <TopLabel>Nama Penuh</TopLabel> -->
             <TopLabel textLabel="Nama Penuh"/>
             <input 
-                class="inputTop w-full outline-blue-100 p-3 px-6 my-2 drop-shadow-lg rounded-lg placeholder:font-normal" 
+                class="inputTop w-full outline-blue-100 p-3 px-6 mt-2 drop-shadow-lg rounded-lg placeholder:font-normal" 
                 placeholder="Masukkan Nama Penuh Pengguna" 
                 v-model="name" 
                 type="text"
             />
+            <label class="text-red-600 font-medium text-xs pl-[8px] " for="errorName" id="errorName">{{errorName}}</label>
+
             <TopLabel textLabel="Emel"/>
             <input 
-                class="inputTop w-full outline-blue-100 p-3 px-6 my-2 drop-shadow-lg rounded-lg placeholder:font-normal" 
+                class="inputTop w-full outline-blue-100 p-3 px-6 mt-2 drop-shadow-lg rounded-lg placeholder:font-normal" 
                 placeholder="Masukkan Emel Pengguna" 
                 v-model="email" 
                 type="email"
             />
+            <label class="text-red-600 font-medium text-xs pl-[8px] " for="errorEmail" id="errorEmail">{{errorEmail}}</label>
             
             <TopLabel textLabel="Nombor Kad Pengenalan"/>
             <input 
-                class="inputTop w-full outline-blue-100 p-3 px-6 my-2 drop-shadow-lg rounded-lg placeholder:font-normal" 
+                class="inputTop w-full outline-blue-100 p-3 px-6 mt-2 drop-shadow-lg rounded-lg placeholder:font-normal" 
                 placeholder="Masukkan Nombor Kad Pengenalan" 
                 v-model="noIC" 
                 type="text"
             />
+            <label class="text-red-600 font-medium text-xs pl-[8px] " for="errorIC" id="errorIC">{{errorIC}}</label>
 
             <TopLabel textLabel="Peranan"/>
             <select 
-                class="inputTop w-full outline-blue-100 p-3 px-6 my-2 drop-shadow-lg rounded-lg placeholder:font-normal"  
+                class="inputTop w-full outline-blue-100 p-3 px-6 mt-2 drop-shadow-lg rounded-lg placeholder:font-normal"  
                 v-model="role" 
                 type="text"
             >
-                <option value="">Pilih peranan</option>
+                <option value="" disabled>Pilih peranan</option>
                 <option value="Staf Taska">Staf Taska</option>
                 <option value="Ibubapa">Ibubapa</option>
             </select>
+            <label class="text-red-600 font-medium text-xs pl-[8px] " for="errorRole" id="errorRole">{{errorRole}}</label>
           
             <TopLabel textLabel="Kata Laluan"/>
             <input 
-                class="inputTop w-full outline-blue-100 p-3 px-6 my-2 drop-shadow-lg rounded-lg placeholder:font-normal" 
+                class="inputTop w-full outline-blue-100 p-3 px-6 mt-2 drop-shadow-lg rounded-lg placeholder:font-normal" 
                 placeholder="Masukkan Kata Laluan" 
                 v-model="password" 
                 type="password"
             />
+            <label class="text-red-600 font-medium text-xs pl-[8px] " for="errorPass" id="errorPass">{{errorPass}}</label>
+            <label class="text-red-600 font-medium text-xs pl-[8px] " for="passwordValidation" id="passwordValidation">{{passwordValidation}}</label>
             
             <TopLabel textLabel="Pengesahan Kata Laluan"/>
             <input 
-                class="inputTop w-full outline-blue-100 p-3 px-6 my-2 drop-shadow-lg rounded-lg placeholder:font-normal" 
+                class="inputTop w-full outline-blue-100 p-3 px-6 mt-2 drop-shadow-lg rounded-lg placeholder:font-normal" 
                 placeholder="Sahkan Kata Laluan" 
                 v-model="confirmPassword" 
                 type="password"
             />
+            <label class="text-red-600 font-medium text-xs pl-[8px] " for="errorConfirmPass" id="errorConfirmPass">{{errorConfirmPass}}</label>
 
             
             <TopLabel textLabel="Kod Pengesahan"/>
             <input 
-                class="inputTop w-full outline-blue-100 p-3 px-6 my-2 drop-shadow-lg rounded-lg placeholder:font-normal" 
+                class="inputTop w-full outline-blue-100 p-3 px-6 mt-2 drop-shadow-lg rounded-lg placeholder:font-normal" 
                 placeholder="Masukkan Kod Pengesahan" 
                 v-model="code" 
                 type="text"
             />
+            <label class="text-red-600 font-medium text-xs pl-[8px] " for="errorCode" id="errorCode">{{errorCode}}</label>
     
             <h5 class="pengesahan text-right font-medium text-xs mb-10">* Dapatkan kod pengesahan melalui mesej Whatsapp yang dihantar oleh pihak TASKA</h5>
             
@@ -108,6 +117,17 @@
                 code: '',
                 child: '',
 
+                // error
+                errorName: '',
+                errorEmail: '',
+                errorIC: '',
+                errorRole: '',
+                errorPass: '',
+                errorConfirmPass: '',
+                errorCode: '',
+                passwordValidation: ''
+
+
             }
         },
 
@@ -125,58 +145,128 @@
                 const sahKataLaluan = this.confirmPassword
                 const kodPengesahan = this.code;
 
-                // Dapatkan list pendaftaran yang telah diluluskan
-                axios.get('http://localhost:1001/urusPendaftaran/lulus')
-                .then(response => {
-                    console.log(response.data);
-                    this.child = response.data.filter(item => item.kodPengesahan === this.code);
-                            
-                    console.log(this.child);
-
-                    // Check jika kod pengesahan tiada dalam sistem
-                    if (this.child.length < 1)
-                    {
-                        alert('kod pengesahan tidak sah')
-                    }
-                    // Check jika kod pengesahan wujud
-                    else if(this.child.length > 0)
-                    {
-                        alert('kod pengesahan sah')
-
-                        const pengguna = 
+                if (this.role && this.name && this.email && this.noIC && this.password && this.confirmPassword && this.code)
+                {
+                    // Dapatkan list pendaftaran yang telah diluluskan
+                    axios.get('http://localhost:1001/urusPendaftaran/lulus')
+                    .then(response => {
+                        console.log(response.data);
+                        this.child = response.data.filter(item => item.kodPengesahan === this.code);
+                                
+                        console.log(this.child);
+    
+                        // Check jika kod pengesahan tiada dalam sistem
+                        if (this.child.length < 1)
                         {
-                            peranan,
-                            nama,
-                            emel,
-                            noKP,
-                            kataLaluan,
-                            kodPengesahan
+                            alert('kod pengesahan tidak sah')
                         }
+                        // Check jika kod pengesahan wujud
+                        else if(this.child.length > 0)
+                        {
+                            alert('kod pengesahan sah')
+    
+                            const pengguna = 
+                            {
+                                peranan,
+                                nama,
+                                emel,
+                                noKP,
+                                kataLaluan,
+                                kodPengesahan
+                            }
+    
+                            // Check kata laluan
+                            if (kataLaluan !== sahKataLaluan) {
+                                console.error('Password and confirm password do not match');
+                                alert('Kata laluan tidak sepadan!');
+                                // You can display an error message or perform any desired action
+                            } else {
+                                // Password is valid, proceed with the API call
+                                axios.post('http://localhost:1001/pengguna', pengguna)
+                                .then(response => {
+                                    console.log(response.data);
+                                    alert('Selamat datang!');
+                                    router.push('/login');
+                                })
+                                .catch(error => { 
+                                    console.error('Error create new user: ', error);
+                                    alert('Pendaftaran tidak berjaya!');
+                                })
+                            }
+                        }
+                    })
+                    .catch(error => {
+                    // alert('kod pengesahan tidak sah')
+                    console.error('Error fetching child data:', error);
+                    });
 
-                        // Check kata laluan
-                        if (kataLaluan !== sahKataLaluan) {
-                            console.error('Password and confirm password do not match');
-                            alert('Kata laluan tidak sepadan!');
-                            // You can display an error message or perform any desired action
-                        } else {
-                            // Password is valid, proceed with the API call
-                            axios.post('http://localhost:1001/pengguna', pengguna)
-                            .then(response => {
-                                console.log(response.data);
-                                alert('Selamat datang!');
-                                router.push('/login');
-                            })
-                            .catch(error => { 
-                                console.error('Error create new user: ', error);
-                                alert('Pendaftaran tidak berjaya!');
-                            })
-                        }
+                }
+                else
+                {
+                    if (this.name === '')
+                    {
+                        this.errorName = '*Sila masukkan nama pengguna'
                     }
-                })
-                .catch(error => {
-                // alert('kod pengesahan tidak sah')
-                console.error('Error fetching child data:', error);
-                });
+                    else
+                    {
+                        this.errorName = ''
+                    }
+
+                    if (this.email === '')
+                    {
+                        this.errorEmail = '*Sila masukkan alamat emel pengguna'
+                    }
+                    else
+                    {
+                        this.errorEmail = ''
+                    }
+
+                    if (this.noIC === '')
+                    {
+                        this.errorIC = '*Sila masukkan nombor kad pengenalan pengguna'
+                    }
+                    else
+                    {
+                        this.errorIC = ''
+                    }
+
+                    if (this.role === '')
+                    {
+                        this.errorRole = '*Sila masukkan peranan pengguna'
+                    }
+                    else
+                    {
+                        this.errorRole = ''
+                    }
+
+                    if (this.password === '')
+                    {
+                        this.errorPass = '*Sila masukkan kata laluan pengguna'
+                    }
+                    else
+                    {
+                        this.errorPass = ''
+                    }
+
+                    if (this.confirmPassword === '')
+                    {
+                        this.errorConfirmPass = '*Sila sahkan kata laluan pengguna'
+                    }
+                    else
+                    {
+                        this.errorConfirmPass = ''
+                    }
+
+                    if (this.code === '')
+                    {
+                        this.errorCode = '*Sila masukkan kod pengesahan'
+                    }
+                    else
+                    {
+                        this.errorCode = ''
+                    }
+                }
+
                 
                 
                 
