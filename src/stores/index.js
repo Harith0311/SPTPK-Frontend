@@ -19,5 +19,5 @@ export const errorAgree = ref("");
 
 export const cancelRegister = ref(""); //Cancel pendaftaran kanak kanak
 
-export const BaseURL = "https://taska-permata-keluarga.onrender.com"
+export const BaseURL = "https://taska-permata-keluarga.onrender.com/"
 // "http://localhost:1001/";
