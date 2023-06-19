@@ -45,7 +45,7 @@
                     <!-- Logo Kelas -->
                     <div class="group flex">
                         <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 z-0 rounded-md">
-                            <img src="../assets/melur.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                            <img src="/melur.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
                         </div>
                         <!-- Tooltip test -->
                         <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
@@ -81,7 +81,7 @@
                     <!-- Logo Kelas -->
                     <div class="group flex">
                         <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                            <img src="../assets/orkid.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                            <img src="/orkid.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
                         </div>
                         <!-- Tooltip test -->
                         <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
@@ -117,7 +117,7 @@
                     <!-- Logo Kelas -->
                     <div class="group flex">
                         <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                            <img src="../assets/rose.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                            <img src="/rose.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
                         </div>
                         <!-- Tooltip test -->
                         <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
@@ -153,7 +153,7 @@
                     <!-- Logo Kelas -->
                     <div class="group flex">
                         <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                            <img src="../assets/raya.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                            <img src="/raya.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
                         </div>
                         <!-- Tooltip test -->
                         <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
@@ -189,7 +189,7 @@
                     <!-- Logo Kelas -->
                     <div class="group flex">
                         <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                            <img src="../assets/daisy.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                            <img src="/daisy.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
                         </div>
                         <!-- Tooltip test -->
                         <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
@@ -225,7 +225,7 @@
                     <!-- Logo Kelas -->
                     <div class="group flex">
                         <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                            <img src="../assets/matahari.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                            <img src="/matahari.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
                         </div>
                         <!-- Tooltip test -->
                         <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
@@ -262,7 +262,7 @@
                     <!-- Logo Kelas -->
                     <div class="group flex">
                         <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                            <img src="../assets/dahlia.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                            <img src="/dahlia.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
                         </div>
                         <!-- Tooltip test -->
                         <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
@@ -299,7 +299,7 @@
                     <!-- Logo Kelas -->
                     <div class="group flex">
                         <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                            <img src="../assets/lily.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                            <img src="/lily.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
                         </div>
                         <!-- Tooltip test -->
                         <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">
@@ -336,7 +336,7 @@
                     <!-- Logo Kelas -->
                     <div class="group flex">
                         <div class="bg-blue-700 bg-opacity-30 w-20 h-20 m-4 ml-20 rounded-md">
-                            <img src="../assets/tulip.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
+                            <img src="/tulip.png" class="opacity-100 z-10 w-14 h-auto mx-auto my-3" alt="">
                         </div>
                         <!-- Tooltip test -->
                         <div class=" group-hover:visible  invisible w-20 bg-blue-700 bg-opacity-70 text-sm text-white text-center rounded-md mt-24 ml-20 p-1  absolute z-50">

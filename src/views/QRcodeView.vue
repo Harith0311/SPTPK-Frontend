@@ -23,7 +23,7 @@ import SideBar from '../components/SideBar.vue';
     <div class="qr bg-blue-200 h-full sm:hidden " >
         <div class="flex justify-between h-auto bg-black w-screen py-2">
             <div class="flex">
-                <img class="p-1 ml-3 h-auto w-10" src="../assets/permata-logo.png" alt="">
+                <img class="p-1 ml-3 h-auto w-10" src="/permata-logo.png" alt="">
                 <h3 class="text-red-600 text-sm font-semibold pt-2 pl-2">Taska Permata <br> Keluarga</h3>
             </div>
             <div class="flex">

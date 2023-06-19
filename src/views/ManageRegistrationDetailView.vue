@@ -245,7 +245,7 @@ import CanvasQR from "../components/CanvasQR.vue";
             <div class="flex justify-center">
                 <div class="flex justify-between  bg-gray-200 p-2 w-3/5  rounded-lg mb-5">
                     <p class="text-sm p-2 text-justify mx-3 mr-10 ">Sila tekan butang di atas untuk menghantar maklumat kod pengesahan kepada penjaga kanak kanak melalui platform whatsapp</p>
-                    <img class="h-auto w-10 m-2 mx-4" src="../assets/whatsapp.png" alt="">
+                    <img class="h-auto w-10 m-2 mx-4" src="/whatsapp.png" alt="">
                 </div>
             </div>
             <div class="flex justify-center">

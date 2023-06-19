@@ -6,17 +6,17 @@
 <template>
     <div class="header flex justify-between">
          <div class="flex">
-             <img src="../assets/permata-logo.png" alt="permata" class="h-14 w-auto m-4 max-md:h-13">
+             <img src="/permata-logo.png" alt="permata" class="h-14 w-auto m-4 max-md:h-13">
              <div class=" h-14 my-4 w-28 font-semibold text-red-600 text-sm py-2 max-md:py-0 max-md:font-medium max-md:w-20 ">
                 Taska Permata Keluarga
              </div>
          </div>
          <div class="flex my-auto mr-4">
             <template v-if="currentUser.peranan === 'Staf Taska'">
-                <img class="w-10 h-10 rounded-full mx-3  border-solid border-2 border-black" src="../assets/staff.png" alt="">
+                <img class="w-10 h-10 rounded-full mx-3  border-solid border-2 border-black" src="/staff.png" alt="">
             </template>
             <template v-else>
-                <img class="w-10 h-10 rounded-full mx-3  border-solid border-2 border-black" src="../assets/parent.png" alt="">
+                <img class="w-10 h-10 rounded-full mx-3  border-solid border-2 border-black" src="/parent.png" alt="">
             </template>
              
              <div>

@@ -64,7 +64,7 @@ import Header from "../components/Header.vue";
                     <div class="flex justify-between">
                         <div class="py-2 ml-5">
                             <div class="bg-blue-200 w-[120px] h-auto p-4 rounded-md drop-shadow-xl ">
-                                <img class="h-auto w-24" src="../assets/staff.png" alt="">   
+                                <img class="h-auto w-24" src="/staff.png" alt="">   
                             </div>
                             <!-- <div class="absolute bg-white w-4 h-4 z-10 rounded-full drop-shadow-xl top-[62px] left-[115px]">
                                 <div class="absolute bg-green-400 w-4 h-4 z-40 rounded-full drop-shadow-xl top-[62px] left-[115px]"></div>
@@ -145,13 +145,13 @@ import Header from "../components/Header.vue";
                 <div class="transction w-5/12  ">
                     <h2 class="font-extrabold">Statistik Kehadiran</h2>
                     <div class="mt-3 rounded-2xl drop-shadow-2xl bg-white p-4">
-                        <img class="h-56 w-auto" src="../assets/kehadiran.png" alt="">
+                        <img class="h-56 w-auto" src="/kehadiran.png" alt="">
                     </div>
                 </div>
                 <div class="stocks w-5/12   ">
                     <h2 class="font-extrabold">Statistik Umur Kanak-Kanak</h2>
                     <div class="stocks-main mt-3 rounded-2xl drop-shadow-2xl bg-white p-4 ">
-                        <img class="h-56 w-auto" src="../assets/umur.png" alt="">
+                        <img class="h-56 w-auto" src="/umur.png" alt="">
                     </div>
                 </div>
             </div> -->

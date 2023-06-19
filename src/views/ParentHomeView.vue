@@ -64,7 +64,7 @@ import Header from "../components/Header.vue";
                     <div class="flex justify-between">
                         <div class="py-2 ml-5">
                             <div class="bg-blue-200 w-[120px] h-auto p-4 rounded-md drop-shadow-xl ">
-                                <img class="h-auto w-24" src="../assets/staff.png" alt="">   
+                                <img class="h-auto w-24" src="/staff.png" alt="">   
                             </div>
                             <!-- <div class="absolute bg-white w-4 h-4 z-10 rounded-full drop-shadow-xl top-[62px] left-[115px]">
                                 <div class="absolute bg-green-400 w-4 h-4 z-40 rounded-full drop-shadow-xl top-[62px] left-[115px]"></div>
