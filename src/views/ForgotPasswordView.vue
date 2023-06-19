@@ -55,6 +55,7 @@ import TopLabel from "../components/TopLabel.vue";
 <script>
 import router from "../router";
 import axios from 'axios';
+import { BaseURL } from '../stores';
 
 export default {
     data() {
@@ -73,7 +74,7 @@ export default {
     methods: {
 
         validateInfo() {
-            axios.get('http://localhost:1001/pengguna')
+            axios.get(BaseURL + 'pengguna')
                 .then(response => {
                     this.user = response.data.filter(item => item.emel === this.email && item.noKP === this.IC);
                     this.userId = this.user[0].id;

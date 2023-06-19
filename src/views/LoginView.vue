@@ -52,6 +52,7 @@ import LogoHeader from "../components/LogoHeader.vue";
 <script>
 import axios from 'axios';
 import router from "../router";
+import { BaseURL } from '../stores';
 // import { createApp } from 'vue'
 // import App from './App.vue'
 
@@ -78,7 +79,7 @@ export default {
 
         async login() {
             try {
-                const response = await axios.post('http://localhost:1001/pengguna/logMasuk', {
+                const response = await axios.post(BaseURL + 'pengguna/logMasuk', {
                     email: this.emel,
                     password: this.kataLaluan,
                 });
@@ -86,7 +87,7 @@ export default {
                 sessionStorage.setItem("id", JSON.stringify(response.data));
 
                 const responseUser = await axios.get(
-                    `http://localhost:1001/pengguna/${response.data}`
+                    BaseURL + `pengguna/${response.data}`
 
                 );
                 console.log(responseUser);

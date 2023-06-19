@@ -378,6 +378,7 @@
 
 <script>
 import axios from 'axios';
+import { BaseURL } from '../stores';
 
 export default {
     data() {
@@ -430,7 +431,7 @@ export default {
 
     methods: {
         fetchAktivitiHariIni() {
-            axios.get('http://localhost:1001/aktivitiHariIni')
+            axios.get(BaseURL + 'aktivitiHariIni')
                 .then(response => {
                 this.AktivitiHariIniList = response.data;
                 
@@ -453,7 +454,7 @@ export default {
         },
 
         fetchAktivitiMelur(){
-            axios.get('http://localhost:1001/aktivitiHariIni')
+            axios.get(BaseURL + 'aktivitiHariIni')
                 .then(response => {
                 this.AktivitiMelur1 = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -475,7 +476,7 @@ export default {
         },
 
         fetchAktivitiOrkid(){
-            axios.get('http://localhost:1001/aktivitiHariIni')
+            axios.get(BaseURL + 'aktivitiHariIni')
                 .then(response => {
                 this.AktivitiOrkid1 = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -497,7 +498,7 @@ export default {
         },
 
         fetchAktivitiRose(){
-            axios.get('http://localhost:1001/aktivitiHariIni')
+            axios.get(BaseURL + 'aktivitiHariIni')
                 .then(response => {
                 this.AktivitiRose1 = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -519,7 +520,7 @@ export default {
         },
 
         fetchAktivitiRaya(){
-            axios.get('http://localhost:1001/aktivitiHariIni')
+            axios.get(BaseURL + 'aktivitiHariIni')
                 .then(response => {
                 this.AktivitiRaya1 = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -541,7 +542,7 @@ export default {
         },
 
         fetchAktivitiDaisy(){
-            axios.get('http://localhost:1001/aktivitiHariIni')
+            axios.get(BaseURL + 'aktivitiHariIni')
                 .then(response => {
                 this.AktivitiDaisy1 = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -563,7 +564,7 @@ export default {
         },
 
         fetchAktivitiMatahari(){
-            axios.get('http://localhost:1001/aktivitiHariIni')
+            axios.get(BaseURL + 'aktivitiHariIni')
                 .then(response => {
                 this.AktivitiMatahari1 = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -586,7 +587,7 @@ export default {
 
 
         fetchAktivitiDahlia(){
-            axios.get('http://localhost:1001/aktivitiHariIni')
+            axios.get(BaseURL + 'aktivitiHariIni')
                 .then(response => {
                 this.AktivitiDahlia1 = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -608,7 +609,7 @@ export default {
         },
 
         fetchAktivitiLily(){
-            axios.get('http://localhost:1001/aktivitiHariIni')
+            axios.get(BaseURL + 'aktivitiHariIni')
                 .then(response => {
                 this.AktivitiLily1 = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -629,7 +630,7 @@ export default {
         },
 
         fetchAktivitiTulip(){
-            axios.get('http://localhost:1001/aktivitiHariIni')
+            axios.get(BaseURL + 'aktivitiHariIni')
                 .then(response => {
                 this.AktivitiTulip1 = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh

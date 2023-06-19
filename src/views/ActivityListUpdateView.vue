@@ -45,7 +45,7 @@
 <script>
 import router from '../router';
 import axios from 'axios';
-import { successUpdateActivity } from '../stores';
+import { BaseURL, successUpdateActivity } from '../stores';
 
 export default {
     data() {
@@ -62,7 +62,7 @@ export default {
     
     mounted(){
         console.log(this.activityId);
-        axios.get('http://localhost:1001/aktiviti/'+this.activityId)
+        axios.get(BaseURL + 'aktiviti/'+this.activityId)
         .then(response => {
             this.activity = response.data;
 
@@ -74,7 +74,7 @@ export default {
     
     methods: {
         kemaskiniAktiviti() {
-            axios.put('http://localhost:1001/aktiviti/'+this.activityId, this.activity)
+            axios.put(BaseURL + 'aktiviti/'+this.activityId, this.activity)
             .then(response => {
                 const updateActivity = response.data;
 

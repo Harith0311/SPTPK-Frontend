@@ -84,6 +84,7 @@
 <script>
 
 import axios from 'axios';
+import { BaseURL } from '../stores';
 
 export default {
     data() {
@@ -112,7 +113,7 @@ export default {
     },
     methods: {
         fetchChildData(){
-            axios.get('http://localhost:1001/kanak')
+            axios.get(BaseURL + 'kanak')
                 .then(response => {
                 this.ChildList = response.data;
                 this.calculateAge();
@@ -171,7 +172,7 @@ export default {
         fetchChildAttendance(){
             const date = this.selectedDate;
 
-            axios.get(`http://localhost:1001/kehadiran?date=${date}`) 
+            axios.get(BaseURL + `kehadiran?date=${date}`) 
                 .then(response => {
                 this.AttendanceList = response.data;
                 this.extractDayOfWeek();

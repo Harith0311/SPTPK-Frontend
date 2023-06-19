@@ -64,6 +64,7 @@
 
 import axios from 'axios';
 import html2pdf from 'html2pdf.js';
+import { BaseURL } from '../stores';
 
 
 export default {
@@ -87,7 +88,7 @@ export default {
         //     this.fetchCurrentUser();
             
         //     console.log(this.code);
-        //     axios.get('http://localhost:1001/kanak')
+        //     axios.get(BaseURL + 'kanak')
         //         .then(response => {
         //         this.child = response.data.filter(item => item.kodPengesahan === this.code);
         //         console.log(this.child);
@@ -102,7 +103,7 @@ export default {
                 this.userId = JSON.parse(sessionStorage.getItem('id'));
                 console.log(this.userId);
 
-                axios.get('http://localhost:1001/pengguna/' + this.userId)
+                axios.get(BaseURL + 'pengguna/' + this.userId)
                     .then(response => {
                         this.currentUser = response.data;
                         this.code = response.data.kodPengesahan;
@@ -110,7 +111,7 @@ export default {
                         console.log(response.data);
                         console.log(this.currentUser);
 
-                        axios.get('http://localhost:1001/kanak')
+                        axios.get(BaseURL + 'kanak')
                             .then(response => {
                             this.child = response.data.filter(item => item.kodPengesahan === this.code);
                             this.calculateAge();

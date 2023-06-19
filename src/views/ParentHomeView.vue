@@ -97,6 +97,7 @@ import Header from "../components/Header.vue";
 
 <script>
     import axios from 'axios';
+import { BaseURL } from '../stores';
 
     export default {
         data() {
@@ -131,7 +132,7 @@ import Header from "../components/Header.vue";
         methods: {
 
             fetchChildList() {
-                axios.get('http://localhost:1001/urusPendaftaran/lulus')
+                axios.get(BaseURL + 'urusPendaftaran/lulus')
                     .then(response => {
                         this.ChildList = response.data;
                         
@@ -143,7 +144,7 @@ import Header from "../components/Header.vue";
             },
 
             fetchMaleList() {
-                axios.get('http://localhost:1001/urusPendaftaran/lelaki')
+                axios.get(BaseURL + 'urusPendaftaran/lelaki')
                     .then(response => {
                         this.MaleList = response.data;
                         
@@ -155,7 +156,7 @@ import Header from "../components/Header.vue";
             },
 
             fetchFemaleList() {
-                axios.get('http://localhost:1001/urusPendaftaran/perempuan')
+                axios.get(BaseURL + 'urusPendaftaran/perempuan')
                     .then(response => {
                         this.FemaleList = response.data;
                         
@@ -167,7 +168,7 @@ import Header from "../components/Header.vue";
             },
 
             fetchStaffList() {
-                axios.get('http://localhost:1001/pengguna/staf')
+                axios.get(BaseURL + 'pengguna/staf')
                     .then(response => {
                         this.StaffList = response.data;
                         
@@ -182,7 +183,7 @@ import Header from "../components/Header.vue";
                 this.userId = JSON.parse(sessionStorage.getItem('id'));
                 console.log(this.userId);
 
-                axios.get('http://localhost:1001/pengguna/' + this.userId)
+                axios.get(BaseURL + 'pengguna/' + this.userId)
                     .then(response => {
                         this.currentUser = response.data;
                         console.log(response.data);

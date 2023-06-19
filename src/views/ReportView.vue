@@ -30,6 +30,7 @@ import Header from "../components/Header.vue";
 
 <script>
 import axios from 'axios';
+import { BaseURL } from '../stores';
 
 export default {
     data() {
@@ -43,7 +44,7 @@ export default {
     },
     methods: {
         fetchChildData(){
-            axios.get('http://localhost:1001/kanak')
+            axios.get(BaseURL + 'kanak')
                 .then(response => {
                 this.ChildList = response.data;
                 console.log(this.ChildList);

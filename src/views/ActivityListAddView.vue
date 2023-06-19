@@ -66,8 +66,9 @@ import { RouterLink } from "vue-router";
 <script>
 import axios from 'axios';
 import router from '../router';
-import {AktivitiList, successAddActivity} from "../stores/index";
+import {AktivitiList, BaseURL, successAddActivity,} from "../stores/index";
 import ToastMessage from "../components/ToastMessage.vue";
+
 
 export default {
     components: {
@@ -99,7 +100,7 @@ export default {
                 kesukaran
             }
 
-            axios.post('http://localhost:1001/aktiviti', aktiviti)
+            axios.post(BaseURL + 'aktiviti', aktiviti)
             .then(response => {
             
                 
@@ -121,7 +122,7 @@ export default {
         },
 
         fetchAktivitiData() {
-            axios.get('http://localhost:1001/aktiviti')
+            axios.get(BaseURL + 'aktiviti')
                 .then(response => {
                     AktivitiList.value = [...AktivitiList.value, response.data];
                 })

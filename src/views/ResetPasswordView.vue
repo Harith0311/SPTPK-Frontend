@@ -54,6 +54,7 @@ import TopLabel from "../components/TopLabel.vue";
 <script>
 import router from "../router";
 import axios from 'axios';
+import { BaseURL } from '../stores';
 
 export default {
     data() {
@@ -81,7 +82,7 @@ export default {
                     password: this.confirmPass
                 }
 
-                axios.put('http://localhost:1001/pengguna/' + this.userId, update)
+                axios.put(BaseURL + 'pengguna/' + this.userId, update)
                 .then(response => {
                     localStorage.clear();
                     alert('password updated')

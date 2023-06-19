@@ -18,3 +18,5 @@ export const successRegister = ref(""); //Pendaftaran kanak kanak berjaya
 export const errorAgree = ref("");
 
 export const cancelRegister = ref(""); //Cancel pendaftaran kanak kanak
+
+export const BaseURL = "http://localhost:1001/";

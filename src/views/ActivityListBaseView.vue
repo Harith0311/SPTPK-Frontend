@@ -72,7 +72,7 @@
 
 <script>
     import axios from 'axios';
-    import {successAddActivity, successUpdateActivity} from "../stores/index";
+    import {BaseURL, successAddActivity, successUpdateActivity} from "../stores/index";
     import ToastMessage from "../components/ToastMessage.vue";
 
 export default {
@@ -114,7 +114,7 @@ export default {
   },
   methods: {
     fetchAktivitiData() {
-      axios.get('http://localhost:1001/aktiviti')
+      axios.get(BaseURL + 'aktiviti')
         .then(response => {
           this.AktivitiList = response.data;
           console.log(this.AktivitiList);
@@ -130,7 +130,7 @@ export default {
     },
 
     async deleteActivity(activity){            
-            await axios.delete(`http://localhost:1001/aktiviti/${this.selectedActivity}`)
+            await axios.delete(BaseURL + `aktiviti/${this.selectedActivity}`)
             .then(response => {
               console.log("activity deleted successfully");
                     this.isOpen = !this.isOpen;

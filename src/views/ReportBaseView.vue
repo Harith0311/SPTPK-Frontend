@@ -65,6 +65,7 @@
 
 import axios from 'axios';
 import html2pdf from 'html2pdf.js';
+import { BaseURL } from '../stores';
 
 
 export default {
@@ -81,7 +82,7 @@ export default {
     },
     methods: {
         fetchChildData(){
-            axios.get('http://localhost:1001/kanak')
+            axios.get(BaseURL + 'kanak')
                 .then(response => {
                 this.ChildList = response.data;
                 this.calculateAge();

@@ -293,7 +293,7 @@ import CanvasQR from "../components/CanvasQR.vue";
     import { RouterLink } from "vue-router";
     import router from "../router";
     import QRCode from "qrcode";
-    import { rejectRegister } from '../stores'
+    import { BaseURL, rejectRegister } from '../stores'
     import ToastMessage from "../components/ToastMessage.vue";
     import html2canvas from 'html2canvas';
 
@@ -326,7 +326,7 @@ export default {
         
         console.log(this.registerId);
             //Fetch data in urusPendaftaran
-            axios.get('http://localhost:1001/urusPendaftaran/' + this.registerId)
+            axios.get(BaseURL + 'urusPendaftaran/' + this.registerId)
                 .then(response => {
                     this.register = response.data;
                     console.log(this.register);
@@ -335,7 +335,7 @@ export default {
                     this.kanakId = this.register.kanak.id;
                     console.log(this.kanakId);
                     //Fetch data in kanak                    
-                    axios.get('http://localhost:1001/kanak/' + this.kanakId)
+                    axios.get(BaseURL + 'kanak/' + this.kanakId)
                     .then(response => {
                     this.kanak = response.data;
                     this.calculateAge();
@@ -346,7 +346,7 @@ export default {
                     const bapaId = this.register.bapa.id;
                     console.log(bapaId);
                     //Fetch data in bapa                    
-                    axios.get('http://localhost:1001/bapa/' + bapaId)
+                    axios.get(BaseURL + 'bapa/' + bapaId)
                     .then(response => {
                     this.bapa = response.data;
                     console.log(this.bapa);
@@ -356,7 +356,7 @@ export default {
                     const ibuId = this.register.ibu.id;
                     console.log(ibuId);
                     //Fetch data in bapa                    
-                    axios.get('http://localhost:1001/ibu/' + ibuId)
+                    axios.get(BaseURL + 'ibu/' + ibuId)
                     .then(response => {
                     this.ibu = response.data;
                     console.log(this.ibu);
@@ -438,7 +438,7 @@ export default {
 
             console.log(this.kelasKanak);
 
-            axios.put('http://localhost:1001/urusPendaftaran/' + this.registerId, update)
+            axios.put(BaseURL + 'urusPendaftaran/' + this.registerId, update)
             .then(response => {
                 this.toggleSuccess();
             })
@@ -449,7 +449,7 @@ export default {
 
         async rejectRegistration(){
 
-            axios.delete('http://localhost:1001/urusPendaftaran/' + this.registerId)
+            axios.delete(BaseURL + 'urusPendaftaran/' + this.registerId)
             .then(response => {
                 // const message = `Rekod Pendaftaran Telah Dipadam!`;
                 // const status = "Info";
@@ -580,10 +580,10 @@ export default {
 
                 console.log(this.kelasKanak);
                 // Update kelas dalam jadual UrusPendaftaran
-                axios.put('http://localhost:1001/urusPendaftaran/' + this.registerId, update)
+                axios.put(BaseURL + 'urusPendaftaran/' + this.registerId, update)
                     .then(response => {
                         // Update kelas kanak kanak dalam jadual DaftarKanak
-                        axios.put('http://localhost:1001/kanak/' + this.kanakId, updateKanak)
+                        axios.put(BaseURL + 'kanak/' + this.kanakId, updateKanak)
                             .then(response => {
                                 router.push('/manageRegister');
                             })

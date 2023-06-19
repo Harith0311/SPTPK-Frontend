@@ -270,6 +270,7 @@ import QRcodeScanner from "../components/QRcodeScanner.vue";
 <script>
 import axios from "axios";
 import router from "../router";
+import { BaseURL } from '../stores';
 // import QRCodeScanner from "../components/QRCodeScanner.vue";
 
 export default {
@@ -298,7 +299,7 @@ export default {
             // console.log(kehadiran);
             //Fetch data in urusPendaftaran
             axios
-                .get("http://localhost:1001/kanak/" + this.decodedText)
+                .get(BaseURL + "kanak/" + this.decodedText)
                 .then((response) => {
                     this.kanak = response.data;
                     console.log(this.kanak);
@@ -332,7 +333,7 @@ export default {
                 this.toggleHighTemp();
             }else if(suhuNormal === "Normal"){
                 // If child temperature is normal, attendance recorded
-                axios.post('http://localhost:1001/kehadiran', kehadiran)
+                axios.post(BaseURL + 'kehadiran', kehadiran)
                     .then(response => {
                         console.log(response.data);
                         this.toggleSuccess();

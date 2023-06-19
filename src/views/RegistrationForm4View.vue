@@ -42,7 +42,7 @@ const checkAgreement = () => {
       }
   
       // Create new registration
-      axios.post('http://localhost:1001/urusPendaftaran', daftarBaru)
+      axios.post(BaseURL + 'urusPendaftaran', daftarBaru)
         .then(response => { 
           console.log(response.data);
           const registrationId = response.data.id; // Retrieve the ID from the response
@@ -54,7 +54,7 @@ const checkAgreement = () => {
           daftarIbu.pendaftaranId = registrationId;
   
           // Insert the child data into registration record
-          axios.post('http://localhost:1001/kanak', daftarKanak)
+          axios.post(BaseURL + 'kanak', daftarKanak)
             .then(response => 
             {
               console.log(response.data);
@@ -68,7 +68,7 @@ const checkAgreement = () => {
             });
   
           // Insert the dad data into registration record
-          axios.post('http://localhost:1001/bapa', daftarBapa)
+          axios.post(BaseURL + 'bapa', daftarBapa)
             .then(response => 
             {
               console.log(response.data);
@@ -80,7 +80,7 @@ const checkAgreement = () => {
             });
   
           // Insert the mom data into registration record
-          axios.post('http://localhost:1001/ibu', daftarIbu)
+          axios.post(BaseURL + 'ibu', daftarIbu)
             .then(response => 
             {
               console.log(response.data);
@@ -198,7 +198,7 @@ const cancel = () => {
 
 <script>
 import router from "../router";
-import { cancelRegister, errorAgree, successParent } from '../stores';
+import { BaseURL, cancelRegister, errorAgree, successParent } from '../stores';
 
 
 export default {

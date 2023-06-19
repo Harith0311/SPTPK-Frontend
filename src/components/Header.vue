@@ -31,6 +31,7 @@
 <script>
 
     import axios from 'axios';
+import { BaseURL } from '../stores';
 
     export default {
         data() {
@@ -50,7 +51,7 @@
                 this.userId = JSON.parse(sessionStorage.getItem('id'));
                 console.log(this.userId);
 
-                axios.get('http://localhost:1001/pengguna/' + this.userId)
+                axios.get(BaseURL + 'pengguna/' + this.userId)
                     .then(response => {
                         this.currentUser = response.data;
                         console.log(response.data);

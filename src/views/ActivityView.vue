@@ -309,7 +309,7 @@ import Header from "../components/Header.vue";
 
 <script>
     import axios from 'axios';
-    import {AktivitiList, successAddActivity} from "../stores/index";
+    import {AktivitiList, BaseURL, successAddActivity} from "../stores/index";
     import ToastMessage from "../components/ToastMessage.vue";
 
 
@@ -362,7 +362,7 @@ export default {
   },
   methods: {
     fetchAktivitiData() {
-      axios.get('http://localhost:1001/aktiviti')
+      axios.get(BaseURL + 'aktiviti')
         .then(response => {
         //   this.AktivitiList = response.data;
           AktivitiList.value = response.data;
@@ -374,7 +374,7 @@ export default {
     },
 
     fetchAktivitiHariIni() {
-      axios.get('http://localhost:1001/aktivitiHariIni')
+      axios.get(BaseURL + 'aktivitiHariIni')
         .then(response => {
           this.AktivitiHariIniList = response.data;
           
@@ -388,7 +388,7 @@ export default {
     fetchAktivitiMelur() {
         const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
 
-      axios.get('http://localhost:1001/aktivitiHariIni')
+      axios.get(BaseURL + 'aktivitiHariIni')
         .then(response => {
           this.AktivitiMelurList = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -404,7 +404,7 @@ export default {
     fetchAktivitiOrkid() {
         const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
 
-      axios.get('http://localhost:1001/aktivitiHariIni')
+      axios.get(BaseURL + 'aktivitiHariIni')
         .then(response => {
           this.AktivitiOrkidList = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -420,7 +420,7 @@ export default {
     fetchAktivitiRose() {
         const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
 
-      axios.get('http://localhost:1001/aktivitiHariIni')
+      axios.get(BaseURL + 'aktivitiHariIni')
         .then(response => {
           this.AktivitiRoseList = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -436,7 +436,7 @@ export default {
     fetchAktivitiRaya() {
         const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
 
-      axios.get('http://localhost:1001/aktivitiHariIni')
+      axios.get(BaseURL + 'aktivitiHariIni')
         .then(response => {
           this.AktivitiRayaList = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -452,7 +452,7 @@ export default {
     fetchAktivitiDaisy() {
         const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
 
-      axios.get('http://localhost:1001/aktivitiHariIni')
+      axios.get(BaseURL + 'aktivitiHariIni')
         .then(response => {
           this.AktivitiDaisyList = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -468,7 +468,7 @@ export default {
     fetchAktivitiMatahari() {
         const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format 
 
-      axios.get('http://localhost:1001/aktivitiHariIni')
+      axios.get(BaseURL + 'aktivitiHariIni')
         .then(response => {
           this.AktivitiMatahariList = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -484,7 +484,7 @@ export default {
     fetchAktivitiDahlia() {
         const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
 
-      axios.get('http://localhost:1001/aktivitiHariIni')
+      axios.get(BaseURL + 'aktivitiHariIni')
         .then(response => {
           this.AktivitiDahliaList = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -501,7 +501,7 @@ export default {
     fetchAktivitiLily() {
         const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
 
-        axios.get('http://localhost:1001/aktivitiHariIni')
+        axios.get(BaseURL + 'aktivitiHariIni')
             .then(response => {
             this.AktivitiLilyList = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -517,7 +517,7 @@ export default {
     fetchAktivitiTulip() {
         const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
 
-        axios.get('http://localhost:1001/aktivitiHariIni')
+        axios.get(BaseURL + 'aktivitiHariIni')
             .then(response => {
             this.AktivitiTulipList = response.data.filter(item => {
                     const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -540,7 +540,7 @@ export default {
 
         const today = new Date().toISOString().slice(0, 10); // Get the current date in YYYY-MM-DD format
        
-        axios.get('http://localhost:1001/aktivitiHariIni/')
+        axios.get(BaseURL + 'aktivitiHariIni/')
             .then(response => {
             const existingActivities = response.data.filter(item => {
                 const itemDate = item.tarikh.slice(0, 10); // Extract the date portion from item.tarikh
@@ -563,7 +563,7 @@ export default {
                     kelas: kelasKanak
                 }
 
-                axios.post('http://localhost:1001/aktivitiHariIni', todayActivity)
+                axios.post(BaseURL + 'aktivitiHariIni', todayActivity)
                     .then(response => {
                         const message = `Aktiviti berjaya ditambah!`;
                         const status = "Berjaya";
@@ -596,7 +596,7 @@ export default {
     async deleteTodayActivity(activity) {
         this.selectedActivity = activity;
         console.log(this.selectedActivity);
-        await axios.delete(`http://localhost:1001/aktivitiHariIni/${this.selectedActivity}`)
+        await axios.delete(BaseURL + `aktivitiHariIni/${this.selectedActivity}`)
         .then(response => {
             this.AktivitiHariIniList = this.AktivitiHariIniList.filter(
                 (activity) => activity.id !== this.selectedActivity

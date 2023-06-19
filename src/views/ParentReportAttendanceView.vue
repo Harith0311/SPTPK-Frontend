@@ -82,6 +82,7 @@
 <script>
 
 import axios from 'axios';
+import { BaseURL } from '../stores';
 
 export default {
     data() {
@@ -122,7 +123,7 @@ export default {
             this.userId = JSON.parse(sessionStorage.getItem('id'));
                 console.log(this.userId);
 
-                axios.get('http://localhost:1001/pengguna/' + this.userId)
+                axios.get(BaseURL + 'pengguna/' + this.userId)
                     .then(response => {
                         this.currentUser = response.data;
                         this.code = response.data.kodPengesahan;
@@ -130,7 +131,7 @@ export default {
                         console.log(response.data);
                         console.log(this.currentUser);
 
-                        axios.get('http://localhost:1001/kanak')
+                        axios.get(BaseURL + 'kanak')
                             .then(response => {
                             this.child = response.data.filter(item => item.kodPengesahan === this.code);
                             this.kanakId = this.child[0].id;
@@ -143,7 +144,7 @@ export default {
                             console.error('Error fetching child data:', error);
                         });
 
-            axios.get('http://localhost:1001/kanak')
+            axios.get(BaseURL + 'kanak')
                 .then(response => {
                 this.ChildList = response.data.filter(item => item.id === this.kanakId);
                 this.calculateAge();
@@ -204,7 +205,7 @@ export default {
             const date = this.selectedDate;
             console.log(date);
 
-            axios.get(`http://localhost:1001/kehadiran?date=${date}`) 
+            axios.get(BaseURL + `kehadiran?date=${date}`) 
                 .then(response => {
                 this.AttendanceList = response.data.filter(item => item.kanakId === this.kanakId );
                 this.extractDayOfWeek();

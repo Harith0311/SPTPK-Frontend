@@ -104,6 +104,7 @@
 <script>
     import axios from 'axios';
     import router from '../router';
+import { BaseURL } from '../stores';
 
     export default {
         data() {
@@ -145,6 +146,9 @@
                 const sahKataLaluan = this.confirmPassword
                 const kodPengesahan = this.code;
 
+            
+                
+
                 if (this.role && this.name && this.email && this.noIC && this.password && this.confirmPassword && this.code)
                 {
                     this.errorName = '';
@@ -172,7 +176,7 @@
                         else
                         {
                             // Dapatkan list pendaftaran yang telah diluluskan
-                            axios.get('http://localhost:1001/urusPendaftaran/lulus')
+                            axios.get(BaseURL + 'urusPendaftaran/lulus')
                             .then(response => {
                                 console.log(response.data);
                                 this.child = response.data.filter(item => item.kodPengesahan === this.code);
@@ -206,7 +210,7 @@
                                         // You can display an error message or perform any desired action
                                     } else {
                                         // Password is valid, proceed with the API call
-                                        axios.post('http://localhost:1001/pengguna', pengguna)
+                                        axios.post(BaseURL + 'pengguna', pengguna)
                                         .then(response => {
                                             console.log(response.data);
                                             alert('Selamat datang!');

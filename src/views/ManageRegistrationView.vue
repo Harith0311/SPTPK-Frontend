@@ -63,7 +63,7 @@ import Header from "../components/Header.vue";
 
 <script>
     import axios from 'axios';
-    import { rejectRegister } from '../stores';
+    import { BaseURL, rejectRegister } from '../stores';
     import ToastMessage from "../components/ToastMessage.vue";
 
     export default {
@@ -89,7 +89,7 @@ import Header from "../components/Header.vue";
         methods: {
 
             fetchRegistrationList(){
-                axios.get('http://localhost:1001/urusPendaftaran')
+                axios.get(BaseURL + 'urusPendaftaran')
                     .then(response => {
                         this.RegistrationList = response.data;
                         
@@ -99,7 +99,7 @@ import Header from "../components/Header.vue";
                         console.error('Error fetching registration data:', error);
                     });
 
-                // axios.get('http://localhost:1001/kanak')
+                // axios.get(BaseURL + 'kanak')
                 //     .then(response => {
                 //         this.KanakList = response.data;
                         
