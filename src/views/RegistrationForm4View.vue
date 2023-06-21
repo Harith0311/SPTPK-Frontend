@@ -64,7 +64,7 @@ const checkAgreement = () => {
             .catch(error => 
             {
               console.error('Error register child info:', error);
-              alert("Sijil lahir dah ada");
+              
             });
   
           // Insert the dad data into registration record
@@ -76,7 +76,7 @@ const checkAgreement = () => {
             .catch(error => 
             {
               console.error('Error register child info:', error);
-              alert("Sijil lahir dah ada");
+              
             });
   
           // Insert the mom data into registration record
@@ -87,7 +87,7 @@ const checkAgreement = () => {
             })
             .catch(error => {
               console.error('Error register child info:', error);
-              alert("Sijil lahir dah ada");
+              
             });
   
           localStorage.clear();
