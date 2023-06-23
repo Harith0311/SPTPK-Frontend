@@ -451,9 +451,6 @@ export default {
 
             axios.delete(BaseURL + 'urusPendaftaran/' + this.registerId)
             .then(response => {
-                // const message = `Rekod Pendaftaran Telah Dipadam!`;
-                // const status = "Info";
-                // this.$refs.toast.toast(message, status, "info");
 
                 rejectRegister.value = "rejected";
 

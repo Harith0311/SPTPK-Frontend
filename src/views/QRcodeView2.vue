@@ -83,7 +83,7 @@ import QRcodeScanner from "../components/QRcodeScanner.vue";
                         <tr class="pl-4 p-4">
                             <td class="text-base font-semibold pl-2">Umur</td>
                             <td class="text-base font-semibold">:</td>
-                            <td class="text-base font-semibold"><p v-text="kanak.umur"></p></td>
+                            <td  class="text-base font-semibold"><p >3 Tahun 2 bulan</p></td>
                         </tr>
                         <tr class="pl-4 p-4">
                             <td class="text-base font-semibold pl-2">
@@ -280,11 +280,12 @@ export default {
             kanakId: "",
             attend: true,
             temp: "",
-            kanak: "",
+            kanak: [],
             isSuccess: false,
             isHigh: false,
             isSubmit: false,
-            decodedText: ""
+            decodedText: "",
+            age: ""
         };
     },
 
@@ -302,16 +303,42 @@ export default {
                 .get(BaseURL + "kanak/" + this.decodedText)
                 .then((response) => {
                     this.kanak = response.data;
+                    this.calculateAge();
                     console.log(this.kanak);
-                    // console.log(this.kanak.namaKanak);
                 })
                 .catch((error) => {
                     console.error("Error fetching child data:", error);
                 });
+        },
 
-            
+        calculateAge() {
+            if (this.kanak.length > 0) {
+                const today = new Date();
+                this.kanak.forEach((child) => {
+                    const birthDate = new Date(child.tarikhLahir);
+                    const yearDiff = today.getFullYear() - birthDate.getFullYear();
+                    const monthDiff = today.getMonth() - birthDate.getMonth();
+                    const dayDiff = today.getDate() - birthDate.getDate();
 
-            // this.toggleSuccess();
+                    let ageYears = yearDiff;
+                    let ageMonths = monthDiff;
+
+                    if (dayDiff < 0) {
+                    ageMonths -= 1;
+                    }
+
+                    if (ageMonths < 0) {
+                    ageYears -= 1;
+                    ageMonths += 12;
+                    }
+
+                    child.ageYears = ageYears ;
+                    child.ageMonths = ageMonths ;
+
+                    child.age = ageYears + " tahun " + ageMonths + " bulan";
+                    
+                });
+            }
         },
 
         recordAttendance(){
