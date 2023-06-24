@@ -6,7 +6,7 @@ import Header from "../components/Header.vue";
 </script>
 
 <template>
-    <div class="flex bg-blue-100 w-full justify-between p-8">
+    <div class="flex bg-blue-100 w-full h-screen justify-between p-8">
         <SideBar2 />
 
         <!-- Content -->
@@ -54,10 +54,7 @@ import Header from "../components/Header.vue";
         </div>
     </div>
     </div>
-    <!-- Footer -->
-    <div class="bg-black text-center text-white p-1">
-        <h4>All rights reserved</h4>
-    </div>
+    
     <ToastMessage ref="toast" />
 </template>
 

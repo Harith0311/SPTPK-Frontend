@@ -131,7 +131,7 @@ import CanvasQR from "../components/CanvasQR.vue";
                         </div>
                         <div class=" flex my-1">
                             <i class="fa-solid fa-dollar-sign p-1"></i>
-                            <h3 class="ml-4">{{bapa.pendapatan}}</h3>
+                            <h3 class="ml-4">RM {{bapa.pendapatan}}</h3>
                         </div>
                         <div class=" flex my-1">
                             <i class="fa-solid fa-phone p-1"></i>
@@ -168,7 +168,7 @@ import CanvasQR from "../components/CanvasQR.vue";
                         </div>
                         <div class=" flex my-1">
                             <i class="fa-solid fa-dollar-sign p-1"></i>
-                            <h3 class="ml-4">{{ibu.pendapatan}}</h3>
+                            <h3 class="ml-4">RM {{ibu.pendapatan}}</h3>
                         </div>
                         <div class=" flex my-1">
                             <i class="fa-solid fa-phone p-1"></i>
@@ -280,10 +280,7 @@ import CanvasQR from "../components/CanvasQR.vue";
         </dialog>
     </div>  
     <!-- End of prompt -->
-    <!-- Footer -->
-    <div class="bg-black text-center text-white p-4 py-1">
-        <h4>All rights reserved</h4>
-    </div>
+    
     <ToastMessage ref="toast" />
 </template>
 

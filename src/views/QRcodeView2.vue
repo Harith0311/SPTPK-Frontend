@@ -6,7 +6,7 @@ import QRcodeScanner from "../components/QRcodeScanner.vue";
 
 <template>
     <div
-        class="flex bg-blue-100 w-full justify-between p-8 max-md:p-[1px] max-md:pt-[10px]"
+        class="flex bg-blue-100 w-full h-screen justify-between p-8 max-md:p-[1px] max-md:pt-[10px]"
     >
         <SideBar2 />
 
@@ -261,10 +261,7 @@ import QRcodeScanner from "../components/QRcodeScanner.vue";
 
 
 
-    <!-- Footer -->
-    <div class="bg-black text-center text-white p-1">
-        <h4>All rights reserved</h4>
-    </div>
+    
 </template>
 
 <script>
