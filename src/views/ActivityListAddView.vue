@@ -102,23 +102,14 @@ export default {
 
             axios.post(BaseURL + 'aktiviti', aktiviti)
             .then(response => {
-            
-                
-                
-                AktivitiList.value = [...AktivitiList.value, response.data];
-                
+                AktivitiList.value = [...AktivitiList.value, response.data];  
                 successAddActivity.value = "created";
                 console.log(successAddActivity.value);
-                // const message = `Aktiviti berjaya ditambah!`;
-                // const status = "Berjaya";
-                // this.$refs.toast.toast(message, status, "success");
                 router.push('/activity');
-                
             })
             .catch(error => {
                 console.error('Error upload aktiviti data:', error);
             });
-
         },
 
         fetchAktivitiData() {

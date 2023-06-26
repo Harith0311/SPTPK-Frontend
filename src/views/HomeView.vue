@@ -190,6 +190,7 @@ import { BaseURL } from '../stores';
                 oldPassBlank: '',
                 newPassBlank: '',
                 confirmPassBlank: '',
+                errorDB: '',
             }
         },
 
@@ -272,62 +273,92 @@ import { BaseURL } from '../stores';
                 this.isPassword = !this.isPassword;
             },
 
-            changePassword() {
-                console.log(this.currentUser.kataLaluan);
+            // changePassword() {
+            //     console.log(this.currentUser.kataLaluan);
 
-                if (this.oldPass === this.currentUser.kataLaluan){
-                    this.errorOldPass = ""
-                    if (this.newPass === this.confirmNewPass){
-                        // Update password
-                        this.errorOldPass = ""
-                        const update = {
-                            kataLaluan: this.confirmNewPass
-                        }
+            //     if (this.oldPass === this.currentUser.kataLaluan){
+            //         this.errorOldPass = ""
+            //         if (this.newPass === this.confirmNewPass){
+            //             // Update password
+            //             this.errorOldPass = ""
+            //             const update = {
+            //                 kataLaluan: this.confirmNewPass
+            //             }
 
-                        axios.put(BaseURL + 'pengguna/'+this.userId, update)
-                        .then(response => {
-                            const message = `Kata laluan berjaya dikemaskini!`;
-                            const status = "Berjaya";
-                            this.$refs.toast.toast(message, status, "success");
-                        })
-                        .catch(error => {
-                            console.error('Error update password:', error);
-                        });
+            //             axios.put(BaseURL + 'pengguna/'+this.userId, update)
+            //             .then(response => {
+            //                 const message = `Kata laluan berjaya dikemaskini!`;
+            //                 const status = "Berjaya";
+            //                 this.$refs.toast.toast(message, status, "success");
+            //             })
+            //             .catch(error => {
+            //                 console.error('Error update password:', error);
+            //             });
 
 
-                    }
-                    else{
-                        // Pengesahan kata laluan baru tidak berjaya
-                        this.errorNewPass = "*Pengesahan kata laluan baru tidak berjaya"
-                    }
-                }
-                else if(this.oldPass !== this.currentUser.kataLaluan){
-                    if (this.oldPass === ''){
-                        this.oldPassBlank = "*Sila masukkan kata laluan lama"
+            //         }
+            //         else{
+            //             // Pengesahan kata laluan baru tidak berjaya
+            //             this.errorNewPass = "*Pengesahan kata laluan baru tidak berjaya"
+            //         }
+            //     }
+            //     else if(this.oldPass !== this.currentUser.kataLaluan){
+            //         if (this.oldPass === ''){
+            //             this.oldPassBlank = "*Sila masukkan kata laluan lama"
                         
-                    }
-                    else if(this.newPass === '') {
-                        this.newPassBlank = "*Sila masukkan kata laluan baru"
-                    }
-                    else if(this.confirmNewPass === ''){
-                        this.confirmPassBlank = "*Sila sahkan kata laluan"
-                    }
-                    else{
-                        // kata laluan lama salah
-                        this.errorOldPass = "*Kata laluan lama salah"
-                    }
-                } 
-                // else{
-                //     if (this.oldPass === ''){
-                //         this.oldPassBlank = "*Sila masukkan kata laluan lama"
-                //     }
-                //     else if(this.newPass === '') {
-                //         this.newPassBlank = "*Sila masukkan kata laluan baru"
-                //     }
-                //     else if(this.confirmNewPass === ''){
-                //         this.confirmPassBlank = "*Sila sahkan kata laluan"
-                //     }
-                // }
+            //         }
+            //         else if(this.newPass === '') {
+            //             this.newPassBlank = "*Sila masukkan kata laluan baru"
+            //         }
+            //         else if(this.confirmNewPass === ''){
+            //             this.confirmPassBlank = "*Sila sahkan kata laluan"
+            //         }
+            //         else{
+            //             // kata laluan lama salah
+            //             this.errorOldPass = "*Kata laluan lama salah"
+            //         }
+            //     } 
+            //     // else{
+            //     //     if (this.oldPass === ''){
+            //     //         this.oldPassBlank = "*Sila masukkan kata laluan lama"
+            //     //     }
+            //     //     else if(this.newPass === '') {
+            //     //         this.newPassBlank = "*Sila masukkan kata laluan baru"
+            //     //     }
+            //     //     else if(this.confirmNewPass === ''){
+            //     //         this.confirmPassBlank = "*Sila sahkan kata laluan"
+            //     //     }
+            //     // }
+            // },
+            changePassword() {
+                if (this.newPass === this.confirmNewPass) {
+                    const update = {
+                    oldPass: this.oldPass,
+                    newPass: this.newPass
+                    };
+
+                    axios.put(BaseURL + 'pengguna/kataLaluan/'+this.userId, update)
+                    .then(response => {
+                        const message = `Kata laluan berjaya dikemaskini!`;
+                        const status = "Berjaya";
+                        this.$refs.toast.toast(message, status, "success");
+                        
+                    })
+                    .catch(error => {
+                        if (error.response && error.response.data && error.response.data.error) {
+                            const errorMessage = error.response.data.error;
+                            console.error('Error update password:', errorMessage);
+
+                            // Update the error message in your Vue data property for display
+                            this.errorDB = errorMessage;
+                            console.log(this.errorDB);
+                        } else {
+                            console.error('Error update password:', error);
+                        }
+                    })
+                } else {
+                    this.errorNewPass = "*Pengesahan kata laluan baru tidak berjaya";
+                }
             },
         }
     }
