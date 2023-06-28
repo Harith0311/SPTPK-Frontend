@@ -7,7 +7,7 @@ import Header from "../components/Header.vue";
 </script>
 
 <template>
-    <div class="flex bg-blue-100 w-full justify-between p-8">
+    <div class="flex bg-blue-100 w-screen h-screen justify-between p-8">
         <SideBar2 />
 
         <!-- Content -->
@@ -91,7 +91,7 @@ import Header from "../components/Header.vue";
             class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50" 
             v-bind:class="{'hidden': !isPassword}">
                 <dialog
-                    class="z-10 w-2/6 bg-blue-50 absolute h-fit top-48 overflow-auto px-3 pt-4 rounded-xl"
+                    class="z-10 w-2/6 bg-blue-50 absolute h-fit top-48 overflow-hidden px-3 pt-4 rounded-xl"
                     v-bind:open="isPassword"
                 >
                     <!-- Header Title -->
@@ -103,32 +103,32 @@ import Header from "../components/Header.vue";
                     <form v-on:submit.prevent="changePassword">
                         <h2 class="text-sm font-medium pl-10">Kata Laluan Lama</h2>
                         <input 
-                            class="my-2 mx-10 outline-blue-100 p-2 pl-4 w-5/6 rounded-lg drop-shadow-xl font-normal text-sm" 
+                            class="mt-2 mx-10 outline-blue-100 p-2 pl-4 w-5/6 rounded-lg drop-shadow-xl font-normal text-sm" 
                             type="password"
                             placeholder="Masukkan kata laluan lama"
                             v-model="oldPass"
                         >
-                        <label class="text-red-600 font-medium text-xs" for="errorName" id="errorName">{{errorOldPass}}</label><br>
-                        <label class="text-red-600 font-medium text-xs" for="errorName" id="errorName">{{oldPassBlank}}</label><br>
+                        <label class="text-red-600 font-medium text-xs ml-11 " for="errorName" id="errorName">{{errorOldPass}}</label><br>
+                        <label class="text-red-600 font-medium text-xs ml-11" for="errorName" id="errorName">{{oldPassBlank}}</label><br>
 
                         <h2 class="text-sm font-medium pl-10">Kata Laluan Baru</h2> 
                         <input 
-                            class="my-2 mx-10 outline-blue-100 p-2 pl-4 w-5/6 rounded-lg drop-shadow-xl font-normal text-sm"  
+                            class="mt-2 mx-10 outline-blue-100 p-2 pl-4 w-5/6 rounded-lg drop-shadow-xl font-normal text-sm"  
                             type="password"
                             placeholder="Masukkan kata laluan baru"
                             v-model="newPass"
                         >
-                        <label class="text-red-600 font-medium text-xs" for="errorName" id="errorName">{{newPassBlank}}</label><br>
+                        <label class="text-red-600 font-medium text-xs ml-11" for="errorName" id="errorName">{{newPassBlank}}</label><br>
 
-                        <h2 class="text-sm font-medium pl-10">Sahkan Kata Laluan Baru</h2>
+                        <h2 class="text-sm font-medium mt-1 pl-10">Sahkan Kata Laluan Baru</h2>
                         <input 
-                            class="my-2 mx-10 outline-blue-100 p-2 pl-4 w-5/6 rounded-lg drop-shadow-xl font-normal text-sm"  
+                            class="mt-2 mx-10 outline-blue-100 p-2 pl-4 w-5/6 rounded-lg drop-shadow-xl font-normal text-sm"  
                             type="password"
                             placeholder="Sahkan kata laluan baru"
                             v-model="confirmNewPass"
                         >
-                        <label class="text-red-600 font-medium text-xs" for="errorName" id="errorName">{{errorNewPass}}</label><br>
-                        <label class="text-red-600 font-medium text-xs" for="errorName" id="errorName">{{confirmPassBlank}}</label><br>
+                        <label class="text-red-600 font-medium text-xs ml-11" for="errorName" id="errorName">{{errorNewPass}}</label><br>
+                        <label class="text-red-600 font-medium text-xs ml-11" for="errorName" id="errorName">{{confirmPassBlank}}</label><br>
 
                         <!-- Button -->
                         <div class="flex justify-center mt-4">
@@ -331,34 +331,70 @@ import { BaseURL } from '../stores';
             //     // }
             // },
             changePassword() {
-                if (this.newPass === this.confirmNewPass) {
-                    const update = {
-                    oldPass: this.oldPass,
-                    newPass: this.newPass
-                    };
+                if ( this.oldPass && this.newPass && this.confirmNewPass)
+                {
+                    if (this.newPass === this.confirmNewPass) {
+                        const update = {
+                        oldPass: this.oldPass,
+                        newPass: this.newPass
+                        };
 
-                    axios.put(BaseURL + 'pengguna/kataLaluan/'+this.userId, update)
-                    .then(response => {
-                        const message = `Kata laluan berjaya dikemaskini!`;
-                        const status = "Berjaya";
-                        this.$refs.toast.toast(message, status, "success");
-                        
-                    })
-                    .catch(error => {
-                        if (error.response && error.response.data && error.response.data.error) {
-                            const errorMessage = error.response.data.error;
-                            console.error('Error update password:', errorMessage);
+                        axios.put(BaseURL + 'pengguna/kataLaluan/'+this.userId, update)
+                        .then(response => {
+                            this.errorOldPass = '';
+                            this.errorNewPass = '';
+                            this.newPassBlank = '';
 
-                            // Update the error message in your Vue data property for display
-                            this.errorDB = errorMessage;
-                            console.log(this.errorDB);
-                        } else {
-                            console.error('Error update password:', error);
-                        }
-                    })
-                } else {
-                    this.errorNewPass = "*Pengesahan kata laluan baru tidak berjaya";
+                            const message = `Kata laluan berjaya dikemaskini!`;
+                            const status = "Berjaya";
+                            this.$refs.toast.toast(message, status, "success");
+                            
+                        })
+                        .catch(error => {
+                            if (error.response && error.response.data && error.response.data.error) {
+                                const errorMessage = error.response.data.error;
+                                console.error('Error update password:', errorMessage);
+
+                                // Update the error message in your Vue data property for display
+                                
+                                this.errorOldPass = errorMessage;
+                                this.errorNewPass = '';
+                                this.newPassBlank = '';
+                                console.log(this.errorDB);
+                            } else {
+                                console.error('Error update password:', error);
+                            }
+                        })
+                    }
+                
+                    else {
+                        this.errorNewPass = "*Kata laluan tidak sepadan";
+                    }
                 }
+                else{
+                    if (this.oldPass === ''){
+                        this.errorOldPass = "*Sila masukkan kata laluan lama"
+                    }
+                    else{
+                        this.errorOldPass = '';
+                    }
+
+
+                    if(this.newPass === '') {
+                        this.newPassBlank = "*Sila masukkan kata laluan baru"
+                    }
+                    else{
+                        this.newPassBlank = '';
+                    }
+                    
+                    if(this.confirmNewPass === ''){
+                        this.errorNewPass = "*Sila sahkan kata laluan"
+                    }
+                    else{
+                        this.errorNewPass = '';
+                    }
+                }
+                
             },
         }
     }
