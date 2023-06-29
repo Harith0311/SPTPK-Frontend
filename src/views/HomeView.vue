@@ -91,7 +91,7 @@ import Header from "../components/Header.vue";
             class="fixed z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-50" 
             v-bind:class="{'hidden': !isPassword}">
                 <dialog
-                    class="z-10 w-2/6 bg-blue-50 absolute h-fit top-48 overflow-hidden px-3 pt-4 rounded-xl"
+                    class="z-10 w-2/6 max-md:w-5/6 bg-blue-50 absolute h-fit top-48 overflow-hidden px-3 pt-4 rounded-xl"
                     v-bind:open="isPassword"
                 >
                     <!-- Header Title -->

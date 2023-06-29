@@ -11,7 +11,7 @@
     </div>
     <div class=" w-1/12 mx-auto py-3 px-7 max-md:px-1 fixed  z-10 ">
             
-            <div class="bg-white drop-shadow-2xl max-md:w-[50px] rounded-lg p-1 sticky">
+            <div class="bg-white drop-shadow-2xl w-[70px] max-md:w-[50px] rounded-lg p-1 sticky">
                 <ul>
                     <li>
                         <div class="p-4 m-1 max-md:p-2 active:none cursor-pointer ">

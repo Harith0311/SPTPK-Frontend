@@ -189,10 +189,10 @@ import QRcodeScanner from "../components/QRcodeScanner.vue";
 
             <div class="flex justify-center">
                 <button
-                    class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg"
+                    class="bg-blue-200 w-2/6 p-1 mx-8 rounded-lg"
                     @click="pushToList"
                 >
-                    Tutup
+                    Selesai
                 </button>
             </div>
         </dialog>
@@ -212,14 +212,14 @@ import QRcodeScanner from "../components/QRcodeScanner.vue";
             <div class="bg-red-300 rounded-lg m-4 p-2">
                 <h2 class="font-bold text-xl text-center pt-3">Suhu Kanak Kanak Tinggi!</h2>
                 <p class="font-medium text-sm text-center p-2">
-                    Sila tekan butang selesai untuk merekod kehadiran kanak
+                    Sila tekan butang tutup untuk merekod kehadiran kanak
                     kanak seterusnya.
                 </p>
             </div>
 
             <div class="flex justify-center">
                 <button
-                    class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg"
+                    class="bg-blue-200 w-2/6 p-1 mx-8 rounded-lg"
                     @click="pushToList"
                 >
                     Tutup   
@@ -242,14 +242,14 @@ import QRcodeScanner from "../components/QRcodeScanner.vue";
             <div class="bg-orange-300 rounded-lg m-4 p-2">
                 <h2 class="font-bold text-xl text-center pt-3">Kehadiran Kanak-Kanak telah Direkod untuk Hari ini!</h2>
                 <p class="font-medium text-sm text-center p-2">
-                    Sila tekan butang selesai untuk merekod kehadiran kanak
+                    Sila tekan butang tutup untuk merekod kehadiran kanak
                     kanak seterusnya.
                 </p>
             </div>
 
             <div class="flex justify-center">
                 <button
-                    class="bg-blue-200 w-1/6 p-1 mx-8 rounded-lg"
+                    class="bg-blue-200 w-2/6 p-1  mx-8 rounded-lg"
                     @click="pushToList"
                 >
                     Tutup
