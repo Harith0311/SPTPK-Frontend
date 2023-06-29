@@ -7,15 +7,15 @@ import Header from "../components/Header.vue";
 </script>
 
 <template>
-    <div class="flex bg-blue-100 w-screen h-screen justify-between p-8">
+    <div class="flex bg-blue-100 w-screen h-screen max-md:h-full justify-between p-8 max-md:p-[1px]">
         <SideBar2 />
 
         <!-- Content -->
         <!-- Header -->
-        <div class="Content w-4/5 m-auto">
+        <div class="Content w-4/5  m-auto">
             <Header/>
             <div class="border-solid border-b-2 border-black">
-                    <!-- Horizontal Line -->
+                <!-- Horizontal Line -->
             </div>
             <!-- Breadcrumbs -->
             <div class="m-2">
@@ -25,24 +25,24 @@ import Header from "../components/Header.vue";
             <!-- Div Content -->
         <!-- First Row -->
         <div class="m-5 pb-14">     
-            <div class="box-element-flex flex mt-16">
-                <div class="relative  w-2/5 mr-12">
+            <div class="box-element-flex flex max-md:justify-center max-md:block mt-16 max-md:mt-6">
+                <div class="relative w-2/5 max-md:w-5/6  mr-12">
                     <h2 class="font-extrabold">Jumlah Kanak-Kanak</h2>
-                    <div class="chart-box-main flex justify-end h-auto w-full py-6 mt-4 p-4 rounded-2xl bg-white drop-shadow-2xl">
+                    <div class="chart-box-main flex justify-end max-md:justify-center h-auto w-full py-6 mt-4 p-4  rounded-2xl bg-white drop-shadow-2xl">
                         <h3 class="text-4xl font-bold mr-2 text-green-600">{{ ChildList.length }}</h3>
                         <i class="fa-solid fa-user text-4xl mx-5"></i>
                     </div>
                 </div>
-                <div class="relative  w-2/5 mr-12">
-                    <h2 class="font-extrabold">Jumlah Staf Taska</h2>
-                    <div class="chart-box-main flex justify-end h-auto w-full py-6 mt-4 p-4 rounded-2xl bg-white drop-shadow-2xl">
+                <div class="relative  w-2/5 max-md:w-5/6 mr-12">
+                    <h2 class="font-extrabold max-md:mt-4">Jumlah Staf Taska</h2>
+                    <div class="chart-box-main flex justify-end max-md:justify-center h-auto w-full py-6 mt-4 p-4 rounded-2xl bg-white drop-shadow-2xl">
                         <h3 class="text-4xl font-bold mr-2 text-green-600">{{ StaffList.length }}</h3>
                         <i class="fa-solid fa-user text-4xl mx-5"></i>
                     </div>
                 </div>
                 <!-- hehehe -->
-                <div class="relative  w-2/5 mr-12">
-                    <h2 class="font-extrabold">Jantina Kanak-Kanak</h2>
+                <div class="relative  w-2/5 max-md:w-5/6 mr-12">
+                    <h2 class="font-extrabold max-md:mt-4">Jantina Kanak-Kanak</h2>
                     <div class="chart-box-main flex justify-around h-auto w-full py-6 mt-4 p-4 rounded-2xl bg-white drop-shadow-2xl">
                         <div class="flex">
                             <h3 class="text-4xl font-bold  text-blue-500">{{ MaleList.length }}</h3>
@@ -61,7 +61,7 @@ import Header from "../components/Header.vue";
                 <!-- Content -->
                 <div class="bg-white w-full p-4 rounded-2xl drop-shadow-2xl">
                     <h2 class="font-bold mb-5">Profil Saya</h2>
-                    <div class="flex justify-between">
+                    <div class="flex max-md:block justify-between">
                         <div class="py-2 ml-5">
                             <div class="bg-blue-200 w-[120px] h-auto p-4 rounded-md drop-shadow-xl ">
                                 <img class="h-auto w-24" src="/staff.png" alt="">   
@@ -70,14 +70,14 @@ import Header from "../components/Header.vue";
                                 <div class="absolute bg-green-400 w-4 h-4 z-40 rounded-full drop-shadow-xl top-[62px] left-[115px]"></div>
                             </div> -->
                         </div>
-                        <div class="bg-blue-50 w-5/6 rounded-lg drop-shadow-xl p-4">
-                            <h3 class="font-bold text-xl">{{ currentUser.nama }}</h3>
-                            <div class="flex">
+                        <div class="bg-blue-50 w-5/6 max-md:w-full rounded-lg drop-shadow-xl p-4">
+                            <h3 class="font-bold text-xl max-md:text-base">{{ currentUser.nama }}</h3>
+                            <div class="flex max-md:block">
                                 <h3 class="text-sm text-gray-500 p-2 "><i class="fa-solid fa-circle-user"></i> {{currentUser.peranan}}</h3>
-                                <h3 class="text-sm text-gray-500 p-2 px-4"><i class="fa-solid fa-envelope"></i> {{currentUser.emel}}</h3>
-                                <h3 class="text-sm text-gray-500 p-2 px-4"><i class="fa-solid fa-id-card"></i> {{currentUser.noKP}}</h3>
+                                <h3 class="text-sm text-gray-500 p-2 px-4 max-md:px-2"><i class="fa-solid fa-envelope max-md:mr-1"></i>{{currentUser.emel}}</h3>
+                                <h3 class="text-sm text-gray-500 p-2 px-4 max-md:px-2"><i class="fa-solid fa-id-card max-md:mr-1"></i> {{currentUser.noKP}}</h3>
                             </div>
-                            <button @click="togglePassword" class="bg-blue-200 hover:bg-blue-300 p-1 px-4 my-2 rounded-md drop-shadow-lg">Tukar Kata Laluan</button>
+                            <button @click="togglePassword" class="bg-blue-200 hover:bg-blue-300 p-1 px-4 my-2 rounded-md drop-shadow-lg max-md:text-sm max-md:py-3 max-md:mt-4">Tukar Kata Laluan</button>
                             
                             
                         </div>
@@ -138,24 +138,6 @@ import Header from "../components/Header.vue";
                     </form>
                 </dialog>
             </div>  
-            <!-- End of prompt -->
-
-            <!-- Third Row -->
-            <!-- <div class="flex mt-12 justify-between pr-12">
-                <div class="transction w-5/12  ">
-                    <h2 class="font-extrabold">Statistik Kehadiran</h2>
-                    <div class="mt-3 rounded-2xl drop-shadow-2xl bg-white p-4">
-                        <img class="h-56 w-auto" src="/kehadiran.png" alt="">
-                    </div>
-                </div>
-                <div class="stocks w-5/12   ">
-                    <h2 class="font-extrabold">Statistik Umur Kanak-Kanak</h2>
-                    <div class="stocks-main mt-3 rounded-2xl drop-shadow-2xl bg-white p-4 ">
-                        <img class="h-56 w-auto" src="/umur.png" alt="">
-                    </div>
-                </div>
-            </div> -->
-            <!-- End of Second Row -->
 
         </div>
         </div>
@@ -273,63 +255,7 @@ import { BaseURL } from '../stores';
                 this.isPassword = !this.isPassword;
             },
 
-            // changePassword() {
-            //     console.log(this.currentUser.kataLaluan);
-
-            //     if (this.oldPass === this.currentUser.kataLaluan){
-            //         this.errorOldPass = ""
-            //         if (this.newPass === this.confirmNewPass){
-            //             // Update password
-            //             this.errorOldPass = ""
-            //             const update = {
-            //                 kataLaluan: this.confirmNewPass
-            //             }
-
-            //             axios.put(BaseURL + 'pengguna/'+this.userId, update)
-            //             .then(response => {
-            //                 const message = `Kata laluan berjaya dikemaskini!`;
-            //                 const status = "Berjaya";
-            //                 this.$refs.toast.toast(message, status, "success");
-            //             })
-            //             .catch(error => {
-            //                 console.error('Error update password:', error);
-            //             });
-
-
-            //         }
-            //         else{
-            //             // Pengesahan kata laluan baru tidak berjaya
-            //             this.errorNewPass = "*Pengesahan kata laluan baru tidak berjaya"
-            //         }
-            //     }
-            //     else if(this.oldPass !== this.currentUser.kataLaluan){
-            //         if (this.oldPass === ''){
-            //             this.oldPassBlank = "*Sila masukkan kata laluan lama"
-                        
-            //         }
-            //         else if(this.newPass === '') {
-            //             this.newPassBlank = "*Sila masukkan kata laluan baru"
-            //         }
-            //         else if(this.confirmNewPass === ''){
-            //             this.confirmPassBlank = "*Sila sahkan kata laluan"
-            //         }
-            //         else{
-            //             // kata laluan lama salah
-            //             this.errorOldPass = "*Kata laluan lama salah"
-            //         }
-            //     } 
-            //     // else{
-            //     //     if (this.oldPass === ''){
-            //     //         this.oldPassBlank = "*Sila masukkan kata laluan lama"
-            //     //     }
-            //     //     else if(this.newPass === '') {
-            //     //         this.newPassBlank = "*Sila masukkan kata laluan baru"
-            //     //     }
-            //     //     else if(this.confirmNewPass === ''){
-            //     //         this.confirmPassBlank = "*Sila sahkan kata laluan"
-            //     //     }
-            //     // }
-            // },
+            
             changePassword() {
                 if ( this.oldPass && this.newPass && this.confirmNewPass)
                 {

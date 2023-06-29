@@ -6,7 +6,7 @@ import QRcodeScanner from "../components/QRcodeScanner.vue";
 
 <template>
     <div
-        class="flex bg-blue-100 w-full h-screen justify-between p-8 max-md:p-[1px] max-md:pt-[10px]"
+        class="flex bg-blue-100 w-full h-screen max-md:h-full justify-between p-8 max-md:p-[1px] "
     >
         <SideBar2 />
 

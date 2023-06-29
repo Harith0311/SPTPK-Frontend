@@ -8,16 +8,16 @@
 </script>
 <template>
     
-    <div class="register p-5 bg-blue-50 w-screen min-h-screen w-100 max-h-full font-bold " v-on:submit.prevent="register">
+    <div class="register p-5 bg-blue-100 w-screen min-h-screen w-100 max-h-full font-bold " v-on:submit.prevent="register">
         <LogoHeader></LogoHeader>
-        <form v-on:submit.prevent="createNewUser" class="container px-12 m-4 p-8 mx-auto drop-shadow-2xl max-w-3xl bg-blue-100 w-auto rounded-2xl">
+        <form v-on:submit.prevent="createNewUser" class="container px-12 max-md:px-4 m-4 p-8 mx-auto drop-shadow-2xl max-w-3xl bg-blue-200 w-auto rounded-2xl">
             <div class="flex justify-start">
                 <RouterLink to="/">
-                    <button class="bg-blue-100 p-2 px-5 text-base font-bold hover:text-zinc-600"><i class="fa-solid fa-caret-left px-2 "></i>Kembali</button>
+                    <button class="bg-blue-200 p-2 px-5 text-base max-md:text-sm max-md:px-0 max-md:mb-4 font-bold hover:text-zinc-600"><i class="fa-solid fa-caret-left px-2 "></i>Kembali</button>
                 </RouterLink>
             </div>
-            <h1 class="h1 text-2xl text-center">DAFTAR SEKARANG!</h1>
-            <h5 class="h5 font-normal mb-8 text-center">Masukkan maklumat pengguna dalam ruangan yang disediakan</h5>
+            <h1 class="h1 text-2xl text-center max-md:text-base">DAFTAR SEKARANG!</h1>
+            <h5 class="h5 font-normal mb-8 text-center max-md:text-xs">Masukkan maklumat pengguna dalam ruangan yang disediakan</h5>
             <!-- <TopLabel>Nama Penuh</TopLabel> -->
             <TopLabel textLabel="Nama Penuh"/>
             <input 
@@ -48,7 +48,7 @@
 
             <TopLabel textLabel="Peranan"/>
             <select 
-                class="inputTop w-full outline-blue-100 p-3 px-6 mt-2 drop-shadow-lg rounded-lg placeholder:font-normal"  
+                class="inputTop w-full max-md:text-xs outline-blue-100 p-3 px-6 mt-2 drop-shadow-lg rounded-lg placeholder:font-normal"  
                 v-model="role" 
                 type="text"
             >
@@ -87,7 +87,7 @@
             />
             <label class="text-red-600 font-medium text-xs pl-[8px] " for="errorCode" id="errorCode">{{errorCode}}</label>
     
-            <h5 class="pengesahan text-right font-medium text-xs mb-10">* Dapatkan kod pengesahan melalui mesej Whatsapp yang dihantar oleh pihak TASKA</h5>
+            <h5 class="pengesahan text-right font-medium text-xs mb-10 max-md:text-[11px]">* Dapatkan kod pengesahan melalui mesej Whatsapp yang dihantar oleh pihak TASKA</h5>
             
             <BlueButton>Daftar Masuk</BlueButton>
         </form>
