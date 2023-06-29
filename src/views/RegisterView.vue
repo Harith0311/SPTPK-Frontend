@@ -48,7 +48,7 @@
 
             <TopLabel textLabel="Peranan"/>
             <select 
-                class="inputTop w-full max-md:text-xs outline-blue-100 p-3 px-6 mt-2 drop-shadow-lg rounded-lg placeholder:font-normal"  
+                class="inputTop w-full  outline-blue-100 p-3 px-6 mt-2 drop-shadow-lg rounded-lg placeholder:font-normal"  
                 v-model="role" 
                 type="text"
             >

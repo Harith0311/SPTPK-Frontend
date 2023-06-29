@@ -6,7 +6,16 @@
 </script>
 
 <template>
-    <div class="registration bg-slate-400 w-screen h-screen pb-12 font-bold ">
+    <div class="invisible max-md:visible bg-blue-100 h-screen p-4">
+        <div class="bg-white invisible py-[50px] grid place-items-center max-md:visible max-md:h-[300px] w-full my-6 mx-2 p-4 max-md:mx-0 max-md:mb-[200px] rounded-2xl drop-shadow-2xl">
+            <i class="fa-solid fa-display text-[80px]"></i>
+            <h2 class="font-medium text-center pt-2">Harap maaf, sila gunakan <span class="italic">desktop</span> untuk membuat pendaftaran baharu</h2>
+            <RouterLink to="/">
+                <button class="bg-blue-300 drop-shadow-xl px-8 py-2 rounded-lg mt-4">Kembali</button>
+            </RouterLink>
+        </div>
+    </div>
+    <div class="registration max-md:invisible bg-slate-400 w-screen h-screen pb-12 -mt-[746px] font-bold ">
         <LogoHeader></LogoHeader>
         <div class="container m-4 pb-7 mx-auto max-w-5xl bg-blue-100 w-auto drop-shadow-2xl rounded-2xl">
             <div >
