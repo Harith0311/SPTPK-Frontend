@@ -10,15 +10,15 @@ import TopLabel from "../components/TopLabel.vue";
     <div class="login p-5 bg-blue-50 min-h-screen w-100 max-h-full font-bold text-center">
         <LogoHeader></LogoHeader>
         <form
-            class="container px-12 m-4 p-8 mx-auto max-w-3xl bg-blue-100 w-auto drop-shadow-2xl rounded-2xl"
+            class="container px-12 m-4 p-8 max-md:p-4 mx-auto max-w-3xl bg-blue-100 w-auto drop-shadow-2xl rounded-2xl"
             v-on:submit.prevent="updatePassword"
         >
             <div class="flex justify-start">
                 <RouterLink to="/forgotPassword">
-                    <button class="bg-blue-100 p-2 px-5 text-base font-bold hover:text-zinc-600"><i class="fa-solid fa-caret-left px-2 "></i>Kembali</button>
+                    <button class="bg-blue-100 p-2 px-5 max-md:px-1 text-base font-bold hover:text-zinc-600"><i class="fa-solid fa-caret-left px-2 "></i>Kembali</button>
                 </RouterLink>
             </div>
-            <div class="flex justify-center">
+            <div class="flex justify-center max-md:mt-4">
                 <i class="fa-solid fa-lock text-lg p-2 mr-2 text-orange-300"></i>
                 <h1 class="h1 text-2xl p-1 ">Set semula kata laluan</h1>
 
@@ -45,7 +45,7 @@ import TopLabel from "../components/TopLabel.vue";
             />
 
             
-                <BlueButton>Hantar PIN</BlueButton>
+                <BlueButton>Set Kata Laluan</BlueButton>
             
         </form>
     </div>

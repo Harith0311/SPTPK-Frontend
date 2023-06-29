@@ -62,7 +62,7 @@ import Header from "../components/Header.vue";
                 <div class="bg-white w-full p-4 rounded-2xl drop-shadow-2xl">
                     <h2 class="font-bold mb-5">Profil Saya</h2>
                     <div class="flex max-md:block justify-between">
-                        <div class="py-2 ml-5">
+                        <div class="py-2 ml-5 max-md:grid max-md:ml-0 max-md:place-items-center">
                             <div class="bg-blue-200 w-[120px] h-auto p-4 rounded-md drop-shadow-xl ">
                                 <img class="h-auto w-24" src="/staff.png" alt="">   
                             </div>
@@ -74,10 +74,10 @@ import Header from "../components/Header.vue";
                             <h3 class="font-bold text-xl max-md:text-base">{{ currentUser.nama }}</h3>
                             <div class="flex max-md:block">
                                 <h3 class="text-sm text-gray-500 p-2 "><i class="fa-solid fa-circle-user"></i> {{currentUser.peranan}}</h3>
-                                <h3 class="text-sm text-gray-500 p-2 px-4 max-md:px-2"><i class="fa-solid fa-envelope max-md:mr-1"></i>{{currentUser.emel}}</h3>
+                                <h3 class="text-sm text-gray-500 p-2 px-4 max-md:px-2"><i class="fa-solid fa-envelope max-md:mr-1"></i> {{currentUser.emel}}</h3>
                                 <h3 class="text-sm text-gray-500 p-2 px-4 max-md:px-2"><i class="fa-solid fa-id-card max-md:mr-1"></i> {{currentUser.noKP}}</h3>
                             </div>
-                            <button @click="togglePassword" class="bg-blue-200 hover:bg-blue-300 p-1 px-4 my-2 rounded-md drop-shadow-lg max-md:text-sm max-md:py-3 max-md:mt-4">Tukar Kata Laluan</button>
+                            <button @click="togglePassword" class="bg-blue-200 hover:bg-blue-300 p-1 px-4 my-2 rounded-md drop-shadow-lg max-md:text-sm max-md:py-3 max-md:mt-4 max-md:px-7 ">Tukar Kata Laluan</button>
                             
                             
                         </div>
