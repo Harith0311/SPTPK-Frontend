@@ -5,7 +5,7 @@ import Header from "../components/Header.vue";
 </script>
 
 <template>
-    <div class="flex bg-blue-100 w-full justify-between p-8">
+    <div class="flex bg-blue-100 w-full justify-between p-8 max-md:p-[1px]">
         <SideBar2 />
 
         <!-- Content -->
@@ -21,7 +21,7 @@ import Header from "../components/Header.vue";
             </div>
             
             <!-- Router view to display children report, activity report, and attendance report -->
-            <div>
+            <div class="max-md:invisible">
                 <RouterView/>
             </div>
         </div>

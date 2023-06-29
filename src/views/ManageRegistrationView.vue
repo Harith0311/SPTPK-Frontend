@@ -6,7 +6,7 @@ import Header from "../components/Header.vue";
 </script>
 
 <template>
-    <div class="flex bg-blue-100 w-full h-screen justify-between p-8">
+    <div class="flex bg-blue-100 w-full h-screen justify-between p-8 max-md:p-[1px]">
         <SideBar2 />
 
         <!-- Content -->
@@ -24,12 +24,12 @@ import Header from "../components/Header.vue";
             <!-- Div Content -->
 
     
-        <div class="bg-white h-[448px] w-full my-6 mx-2 p-4 rounded-2xl drop-shadow-2xl">
-            <h1 class="text-xl font-bold p-2">Senarai Permohonan Pendaftaran</h1>
+        <div class="bg-white h-[448px] max-md:h-[300px] w-full my-6 mx-2 p-4 max-md:mx-0 max-md:mb-[200px] rounded-2xl drop-shadow-2xl">
+            <h1 class="text-xl font-bold p-2 max-md:text-base">Senarai Permohonan Pendaftaran</h1>
             <div class="border-solid border-b-2 border-black">
                     <!-- Horizontal Line -->
             </div>
-            <div class=" relative overflow-y-auto h-[380px] ">
+            <div class=" relative overflow-y-auto h-[380px] max-md:hidden">
                 <div v-if="RegistrationList.length > 0">
                     <div class="top-0 z-10" v-for="daftarKanak in RegistrationList" v-bind:key="daftarKanak.id">
                         <div class="flex justify-between">
@@ -49,6 +49,10 @@ import Header from "../components/Header.vue";
                         <!-- Horizontal Line -->
                     </div>
                 </div>
+            </div>
+            <div class="invisible max-md:visible py-[50px] grid place-items-center">
+                <i class="fa-solid fa-display text-[80px]"></i>
+                <h2 class="font-medium text-center pt-2">Harap maaf, fungsi ini hanya tersedia bagi pengguna <span class="italic">desktop</span> sahaja</h2>
             </div>
             
         </div>

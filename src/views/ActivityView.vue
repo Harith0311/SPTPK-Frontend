@@ -6,7 +6,7 @@ import Header from "../components/Header.vue";
 </script>
 
 <template>
-    <div class="flex bg-blue-100 w-full justify-between p-8">
+    <div class="flex bg-blue-100 w-full max-md:h-screen overflow-hidden justify-between p-8 max-md:p-[1px]">
         <SideBar2 />
 
         <!-- Content -->
@@ -22,14 +22,18 @@ import Header from "../components/Header.vue";
             </div>
 
             <!-- Div Content -->
+            <div class="bg-white invisible py-[50px] grid place-items-center max-md:visible max-md:h-[300px] w-full my-6 mx-2 p-4 max-md:mx-0 max-md:mb-[200px] rounded-2xl drop-shadow-2xl">
+                <i class="fa-solid fa-display text-[80px]"></i>
+                <h2 class="font-medium text-center pt-2">Harap maaf, fungsi ini hanya tersedia bagi pengguna <span class="italic">desktop</span> sahaja</h2>
+            </div>
             
-            <h3 class="text-lg font-bold mt-5 ml-2 p-3">Senarai Aktiviti</h3>
-            <div>
+            <h3 class="text-lg font-bold ml-2 p-3 max-md:invisible -mt-[240px]">Senarai Aktiviti</h3>
+            <div class="max-md:invisible max-md:h-12 ">
                 <RouterView/>
             </div>
 
-            <h3 class="text-lg font-bold mt-10 ml-2 p-3">Aktiviti Hari Ini</h3>
-            <div class=" mb-10">
+            <h3 class="text-lg font-bold mt-10 ml-2 p-3 max-md:invisible">Aktiviti Hari Ini</h3>
+            <div class=" mb-10 max-md:invisible max-md:h-8">
                 <div class="flex justify-center mb-5">
                     <button class=" bg-blue-400 rounded-md py-2 px-44 hover:bg-blue-300 duration-400 drop-shadow-lg" @click="toggleActivity('Melur')"
                     >Tambah Aktiviti Hari Ini</button>
