@@ -7,22 +7,22 @@ import LogoHeader from "../components/LogoHeader.vue";
 
 <template>
     <div
-        class="login p-5 bg-blue-50 w-screen min-h-screen w-100 max-h-full font-bold text-center"
+        class="login p-5 bg-blue-50 max-md:bg-blue-100 w-screen min-h-screen w-100 max-h-full font-bold text-center"
     >
         <LogoHeader></LogoHeader>
         <form
-            class="container px-12 m-4 p-8 mx-auto max-w-3xl bg-blue-100 w-auto drop-shadow-2xl rounded-2xl"
+            class="container px-12 max-md:px-4 m-4 p-8 mx-auto max-w-3xl bg-blue-200 w-auto drop-shadow-2xl max-md:mt-[60px] rounded-2xl"
             v-on:submit.prevent="login"
         >
             <div class="flex justify-start">
                 <RouterLink to="/">
-                    <button class="bg-blue-100 p-2 px-5 text-base font-bold hover:text-zinc-600"><i class="fa-solid fa-caret-left px-2 "></i>Kembali</button>
+                    <button class="bg-blue-200 p-2 px-5 max-md:px-0 max-md:text-sm max-md:pb-8 text-base font-bold hover:text-zinc-600"><i class="fa-solid fa-caret-left px-2 "></i>Kembali</button>
                 </RouterLink>
             </div>
             
-            <h1 class="h1 text-2xl">SELAMAT DATANG!</h1>
+            <h1 class="h1 text-2xl max-md:text-base">SELAMAT DATANG!</h1>
 
-            <h5 class="h5 font-normal mb-8">
+            <h5 class="h5 font-normal mb-8 max-md:text-xs">
                 Masukkan alamat emel dan kata laluan
             </h5>
 
