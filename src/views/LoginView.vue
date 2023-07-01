@@ -109,7 +109,6 @@ export default {
                     router.push("/homePageParent");
                 } 
             } catch (error) {
-                this.loading = false
                 console.error(error);
                 alert("Invalid email or password");
                 // this.$toast.error(`Hey! I'm here`);
