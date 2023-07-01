@@ -4,6 +4,11 @@ import { RouterLink } from "vue-router";
 </script>
 
 <template>
+    <div v-if="loading" class="fixed inset-0 flex items-center bg-black bg-opacity-50 justify-center z-50">
+        <div class="loader-wrapper">
+            <div class="loader"></div>
+       </div>
+    </div>
     <div class="bg-white h-auto w-full ml-2 p-3 rounded-2xl drop-shadow-2xl">
         <form v-on:submit.prevent="createAktivitiData">
             <table class="w-5/6 my-3 mx-auto">
@@ -79,7 +84,8 @@ export default {
             AktivitiList: [],
             activityName: '',
             year: '',
-            difficulty: ''
+            difficulty: '',
+            loading: false,
         };
     },
 
@@ -100,8 +106,10 @@ export default {
                 kesukaran
             }
 
+            this.loading = true;
             axios.post(BaseURL + 'aktiviti', aktiviti)
             .then(response => {
+                this.loading = false;
                 AktivitiList.value = [...AktivitiList.value, response.data];  
                 successAddActivity.value = "created";
                 console.log(successAddActivity.value);
@@ -113,8 +121,10 @@ export default {
         },
 
         fetchAktivitiData() {
+            this.loading = true;
             axios.get(BaseURL + 'aktiviti')
                 .then(response => {
+                    this.loading = false;
                     AktivitiList.value = [...AktivitiList.value, response.data];
                 })
                 .catch(error => {
@@ -124,3 +134,32 @@ export default {
     }
 }
 </script>
+
+<style>
+.loader {
+          position: relative;
+          width: 48px;
+          height: 48px;
+        }
+        .loader:before,
+        .loader:after {
+          content:"";
+          display: block;
+          border: 32px solid transparent;
+          border-top-color: #fff;
+          position: absolute;
+          left: 0;
+          top: 0;
+          animation: weld-rotate 2s infinite ease-in;
+        }
+        .loader:before {
+          border-color: transparent  transparent transparent #FF3D00;
+          animation-delay: 0.5s;
+        }
+        @keyframes weld-rotate {
+          0% , 25% {transform: rotate(0deg)}
+          50% , 75% {transform: rotate(180deg)}
+          100% {transform: rotate(360deg)}
+        }
+      
+</style>

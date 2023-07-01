@@ -6,6 +6,11 @@ import Header from "../components/Header.vue";
 </script>
 
 <template>
+    <div v-if="loading" class="fixed inset-0 flex items-center bg-black bg-opacity-50 justify-center z-50">
+        <div class="loader-wrapper">
+            <div class="loader"></div>
+       </div>
+    </div>
     <div class="flex bg-blue-100 w-full max-md:h-screen overflow-hidden justify-between p-8 max-md:p-[1px]">
         <SideBar2 />
 
@@ -338,7 +343,8 @@ export default {
         isOpen: false,
         activityId: '',
         kelasKanak: '',
-        selectedActivity: null 
+        selectedActivity: null,
+        loading: false, 
     };
   },
   mounted() {
@@ -566,9 +572,11 @@ export default {
                     aktivitiId: activityId,
                     kelas: kelasKanak
                 }
-
+                
+                this.loading = true;
                 axios.post(BaseURL + 'aktivitiHariIni', todayActivity)
                     .then(response => {
+                        this.loading = false;
                         const message = `Aktiviti berjaya ditambah!`;
                         const status = "Berjaya";
                         this.$refs.toast.toast(message, status, "success")
@@ -600,8 +608,11 @@ export default {
     async deleteTodayActivity(activity) {
         this.selectedActivity = activity;
         console.log(this.selectedActivity);
+
+        this.loading = true;
         await axios.delete(BaseURL + `aktivitiHariIni/${this.selectedActivity}`)
         .then(response => {
+            this.loading = false;
             this.AktivitiHariIniList = this.AktivitiHariIniList.filter(
                 (activity) => activity.id !== this.selectedActivity
             );
@@ -631,3 +642,32 @@ export default {
   }
 };
 </script>
+
+<style>
+.loader {
+          position: relative;
+          width: 48px;
+          height: 48px;
+        }
+        .loader:before,
+        .loader:after {
+          content:"";
+          display: block;
+          border: 32px solid transparent;
+          border-top-color: #fff;
+          position: absolute;
+          left: 0;
+          top: 0;
+          animation: weld-rotate 2s infinite ease-in;
+        }
+        .loader:before {
+          border-color: transparent  transparent transparent #FF3D00;
+          animation-delay: 0.5s;
+        }
+        @keyframes weld-rotate {
+          0% , 25% {transform: rotate(0deg)}
+          50% , 75% {transform: rotate(180deg)}
+          100% {transform: rotate(360deg)}
+        }
+      
+</style>
