@@ -6,6 +6,11 @@ import LogoHeader from "../components/LogoHeader.vue";
 </script>
 
 <template>
+    <div v-if="loading" class="fixed inset-0 flex items-center bg-black bg-opacity-50 justify-center z-50">
+        <div class="loader-wrapper">
+            <div class="loader"></div>
+       </div>
+    </div>
     <div
         class="login p-5 bg-blue-50 max-md:bg-blue-100 w-screen min-h-screen w-100 max-h-full font-bold text-center"
     >
@@ -67,6 +72,7 @@ export default {
             emel: '',
             kataLaluan: '',
             peranan:'',
+            loading: false,
         };
     },
 
@@ -79,13 +85,16 @@ export default {
 
         async login() {
             try {
+                this.loading = true;
                 const response = await axios.post(BaseURL + 'pengguna/logMasuk', {
                     email: this.emel,
                     password: this.kataLaluan,
                 });
+                this.loading = false
                 console.log(response.data);
                 sessionStorage.setItem("id", JSON.stringify(response.data));
 
+                this.loading = true;
                 const responseUser = await axios.get(
                     BaseURL + `pengguna/${response.data}`
 
@@ -93,12 +102,14 @@ export default {
                 console.log(responseUser);
                 console.log(responseUser.data.peranan);
                 if (responseUser.data.peranan === "Staf Taska" ) {
-                    
+                    this.loading = false
                     router.push("/homePage");
                 } else if (responseUser.data.peranan === "Ibubapa") {
+                    this.loading = false
                     router.push("/homePageParent");
                 } 
             } catch (error) {
+                this.loading = false
                 console.error(error);
                 alert("Invalid email or password");
                 // this.$toast.error(`Hey! I'm here`);
@@ -110,3 +121,32 @@ export default {
 }
 
 </script>
+
+<style>
+.loader {
+          position: relative;
+          width: 48px;
+          height: 48px;
+        }
+        .loader:before,
+        .loader:after {
+          content:"";
+          display: block;
+          border: 32px solid transparent;
+          border-top-color: #fff;
+          position: absolute;
+          left: 0;
+          top: 0;
+          animation: weld-rotate 2s infinite ease-in;
+        }
+        .loader:before {
+          border-color: transparent  transparent transparent #FF3D00;
+          animation-delay: 0.5s;
+        }
+        @keyframes weld-rotate {
+          0% , 25% {transform: rotate(0deg)}
+          50% , 75% {transform: rotate(180deg)}
+          100% {transform: rotate(360deg)}
+        }
+      
+</style>
