@@ -544,7 +544,7 @@ export default {
                                 <div class="satu">
                                     <img src="/permata-logo.png" alt="">
                                     <h1>Kod QR Kehadiran</h1>
-                                    <h3>Harith bin Ismail</h3>
+                                    <h3>${kanak.namaKanak}</h3>
                                     <img src="${canvas.toDataURL('image/png')}" alt="" style="width: 250px; height: auto;">
                                     <p>Taska Permata Keluarga Taman Desa Permai</p>
                                 </div>
