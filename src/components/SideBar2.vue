@@ -4,7 +4,7 @@
 </script>
 
 <template>
-    <div>
+    <div class="invisible">
         <div class="p-4 m-1 active:none cursor-pointer max-md:visible">
             <i class="fa-solid fa-bars text-2xl text-orange-300"></i>
         </div>
