@@ -6,6 +6,11 @@
 </script>
 
 <template>
+    <div v-if="loading" class="fixed inset-0 flex items-center bg-black bg-opacity-50 justify-center z-50">
+        <div class="loader-wrapper">
+            <div class="loader"></div>
+       </div>
+    </div>
     <div class="invisible max-md:visible bg-blue-100 h-screen p-4">
         <div class="bg-white invisible py-[50px] grid place-items-center max-md:visible max-md:h-[300px] w-full my-6 mx-2 p-4 max-md:mx-0 max-md:mb-[200px] rounded-2xl drop-shadow-2xl">
             <i class="fa-solid fa-display text-[80px]"></i>
@@ -91,6 +96,7 @@ import { BaseURL } from '../stores';
                 StaffList: [],
                 currentUser: '',
                 userId: '',
+                loading: false,
                 
 
                 
@@ -180,3 +186,32 @@ import { BaseURL } from '../stores';
 
 
 </script>
+
+<style>
+    .loader {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            }
+            .loader:before,
+            .loader:after {
+            content:"";
+            display: block;
+            border: 32px solid transparent;
+            border-top-color: #fff;
+            position: absolute;
+            left: 0;
+            top: 0;
+            animation: weld-rotate 2s infinite ease-in;
+            }
+            .loader:before {
+            border-color: transparent  transparent transparent #FF3D00;
+            animation-delay: 0.5s;
+            }
+            @keyframes weld-rotate {
+            0% , 25% {transform: rotate(0deg)}
+            50% , 75% {transform: rotate(180deg)}
+            100% {transform: rotate(360deg)}
+            }
+      
+</style>
