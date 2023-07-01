@@ -93,10 +93,7 @@ export default {
                 })
                 .catch(error => {
                 console.error('Error fetching child data:', error);
-            });
-
-            
-            
+            }); 
         },
 
         calculateAge() {

@@ -83,7 +83,7 @@ import QRcodeScanner from "../components/QRcodeScanner.vue";
                         <tr class="pl-4 p-4">
                             <td class="text-base font-semibold pl-2">Umur</td>
                             <td class="text-base font-semibold">:</td>
-                            <td  class="text-base font-semibold"><p >3 Tahun 2 bulan</p></td>
+                            <td  class="text-base font-semibold"><p >{{ age }} </p></td>
                         </tr>
                         <tr class="pl-4 p-4">
                             <td class="text-base font-semibold pl-2">
@@ -277,7 +277,9 @@ export default {
             kanakId: "",
             attend: true,
             temp: "",
-            kanak: [],
+            kanak: [
+            { calculatedAgeYears: 0, calculatedAgeMonths: 0, /* other properties */ }
+            ],
             isSuccess: false,
             isHigh: false,
             isSubmit: false,
@@ -309,32 +311,34 @@ export default {
         },
 
         calculateAge() {
-            if (this.kanak.length > 0) {
+            console.log(this.kanak.tarikhLahir)
+            if (this.kanak) {
                 const today = new Date();
-                this.kanak.forEach((child) => {
-                    const birthDate = new Date(child.tarikhLahir);
-                    const yearDiff = today.getFullYear() - birthDate.getFullYear();
-                    const monthDiff = today.getMonth() - birthDate.getMonth();
-                    const dayDiff = today.getDate() - birthDate.getDate();
+                    // const child = this.kanak;
+                    console.log(this.kanak.tarikhLahir)
 
-                    let ageYears = yearDiff;
-                    let ageMonths = monthDiff;
+                const birthDate = new Date(this.kanak.tarikhLahir);
+                const yearDiff = today.getFullYear() - birthDate.getFullYear();
+                const monthDiff = today.getMonth() - birthDate.getMonth();
+                const dayDiff = today.getDate() - birthDate.getDate();
 
-                    if (dayDiff < 0) {
+                let ageYears = yearDiff;
+                let ageMonths = monthDiff;
+
+                if (dayDiff < 0) {
                     ageMonths -= 1;
-                    }
+                }
 
-                    if (ageMonths < 0) {
+                if (ageMonths < 0) {
                     ageYears -= 1;
                     ageMonths += 12;
-                    }
+                }
 
-                    child.ageYears = ageYears ;
-                    child.ageMonths = ageMonths ;
+                this.kanak.calculatedAgeYears = ageYears;
+                this.kanak.calculatedAgeMonths = ageMonths;
 
-                    child.age = ageYears + " tahun " + ageMonths + " bulan";
-                    
-                });
+                this.age = `${this.kanak.calculatedAgeYears} tahun ${this.kanak.calculatedAgeMonths} bulan `
+
             }
         },
 
