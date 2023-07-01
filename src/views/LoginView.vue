@@ -12,7 +12,7 @@ import LogoHeader from "../components/LogoHeader.vue";
        </div>
     </div>
     <div
-        class="login p-5 bg-blue-50 max-md:bg-blue-100 w-screen min-h-screen w-100 max-h-full font-bold text-center"
+        class="login p-5 bg-blue-50 max-md:bg-blue-100 w-screen min-h-screen w-100 max-h-full font-bold "
     >
         <LogoHeader></LogoHeader>
         <form
@@ -25,9 +25,9 @@ import LogoHeader from "../components/LogoHeader.vue";
                 </RouterLink>
             </div>
             
-            <h1 class="h1 text-2xl max-md:text-base">SELAMAT DATANG!</h1>
+            <h1 class="h1 text-2xl max-md:text-base text-center">SELAMAT DATANG!</h1>
 
-            <h5 class="h5 font-normal mb-8 max-md:text-xs">
+            <h5 class="h5 font-normal mb-8 max-md:text-xs text-center">
                 Masukkan alamat emel dan kata laluan
             </h5>
 
@@ -38,6 +38,8 @@ import LogoHeader from "../components/LogoHeader.vue";
                 v-model="emel"
                 type="email"
             />
+            <label class="text-red-600 font-medium text-xs pl-[5px] " for="errorEmail" id="errorEmail">{{errorEmail}}</label>
+                
             <TopLabel textLabel="Kata Laluan" />
             <input
                 class="inputTop w-full outline-blue-100 p-3 px-6 my-2 drop-shadow-lg rounded-lg placeholder:font-normal"
@@ -45,6 +47,8 @@ import LogoHeader from "../components/LogoHeader.vue";
                 v-model="kataLaluan"
                 type="password"
             />
+            <label class="text-red-600 font-medium text-xs pl-[5px] " for="errorPass" id="errorPass">{{errorPass}}</label>
+                
 
             <a href="/forgotPassword" class="float-right underline font-medium text-xs mb-10">Lupa kata laluan?</a>
             
@@ -52,18 +56,15 @@ import LogoHeader from "../components/LogoHeader.vue";
             <BlueButton>Log Masuk</BlueButton>
         </form>
     </div>
+    <ToastMessage ref="toast" />
 </template>
 
 <script>
 import axios from 'axios';
 import router from "../router";
 import { BaseURL } from '../stores';
-// import { createApp } from 'vue'
-// import App from './App.vue'
+import ToastMessage from "../components/ToastMessage.vue";
 
-// import toast from 'vue-toast'
-
-// createApp(App).use(toast).mount('#app')
 
 export default {
     data() {
@@ -73,6 +74,9 @@ export default {
             kataLaluan: '',
             peranan:'',
             loading: false,
+
+            errorEmail: '',
+            errorPass: '',
         };
     },
 
@@ -84,34 +88,64 @@ export default {
         
 
         async login() {
-            try {
-                this.loading = true;
-                const response = await axios.post(BaseURL + 'pengguna/logMasuk', {
-                    email: this.emel,
-                    password: this.kataLaluan,
-                });
-                this.loading = false
-                console.log(response.data);
-                sessionStorage.setItem("id", JSON.stringify(response.data));
-
-                this.loading = true;
-                const responseUser = await axios.get(
-                    BaseURL + `pengguna/${response.data}`
-
-                );
-                console.log(responseUser);
-                console.log(responseUser.data.peranan);
-                if (responseUser.data.peranan === "Staf Taska" ) {
+            if (this.emel && this.kataLaluan){
+                try {
+                    this.loading = true;
+                    const response = await axios.post(BaseURL + 'pengguna/logMasuk', {
+                        email: this.emel,
+                        password: this.kataLaluan,
+                    });
                     this.loading = false
-                    router.push("/homePage");
-                } else if (responseUser.data.peranan === "Ibubapa") {
+                    console.log(response.data);
+                    sessionStorage.setItem("id", JSON.stringify(response.data));
+    
+                    this.loading = true;
+                    const responseUser = await axios.get(
+                        BaseURL + `pengguna/${response.data}`
+    
+                    );
+                    console.log(responseUser);
+                    console.log(responseUser.data.peranan);
+                    if (responseUser.data.peranan === "Staf Taska" ) {
+                        this.loading = false
+                        router.push("/homePage");
+                    } else if (responseUser.data.peranan === "Ibubapa") {
+                        this.loading = false
+                        router.push("/homePageParent");
+                    } 
+                } catch (error) {
+                    console.error(error);
+                    const message = `Emel atau kata laluan salah `;
+                    const status = "Peringatan";
+                    this.$refs.toast.toast(message, status, "error");
                     this.loading = false
-                    router.push("/homePageParent");
-                } 
-            } catch (error) {
-                console.error(error);
-                alert("Invalid email or password");
-                // this.$toast.error(`Hey! I'm here`);
+                    // alert("Invalid email or password");
+                    
+                }
+            }
+            else
+            {
+                const message = `Sila isi semua maklumat `;
+                const status = "Peringatan";
+                this.$refs.toast.toast(message, status, "error");
+
+                if (this.emel === '')
+                {
+                    this.errorEmail = '*Sila masukkan alamat emel'
+                }
+                else
+                {
+                    this.errorEmail = ''
+                }
+
+                if (this.kataLaluan === '')
+                {
+                    this.errorPass = '*Sila masukkan kata laluan'
+                }
+                else
+                {
+                    this.errorPass = ''
+                }
             }
         },
     
