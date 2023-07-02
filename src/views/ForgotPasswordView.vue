@@ -64,6 +64,9 @@ export default {
             IC: '',
             user:'',
             userId:'',
+
+            errorEmel: '',
+            errorKP: '',
         };
     },
 
@@ -74,22 +77,29 @@ export default {
     methods: {
 
         validateInfo() {
-            axios.get(BaseURL + 'pengguna')
-                .then(response => {
-                    this.user = response.data.filter(item => item.emel === this.email && item.noKP === this.IC);
-                    this.userId = this.user[0].id;
-                    console.log(this.userId);
-                    localStorage.setItem('userId', this.userId);
-                    router.push('/resetPassword')
-                    console.log(this.user);
-                    })
-                    .catch(error => {
-                        alert('Account does not exist')
-                    console.error('Account does not exist', error);
-                });             
+            if (this.email && this.IC)
+            {
+                axios.get(BaseURL + 'pengguna')
+                    .then(response => {
+                        this.user = response.data.filter(item => item.emel === this.email && item.noKP === this.IC);
+                        this.userId = this.user[0].id;
+                        console.log(this.userId);
+                        localStorage.setItem('userId', this.userId);
+                        router.push('/resetPassword')
+                        console.log(this.user);
+                        })
+                        .catch(error => {
+                            alert('Akaun tidak wujud')
+                        console.error('Account does not exist', error);
+                    });             
+            }
+            else
+            {
+                alert('Sila masukkan emel dan nombor kad pengenalan')
+            }
+            
         },
 
-       
     }
 }
 
