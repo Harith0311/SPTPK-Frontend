@@ -162,9 +162,9 @@ import { BaseURL } from '../stores';
                     // Check if the password meets the required criteria
                     // const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$");
                     
-                    if (!strongRegex.test(this.password)) {
+                    if (!/(?=.*[A-Z])(?=.*[0-9]).{8,}/.test(this.password)) {
                         this.errorPass = '*Kata laluan perlulah mengandungi huruf kecil, huruf besar, nombor, simbol, dan lebih daripada 8 karakter';
-                    } 
+                    }   
                     else 
                     {
                         this.errorPass = '';
