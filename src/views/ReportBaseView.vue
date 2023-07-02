@@ -39,14 +39,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(child, index) in ChildList" v-bind:key="child.id" class="border-solid border-b-2 border-[#c7fcda]">
+                            <tr v-for="(child, index) in ApprovedChildList" v-bind:key="child.id" class="border-solid border-b-2 border-[#c7fcda]">
                                 <td class="text-center p-2">{{ index + 1 }}</td>
-                                <td class="p-2">{{child.namaKanak}}</td>
+                                <td class="p-2">{{child.kanak.namaKanak}}</td>
                                 <td class="text-center p-2">{{ child.ageYears }} tahun {{ child.ageMonths }} bulan</td>
-                                <td class="text-center p-2">{{child.kelas}}</td>
-                                <td class="text-center p-2">{{child.sijilLahir}}</td>
-                                <td class="text-center p-2">{{child.jantina}}</td>
-                                <td class="text-center p-2">{{child.bangsa}}</td>
+                                <td class="text-center p-2">{{child.kanak.kelas}}</td>
+                                <td class="text-center p-2">{{child.kanak.sijilLahir}}</td>
+                                <td class="text-center p-2">{{child.kanak.jantina}}</td>
+                                <td class="text-center p-2">{{child.kanak.bangsa}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -72,19 +72,39 @@ export default {
     data() {
         return {
             ChildList: [],
+            ApprovedChildList: [],
             birthDate: [],
             age: [],
         }
     },
 
     mounted() {
-        this.fetchChildData();
+        // this.fetchChildData();
+        this.fetchApprovedChildData();
+
     },
     methods: {
-        fetchChildData(){
-            axios.get(BaseURL + 'kanak')
+        // fetchChildData(){
+        //     axios.get(BaseURL + 'kanak')
+        //         .then(response => {
+        //         this.ChildList = response.data;
+        //         this.calculateAge();
+                
+        //         // this.birthDate = this.ChildList[0].tarikhLahir;
+        //         // console.log(this.birthDate);
+        //         console.log(this.ChildList);
+        //         })
+        //         .catch(error => {
+        //         console.error('Error fetching child data:', error);
+        //     }); 
+        // },
+
+        // Filter based on approved registration
+        fetchApprovedChildData(){
+            axios.get(BaseURL + 'urusPendaftaran/lulus')
                 .then(response => {
-                this.ChildList = response.data;
+                this.ApprovedChildList = response.data;
+                console.log(this.ApprovedChildList);
                 this.calculateAge();
                 
                 // this.birthDate = this.ChildList[0].tarikhLahir;
