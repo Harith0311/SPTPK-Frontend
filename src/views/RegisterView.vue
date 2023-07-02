@@ -228,6 +228,7 @@ import { BaseURL } from '../stores';
                                         .catch(error => { 
                                             console.error('Error create new user: ', error);
                                             alert('Pendaftaran tidak berjaya!');
+                                            this.loading = false;
                                         })
                                     }
                                 }
@@ -313,7 +314,7 @@ import { BaseURL } from '../stores';
                     }
                 }
 
-                
+                this.loading = false;
                 
                 
             }
