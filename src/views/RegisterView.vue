@@ -7,7 +7,11 @@
    
 </script>
 <template>
-    
+    <div v-if="loading" class="fixed inset-0 flex items-center bg-black bg-opacity-50 justify-center z-50">
+        <div class="loader-wrapper">
+            <div class="loader"></div>
+       </div>
+    </div>
     <div class="register p-5 bg-blue-100 w-screen min-h-screen w-100 max-h-full font-bold " v-on:submit.prevent="register">
         <LogoHeader></LogoHeader>
         <form v-on:submit.prevent="createNewUser" class="container px-12 max-md:px-4 m-4 p-8 mx-auto drop-shadow-2xl max-w-3xl bg-blue-200 w-auto rounded-2xl">
@@ -126,7 +130,8 @@ import { BaseURL } from '../stores';
                 errorPass: '',
                 errorConfirmPass: '',
                 errorCode: '',
-                passwordValidation: ''
+                passwordValidation: '',
+                loading: false,
 
 
             }
@@ -175,10 +180,12 @@ import { BaseURL } from '../stores';
                         }
                         else
                         {
+                            this.loading = true;
                             // Dapatkan list pendaftaran yang telah diluluskan
                             axios.get(BaseURL + 'urusPendaftaran/lulus')
                             .then(response => {
                                 console.log(response.data);
+                                this.loading = false;
                                 this.child = response.data.filter(item => item.kodPengesahan === this.code);
                                         
                                 console.log(this.child);
@@ -209,9 +216,11 @@ import { BaseURL } from '../stores';
                                         alert('Kata laluan tidak sepadan!');
                                         // You can display an error message or perform any desired action
                                     } else {
+                                        this.loading = true;
                                         // Password is valid, proceed with the API call
                                         axios.post(BaseURL + 'pengguna', pengguna)
                                         .then(response => {
+                                            this.loading = false;
                                             console.log(response.data);
                                             alert('Selamat datang!');
                                             router.push('/login');
@@ -356,6 +365,33 @@ import { BaseURL } from '../stores';
 input[type=file]::-webkit-file-upload-button{
     cursor: pointer;
 }
+
+.loader {
+          position: relative;
+          width: 48px;
+          height: 48px;
+        }
+        .loader:before,
+        .loader:after {
+          content:"";
+          display: block;
+          border: 32px solid transparent;
+          border-top-color: #fff;
+          position: absolute;
+          left: 0;
+          top: 0;
+          animation: weld-rotate 2s infinite ease-in;
+        }
+        .loader:before {
+          border-color: transparent  transparent transparent #FF3D00;
+          animation-delay: 0.5s;
+        }
+        @keyframes weld-rotate {
+          0% , 25% {transform: rotate(0deg)}
+          50% , 75% {transform: rotate(180deg)}
+          100% {transform: rotate(360deg)}
+        }
+      
 
 
 </style>
