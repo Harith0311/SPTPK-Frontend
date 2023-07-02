@@ -26,7 +26,7 @@
             <div class="bg-green-200  h-[480px] w-full mx-auto mt-5 mb-10 rounded-2xl pb-10">
                 <h2 class="text-xl font-bold px-14 p-5">Maklumat Kanak-Kanak</h2>
                 <div class=" relative overflow-y-auto overflow-hidden  h-[380px]">
-                    <table class="m-8 w-5/6 mx-auto relative overflow-y-auto h-[380px] scrollbar-hide" id="childTable">
+                    <table class="m-8 w-5/6 mx-auto relative overflow-y-auto h-auto` scrollbar-hide" id="childTable">
                         <thead class="sticky top-0 z-10 ">
                             <tr class="border-solid border-b-2 border-black ">
                                 <th class="w-auto bg-green-200">Bil.</th>
@@ -117,10 +117,10 @@ export default {
         },
 
         calculateAge() {
-            if (this.ChildList.length > 0) {
+            if (this.ApprovedChildList.length > 0) {
                 const today = new Date();
-                this.ChildList.forEach((child) => {
-                    const birthDate = new Date(child.tarikhLahir);
+                this.ApprovedChildList.forEach((child) => {
+                    const birthDate = new Date(child.kanak.tarikhLahir);
                     const yearDiff = today.getFullYear() - birthDate.getFullYear();
                     const monthDiff = today.getMonth() - birthDate.getMonth();
                     const dayDiff = today.getDate() - birthDate.getDate();
@@ -152,19 +152,19 @@ export default {
             printWindow.document.open();
 
             // Extract the data from the Vue.js component
-            const ChildList = this.ChildList;
+            const ChildList = this.ApprovedChildList;
 
             // Generate the table rows using the data
             const tableRows = ChildList.map((child, index) => {
             return `
                 <tr>
                 <td style="text-align: center;">${index + 1}</td>
-                <td>${child.namaKanak}</td>
+                <td>${child.kanak.namaKanak}</td>
                 <td class="text-center p-2">${ child.ageYears } tahun ${ child.ageMonths } bulan</td>
-                <td style="text-align: center;">${child.kelas}</td>
-                <td style="text-align: center;">${child.sijilLahir}</td>
-                <td style="text-align: center;">${child.jantina}</td>
-                <td style="text-align: center;">${child.bangsa}</td>
+                <td style="text-align: center;">${child.kanak.kelas}</td>
+                <td style="text-align: center;">${child.kanak.sijilLahir}</td>
+                <td style="text-align: center;">${child.kanak.jantina}</td>
+                <td style="text-align: center;">${child.kanak.bangsa}</td>
                 </tr>
             `;
             }).join('');

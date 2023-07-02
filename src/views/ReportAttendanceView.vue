@@ -112,17 +112,18 @@ export default {
         this.fetchChildAttendance();
     },
     methods: {
-        fetchChildData(){
+        fetchChildData() {
             axios.get(BaseURL + 'kanak')
                 .then(response => {
-                this.ChildList = response.data;
+                // Filter the data where 'kelas' is not null
+                this.ChildList = response.data.filter(child => child.kelas !== null);
+                
                 this.calculateAge();
-
                 console.log(this.ChildList);
                 })
                 .catch(error => {
                 console.error('Error fetching child data:', error);
-            });
+                });
         },
 
         calculateAge() {
