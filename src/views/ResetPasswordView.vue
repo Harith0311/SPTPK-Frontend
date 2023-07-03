@@ -76,22 +76,36 @@ export default {
 
             this.userId = localStorage.getItem('userId');
             console.log(this.userId);
+            console.log(this.pass);
+            console.log(this.confirmPass);
+            console.log(this.pass === this.confirmPass);
+
             if (this.pass === this.confirmPass)
             {
+                console.log(this.pass);
+                console.log(this.confirmPass);
                 const update = {
                     password: this.confirmPass
                 }
-
-                axios.put(BaseURL + 'pengguna/' + this.userId, update)
+                console.log(update);
+                console.log('sebelum');
+                axios.put(BaseURL + 'pengguna/luar/' + this.userId, update)
                 .then(response => {
+                    console.log('hai');
                     localStorage.clear();
                     alert('password updated')
                     router.push('/login');
                 })
                 .catch(error => {
+                    alert('Kata laluan tidak berjaya dikemaskini')
                     console.error('Error update password:', error);
                 });
             }
+            else {
+                alert("Pengesahan kata laluan tidak sepadan")
+            }
+
+            console.log('setel');
         }
         
     }
