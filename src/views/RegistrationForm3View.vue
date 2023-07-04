@@ -207,7 +207,7 @@
 <script>
 import axios from 'axios';
 import router from "../router";
-import { successChild } from '../stores';
+import { successChild, successParent } from '../stores';
 import ToastMessage from "../components/ToastMessage.vue";
 
 export default {
