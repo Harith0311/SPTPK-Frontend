@@ -291,6 +291,7 @@ import Header from "../components/Header.vue";
                                         <option selected disabled>Sila Pilih Kelas</option>
                                         <option value="Melur">Melur</option>
                                         <option value="Orkid">Orkid</option>
+                                        <option value="Rose">Rose</option>
                                         <option value="Raya">Raya</option>
                                         <option value="Daisy">Daisy</option>
                                         <option value="Matahari">Matahari</option>
