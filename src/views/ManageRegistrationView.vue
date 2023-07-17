@@ -6,7 +6,7 @@ import Header from "../components/Header.vue";
 </script>
 
 <template>
-    <div class="flex bg-blue-100 w-full h-screen justify-between p-8 max-md:p-[1px]">
+    <div class="flex bg-blue-100 w-full h-screen overflow-hidden justify-between p-8 max-md:p-[1px]">
         <SideBar2 />
 
         <!-- Content -->
