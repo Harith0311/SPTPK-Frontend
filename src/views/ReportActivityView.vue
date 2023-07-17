@@ -56,13 +56,13 @@
                     <div class="flex flex-col justify-evenly py-3 bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
                         <template v-if="AktivitiMelur1.length > 0 || AktivitiMelur2.length > 0 || AktivitiMelur3.length > 0 ">
                             <div class="flex justify-center py-1">
-                                <div  v-for="activity in AktivitiMelur1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiMelur1" v-bind:key="activity.id" class="bg-green-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiMelur2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiMelur2" v-bind:key="activity.id" class="bg-orange-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiMelur3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiMelur3" v-bind:key="activity.id" class="bg-red-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
                             </div>
@@ -92,13 +92,13 @@
                     <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
                         <template v-if="AktivitiOrkid1.length > 0 || AktivitiOrkid2.length > 0 || AktivitiOrkid3.length > 0 ">
                             <div class="flex justify-center py-1">
-                                <div  v-for="activity in AktivitiOrkid1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiOrkid1" v-bind:key="activity.id" class="bg-green-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiOrkid2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiOrkid2" v-bind:key="activity.id" class="bg-orange-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiOrkid3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiOrkid3" v-bind:key="activity.id" class="bg-red-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
                             </div>
@@ -128,13 +128,13 @@
                     <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
                         <template v-if="AktivitiRose1.length > 0 || AktivitiRose2.length > 0 || AktivitiRose3.length > 0 ">
                             <div class="flex justify-center py-1">
-                                <div  v-for="activity in AktivitiRose1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiRose1" v-bind:key="activity.id" class="bg-green-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiRose2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiRose2" v-bind:key="activity.id" class="bg-orange-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiRose3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiRose3" v-bind:key="activity.id" class="bg-red-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
                             </div>
@@ -164,13 +164,13 @@
                     <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
                         <template v-if="AktivitiRaya1.length > 0 || AktivitiRaya2.length > 0 || AktivitiRaya3.length > 0 ">
                             <div class="flex justify-center py-1">
-                                <div  v-for="activity in AktivitiRaya1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiRaya1" v-bind:key="activity.id" class="bg-green-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiRaya2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiRaya2" v-bind:key="activity.id" class="bg-orange-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiRaya3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiRaya3" v-bind:key="activity.id" class="bg-red-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
                             </div>
@@ -200,13 +200,13 @@
                     <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
                         <template v-if="AktivitiDaisy1.length > 0 || AktivitiDaisy2.length > 0 || AktivitiDaisy3.length > 0 ">
                             <div class="flex justify-center py-1">
-                                <div  v-for="activity in AktivitiDaisy1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiDaisy1" v-bind:key="activity.id" class="bg-green-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiDaisy2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiDaisy2" v-bind:key="activity.id" class="bg-orange-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiDaisy3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiDaisy3" v-bind:key="activity.id" class="bg-red-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
                             </div>
@@ -236,13 +236,13 @@
                     <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
                         <template v-if="AktivitiMatahari1.length > 0 || AktivitiMatahari2.length > 0 || AktivitiMatahari3.length > 0 ">
                             <div class="flex justify-center py-1">
-                                <div  v-for="activity in AktivitiMatahari1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiMatahari1" v-bind:key="activity.id" class="bg-green-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiMatahari2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiMatahari2" v-bind:key="activity.id" class="bg-orange-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiMatahari3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiMatahari3" v-bind:key="activity.id" class="bg-red-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
                             </div>
@@ -273,13 +273,13 @@
                     <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
                         <template v-if="AktivitiDahlia1.length > 0 || AktivitiDahlia2.length > 0 || AktivitiDahlia3.length > 0 ">
                             <div class="flex justify-center py-1">
-                                <div  v-for="activity in AktivitiDahlia1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiDahlia1" v-bind:key="activity.id" class="bg-green-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiDahlia2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiDahlia2" v-bind:key="activity.id" class="bg-orange-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiDahlia3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiDahlia3" v-bind:key="activity.id" class="bg-red-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
                             </div>
@@ -310,13 +310,13 @@
                     <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
                         <template v-if="AktivitiLily1.length > 0 || AktivitiLily2.length > 0 || AktivitiLily3.length > 0 ">
                             <div class="flex justify-center py-1">
-                                <div  v-for="activity in AktivitiLily1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiLily1" v-bind:key="activity.id" class="bg-green-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiLily2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiLily2" v-bind:key="activity.id" class="bg-orange-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiLily3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiLily3" v-bind:key="activity.id" class="bg-red-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
                             </div>
@@ -347,15 +347,15 @@
                     <div class="bg-blue-700 w-4/5 bg-opacity-30 h-20 m-4 mr-12 rounded-md">
                         <template v-if="AktivitiTulip1.length > 0 || AktivitiTulip2.length > 0 || AktivitiTulip3.length > 0 ">
                             <div class="flex justify-center py-1">
-                                <div  v-for="activity in AktivitiTulip1" v-bind:key="activity.id" class="bg-green-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiTulip1" v-bind:key="activity.id" class="bg-green-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiTulip2" v-bind:key="activity.id" class="bg-orange-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiTulip2" v-bind:key="activity.id" class="bg-orange-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
                                 </div>
-                                <div  v-for="activity in AktivitiTulip3" v-bind:key="activity.id" class="bg-red-200 flex items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
+                                <div  v-for="activity in AktivitiTulip3" v-bind:key="activity.id" class="bg-red-200 flex text-center items-center rounded-md h-16 m-1 mx-4 py-0.5 px-14 z-50 ">
                                 {{activity.aktiviti.namaAktiviti}}
-                                </div>
+                                </div>         
                             </div>
                         </template>
                         <template v-else>
