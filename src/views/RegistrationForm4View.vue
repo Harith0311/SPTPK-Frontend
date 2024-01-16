@@ -56,6 +56,7 @@ const checkAgreement = () => {
           daftarBapa.pendaftaranId = registrationId;
           daftarIbu.pendaftaranId = registrationId;
   
+          
           // Insert the child data into registration record
           axios.post(BaseURL + 'kanak', daftarKanak)
             .then(response => 
